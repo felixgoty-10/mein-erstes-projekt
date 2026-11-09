@@ -49,14 +49,14 @@ Kurze Sätze (2–8 Wörter), Präsens, Ich-Perspektive, konkrete Zahlen, keine 
 {
   "title": "…",
   "voice": { "length_scale": 1.0 },
-  "sentences": [ { "id": "s1", "text": "In dieser Stadt …", "end": true }, { "id": "s2", "text": "Kein Brot." }, { "id": "s3", "text": "…", "end": true } ],
+  "sentences": [ { "id": "s1", "text": "In dieser Stadt …" }, { "id": "s2", "text": "…", "pause": 0.1 } ],
   "overlays": [
     { "type": "card", "header": "OHNE ARBEIT", "value": "TAG 1", "from": ["s2", 0], "to": ["s2", 2] },
     { "type": "sign", "text": "TAG 3", "from": ["s3", 0], "to": ["s4", "end"] }
   ]
 }
 ```
-**Fließend sprechen (Pflicht, keine abrupten Stopps):** `"flow": true` in `voice`. Sätze bis einschließlich eines
+**Optional fließend sprechen (nur auf Wunsch):** `"flow": true` in `voice`. Sätze bis einschließlich eines
 Satzes mit `"end": true` werden in **einem Zug** gesprochen (Satzpunkt → Komma, Betonung läuft weiter, kurze
 natürliche Atempausen). `"end": true` an Gedankenenden setzen (ca. alle 1–3 Sätze, immer vor einem Szenen-/Tageswechsel).
 Kurze Nachsätze ("Kein Brot.", "Für Opa.") nie allein lassen, sondern mit dem Satz davor gruppieren.
@@ -95,18 +95,10 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
 - Kamera nie hinter einer Figur, die die Szene verdeckt. Nahaufnahme: Kopf + Schultern, Pille dann ausblenden.
 - Liegende Figuren: `lieSide()` (Gesicht bleibt lesbar), Kamera von vorne.
 - Eigene Figuren und eigene Welt: keine Marken, keine bekannten Spielfiguren nachbauen.
-- **Standard-Stimme (für jedes Video übernehmen): männlicher Teenager (ca. 14–15 Jahre)**, hell, klar, locker.
-  Basis: hochwertiges Piper-Modell `de_DE-thorsten-high` (22 kHz). Rubberband hebt zuerst Tonhöhe **und**
-  Formanten um `formant_semitones` (etwas kürzerer Stimmtrakt), danach nur die Tonhöhe bis `semitones`
-  (Formanten erhalten). Ergebnis ≈ 180 Hz. In `video.json`:
-  ```json
-  "voice": { "model": "de_DE-thorsten-high", "flow": true, "length_scale": 0.88, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.16,
-             "semitones": 7, "formant_semitones": 2.5,
-             "eq": "highpass=f=120,equalizer=f=250:t=q:w=1:g=-3,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70" }
-  ```
-  Varianten: älterer Teen (16–17) `semitones 5.5, formant_semitones 1.8`; lebhafter
-  `"model": "de_DE-thorsten_emotional-medium", "speaker": "amused", "semitones": 4, "formant_semitones": 1.5`;
-  Kind `semitones 12, formant_semitones 4.5`. `formant_semitones` über ~5 klingt nach Micky Maus.
-  Keine Stimme einer realen Person 1:1 klonen; nur Charakter/Stil angleichen.
+- **Standard-Stimme (vom Nutzer festgelegt, nicht ändern):** die Stimme aus dem ersten Clip: Piper "thorsten"
+  (offline, `.cache/voices/de-thorsten-low.onnx`), ohne Tonhöhen-/Formant-Bearbeitung, jeder Satz einzeln. In `video.json`:
+  `"voice": { "length_scale": 1.0 }` – sonst nichts (kein `model`, `semitones`, `flow`, `pitch_hz`).
+  Andere Stimmen (hell, Kind, Teenager, fließend) wurden ausprobiert und vom Nutzer verworfen; nur auf ausdrücklichen
+  Wunsch nutzen. Die Optionen dafür sind in `tools/tts.py` dokumentiert.
 - Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
   ablegen, Satzzeiten in `assets/timing.json` von Hand eintragen (gleiches Format) und `tts.py` überspringen.

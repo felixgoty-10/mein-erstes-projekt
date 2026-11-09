@@ -33,13 +33,13 @@ STRESS = set("ˈˌː")
 PUNCT_WEIGHT = {",": 2.5, ":": 3.0, "?": 1.0, "!": 1.0, ".": 0.5}
 
 
-def trim(a, sr, thr=0.006):
+def trim(a, sr, thr=0.012, tail=0.03):
     """Schneidet Stille am Anfang/Ende ab (mit 30 ms Polster)."""
     env = np.abs(a)
     idx = np.where(env > thr)[0]
     if len(idx) == 0:
         return a
-    return a[max(0, idx[0] - int(0.03 * sr)): min(len(a), idx[-1] + int(0.09 * sr))]
+    return a[max(0, idx[0] - int(0.03 * sr)): min(len(a), idx[-1] + int(tail * sr))]
 
 
 def shape_voice(a, sr, pitch_hz=None, pitch_range=1.0, formant=1.0):
@@ -136,10 +136,13 @@ def main():
         audio = b"".join(ch.audio_int16_bytes for ch in voice.synthesize(text, syn))
         a = np.frombuffer(audio, dtype=np.int16).astype(np.float32) / 32768.0
         a = shape_voice(a, sr, vcfg.get("pitch_hz"), vcfg.get("pitch_range", 1.0), vcfg.get("formant", 1.0))
-        a = trim(a, sr)
-        fi, fo = int(0.012 * sr), int(0.06 * sr)  # weiche Ein-/Ausblendung statt hartem Schnitt
-        a[:fi] *= np.linspace(0, 1, fi)
-        a[-fo:] *= np.linspace(1, 0, fo) ** 1.5
+        if flow:
+            a = trim(a, sr, 0.006, 0.09)
+            fi, fo = int(0.012 * sr), int(0.06 * sr)  # weiche Ein-/Ausblendung statt hartem Schnitt
+            a[:fi] *= np.linspace(0, 1, fi)
+            a[-fo:] *= np.linspace(1, 0, fo) ** 1.5
+        else:
+            a = trim(a, sr)  # Original-Verhalten (Standardstimme)
         dur = len(a) / sr
         words = [(w, s) for s, t in zip(g, spoken) for w in t.split()]
         ws = word_weights(voice, [w for w, _ in words])
