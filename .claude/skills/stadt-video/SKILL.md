@@ -89,18 +89,18 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
 - Kamera nie hinter einer Figur, die die Szene verdeckt. Nahaufnahme: Kopf + Schultern, Pille dann ausblenden.
 - Liegende Figuren: `lieSide()` (Gesicht bleibt lesbar), Kamera von vorne.
 - Eigene Figuren und eigene Welt: keine Marken, keine bekannten Spielfiguren nachbauen.
-- **Standard-Stimme (für jedes Video übernehmen): Kinderstimme**, klar und deutlich.
+- **Standard-Stimme (für jedes Video übernehmen): männlicher Teenager (ca. 14–15 Jahre)**, hell, klar, locker.
   Basis: hochwertiges Piper-Modell `de_DE-thorsten-high` (22 kHz). Rubberband hebt zuerst Tonhöhe **und**
-  Formanten um `formant_semitones` (kürzerer Stimmtrakt wie bei Kindern), danach nur die Tonhöhe bis `semitones`
-  (Formanten erhalten). Ergebnis ≈ 230 Hz, kindlich, ohne Micky-Maus-Effekt. In `video.json`:
+  Formanten um `formant_semitones` (etwas kürzerer Stimmtrakt), danach nur die Tonhöhe bis `semitones`
+  (Formanten erhalten). Ergebnis ≈ 180 Hz. In `video.json`:
   ```json
-  "voice": { "model": "de_DE-thorsten-high", "length_scale": 0.95, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.26,
-             "semitones": 12, "formant_semitones": 4.5,
-             "eq": "highpass=f=150,equalizer=f=300:t=q:w=1:g=-3,equalizer=f=3500:t=q:w=1.4:g=3,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70" }
+  "voice": { "model": "de_DE-thorsten-high", "length_scale": 0.88, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.24,
+             "semitones": 7, "formant_semitones": 2.5,
+             "eq": "highpass=f=120,equalizer=f=250:t=q:w=1:g=-3,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70" }
   ```
-  Varianten: älteres Kind `semitones 11, formant_semitones 3.5`; lebhaft/verspielt
-  `"model": "de_DE-thorsten_emotional-medium", "speaker": "amused", "semitones": 9, "formant_semitones": 3.5`.
-  `formant_semitones` über ~5 klingt nach Micky Maus. `noise_scale` 0.5 = deutliche Aussprache.
+  Varianten: älterer Teen (16–17) `semitones 5.5, formant_semitones 1.8`; lebhafter
+  `"model": "de_DE-thorsten_emotional-medium", "speaker": "amused", "semitones": 4, "formant_semitones": 1.5`;
+  Kind `semitones 12, formant_semitones 4.5`. `formant_semitones` über ~5 klingt nach Micky Maus.
   Keine Stimme einer realen Person 1:1 klonen; nur Charakter/Stil angleichen.
 - Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
   ablegen, Satzzeiten in `assets/timing.json` von Hand eintragen (gleiches Format) und `tts.py` überspringen.
