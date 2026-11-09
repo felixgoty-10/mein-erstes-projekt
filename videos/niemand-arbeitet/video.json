@@ -2,12 +2,13 @@
   "title": "Was wäre, wenn niemand mehr arbeiten geht?",
   "voice": {
     "model": "de_DE-thorsten-high",
-    "length_scale": 0.92,
+    "length_scale": 0.95,
     "noise_scale": 0.5,
     "noise_w_scale": 0.7,
     "pause": 0.26,
-    "semitones": 7,
-    "eq": "highpass=f=120,equalizer=f=230:t=q:w=1:g=-4,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=6500:g=5,acompressor=threshold=-20dB:ratio=3:attack=4:release=70"
+    "semitones": 12,
+    "formant_semitones": 4.5,
+    "eq": "highpass=f=150,equalizer=f=300:t=q:w=1:g=-3,equalizer=f=3500:t=q:w=1.4:g=3,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70"
   },
   "sentences": [
     {

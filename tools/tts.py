@@ -68,6 +68,19 @@ def shape_voice(a, sr, pitch_hz=None, pitch_range=1.0, formant=1.0):
     return y[: len(a)].astype(np.float32)
 
 
+def pitch_chain(vcfg):
+    """Rubberband-Kette: 'formant_semitones' verschiebt Tonhöhe+Formanten gemeinsam (kürzerer Stimmtrakt,
+    z. B. Kinderstimme), der Rest bis 'semitones' nur die Tonhöhe bei erhaltenen Formanten."""
+    total = vcfg.get("semitones", 0)
+    fs = vcfg.get("formant_semitones", 0)
+    chain = ""
+    if fs:
+        chain += f"rubberband=pitch={2 ** (fs / 12):.4f}:formant=shifted:pitchq=quality:window=short,"
+    if total - fs:
+        chain += f"rubberband=pitch={2 ** ((total - fs) / 12):.4f}:formant=preserved:pitchq=quality:window=short,"
+    return chain
+
+
 def word_weights(voice, words):
     weights = []
     for w in words:
@@ -140,7 +153,7 @@ def main():
     # 44.1 kHz, leichte Präsenz-Anhebung und Kompression für Social-Media-Klang
     subprocess.run([
         "ffmpeg", "-v", "error", "-y", "-i", str(raw),
-        "-af", ((f"rubberband=pitch={2 ** (vcfg['semitones'] / 12):.4f}:formant=preserved:pitchq=quality:window=short,") if vcfg.get("semitones") else "") + vcfg.get("eq", "highpass=f=80,equalizer=f=3000:t=q:w=1.2:g=3,acompressor=threshold=-18dB:ratio=3:attack=5:release=80") + ",aresample=44100",
+        "-af", pitch_chain(vcfg) + vcfg.get("eq", "highpass=f=80,equalizer=f=3000:t=q:w=1.2:g=3,acompressor=threshold=-18dB:ratio=3:attack=5:release=80") + ",aresample=44100",
         str(assets / "voice.wav")], check=True)
     raw.unlink()
     duration = round(len(full) / sr, 3)

@@ -89,16 +89,18 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
 - Kamera nie hinter einer Figur, die die Szene verdeckt. Nahaufnahme: Kopf + Schultern, Pille dann ausblenden.
 - Liegende Figuren: `lieSide()` (Gesicht bleibt lesbar), Kamera von vorne.
 - Eigene Figuren und eigene Welt: keine Marken, keine bekannten Spielfiguren nachbauen.
-- **Standard-Stimme (für jedes Video übernehmen):** sehr helle, klare, natürlich klingende Erzählstimme.
-  Basis: hochwertiges Piper-Modell `de_DE-thorsten-high` (22 kHz), Tonhöhe per Rubberband um 7 Halbtöne
-  angehoben **mit erhaltenen Formanten** (klingt menschlich statt Micky-Maus), plus Präsenz/Höhen-EQ. In `video.json`:
+- **Standard-Stimme (für jedes Video übernehmen): Kinderstimme**, klar und deutlich.
+  Basis: hochwertiges Piper-Modell `de_DE-thorsten-high` (22 kHz). Rubberband hebt zuerst Tonhöhe **und**
+  Formanten um `formant_semitones` (kürzerer Stimmtrakt wie bei Kindern), danach nur die Tonhöhe bis `semitones`
+  (Formanten erhalten). Ergebnis ≈ 230 Hz, kindlich, ohne Micky-Maus-Effekt. In `video.json`:
   ```json
-  "voice": { "model": "de_DE-thorsten-high", "length_scale": 0.92, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.26, "semitones": 7,
-             "eq": "highpass=f=120,equalizer=f=230:t=q:w=1:g=-4,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=6500:g=5,acompressor=threshold=-20dB:ratio=3:attack=4:release=70" }
+  "voice": { "model": "de_DE-thorsten-high", "length_scale": 0.95, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.26,
+             "semitones": 12, "formant_semitones": 4.5,
+             "eq": "highpass=f=150,equalizer=f=300:t=q:w=1:g=-3,equalizer=f=3500:t=q:w=1.4:g=3,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70" }
   ```
-  `semitones` = Helligkeit (5 hell, 7 sehr hell; über 8 klingt künstlich). `noise_scale` 0.5 = deutliche Aussprache.
-  Alternative lebhafter: `"model": "de_DE-thorsten_emotional-medium", "speaker": "amused", "semitones": 3`.
-  Den WORLD-Vocoder (`pitch_hz`, `pitch_range`, `formant`) nicht mehr nutzen: er klingt künstlich.
+  Varianten: älteres Kind `semitones 11, formant_semitones 3.5`; lebhaft/verspielt
+  `"model": "de_DE-thorsten_emotional-medium", "speaker": "amused", "semitones": 9, "formant_semitones": 3.5`.
+  `formant_semitones` über ~5 klingt nach Micky Maus. `noise_scale` 0.5 = deutliche Aussprache.
   Keine Stimme einer realen Person 1:1 klonen; nur Charakter/Stil angleichen.
 - Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
   ablegen, Satzzeiten in `assets/timing.json` von Hand eintragen (gleiches Format) und `tts.py` überspringen.
