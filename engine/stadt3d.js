@@ -747,6 +747,14 @@ export function nightstand() {
   g.add(box(1.5, 0.1, 0.05, mat("#c9a33a"), 0, 1.2, 0.82, false));
   return g;
 }
+/** Parkbank (Sitzhöhe ≈ 1.6, Sitzfläche bei z 0, Lehne hinten). */
+export function bench(color = "#a8683a") {
+  const g = new THREE.Group();
+  g.add(box(5, 0.25, 1.4, mat(color), 0, 1.5, 0));
+  g.add(box(5, 1.1, 0.22, mat(color), 0, 2.4, -0.62));
+  [-2.2, 2.2].forEach((x) => { g.add(box(0.22, 1.5, 1.2, mat("#3a3a40"), x, 0.75, 0)); g.add(box(0.22, 1.2, 0.2, mat("#3a3a40"), x, 2.2, -0.62)); });
+  return g;
+}
 export function briefcase() {
   const g = new THREE.Group();
   g.add(box(1.1, 0.8, 0.3, mat("#5a3a20"), 0, 0, 0));

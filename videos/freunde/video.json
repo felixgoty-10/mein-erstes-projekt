@@ -1,0 +1,206 @@
+{
+  "title": "In dieser Stadt steht über jedem, wie viele echte Freunde er hat",
+  "voice": {
+    "length_scale": 1.0
+  },
+  "music": {
+    "mood": "horror",
+    "volume": 0.26
+  },
+  "sentences": [
+    {
+      "id": "s1",
+      "text": "In dieser Stadt steht über jedem Kopf, wie viele Freunde die Person wirklich hat."
+    },
+    {
+      "id": "s2",
+      "text": "Über meinem Kopf standen zwölf."
+    },
+    {
+      "id": "s3",
+      "text": "Ich war beliebt und dachte, dass alle mich mochten.",
+      "pause": 0.45
+    },
+    {
+      "id": "s4",
+      "text": "Eines Morgens wachte ich auf."
+    },
+    {
+      "id": "s5",
+      "text": "Meine Zahl war auf eins gesunken.",
+      "pause": 0.45
+    },
+    {
+      "id": "s6",
+      "text": "Ich fragte meine Freunde, ob etwas passiert sei."
+    },
+    {
+      "id": "s7",
+      "text": "Aber alle behaupteten, alles wäre normal."
+    },
+    {
+      "id": "s8",
+      "text": "In der Schule versuchte ich, mit ihnen zu reden."
+    },
+    {
+      "id": "s9",
+      "text": "Doch plötzlich ignorierten mich alle.",
+      "pause": 0.25
+    },
+    {
+      "id": "s9b",
+      "text": "Sie liefen einfach an mir vorbei.",
+      "pause": 0.4
+    },
+    {
+      "id": "s10",
+      "text": "Nur ein Mädchen aus meiner Klasse sprach noch mit mir.",
+      "pause": 0.45
+    },
+    {
+      "id": "s11",
+      "text": "Am nächsten Tag stand über meinem Kopf plötzlich eine Null.",
+      "pause": 0.25
+    },
+    {
+      "id": "s11b",
+      "text": "Kein einziger Freund mehr.",
+      "pause": 0.45
+    },
+    {
+      "id": "s12",
+      "text": "Verzweifelt fragte ich sie, warum sie trotzdem noch mit mir redete."
+    },
+    {
+      "id": "s13",
+      "text": "Sie lächelte und sagte:",
+      "pause": 0.3
+    },
+    {
+      "id": "s14",
+      "text": "Weil ich deine einzige echte Freundin bin.",
+      "pause": 0.4
+    },
+    {
+      "id": "s15",
+      "text": "Plötzlich schaute ich erneut auf ihren Kopf."
+    },
+    {
+      "id": "s16",
+      "text": "Dort stand eine Eins.",
+      "pause": 0.25
+    },
+    {
+      "id": "s16b",
+      "text": "Ich dachte, ich bin ihr einziger Freund.",
+      "pause": 0.4
+    },
+    {
+      "id": "s17",
+      "text": "Ich lächelte und wollte mich bedanken."
+    },
+    {
+      "id": "s18",
+      "text": "Doch dann drehte sie sich um und ging zu einem anderen Jungen."
+    },
+    {
+      "id": "s19",
+      "text": "Über seinem Kopf stand ebenfalls eine Eins.",
+      "pause": 0.45
+    },
+    {
+      "id": "s20",
+      "text": "In diesem Moment verstand ich:",
+      "pause": 0.3
+    },
+    {
+      "id": "s21",
+      "text": "Sie war nicht meine Freundin.",
+      "pause": 0.3
+    },
+    {
+      "id": "s22",
+      "text": "Sie sammelte Menschen, die niemanden mehr hatten."
+    }
+  ],
+  "overlays": [
+    {
+      "type": "card",
+      "header": "FREUNDE",
+      "value": "12",
+      "from": [
+        "s2",
+        0
+      ],
+      "to": [
+        "s2",
+        "end"
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#c40000",
+      "opacity": 0.5,
+      "from": [
+        "s11",
+        9
+      ],
+      "to": [
+        "s11",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "„WEIL ICH DEINE EINZIGE ECHTE FREUNDIN BIN.“",
+      "from": [
+        "s14",
+        0
+      ],
+      "to": [
+        "s14",
+        "end"
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#c40000",
+      "opacity": 0.45,
+      "from": [
+        "s19",
+        5
+      ],
+      "to": [
+        "s19",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "SIE SAMMELTE MENSCHEN.",
+      "from": [
+        "s22",
+        0
+      ],
+      "to": [
+        "s22",
+        "end"
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#000000",
+      "hold": true,
+      "fade": 0.6,
+      "opacity": 1,
+      "from": [
+        "s22",
+        "end"
+      ],
+      "to": [
+        "END",
+        0
+      ]
+    }
+  ]
+}

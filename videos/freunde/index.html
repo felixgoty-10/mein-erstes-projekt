@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>In dieser Stadt steht über jedem, wie viele echte Freunde er hat</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script type="importmap">
+      { "imports": { "three": "./assets/vendor/three.module.js", "three/addons/": "./assets/vendor/addons/" } }
+    </script>
+    <style>
+      html, body { margin: 0; padding: 0; background: #000; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #8cc8f0; font-family: "Montserrat", sans-serif; }
+      #world { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      /* Ein-Wort-Untertitel: weiß, extra fett, schwarze Kontur, ~65 % Bildhöhe */
+      .cap { position: absolute; left: 0; width: 1080px; top: 1150px; height: 160px; text-align: center; z-index: 50; overflow: visible; }
+      .cap span { display: inline-block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 92px; line-height: 160px;
+        color: #fff; -webkit-text-stroke: 14px #111; paint-order: stroke fill; letter-spacing: -1px;
+        text-shadow: 0 7px 0 rgba(0,0,0,0.35); transform-origin: 50% 60%; }
+      /* Infokarte auf Cremegrund */
+      .card-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: #f3e9dc; z-index: 40; }
+      .card { position: absolute; left: 190px; top: 560px; width: 700px; border-radius: 34px; background: #fff; overflow: hidden;
+        box-shadow: 0 30px 60px rgba(60,40,20,0.25); }
+      .card-head { background: #e23b3b; color: #fff; font-weight: 900; font-size: 64px; text-align: center; padding: 26px 0 22px; letter-spacing: 2px; }
+      .card-val { color: #151515; font-weight: 900; font-size: 210px; text-align: center; line-height: 1; padding: 40px 0 56px; }
+      /* Blick durchs Schlüsselloch: schwarzer Rahmen mit Schlüsselloch-Ausschnitt */
+      .keyhole { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 40; overflow: hidden; }
+      .keyhole-mask { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 900px; }
+      .keyhole-mask svg { display: block; }
+      .flash { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 39; }
+      .flash-fill { position: absolute; inset: 0; mix-blend-mode: normal; }
+      /* Schild oben mit Schlüsselsatz */
+      .sign { position: absolute; left: 0; top: 250px; width: 1080px; height: 160px; text-align: center; z-index: 45; }
+      .sign-box { display: inline-block; background: #fff; color: #111; border: 7px solid #111; border-radius: 30px; padding: 16px 40px;
+        font-weight: 900; font-size: 60px; letter-spacing: 1px; box-shadow: 0 10px 0 rgba(0,0,0,0.25); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="59.89" data-width="1080" data-height="1920">
+      <canvas id="world" class="clip" width="1080" height="1920" data-start="0" data-duration="59.89" data-track-index="1" data-track-kind="graphics"></canvas>
+      <div id="ov0" class="clip card-bg" data-start="4.822" data-duration="1.606" data-track-index="3">
+        <div class="card"><div class="card-head">FREUNDE</div><div class="card-val">12</div></div>
+      </div>
+      <div id="ov1" class="clip flash" data-start="30.314" data-duration="0.214" data-track-index="3"><div class="flash-fill" style="background:#c40000"></div></div>
+      <div id="ov2" class="clip sign" data-start="37.72" data-duration="1.848" data-track-index="4"><div class="sign-box">„WEIL ICH DEINE EINZIGE ECHTE FREUNDIN BIN.“</div></div>
+      <div id="ov3" class="clip flash" data-start="52.555" data-duration="0.505" data-track-index="3"><div class="flash-fill" style="background:#c40000"></div></div>
+      <div id="ov4" class="clip sign" data-start="56.646" data-duration="2.195" data-track-index="4"><div class="sign-box">SIE SAMMELTE MENSCHEN.</div></div>
+      <div id="ov5" class="clip flash" data-start="58.841" data-duration="1.049" data-track-index="3"><div class="flash-fill" style="background:#000000"></div></div>
+      <div id="w0" class="clip cap" data-start="0.15" data-duration="0.241" data-track-index="5"><span>In</span></div>
+      <div id="w1" class="clip cap" data-start="0.391" data-duration="0.281" data-track-index="5"><span>dieser</span></div>
+      <div id="w2" class="clip cap" data-start="0.672" data-duration="0.282" data-track-index="5"><span>Stadt</span></div>
+      <div id="w3" class="clip cap" data-start="0.954" data-duration="0.281" data-track-index="5"><span>steht</span></div>
+      <div id="w4" class="clip cap" data-start="1.235" data-duration="0.211" data-track-index="5"><span>über</span></div>
+      <div id="w5" class="clip cap" data-start="1.446" data-duration="0.352" data-track-index="5"><span>jedem</span></div>
+      <div id="w6" class="clip cap" data-start="1.798" data-duration="0.457" data-track-index="5"><span>Kopf</span></div>
+      <div id="w7" class="clip cap" data-start="2.255" data-duration="0.141" data-track-index="5"><span>wie</span></div>
+      <div id="w8" class="clip cap" data-start="2.396" data-duration="0.282" data-track-index="5"><span>viele</span></div>
+      <div id="w9" class="clip cap" data-start="2.678" data-duration="0.492" data-track-index="5"><span>Freunde</span></div>
+      <div id="w10" class="clip cap" data-start="3.17" data-duration="0.141" data-track-index="5"><span>die</span></div>
+      <div id="w11" class="clip cap" data-start="3.311" data-duration="0.422" data-track-index="5"><span>Person</span></div>
+      <div id="w12" class="clip cap" data-start="3.733" data-duration="0.563" data-track-index="5"><span>wirklich</span></div>
+      <div id="w13" class="clip cap" data-start="4.296" data-duration="0.566" data-track-index="5"><span>hat</span></div>
+      <div id="w14" class="clip cap" data-start="4.862" data-duration="0.181" data-track-index="5"><span>Über</span></div>
+      <div id="w15" class="clip cap" data-start="5.043" data-duration="0.361" data-track-index="5"><span>meinem</span></div>
+      <div id="w16" class="clip cap" data-start="5.404" data-duration="0.241" data-track-index="5"><span>Kopf</span></div>
+      <div id="w17" class="clip cap" data-start="5.645" data-duration="0.422" data-track-index="5"><span>standen</span></div>
+      <div id="w18" class="clip cap" data-start="6.067" data-duration="0.712" data-track-index="5"><span>zwölf</span></div>
+      <div id="w19" class="clip cap" data-start="6.779" data-duration="0.186" data-track-index="5"><span>Ich</span></div>
+      <div id="w20" class="clip cap" data-start="6.965" data-duration="0.187" data-track-index="5"><span>war</span></div>
+      <div id="w21" class="clip cap" data-start="7.152" data-duration="0.374" data-track-index="5"><span>beliebt</span></div>
+      <div id="w22" class="clip cap" data-start="7.526" data-duration="0.187" data-track-index="5"><span>und</span></div>
+      <div id="w23" class="clip cap" data-start="7.713" data-duration="0.468" data-track-index="5"><span>dachte</span></div>
+      <div id="w24" class="clip cap" data-start="8.181" data-duration="0.187" data-track-index="5"><span>dass</span></div>
+      <div id="w25" class="clip cap" data-start="8.368" data-duration="0.187" data-track-index="5"><span>alle</span></div>
+      <div id="w26" class="clip cap" data-start="8.555" data-duration="0.249" data-track-index="5"><span>mich</span></div>
+      <div id="w27" class="clip cap" data-start="8.804" data-duration="0.855" data-track-index="5"><span>mochten</span></div>
+      <div id="w28" class="clip cap" data-start="9.659" data-duration="0.305" data-track-index="5"><span>Eines</span></div>
+      <div id="w29" class="clip cap" data-start="9.964" data-duration="0.427" data-track-index="5"><span>Morgens</span></div>
+      <div id="w30" class="clip cap" data-start="10.391" data-duration="0.305" data-track-index="5"><span>wachte</span></div>
+      <div id="w31" class="clip cap" data-start="10.696" data-duration="0.183" data-track-index="5"><span>ich</span></div>
+      <div id="w32" class="clip cap" data-start="10.879" data-duration="0.534" data-track-index="5"><span>auf</span></div>
+      <div id="w33" class="clip cap" data-start="11.413" data-duration="0.285" data-track-index="5"><span>Meine</span></div>
+      <div id="w34" class="clip cap" data-start="11.698" data-duration="0.228" data-track-index="5"><span>Zahl</span></div>
+      <div id="w35" class="clip cap" data-start="11.926" data-duration="0.171" data-track-index="5"><span>war</span></div>
+      <div id="w36" class="clip cap" data-start="12.097" data-duration="0.171" data-track-index="5"><span>auf</span></div>
+      <div id="w37" class="clip cap" data-start="12.268" data-duration="0.228" data-track-index="5"><span>eins</span></div>
+      <div id="w38" class="clip cap" data-start="12.496" data-duration="0.934" data-track-index="5"><span>gesunken</span></div>
+      <div id="w39" class="clip cap" data-start="13.43" data-duration="0.198" data-track-index="5"><span>Ich</span></div>
+      <div id="w40" class="clip cap" data-start="13.628" data-duration="0.395" data-track-index="5"><span>fragte</span></div>
+      <div id="w41" class="clip cap" data-start="14.023" data-duration="0.329" data-track-index="5"><span>meine</span></div>
+      <div id="w42" class="clip cap" data-start="14.352" data-duration="0.626" data-track-index="5"><span>Freunde</span></div>
+      <div id="w43" class="clip cap" data-start="14.978" data-duration="0.132" data-track-index="5"><span>ob</span></div>
+      <div id="w44" class="clip cap" data-start="15.11" data-duration="0.329" data-track-index="5"><span>etwas</span></div>
+      <div id="w45" class="clip cap" data-start="15.439" data-duration="0.395" data-track-index="5"><span>passiert</span></div>
+      <div id="w46" class="clip cap" data-start="15.834" data-duration="0.551" data-track-index="5"><span>sei</span></div>
+      <div id="w47" class="clip cap" data-start="16.385" data-duration="0.185" data-track-index="5"><span>Aber</span></div>
+      <div id="w48" class="clip cap" data-start="16.57" data-duration="0.185" data-track-index="5"><span>alle</span></div>
+      <div id="w49" class="clip cap" data-start="16.755" data-duration="0.832" data-track-index="5"><span>behaupteten</span></div>
+      <div id="w50" class="clip cap" data-start="17.587" data-duration="0.247" data-track-index="5"><span>alles</span></div>
+      <div id="w51" class="clip cap" data-start="17.834" data-duration="0.246" data-track-index="5"><span>wäre</span></div>
+      <div id="w52" class="clip cap" data-start="18.08" data-duration="0.721" data-track-index="5"><span>normal</span></div>
+      <div id="w53" class="clip cap" data-start="18.801" data-duration="0.112" data-track-index="5"><span>In</span></div>
+      <div id="w54" class="clip cap" data-start="18.913" data-duration="0.167" data-track-index="5"><span>der</span></div>
+      <div id="w55" class="clip cap" data-start="19.08" data-duration="0.224" data-track-index="5"><span>Schule</span></div>
+      <div id="w56" class="clip cap" data-start="19.304" data-duration="0.447" data-track-index="5"><span>versuchte</span></div>
+      <div id="w57" class="clip cap" data-start="19.751" data-duration="0.307" data-track-index="5"><span>ich</span></div>
+      <div id="w58" class="clip cap" data-start="20.058" data-duration="0.168" data-track-index="5"><span>mit</span></div>
+      <div id="w59" class="clip cap" data-start="20.226" data-duration="0.224" data-track-index="5"><span>ihnen</span></div>
+      <div id="w60" class="clip cap" data-start="20.45" data-duration="0.167" data-track-index="5"><span>zu</span></div>
+      <div id="w61" class="clip cap" data-start="20.617" data-duration="0.628" data-track-index="5"><span>reden</span></div>
+      <div id="w62" class="clip cap" data-start="21.245" data-duration="0.162" data-track-index="5"><span>Doch</span></div>
+      <div id="w63" class="clip cap" data-start="21.407" data-duration="0.486" data-track-index="5"><span>plötzlich</span></div>
+      <div id="w64" class="clip cap" data-start="21.893" data-duration="0.541" data-track-index="5"><span>ignorierten</span></div>
+      <div id="w65" class="clip cap" data-start="22.434" data-duration="0.216" data-track-index="5"><span>mich</span></div>
+      <div id="w66" class="clip cap" data-start="22.65" data-duration="0.439" data-track-index="5"><span>alle</span></div>
+      <div id="w67" class="clip cap" data-start="23.089" data-duration="0.13" data-track-index="5"><span>Sie</span></div>
+      <div id="w68" class="clip cap" data-start="23.219" data-duration="0.324" data-track-index="5"><span>liefen</span></div>
+      <div id="w69" class="clip cap" data-start="23.543" data-duration="0.389" data-track-index="5"><span>einfach</span></div>
+      <div id="w70" class="clip cap" data-start="23.932" data-duration="0.13" data-track-index="5"><span>an</span></div>
+      <div id="w71" class="clip cap" data-start="24.062" data-duration="0.195" data-track-index="5"><span>mir</span></div>
+      <div id="w72" class="clip cap" data-start="24.257" data-duration="0.822" data-track-index="5"><span>vorbei</span></div>
+      <div id="w73" class="clip cap" data-start="25.079" data-duration="0.168" data-track-index="5"><span>Nur</span></div>
+      <div id="w74" class="clip cap" data-start="25.247" data-duration="0.169" data-track-index="5"><span>ein</span></div>
+      <div id="w75" class="clip cap" data-start="25.416" data-duration="0.393" data-track-index="5"><span>Mädchen</span></div>
+      <div id="w76" class="clip cap" data-start="25.809" data-duration="0.168" data-track-index="5"><span>aus</span></div>
+      <div id="w77" class="clip cap" data-start="25.977" data-duration="0.281" data-track-index="5"><span>meiner</span></div>
+      <div id="w78" class="clip cap" data-start="26.258" data-duration="0.281" data-track-index="5"><span>Klasse</span></div>
+      <div id="w79" class="clip cap" data-start="26.539" data-duration="0.281" data-track-index="5"><span>sprach</span></div>
+      <div id="w80" class="clip cap" data-start="26.82" data-duration="0.168" data-track-index="5"><span>noch</span></div>
+      <div id="w81" class="clip cap" data-start="26.988" data-duration="0.168" data-track-index="5"><span>mit</span></div>
+      <div id="w82" class="clip cap" data-start="27.156" data-duration="0.647" data-track-index="5"><span>mir</span></div>
+      <div id="w83" class="clip cap" data-start="27.803" data-duration="0.116" data-track-index="5"><span>Am</span></div>
+      <div id="w84" class="clip cap" data-start="27.919" data-duration="0.464" data-track-index="5"><span>nächsten</span></div>
+      <div id="w85" class="clip cap" data-start="28.383" data-duration="0.174" data-track-index="5"><span>Tag</span></div>
+      <div id="w86" class="clip cap" data-start="28.557" data-duration="0.29" data-track-index="5"><span>stand</span></div>
+      <div id="w87" class="clip cap" data-start="28.847" data-duration="0.173" data-track-index="5"><span>über</span></div>
+      <div id="w88" class="clip cap" data-start="29.02" data-duration="0.348" data-track-index="5"><span>meinem</span></div>
+      <div id="w89" class="clip cap" data-start="29.368" data-duration="0.232" data-track-index="5"><span>Kopf</span></div>
+      <div id="w90" class="clip cap" data-start="29.6" data-duration="0.522" data-track-index="5"><span>plötzlich</span></div>
+      <div id="w91" class="clip cap" data-start="30.122" data-duration="0.232" data-track-index="5"><span>eine</span></div>
+      <div id="w92" class="clip cap" data-start="30.354" data-duration="0.453" data-track-index="5"><span>Null</span></div>
+      <div id="w93" class="clip cap" data-start="30.807" data-duration="0.244" data-track-index="5"><span>Kein</span></div>
+      <div id="w94" class="clip cap" data-start="31.051" data-duration="0.489" data-track-index="5"><span>einziger</span></div>
+      <div id="w95" class="clip cap" data-start="31.54" data-duration="0.367" data-track-index="5"><span>Freund</span></div>
+      <div id="w96" class="clip cap" data-start="31.907" data-duration="0.664" data-track-index="5"><span>mehr</span></div>
+      <div id="w97" class="clip cap" data-start="32.571" data-duration="0.701" data-track-index="5"><span>Verzweifelt</span></div>
+      <div id="w98" class="clip cap" data-start="33.272" data-duration="0.35" data-track-index="5"><span>fragte</span></div>
+      <div id="w99" class="clip cap" data-start="33.622" data-duration="0.175" data-track-index="5"><span>ich</span></div>
+      <div id="w100" class="clip cap" data-start="33.797" data-duration="0.263" data-track-index="5"><span>sie</span></div>
+      <div id="w101" class="clip cap" data-start="34.06" data-duration="0.292" data-track-index="5"><span>warum</span></div>
+      <div id="w102" class="clip cap" data-start="34.352" data-duration="0.117" data-track-index="5"><span>sie</span></div>
+      <div id="w103" class="clip cap" data-start="34.469" data-duration="0.467" data-track-index="5"><span>trotzdem</span></div>
+      <div id="w104" class="clip cap" data-start="34.936" data-duration="0.175" data-track-index="5"><span>noch</span></div>
+      <div id="w105" class="clip cap" data-start="35.111" data-duration="0.175" data-track-index="5"><span>mit</span></div>
+      <div id="w106" class="clip cap" data-start="35.286" data-duration="0.176" data-track-index="5"><span>mir</span></div>
+      <div id="w107" class="clip cap" data-start="35.462" data-duration="0.699" data-track-index="5"><span>redete</span></div>
+      <div id="w108" class="clip cap" data-start="36.161" data-duration="0.124" data-track-index="5"><span>Sie</span></div>
+      <div id="w109" class="clip cap" data-start="36.285" data-duration="0.495" data-track-index="5"><span>lächelte</span></div>
+      <div id="w110" class="clip cap" data-start="36.78" data-duration="0.185" data-track-index="5"><span>und</span></div>
+      <div id="w111" class="clip cap" data-start="36.965" data-duration="0.795" data-track-index="5"><span>sagte</span></div>
+      <div id="w112" class="clip cap" data-start="37.76" data-duration="0.201" data-track-index="5"><span>Weil</span></div>
+      <div id="w113" class="clip cap" data-start="37.961" data-duration="0.151" data-track-index="5"><span>ich</span></div>
+      <div id="w114" class="clip cap" data-start="38.112" data-duration="0.251" data-track-index="5"><span>deine</span></div>
+      <div id="w115" class="clip cap" data-start="38.363" data-duration="0.402" data-track-index="5"><span>einzige</span></div>
+      <div id="w116" class="clip cap" data-start="38.765" data-duration="0.251" data-track-index="5"><span>echte</span></div>
+      <div id="w117" class="clip cap" data-start="39.016" data-duration="0.401" data-track-index="5"><span>Freundin</span></div>
+      <div id="w118" class="clip cap" data-start="39.417" data-duration="0.576" data-track-index="5"><span>bin</span></div>
+      <div id="w119" class="clip cap" data-start="39.993" data-duration="0.475" data-track-index="5"><span>Plötzlich</span></div>
+      <div id="w120" class="clip cap" data-start="40.468" data-duration="0.263" data-track-index="5"><span>schaute</span></div>
+      <div id="w121" class="clip cap" data-start="40.731" data-duration="0.158" data-track-index="5"><span>ich</span></div>
+      <div id="w122" class="clip cap" data-start="40.889" data-duration="0.317" data-track-index="5"><span>erneut</span></div>
+      <div id="w123" class="clip cap" data-start="41.206" data-duration="0.158" data-track-index="5"><span>auf</span></div>
+      <div id="w124" class="clip cap" data-start="41.364" data-duration="0.211" data-track-index="5"><span>ihren</span></div>
+      <div id="w125" class="clip cap" data-start="41.575" data-duration="0.557" data-track-index="5"><span>Kopf</span></div>
+      <div id="w126" class="clip cap" data-start="42.132" data-duration="0.235" data-track-index="5"><span>Dort</span></div>
+      <div id="w127" class="clip cap" data-start="42.367" data-duration="0.295" data-track-index="5"><span>stand</span></div>
+      <div id="w128" class="clip cap" data-start="42.662" data-duration="0.235" data-track-index="5"><span>eine</span></div>
+      <div id="w129" class="clip cap" data-start="42.897" data-duration="0.515" data-track-index="5"><span>Eins</span></div>
+      <div id="w130" class="clip cap" data-start="43.412" data-duration="0.164" data-track-index="5"><span>Ich</span></div>
+      <div id="w131" class="clip cap" data-start="43.576" data-duration="0.408" data-track-index="5"><span>dachte</span></div>
+      <div id="w132" class="clip cap" data-start="43.984" data-duration="0.164" data-track-index="5"><span>ich</span></div>
+      <div id="w133" class="clip cap" data-start="44.148" data-duration="0.163" data-track-index="5"><span>bin</span></div>
+      <div id="w134" class="clip cap" data-start="44.311" data-duration="0.109" data-track-index="5"><span>ihr</span></div>
+      <div id="w135" class="clip cap" data-start="44.42" data-duration="0.436" data-track-index="5"><span>einziger</span></div>
+      <div id="w136" class="clip cap" data-start="44.856" data-duration="0.754" data-track-index="5"><span>Freund</span></div>
+      <div id="w137" class="clip cap" data-start="45.61" data-duration="0.179" data-track-index="5"><span>Ich</span></div>
+      <div id="w138" class="clip cap" data-start="45.789" data-duration="0.475" data-track-index="5"><span>lächelte</span></div>
+      <div id="w139" class="clip cap" data-start="46.264" data-duration="0.178" data-track-index="5"><span>und</span></div>
+      <div id="w140" class="clip cap" data-start="46.442" data-duration="0.297" data-track-index="5"><span>wollte</span></div>
+      <div id="w141" class="clip cap" data-start="46.739" data-duration="0.237" data-track-index="5"><span>mich</span></div>
+      <div id="w142" class="clip cap" data-start="46.976" data-duration="0.825" data-track-index="5"><span>bedanken</span></div>
+      <div id="w143" class="clip cap" data-start="47.801" data-duration="0.195" data-track-index="5"><span>Doch</span></div>
+      <div id="w144" class="clip cap" data-start="47.996" data-duration="0.195" data-track-index="5"><span>dann</span></div>
+      <div id="w145" class="clip cap" data-start="48.191" data-duration="0.326" data-track-index="5"><span>drehte</span></div>
+      <div id="w146" class="clip cap" data-start="48.517" data-duration="0.13" data-track-index="5"><span>sie</span></div>
+      <div id="w147" class="clip cap" data-start="48.647" data-duration="0.26" data-track-index="5"><span>sich</span></div>
+      <div id="w148" class="clip cap" data-start="48.907" data-duration="0.13" data-track-index="5"><span>um</span></div>
+      <div id="w149" class="clip cap" data-start="49.037" data-duration="0.196" data-track-index="5"><span>und</span></div>
+      <div id="w150" class="clip cap" data-start="49.233" data-duration="0.195" data-track-index="5"><span>ging</span></div>
+      <div id="w151" class="clip cap" data-start="49.428" data-duration="0.195" data-track-index="5"><span>zu</span></div>
+      <div id="w152" class="clip cap" data-start="49.623" data-duration="0.326" data-track-index="5"><span>einem</span></div>
+      <div id="w153" class="clip cap" data-start="49.949" data-duration="0.455" data-track-index="5"><span>anderen</span></div>
+      <div id="w154" class="clip cap" data-start="50.404" data-duration="0.678" data-track-index="5"><span>Jungen</span></div>
+      <div id="w155" class="clip cap" data-start="51.082" data-duration="0.175" data-track-index="5"><span>Über</span></div>
+      <div id="w156" class="clip cap" data-start="51.257" data-duration="0.349" data-track-index="5"><span>seinem</span></div>
+      <div id="w157" class="clip cap" data-start="51.606" data-duration="0.233" data-track-index="5"><span>Kopf</span></div>
+      <div id="w158" class="clip cap" data-start="51.839" data-duration="0.29" data-track-index="5"><span>stand</span></div>
+      <div id="w159" class="clip cap" data-start="52.129" data-duration="0.466" data-track-index="5"><span>ebenfalls</span></div>
+      <div id="w160" class="clip cap" data-start="52.595" data-duration="0.232" data-track-index="5"><span>eine</span></div>
+      <div id="w161" class="clip cap" data-start="52.827" data-duration="0.712" data-track-index="5"><span>Eins</span></div>
+      <div id="w162" class="clip cap" data-start="53.539" data-duration="0.098" data-track-index="5"><span>In</span></div>
+      <div id="w163" class="clip cap" data-start="53.637" data-duration="0.243" data-track-index="5"><span>diesem</span></div>
+      <div id="w164" class="clip cap" data-start="53.88" data-duration="0.292" data-track-index="5"><span>Moment</span></div>
+      <div id="w165" class="clip cap" data-start="54.172" data-duration="0.389" data-track-index="5"><span>verstand</span></div>
+      <div id="w166" class="clip cap" data-start="54.561" data-duration="0.592" data-track-index="5"><span>ich</span></div>
+      <div id="w167" class="clip cap" data-start="55.153" data-duration="0.105" data-track-index="5"><span>Sie</span></div>
+      <div id="w168" class="clip cap" data-start="55.258" data-duration="0.157" data-track-index="5"><span>war</span></div>
+      <div id="w169" class="clip cap" data-start="55.415" data-duration="0.262" data-track-index="5"><span>nicht</span></div>
+      <div id="w170" class="clip cap" data-start="55.677" data-duration="0.263" data-track-index="5"><span>meine</span></div>
+      <div id="w171" class="clip cap" data-start="55.94" data-duration="0.746" data-track-index="5"><span>Freundin</span></div>
+      <div id="w172" class="clip cap" data-start="56.686" data-duration="0.121" data-track-index="5"><span>Sie</span></div>
+      <div id="w173" class="clip cap" data-start="56.807" data-duration="0.425" data-track-index="5"><span>sammelte</span></div>
+      <div id="w174" class="clip cap" data-start="57.232" data-duration="0.516" data-track-index="5"><span>Menschen</span></div>
+      <div id="w175" class="clip cap" data-start="57.748" data-duration="0.122" data-track-index="5"><span>die</span></div>
+      <div id="w176" class="clip cap" data-start="57.87" data-duration="0.486" data-track-index="5"><span>niemanden</span></div>
+      <div id="w177" class="clip cap" data-start="58.356" data-duration="0.182" data-track-index="5"><span>mehr</span></div>
+      <div id="w178" class="clip cap" data-start="58.538" data-duration="0.903" data-track-index="5"><span>hatten</span></div>
+      <audio id="voice" class="clip" src="assets/voice.wav" data-start="0" data-duration="59.89" data-volume="1" data-track-index="7"></audio>
+      <audio id="music" class="clip" src="assets/music.wav" data-start="0" data-duration="59.89" data-volume="0.26" data-fade-out="1" data-track-index="8"></audio>
+      <audio id="sfx0" class="clip" src="assets/pop.wav" data-start="4.822" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+      <audio id="sfx2" class="clip" src="assets/pop.wav" data-start="37.72" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+      <audio id="sfx4" class="clip" src="assets/pop.wav" data-start="56.646" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+    </div>
+    <script id="timing" type="application/json">{"duration":59.892,"sentences":[{"id":"s1","text":"In dieser Stadt steht über jedem Kopf, wie viele Freunde die Person wirklich hat.","start":0.25,"end":4.507,"words":[{"text":"In","start":0.25,"end":0.391},{"text":"dieser","start":0.391,"end":0.672},{"text":"Stadt","start":0.672,"end":0.954},{"text":"steht","start":0.954,"end":1.235},{"text":"über","start":1.235,"end":1.446},{"text":"jedem","start":1.446,"end":1.798},{"text":"Kopf,","start":1.798,"end":2.08},{"text":"wie","start":2.255,"end":2.396},{"text":"viele","start":2.396,"end":2.678},{"text":"Freunde","start":2.678,"end":3.17},{"text":"die","start":3.17,"end":3.311},{"text":"Person","start":3.311,"end":3.733},{"text":"wirklich","start":3.733,"end":4.296},{"text":"hat.","start":4.296,"end":4.507}]},{"id":"s2","text":"Über meinem Kopf standen zwölf.","start":4.862,"end":6.428,"words":[{"text":"Über","start":4.862,"end":5.043},{"text":"meinem","start":5.043,"end":5.404},{"text":"Kopf","start":5.404,"end":5.645},{"text":"standen","start":5.645,"end":6.067},{"text":"zwölf.","start":6.067,"end":6.428}]},{"id":"s3","text":"Ich war beliebt und dachte, dass alle mich mochten.","start":6.779,"end":9.178,"words":[{"text":"Ich","start":6.779,"end":6.965},{"text":"war","start":6.965,"end":7.152},{"text":"beliebt","start":7.152,"end":7.526},{"text":"und","start":7.526,"end":7.713},{"text":"dachte,","start":7.713,"end":8.025},{"text":"dass","start":8.181,"end":8.368},{"text":"alle","start":8.368,"end":8.555},{"text":"mich","start":8.555,"end":8.804},{"text":"mochten.","start":8.804,"end":9.178}]},{"id":"s4","text":"Eines Morgens wachte ich auf.","start":9.659,"end":11.062,"words":[{"text":"Eines","start":9.659,"end":9.964},{"text":"Morgens","start":9.964,"end":10.391},{"text":"wachte","start":10.391,"end":10.696},{"text":"ich","start":10.696,"end":10.879},{"text":"auf.","start":10.879,"end":11.062}]},{"id":"s5","text":"Meine Zahl war auf eins gesunken.","start":11.413,"end":12.952,"words":[{"text":"Meine","start":11.413,"end":11.698},{"text":"Zahl","start":11.698,"end":11.926},{"text":"war","start":11.926,"end":12.097},{"text":"auf","start":12.097,"end":12.268},{"text":"eins","start":12.268,"end":12.496},{"text":"gesunken.","start":12.496,"end":12.952}]},{"id":"s6","text":"Ich fragte meine Freunde, ob etwas passiert sei.","start":13.43,"end":16.032,"words":[{"text":"Ich","start":13.43,"end":13.628},{"text":"fragte","start":13.628,"end":14.023},{"text":"meine","start":14.023,"end":14.352},{"text":"Freunde,","start":14.352,"end":14.813},{"text":"ob","start":14.978,"end":15.11},{"text":"etwas","start":15.11,"end":15.439},{"text":"passiert","start":15.439,"end":15.834},{"text":"sei.","start":15.834,"end":16.032}]},{"id":"s7","text":"Aber alle behaupteten, alles wäre normal.","start":16.385,"end":18.45,"words":[{"text":"Aber","start":16.385,"end":16.57},{"text":"alle","start":16.57,"end":16.755},{"text":"behaupteten,","start":16.755,"end":17.433},{"text":"alles","start":17.587,"end":17.834},{"text":"wäre","start":17.834,"end":18.08},{"text":"normal.","start":18.08,"end":18.45}]},{"id":"s8","text":"In der Schule versuchte ich, mit ihnen zu reden.","start":18.801,"end":20.897,"words":[{"text":"In","start":18.801,"end":18.913},{"text":"der","start":18.913,"end":19.08},{"text":"Schule","start":19.08,"end":19.304},{"text":"versuchte","start":19.304,"end":19.751},{"text":"ich,","start":19.751,"end":19.919},{"text":"mit","start":20.058,"end":20.226},{"text":"ihnen","start":20.226,"end":20.45},{"text":"zu","start":20.45,"end":20.617},{"text":"reden.","start":20.617,"end":20.897}]},{"id":"s9","text":"Doch plötzlich ignorierten mich alle.","start":21.245,"end":22.812,"words":[{"text":"Doch","start":21.245,"end":21.407},{"text":"plötzlich","start":21.407,"end":21.893},{"text":"ignorierten","start":21.893,"end":22.434},{"text":"mich","start":22.434,"end":22.65},{"text":"alle.","start":22.65,"end":22.812}]},{"id":"s9b","text":"Sie liefen einfach an mir vorbei.","start":23.089,"end":24.646,"words":[{"text":"Sie","start":23.089,"end":23.219},{"text":"liefen","start":23.219,"end":23.543},{"text":"einfach","start":23.543,"end":23.932},{"text":"an","start":23.932,"end":24.062},{"text":"mir","start":24.062,"end":24.257},{"text":"vorbei.","start":24.257,"end":24.646}]},{"id":"s10","text":"Nur ein Mädchen aus meiner Klasse sprach noch mit mir.","start":25.079,"end":27.325,"words":[{"text":"Nur","start":25.079,"end":25.247},{"text":"ein","start":25.247,"end":25.416},{"text":"Mädchen","start":25.416,"end":25.809},{"text":"aus","start":25.809,"end":25.977},{"text":"meiner","start":25.977,"end":26.258},{"text":"Klasse","start":26.258,"end":26.539},{"text":"sprach","start":26.539,"end":26.82},{"text":"noch","start":26.82,"end":26.988},{"text":"mit","start":26.988,"end":27.156},{"text":"mir.","start":27.156,"end":27.325}]},{"id":"s11","text":"Am nächsten Tag stand über meinem Kopf plötzlich eine Null.","start":27.803,"end":30.528,"words":[{"text":"Am","start":27.803,"end":27.919},{"text":"nächsten","start":27.919,"end":28.383},{"text":"Tag","start":28.383,"end":28.557},{"text":"stand","start":28.557,"end":28.847},{"text":"über","start":28.847,"end":29.02},{"text":"meinem","start":29.02,"end":29.368},{"text":"Kopf","start":29.368,"end":29.6},{"text":"plötzlich","start":29.6,"end":30.122},{"text":"eine","start":30.122,"end":30.354},{"text":"Null.","start":30.354,"end":30.528}]},{"id":"s11b","text":"Kein einziger Freund mehr.","start":30.807,"end":32.09,"words":[{"text":"Kein","start":30.807,"end":31.051},{"text":"einziger","start":31.051,"end":31.54},{"text":"Freund","start":31.54,"end":31.907},{"text":"mehr.","start":31.907,"end":32.09}]},{"id":"s12","text":"Verzweifelt fragte ich sie, warum sie trotzdem noch mit mir redete.","start":32.571,"end":35.812,"words":[{"text":"Verzweifelt","start":32.571,"end":33.272},{"text":"fragte","start":33.272,"end":33.622},{"text":"ich","start":33.622,"end":33.797},{"text":"sie,","start":33.797,"end":33.914},{"text":"warum","start":34.06,"end":34.352},{"text":"sie","start":34.352,"end":34.469},{"text":"trotzdem","start":34.469,"end":34.936},{"text":"noch","start":34.936,"end":35.111},{"text":"mit","start":35.111,"end":35.286},{"text":"mir","start":35.286,"end":35.462},{"text":"redete.","start":35.462,"end":35.812}]},{"id":"s13","text":"Sie lächelte und sagte:","start":36.161,"end":37.275,"words":[{"text":"Sie","start":36.161,"end":36.285},{"text":"lächelte","start":36.285,"end":36.78},{"text":"und","start":36.78,"end":36.965},{"text":"sagte:","start":36.965,"end":37.275}]},{"id":"s14","text":"Weil ich deine einzige echte Freundin bin.","start":37.76,"end":39.568,"words":[{"text":"Weil","start":37.76,"end":37.961},{"text":"ich","start":37.961,"end":38.112},{"text":"deine","start":38.112,"end":38.363},{"text":"einzige","start":38.363,"end":38.765},{"text":"echte","start":38.765,"end":39.016},{"text":"Freundin","start":39.016,"end":39.417},{"text":"bin.","start":39.417,"end":39.568}]},{"id":"s15","text":"Plötzlich schaute ich erneut auf ihren Kopf.","start":39.993,"end":41.786,"words":[{"text":"Plötzlich","start":39.993,"end":40.468},{"text":"schaute","start":40.468,"end":40.731},{"text":"ich","start":40.731,"end":40.889},{"text":"erneut","start":40.889,"end":41.206},{"text":"auf","start":41.206,"end":41.364},{"text":"ihren","start":41.364,"end":41.575},{"text":"Kopf.","start":41.575,"end":41.786}]},{"id":"s16","text":"Dort stand eine Eins.","start":42.132,"end":43.133,"words":[{"text":"Dort","start":42.132,"end":42.367},{"text":"stand","start":42.367,"end":42.662},{"text":"eine","start":42.662,"end":42.897},{"text":"Eins.","start":42.897,"end":43.133}]},{"id":"s16b","text":"Ich dachte, ich bin ihr einziger Freund.","start":43.412,"end":45.183,"words":[{"text":"Ich","start":43.412,"end":43.576},{"text":"dachte,","start":43.576,"end":43.848},{"text":"ich","start":43.984,"end":44.148},{"text":"bin","start":44.148,"end":44.311},{"text":"ihr","start":44.311,"end":44.42},{"text":"einziger","start":44.42,"end":44.856},{"text":"Freund.","start":44.856,"end":45.183}]},{"id":"s17","text":"Ich lächelte und wollte mich bedanken.","start":45.61,"end":47.451,"words":[{"text":"Ich","start":45.61,"end":45.789},{"text":"lächelte","start":45.789,"end":46.264},{"text":"und","start":46.264,"end":46.442},{"text":"wollte","start":46.442,"end":46.739},{"text":"mich","start":46.739,"end":46.976},{"text":"bedanken.","start":46.976,"end":47.451}]},{"id":"s18","text":"Doch dann drehte sie sich um und ging zu einem anderen Jungen.","start":47.801,"end":50.73,"words":[{"text":"Doch","start":47.801,"end":47.996},{"text":"dann","start":47.996,"end":48.191},{"text":"drehte","start":48.191,"end":48.517},{"text":"sie","start":48.517,"end":48.647},{"text":"sich","start":48.647,"end":48.907},{"text":"um","start":48.907,"end":49.037},{"text":"und","start":49.037,"end":49.233},{"text":"ging","start":49.233,"end":49.428},{"text":"zu","start":49.428,"end":49.623},{"text":"einem","start":49.623,"end":49.949},{"text":"anderen","start":49.949,"end":50.404},{"text":"Jungen.","start":50.404,"end":50.73}]},{"id":"s19","text":"Über seinem Kopf stand ebenfalls eine Eins.","start":51.082,"end":53.06,"words":[{"text":"Über","start":51.082,"end":51.257},{"text":"seinem","start":51.257,"end":51.606},{"text":"Kopf","start":51.606,"end":51.839},{"text":"stand","start":51.839,"end":52.129},{"text":"ebenfalls","start":52.129,"end":52.595},{"text":"eine","start":52.595,"end":52.827},{"text":"Eins.","start":52.827,"end":53.06}]},{"id":"s20","text":"In diesem Moment verstand ich:","start":53.539,"end":54.707,"words":[{"text":"In","start":53.539,"end":53.637},{"text":"diesem","start":53.637,"end":53.88},{"text":"Moment","start":53.88,"end":54.172},{"text":"verstand","start":54.172,"end":54.561},{"text":"ich:","start":54.561,"end":54.707}]},{"id":"s21","text":"Sie war nicht meine Freundin.","start":55.153,"end":56.36,"words":[{"text":"Sie","start":55.153,"end":55.258},{"text":"war","start":55.258,"end":55.415},{"text":"nicht","start":55.415,"end":55.677},{"text":"meine","start":55.677,"end":55.94},{"text":"Freundin.","start":55.94,"end":56.36}]},{"id":"s22","text":"Sie sammelte Menschen, die niemanden mehr hatten.","start":56.686,"end":58.841,"words":[{"text":"Sie","start":56.686,"end":56.807},{"text":"sammelte","start":56.807,"end":57.232},{"text":"Menschen,","start":57.232,"end":57.597},{"text":"die","start":57.748,"end":57.87},{"text":"niemanden","start":57.87,"end":58.356},{"text":"mehr","start":58.356,"end":58.538},{"text":"hatten.","start":58.538,"end":58.841}]}],"videoDuration":59.89}</script>
+    <script>
+      (function () {
+        var duration = 59.89;
+        var clock = { t: 0 };
+        var host = { clock: clock, render: null };
+        window.__stadt = host;
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["main"] = new Promise(function (resolve) { host.ready = resolve; });
+        var tl = gsap.timeline({ paused: true });
+        tl.to(clock, { t: duration, duration: duration, ease: "none", onUpdate: function () { if (host.render) host.render(clock.t); } }, 0);
+      tl.fromTo("#w0 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.15);
+      tl.fromTo("#w1 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.391);
+      tl.fromTo("#w2 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.672);
+      tl.fromTo("#w3 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.954);
+      tl.fromTo("#w4 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.235);
+      tl.fromTo("#w5 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.446);
+      tl.fromTo("#w6 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.798);
+      tl.fromTo("#w7 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.255);
+      tl.fromTo("#w8 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.396);
+      tl.fromTo("#w9 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.678);
+      tl.fromTo("#w10 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.17);
+      tl.fromTo("#w11 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.311);
+      tl.fromTo("#w12 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.733);
+      tl.fromTo("#w13 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.296);
+      tl.fromTo("#w14 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.862);
+      tl.fromTo("#w15 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 5.043);
+      tl.fromTo("#w16 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 5.404);
+      tl.fromTo("#w17 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 5.645);
+      tl.fromTo("#w18 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.067);
+      tl.fromTo("#w19 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.779);
+      tl.fromTo("#w20 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.965);
+      tl.fromTo("#w21 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.152);
+      tl.fromTo("#w22 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.526);
+      tl.fromTo("#w23 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.713);
+      tl.fromTo("#w24 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.181);
+      tl.fromTo("#w25 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.368);
+      tl.fromTo("#w26 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.555);
+      tl.fromTo("#w27 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.804);
+      tl.fromTo("#w28 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 9.659);
+      tl.fromTo("#w29 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 9.964);
+      tl.fromTo("#w30 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.391);
+      tl.fromTo("#w31 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.696);
+      tl.fromTo("#w32 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.879);
+      tl.fromTo("#w33 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.413);
+      tl.fromTo("#w34 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.698);
+      tl.fromTo("#w35 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.926);
+      tl.fromTo("#w36 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.097);
+      tl.fromTo("#w37 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.268);
+      tl.fromTo("#w38 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.496);
+      tl.fromTo("#w39 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.43);
+      tl.fromTo("#w40 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.628);
+      tl.fromTo("#w41 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.023);
+      tl.fromTo("#w42 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.352);
+      tl.fromTo("#w43 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.978);
+      tl.fromTo("#w44 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.11);
+      tl.fromTo("#w45 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.439);
+      tl.fromTo("#w46 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.834);
+      tl.fromTo("#w47 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.385);
+      tl.fromTo("#w48 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.57);
+      tl.fromTo("#w49 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.755);
+      tl.fromTo("#w50 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.587);
+      tl.fromTo("#w51 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.834);
+      tl.fromTo("#w52 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.08);
+      tl.fromTo("#w53 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.801);
+      tl.fromTo("#w54 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.913);
+      tl.fromTo("#w55 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.08);
+      tl.fromTo("#w56 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.304);
+      tl.fromTo("#w57 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.751);
+      tl.fromTo("#w58 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.058);
+      tl.fromTo("#w59 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.226);
+      tl.fromTo("#w60 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.45);
+      tl.fromTo("#w61 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.617);
+      tl.fromTo("#w62 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.245);
+      tl.fromTo("#w63 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.407);
+      tl.fromTo("#w64 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.893);
+      tl.fromTo("#w65 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 22.434);
+      tl.fromTo("#w66 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 22.65);
+      tl.fromTo("#w67 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.089);
+      tl.fromTo("#w68 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.219);
+      tl.fromTo("#w69 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.543);
+      tl.fromTo("#w70 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.932);
+      tl.fromTo("#w71 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.062);
+      tl.fromTo("#w72 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.257);
+      tl.fromTo("#w73 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.079);
+      tl.fromTo("#w74 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.247);
+      tl.fromTo("#w75 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.416);
+      tl.fromTo("#w76 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.809);
+      tl.fromTo("#w77 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.977);
+      tl.fromTo("#w78 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.258);
+      tl.fromTo("#w79 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.539);
+      tl.fromTo("#w80 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.82);
+      tl.fromTo("#w81 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.988);
+      tl.fromTo("#w82 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.156);
+      tl.fromTo("#w83 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.803);
+      tl.fromTo("#w84 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.919);
+      tl.fromTo("#w85 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.383);
+      tl.fromTo("#w86 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.557);
+      tl.fromTo("#w87 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.847);
+      tl.fromTo("#w88 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.02);
+      tl.fromTo("#w89 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.368);
+      tl.fromTo("#w90 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.6);
+      tl.fromTo("#w91 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.122);
+      tl.fromTo("#w92 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.354);
+      tl.fromTo("#w93 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.807);
+      tl.fromTo("#w94 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.051);
+      tl.fromTo("#w95 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.54);
+      tl.fromTo("#w96 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.907);
+      tl.fromTo("#w97 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.571);
+      tl.fromTo("#w98 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.272);
+      tl.fromTo("#w99 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.622);
+      tl.fromTo("#w100 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.797);
+      tl.fromTo("#w101 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.06);
+      tl.fromTo("#w102 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.352);
+      tl.fromTo("#w103 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.469);
+      tl.fromTo("#w104 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.936);
+      tl.fromTo("#w105 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.111);
+      tl.fromTo("#w106 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.286);
+      tl.fromTo("#w107 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.462);
+      tl.fromTo("#w108 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.161);
+      tl.fromTo("#w109 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.285);
+      tl.fromTo("#w110 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.78);
+      tl.fromTo("#w111 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.965);
+      tl.fromTo("#w112 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 37.76);
+      tl.fromTo("#w113 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 37.961);
+      tl.fromTo("#w114 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.112);
+      tl.fromTo("#w115 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.363);
+      tl.fromTo("#w116 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.765);
+      tl.fromTo("#w117 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.016);
+      tl.fromTo("#w118 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.417);
+      tl.fromTo("#w119 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.993);
+      tl.fromTo("#w120 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.468);
+      tl.fromTo("#w121 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.731);
+      tl.fromTo("#w122 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.889);
+      tl.fromTo("#w123 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.206);
+      tl.fromTo("#w124 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.364);
+      tl.fromTo("#w125 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.575);
+      tl.fromTo("#w126 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.132);
+      tl.fromTo("#w127 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.367);
+      tl.fromTo("#w128 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.662);
+      tl.fromTo("#w129 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.897);
+      tl.fromTo("#w130 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.412);
+      tl.fromTo("#w131 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.576);
+      tl.fromTo("#w132 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.984);
+      tl.fromTo("#w133 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.148);
+      tl.fromTo("#w134 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.311);
+      tl.fromTo("#w135 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.42);
+      tl.fromTo("#w136 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.856);
+      tl.fromTo("#w137 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 45.61);
+      tl.fromTo("#w138 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 45.789);
+      tl.fromTo("#w139 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.264);
+      tl.fromTo("#w140 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.442);
+      tl.fromTo("#w141 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.739);
+      tl.fromTo("#w142 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.976);
+      tl.fromTo("#w143 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.801);
+      tl.fromTo("#w144 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.996);
+      tl.fromTo("#w145 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.191);
+      tl.fromTo("#w146 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.517);
+      tl.fromTo("#w147 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.647);
+      tl.fromTo("#w148 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.907);
+      tl.fromTo("#w149 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.037);
+      tl.fromTo("#w150 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.233);
+      tl.fromTo("#w151 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.428);
+      tl.fromTo("#w152 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.623);
+      tl.fromTo("#w153 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.949);
+      tl.fromTo("#w154 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 50.404);
+      tl.fromTo("#w155 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 51.082);
+      tl.fromTo("#w156 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 51.257);
+      tl.fromTo("#w157 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 51.606);
+      tl.fromTo("#w158 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 51.839);
+      tl.fromTo("#w159 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 52.129);
+      tl.fromTo("#w160 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 52.595);
+      tl.fromTo("#w161 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 52.827);
+      tl.fromTo("#w162 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 53.539);
+      tl.fromTo("#w163 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 53.637);
+      tl.fromTo("#w164 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 53.88);
+      tl.fromTo("#w165 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 54.172);
+      tl.fromTo("#w166 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 54.561);
+      tl.fromTo("#w167 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.153);
+      tl.fromTo("#w168 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.258);
+      tl.fromTo("#w169 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.415);
+      tl.fromTo("#w170 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.677);
+      tl.fromTo("#w171 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.94);
+      tl.fromTo("#w172 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 56.686);
+      tl.fromTo("#w173 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 56.807);
+      tl.fromTo("#w174 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 57.232);
+      tl.fromTo("#w175 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 57.748);
+      tl.fromTo("#w176 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 57.87);
+      tl.fromTo("#w177 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 58.356);
+      tl.fromTo("#w178 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 58.538);
+      tl.fromTo("#ov0 .card", { scale: 0.6, rotation: -8, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: 0.28, ease: "back.out(2.2)" }, 4.822);
+      tl.fromTo("#ov1 .flash-fill", { opacity: 0.5 }, { opacity: 0, duration: 0.194, ease: "power2.out" }, 30.314);
+      tl.fromTo("#ov2 .sign-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 37.72);
+      tl.to("#ov2 .sign-box", { scale: 0.85, opacity: 0, duration: 0.12, ease: "power2.in" }, 39.438);
+      tl.fromTo("#ov3 .flash-fill", { opacity: 0.45 }, { opacity: 0, duration: 0.485, ease: "power2.out" }, 52.555);
+      tl.fromTo("#ov4 .sign-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 56.646);
+      tl.to("#ov4 .sign-box", { scale: 0.85, opacity: 0, duration: 0.12, ease: "power2.in" }, 58.711);
+      tl.fromTo("#ov5 .flash-fill", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.in" }, 58.841);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+    <script type="module">
+      import { boot } from "./assets/engine/runner.js";
+      import direct from "./assets/scene.js";
+      const timing = JSON.parse(document.getElementById("timing").textContent);
+      boot({ canvas: document.getElementById("world"), direct, timing });
+    </script>
+  </body>
+</html>

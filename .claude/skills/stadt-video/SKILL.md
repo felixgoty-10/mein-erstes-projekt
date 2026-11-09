@@ -93,6 +93,9 @@ schwarze Gestalt: `character({ shadow: true, hat: "hood", scale: 1.2 })` (nur le
 Gesichter zusätzlich `scream`, `eyes`. Musik: `"music": { "mood": "horror", "volume": 0.32 }` in `video.json`.
 Overlays zusätzlich: `keyhole` (Blick durchs Schlüsselloch), `flash` (`color`, `opacity`; `hold: true` blendet
 bis zum Ende ein, z. B. Schwarzblende mit `"to": ["END", 0]`). Vorlage: `videos/lebenszeit/`.
+Weitere Bauteile: `bench()` (Sitzhöhe ≈ 1.6; sitzende Figur: `.sit()` + `body.position.y = 0.1`).
+Kamera-Abstand: Hochkant ist schmal – für eine Halbnahe ca. 12–14 Einheiten Abstand bei fov 40, Nahaufnahme ≥ 9.
+Im Drehbuch `k: 1.5` an einem Shot zieht die Kamera entlang der Blickrichtung zurück (siehe `videos/freunde/`).
 Story vom Nutzer vorgegeben → seine Handlung und sein Ende haben Vorrang vor der Standard-Erzählstruktur.
 Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen können.
 

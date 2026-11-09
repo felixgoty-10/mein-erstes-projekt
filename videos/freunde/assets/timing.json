@@ -1,0 +1,1100 @@
+{
+ "duration": 59.892,
+ "sentences": [
+  {
+   "id": "s1",
+   "text": "In dieser Stadt steht über jedem Kopf, wie viele Freunde die Person wirklich hat.",
+   "start": 0.25,
+   "end": 4.507,
+   "words": [
+    {
+     "text": "In",
+     "start": 0.25,
+     "end": 0.391
+    },
+    {
+     "text": "dieser",
+     "start": 0.391,
+     "end": 0.672
+    },
+    {
+     "text": "Stadt",
+     "start": 0.672,
+     "end": 0.954
+    },
+    {
+     "text": "steht",
+     "start": 0.954,
+     "end": 1.235
+    },
+    {
+     "text": "über",
+     "start": 1.235,
+     "end": 1.446
+    },
+    {
+     "text": "jedem",
+     "start": 1.446,
+     "end": 1.798
+    },
+    {
+     "text": "Kopf,",
+     "start": 1.798,
+     "end": 2.08
+    },
+    {
+     "text": "wie",
+     "start": 2.255,
+     "end": 2.396
+    },
+    {
+     "text": "viele",
+     "start": 2.396,
+     "end": 2.678
+    },
+    {
+     "text": "Freunde",
+     "start": 2.678,
+     "end": 3.17
+    },
+    {
+     "text": "die",
+     "start": 3.17,
+     "end": 3.311
+    },
+    {
+     "text": "Person",
+     "start": 3.311,
+     "end": 3.733
+    },
+    {
+     "text": "wirklich",
+     "start": 3.733,
+     "end": 4.296
+    },
+    {
+     "text": "hat.",
+     "start": 4.296,
+     "end": 4.507
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "text": "Über meinem Kopf standen zwölf.",
+   "start": 4.862,
+   "end": 6.428,
+   "words": [
+    {
+     "text": "Über",
+     "start": 4.862,
+     "end": 5.043
+    },
+    {
+     "text": "meinem",
+     "start": 5.043,
+     "end": 5.404
+    },
+    {
+     "text": "Kopf",
+     "start": 5.404,
+     "end": 5.645
+    },
+    {
+     "text": "standen",
+     "start": 5.645,
+     "end": 6.067
+    },
+    {
+     "text": "zwölf.",
+     "start": 6.067,
+     "end": 6.428
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "text": "Ich war beliebt und dachte, dass alle mich mochten.",
+   "start": 6.779,
+   "end": 9.178,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 6.779,
+     "end": 6.965
+    },
+    {
+     "text": "war",
+     "start": 6.965,
+     "end": 7.152
+    },
+    {
+     "text": "beliebt",
+     "start": 7.152,
+     "end": 7.526
+    },
+    {
+     "text": "und",
+     "start": 7.526,
+     "end": 7.713
+    },
+    {
+     "text": "dachte,",
+     "start": 7.713,
+     "end": 8.025
+    },
+    {
+     "text": "dass",
+     "start": 8.181,
+     "end": 8.368
+    },
+    {
+     "text": "alle",
+     "start": 8.368,
+     "end": 8.555
+    },
+    {
+     "text": "mich",
+     "start": 8.555,
+     "end": 8.804
+    },
+    {
+     "text": "mochten.",
+     "start": 8.804,
+     "end": 9.178
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "text": "Eines Morgens wachte ich auf.",
+   "start": 9.659,
+   "end": 11.062,
+   "words": [
+    {
+     "text": "Eines",
+     "start": 9.659,
+     "end": 9.964
+    },
+    {
+     "text": "Morgens",
+     "start": 9.964,
+     "end": 10.391
+    },
+    {
+     "text": "wachte",
+     "start": 10.391,
+     "end": 10.696
+    },
+    {
+     "text": "ich",
+     "start": 10.696,
+     "end": 10.879
+    },
+    {
+     "text": "auf.",
+     "start": 10.879,
+     "end": 11.062
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "text": "Meine Zahl war auf eins gesunken.",
+   "start": 11.413,
+   "end": 12.952,
+   "words": [
+    {
+     "text": "Meine",
+     "start": 11.413,
+     "end": 11.698
+    },
+    {
+     "text": "Zahl",
+     "start": 11.698,
+     "end": 11.926
+    },
+    {
+     "text": "war",
+     "start": 11.926,
+     "end": 12.097
+    },
+    {
+     "text": "auf",
+     "start": 12.097,
+     "end": 12.268
+    },
+    {
+     "text": "eins",
+     "start": 12.268,
+     "end": 12.496
+    },
+    {
+     "text": "gesunken.",
+     "start": 12.496,
+     "end": 12.952
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "text": "Ich fragte meine Freunde, ob etwas passiert sei.",
+   "start": 13.43,
+   "end": 16.032,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 13.43,
+     "end": 13.628
+    },
+    {
+     "text": "fragte",
+     "start": 13.628,
+     "end": 14.023
+    },
+    {
+     "text": "meine",
+     "start": 14.023,
+     "end": 14.352
+    },
+    {
+     "text": "Freunde,",
+     "start": 14.352,
+     "end": 14.813
+    },
+    {
+     "text": "ob",
+     "start": 14.978,
+     "end": 15.11
+    },
+    {
+     "text": "etwas",
+     "start": 15.11,
+     "end": 15.439
+    },
+    {
+     "text": "passiert",
+     "start": 15.439,
+     "end": 15.834
+    },
+    {
+     "text": "sei.",
+     "start": 15.834,
+     "end": 16.032
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "text": "Aber alle behaupteten, alles wäre normal.",
+   "start": 16.385,
+   "end": 18.45,
+   "words": [
+    {
+     "text": "Aber",
+     "start": 16.385,
+     "end": 16.57
+    },
+    {
+     "text": "alle",
+     "start": 16.57,
+     "end": 16.755
+    },
+    {
+     "text": "behaupteten,",
+     "start": 16.755,
+     "end": 17.433
+    },
+    {
+     "text": "alles",
+     "start": 17.587,
+     "end": 17.834
+    },
+    {
+     "text": "wäre",
+     "start": 17.834,
+     "end": 18.08
+    },
+    {
+     "text": "normal.",
+     "start": 18.08,
+     "end": 18.45
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "text": "In der Schule versuchte ich, mit ihnen zu reden.",
+   "start": 18.801,
+   "end": 20.897,
+   "words": [
+    {
+     "text": "In",
+     "start": 18.801,
+     "end": 18.913
+    },
+    {
+     "text": "der",
+     "start": 18.913,
+     "end": 19.08
+    },
+    {
+     "text": "Schule",
+     "start": 19.08,
+     "end": 19.304
+    },
+    {
+     "text": "versuchte",
+     "start": 19.304,
+     "end": 19.751
+    },
+    {
+     "text": "ich,",
+     "start": 19.751,
+     "end": 19.919
+    },
+    {
+     "text": "mit",
+     "start": 20.058,
+     "end": 20.226
+    },
+    {
+     "text": "ihnen",
+     "start": 20.226,
+     "end": 20.45
+    },
+    {
+     "text": "zu",
+     "start": 20.45,
+     "end": 20.617
+    },
+    {
+     "text": "reden.",
+     "start": 20.617,
+     "end": 20.897
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "text": "Doch plötzlich ignorierten mich alle.",
+   "start": 21.245,
+   "end": 22.812,
+   "words": [
+    {
+     "text": "Doch",
+     "start": 21.245,
+     "end": 21.407
+    },
+    {
+     "text": "plötzlich",
+     "start": 21.407,
+     "end": 21.893
+    },
+    {
+     "text": "ignorierten",
+     "start": 21.893,
+     "end": 22.434
+    },
+    {
+     "text": "mich",
+     "start": 22.434,
+     "end": 22.65
+    },
+    {
+     "text": "alle.",
+     "start": 22.65,
+     "end": 22.812
+    }
+   ]
+  },
+  {
+   "id": "s9b",
+   "text": "Sie liefen einfach an mir vorbei.",
+   "start": 23.089,
+   "end": 24.646,
+   "words": [
+    {
+     "text": "Sie",
+     "start": 23.089,
+     "end": 23.219
+    },
+    {
+     "text": "liefen",
+     "start": 23.219,
+     "end": 23.543
+    },
+    {
+     "text": "einfach",
+     "start": 23.543,
+     "end": 23.932
+    },
+    {
+     "text": "an",
+     "start": 23.932,
+     "end": 24.062
+    },
+    {
+     "text": "mir",
+     "start": 24.062,
+     "end": 24.257
+    },
+    {
+     "text": "vorbei.",
+     "start": 24.257,
+     "end": 24.646
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": "Nur ein Mädchen aus meiner Klasse sprach noch mit mir.",
+   "start": 25.079,
+   "end": 27.325,
+   "words": [
+    {
+     "text": "Nur",
+     "start": 25.079,
+     "end": 25.247
+    },
+    {
+     "text": "ein",
+     "start": 25.247,
+     "end": 25.416
+    },
+    {
+     "text": "Mädchen",
+     "start": 25.416,
+     "end": 25.809
+    },
+    {
+     "text": "aus",
+     "start": 25.809,
+     "end": 25.977
+    },
+    {
+     "text": "meiner",
+     "start": 25.977,
+     "end": 26.258
+    },
+    {
+     "text": "Klasse",
+     "start": 26.258,
+     "end": 26.539
+    },
+    {
+     "text": "sprach",
+     "start": 26.539,
+     "end": 26.82
+    },
+    {
+     "text": "noch",
+     "start": 26.82,
+     "end": 26.988
+    },
+    {
+     "text": "mit",
+     "start": 26.988,
+     "end": 27.156
+    },
+    {
+     "text": "mir.",
+     "start": 27.156,
+     "end": 27.325
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": "Am nächsten Tag stand über meinem Kopf plötzlich eine Null.",
+   "start": 27.803,
+   "end": 30.528,
+   "words": [
+    {
+     "text": "Am",
+     "start": 27.803,
+     "end": 27.919
+    },
+    {
+     "text": "nächsten",
+     "start": 27.919,
+     "end": 28.383
+    },
+    {
+     "text": "Tag",
+     "start": 28.383,
+     "end": 28.557
+    },
+    {
+     "text": "stand",
+     "start": 28.557,
+     "end": 28.847
+    },
+    {
+     "text": "über",
+     "start": 28.847,
+     "end": 29.02
+    },
+    {
+     "text": "meinem",
+     "start": 29.02,
+     "end": 29.368
+    },
+    {
+     "text": "Kopf",
+     "start": 29.368,
+     "end": 29.6
+    },
+    {
+     "text": "plötzlich",
+     "start": 29.6,
+     "end": 30.122
+    },
+    {
+     "text": "eine",
+     "start": 30.122,
+     "end": 30.354
+    },
+    {
+     "text": "Null.",
+     "start": 30.354,
+     "end": 30.528
+    }
+   ]
+  },
+  {
+   "id": "s11b",
+   "text": "Kein einziger Freund mehr.",
+   "start": 30.807,
+   "end": 32.09,
+   "words": [
+    {
+     "text": "Kein",
+     "start": 30.807,
+     "end": 31.051
+    },
+    {
+     "text": "einziger",
+     "start": 31.051,
+     "end": 31.54
+    },
+    {
+     "text": "Freund",
+     "start": 31.54,
+     "end": 31.907
+    },
+    {
+     "text": "mehr.",
+     "start": 31.907,
+     "end": 32.09
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": "Verzweifelt fragte ich sie, warum sie trotzdem noch mit mir redete.",
+   "start": 32.571,
+   "end": 35.812,
+   "words": [
+    {
+     "text": "Verzweifelt",
+     "start": 32.571,
+     "end": 33.272
+    },
+    {
+     "text": "fragte",
+     "start": 33.272,
+     "end": 33.622
+    },
+    {
+     "text": "ich",
+     "start": 33.622,
+     "end": 33.797
+    },
+    {
+     "text": "sie,",
+     "start": 33.797,
+     "end": 33.914
+    },
+    {
+     "text": "warum",
+     "start": 34.06,
+     "end": 34.352
+    },
+    {
+     "text": "sie",
+     "start": 34.352,
+     "end": 34.469
+    },
+    {
+     "text": "trotzdem",
+     "start": 34.469,
+     "end": 34.936
+    },
+    {
+     "text": "noch",
+     "start": 34.936,
+     "end": 35.111
+    },
+    {
+     "text": "mit",
+     "start": 35.111,
+     "end": 35.286
+    },
+    {
+     "text": "mir",
+     "start": 35.286,
+     "end": 35.462
+    },
+    {
+     "text": "redete.",
+     "start": 35.462,
+     "end": 35.812
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": "Sie lächelte und sagte:",
+   "start": 36.161,
+   "end": 37.275,
+   "words": [
+    {
+     "text": "Sie",
+     "start": 36.161,
+     "end": 36.285
+    },
+    {
+     "text": "lächelte",
+     "start": 36.285,
+     "end": 36.78
+    },
+    {
+     "text": "und",
+     "start": 36.78,
+     "end": 36.965
+    },
+    {
+     "text": "sagte:",
+     "start": 36.965,
+     "end": 37.275
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": "Weil ich deine einzige echte Freundin bin.",
+   "start": 37.76,
+   "end": 39.568,
+   "words": [
+    {
+     "text": "Weil",
+     "start": 37.76,
+     "end": 37.961
+    },
+    {
+     "text": "ich",
+     "start": 37.961,
+     "end": 38.112
+    },
+    {
+     "text": "deine",
+     "start": 38.112,
+     "end": 38.363
+    },
+    {
+     "text": "einzige",
+     "start": 38.363,
+     "end": 38.765
+    },
+    {
+     "text": "echte",
+     "start": 38.765,
+     "end": 39.016
+    },
+    {
+     "text": "Freundin",
+     "start": 39.016,
+     "end": 39.417
+    },
+    {
+     "text": "bin.",
+     "start": 39.417,
+     "end": 39.568
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": "Plötzlich schaute ich erneut auf ihren Kopf.",
+   "start": 39.993,
+   "end": 41.786,
+   "words": [
+    {
+     "text": "Plötzlich",
+     "start": 39.993,
+     "end": 40.468
+    },
+    {
+     "text": "schaute",
+     "start": 40.468,
+     "end": 40.731
+    },
+    {
+     "text": "ich",
+     "start": 40.731,
+     "end": 40.889
+    },
+    {
+     "text": "erneut",
+     "start": 40.889,
+     "end": 41.206
+    },
+    {
+     "text": "auf",
+     "start": 41.206,
+     "end": 41.364
+    },
+    {
+     "text": "ihren",
+     "start": 41.364,
+     "end": 41.575
+    },
+    {
+     "text": "Kopf.",
+     "start": 41.575,
+     "end": 41.786
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": "Dort stand eine Eins.",
+   "start": 42.132,
+   "end": 43.133,
+   "words": [
+    {
+     "text": "Dort",
+     "start": 42.132,
+     "end": 42.367
+    },
+    {
+     "text": "stand",
+     "start": 42.367,
+     "end": 42.662
+    },
+    {
+     "text": "eine",
+     "start": 42.662,
+     "end": 42.897
+    },
+    {
+     "text": "Eins.",
+     "start": 42.897,
+     "end": 43.133
+    }
+   ]
+  },
+  {
+   "id": "s16b",
+   "text": "Ich dachte, ich bin ihr einziger Freund.",
+   "start": 43.412,
+   "end": 45.183,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 43.412,
+     "end": 43.576
+    },
+    {
+     "text": "dachte,",
+     "start": 43.576,
+     "end": 43.848
+    },
+    {
+     "text": "ich",
+     "start": 43.984,
+     "end": 44.148
+    },
+    {
+     "text": "bin",
+     "start": 44.148,
+     "end": 44.311
+    },
+    {
+     "text": "ihr",
+     "start": 44.311,
+     "end": 44.42
+    },
+    {
+     "text": "einziger",
+     "start": 44.42,
+     "end": 44.856
+    },
+    {
+     "text": "Freund.",
+     "start": 44.856,
+     "end": 45.183
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": "Ich lächelte und wollte mich bedanken.",
+   "start": 45.61,
+   "end": 47.451,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 45.61,
+     "end": 45.789
+    },
+    {
+     "text": "lächelte",
+     "start": 45.789,
+     "end": 46.264
+    },
+    {
+     "text": "und",
+     "start": 46.264,
+     "end": 46.442
+    },
+    {
+     "text": "wollte",
+     "start": 46.442,
+     "end": 46.739
+    },
+    {
+     "text": "mich",
+     "start": 46.739,
+     "end": 46.976
+    },
+    {
+     "text": "bedanken.",
+     "start": 46.976,
+     "end": 47.451
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": "Doch dann drehte sie sich um und ging zu einem anderen Jungen.",
+   "start": 47.801,
+   "end": 50.73,
+   "words": [
+    {
+     "text": "Doch",
+     "start": 47.801,
+     "end": 47.996
+    },
+    {
+     "text": "dann",
+     "start": 47.996,
+     "end": 48.191
+    },
+    {
+     "text": "drehte",
+     "start": 48.191,
+     "end": 48.517
+    },
+    {
+     "text": "sie",
+     "start": 48.517,
+     "end": 48.647
+    },
+    {
+     "text": "sich",
+     "start": 48.647,
+     "end": 48.907
+    },
+    {
+     "text": "um",
+     "start": 48.907,
+     "end": 49.037
+    },
+    {
+     "text": "und",
+     "start": 49.037,
+     "end": 49.233
+    },
+    {
+     "text": "ging",
+     "start": 49.233,
+     "end": 49.428
+    },
+    {
+     "text": "zu",
+     "start": 49.428,
+     "end": 49.623
+    },
+    {
+     "text": "einem",
+     "start": 49.623,
+     "end": 49.949
+    },
+    {
+     "text": "anderen",
+     "start": 49.949,
+     "end": 50.404
+    },
+    {
+     "text": "Jungen.",
+     "start": 50.404,
+     "end": 50.73
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": "Über seinem Kopf stand ebenfalls eine Eins.",
+   "start": 51.082,
+   "end": 53.06,
+   "words": [
+    {
+     "text": "Über",
+     "start": 51.082,
+     "end": 51.257
+    },
+    {
+     "text": "seinem",
+     "start": 51.257,
+     "end": 51.606
+    },
+    {
+     "text": "Kopf",
+     "start": 51.606,
+     "end": 51.839
+    },
+    {
+     "text": "stand",
+     "start": 51.839,
+     "end": 52.129
+    },
+    {
+     "text": "ebenfalls",
+     "start": 52.129,
+     "end": 52.595
+    },
+    {
+     "text": "eine",
+     "start": 52.595,
+     "end": 52.827
+    },
+    {
+     "text": "Eins.",
+     "start": 52.827,
+     "end": 53.06
+    }
+   ]
+  },
+  {
+   "id": "s20",
+   "text": "In diesem Moment verstand ich:",
+   "start": 53.539,
+   "end": 54.707,
+   "words": [
+    {
+     "text": "In",
+     "start": 53.539,
+     "end": 53.637
+    },
+    {
+     "text": "diesem",
+     "start": 53.637,
+     "end": 53.88
+    },
+    {
+     "text": "Moment",
+     "start": 53.88,
+     "end": 54.172
+    },
+    {
+     "text": "verstand",
+     "start": 54.172,
+     "end": 54.561
+    },
+    {
+     "text": "ich:",
+     "start": 54.561,
+     "end": 54.707
+    }
+   ]
+  },
+  {
+   "id": "s21",
+   "text": "Sie war nicht meine Freundin.",
+   "start": 55.153,
+   "end": 56.36,
+   "words": [
+    {
+     "text": "Sie",
+     "start": 55.153,
+     "end": 55.258
+    },
+    {
+     "text": "war",
+     "start": 55.258,
+     "end": 55.415
+    },
+    {
+     "text": "nicht",
+     "start": 55.415,
+     "end": 55.677
+    },
+    {
+     "text": "meine",
+     "start": 55.677,
+     "end": 55.94
+    },
+    {
+     "text": "Freundin.",
+     "start": 55.94,
+     "end": 56.36
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "text": "Sie sammelte Menschen, die niemanden mehr hatten.",
+   "start": 56.686,
+   "end": 58.841,
+   "words": [
+    {
+     "text": "Sie",
+     "start": 56.686,
+     "end": 56.807
+    },
+    {
+     "text": "sammelte",
+     "start": 56.807,
+     "end": 57.232
+    },
+    {
+     "text": "Menschen,",
+     "start": 57.232,
+     "end": 57.597
+    },
+    {
+     "text": "die",
+     "start": 57.748,
+     "end": 57.87
+    },
+    {
+     "text": "niemanden",
+     "start": 57.87,
+     "end": 58.356
+    },
+    {
+     "text": "mehr",
+     "start": 58.356,
+     "end": 58.538
+    },
+    {
+     "text": "hatten.",
+     "start": 58.538,
+     "end": 58.841
+    }
+   ]
+  }
+ ]
+}
