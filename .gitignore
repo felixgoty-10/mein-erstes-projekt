@@ -1,0 +1,8 @@
+node_modules/
+.cache/
+renders/*.mp4
+!renders/.gitkeep
+videos/*/assets/vendor/
+videos/*/assets/engine/
+videos/*/snapshots/
+videos/*/.hyperframes/

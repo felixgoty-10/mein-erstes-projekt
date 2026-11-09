@@ -1,0 +1,15 @@
+{
+  "name": "stadt-videos",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "hyperframes check --json"
+  },
+  "devDependencies": {
+    "hyperframes": "0.9.26",
+    "three": "0.170.0"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5"
+  }
+}
