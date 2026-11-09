@@ -84,9 +84,16 @@ def main():
     proj = Path(sys.argv[1]).resolve()
     spec = json.loads((proj / "video.json").read_text(encoding="utf-8"))
     vcfg = spec.get("voice", {})
-    voice = PiperVoice.load(str(VOICES / f"de-{vcfg.get('base', 'thorsten')}-low.onnx"))
+    model = vcfg.get("model")
+    if model:  # Piper-Modell im sherpa-onnx-Format (.onnx + .onnx.json), z. B. de_DE-thorsten-high
+        model_path = ROOT / ".cache" / "sherpa" / f"vits-piper-{model}" / f"{model}.onnx"
+    else:
+        model_path = VOICES / f"de-{vcfg.get('base', 'thorsten')}-low.onnx"
+    voice = PiperVoice.load(str(model_path))
+    spk_map = getattr(voice.config, "speaker_id_map", None) or {}
     sr = voice.config.sample_rate
     syn = SynthesisConfig(
+        speaker_id=spk_map.get(vcfg["speaker"]) if vcfg.get("speaker") else None,
         length_scale=vcfg.get("length_scale", 0.9),
         noise_scale=vcfg.get("noise_scale", 0.6),
         noise_w_scale=vcfg.get("noise_w_scale", 0.8),
@@ -133,7 +140,7 @@ def main():
     # 44.1 kHz, leichte Präsenz-Anhebung und Kompression für Social-Media-Klang
     subprocess.run([
         "ffmpeg", "-v", "error", "-y", "-i", str(raw),
-        "-af", vcfg.get("eq", "highpass=f=80,equalizer=f=3000:t=q:w=1.2:g=3,acompressor=threshold=-18dB:ratio=3:attack=5:release=80") + ",aresample=44100",
+        "-af", ((f"rubberband=pitch={2 ** (vcfg['semitones'] / 12):.4f}:formant=preserved:pitchq=quality:window=short,") if vcfg.get("semitones") else "") + vcfg.get("eq", "highpass=f=80,equalizer=f=3000:t=q:w=1.2:g=3,acompressor=threshold=-18dB:ratio=3:attack=5:release=80") + ",aresample=44100",
         str(assets / "voice.wav")], check=True)
     raw.unlink()
     duration = round(len(full) / sr, 3)

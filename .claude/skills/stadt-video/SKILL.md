@@ -89,13 +89,16 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
 - Kamera nie hinter einer Figur, die die Szene verdeckt. Nahaufnahme: Kopf + Schultern, Pille dann ausblenden.
 - Liegende Figuren: `lieSide()` (Gesicht bleibt lesbar), Kamera von vorne.
 - Eigene Figuren und eigene Welt: keine Marken, keine bekannten Spielfiguren nachbauen.
-- **Standard-Stimme (für jedes Video übernehmen):** junge, helle, energische Erzählstimme, abgestimmt auf die
-  Referenz (Median ≈ 190 Hz, lebendige Betonung, schnelles Tempo). In `video.json`:
+- **Standard-Stimme (für jedes Video übernehmen):** sehr helle, klare, natürlich klingende Erzählstimme.
+  Basis: hochwertiges Piper-Modell `de_DE-thorsten-high` (22 kHz), Tonhöhe per Rubberband um 7 Halbtöne
+  angehoben **mit erhaltenen Formanten** (klingt menschlich statt Micky-Maus), plus Präsenz/Höhen-EQ. In `video.json`:
   ```json
-  "voice": { "base": "thorsten", "length_scale": 0.82, "pause": 0.24, "pitch_hz": 182, "pitch_range": 1.4, "formant": 1.07,
-             "eq": "highpass=f=110,equalizer=f=250:t=q:w=1:g=-2,equalizer=f=2800:t=q:w=1.2:g=5,equalizer=f=5500:t=q:w=1:g=3,acompressor=threshold=-20dB:ratio=4:attack=3:release=60" }
+  "voice": { "model": "de_DE-thorsten-high", "length_scale": 0.92, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.26, "semitones": 7,
+             "eq": "highpass=f=120,equalizer=f=230:t=q:w=1:g=-4,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=6500:g=5,acompressor=threshold=-20dB:ratio=3:attack=4:release=70" }
   ```
-  Basis ist Piper "thorsten" (offline), geformt mit dem WORLD-Vocoder (`pitch_hz` Tonhöhe, `pitch_range` Melodie,
-  `formant` Klangfarbe). Keine Stimme einer realen Person 1:1 klonen; nur Charakter/Stil angleichen.
-- Die Stimme ist Piper "thorsten" (offline). Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
+  `semitones` = Helligkeit (5 hell, 7 sehr hell; über 8 klingt künstlich). `noise_scale` 0.5 = deutliche Aussprache.
+  Alternative lebhafter: `"model": "de_DE-thorsten_emotional-medium", "speaker": "amused", "semitones": 3`.
+  Den WORLD-Vocoder (`pitch_hz`, `pitch_range`, `formant`) nicht mehr nutzen: er klingt künstlich.
+  Keine Stimme einer realen Person 1:1 klonen; nur Charakter/Stil angleichen.
+- Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
   ablegen, Satzzeiten in `assets/timing.json` von Hand eintragen (gleiches Format) und `tts.py` überspringen.

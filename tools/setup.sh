@@ -10,4 +10,12 @@ if [ ! -f .cache/voices/de-thorsten-low.onnx ]; then
   curl -sL -o .cache/voices/voice.tar.gz https://github.com/rhasspy/piper/releases/download/v0.0.2/voice-de-thorsten-low.tar.gz
   tar xzf .cache/voices/voice.tar.gz -C .cache/voices && rm .cache/voices/voice.tar.gz
 fi
+mkdir -p .cache/sherpa
+for m in vits-piper-de_DE-thorsten-high vits-piper-de_DE-thorsten_emotional-medium; do
+  if [ ! -d .cache/sherpa/$m ]; then
+    # Hochwertige Piper-Stimmen (Modelldaten) aus dem sherpa-onnx-Release auf GitHub
+    curl -sL -o .cache/sherpa/$m.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/$m.tar.bz2
+    tar xjf .cache/sherpa/$m.tar.bz2 -C .cache/sherpa && rm .cache/sherpa/$m.tar.bz2
+  fi
+done
 echo "Setup fertig: hyperframes $(npx hyperframes --version 2>/dev/null | tail -1), Stimme: .cache/voices/de-thorsten-low.onnx"
