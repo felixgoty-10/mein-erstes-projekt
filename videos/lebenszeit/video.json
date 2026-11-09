@@ -26,6 +26,11 @@
       "text": "Sein Vater neunzehn."
     },
     {
+      "id": "s4b",
+      "text": "Niemand weiß, was passiert, wenn die Zahl null erreicht.",
+      "pause": 0.3
+    },
+    {
       "id": "s5",
       "text": "Eines Nachts wacht Luca um drei Uhr auf."
     },
@@ -40,7 +45,12 @@
     {
       "id": "s8",
       "text": "Niemand ist da.",
-      "pause": 0.5
+      "pause": 0.25
+    },
+    {
+      "id": "s8b",
+      "text": "Nur Stille.",
+      "pause": 0.4
     },
     {
       "id": "s9",
@@ -49,7 +59,12 @@
     {
       "id": "s10",
       "text": "Über ihrem Kopf steht eine Zahl: Null.",
-      "pause": 0.45
+      "pause": 0.3
+    },
+    {
+      "id": "s10b",
+      "text": "Sie bewegt sich nicht. Sie starrt ihn nur an.",
+      "pause": 0.3
     },
     {
       "id": "s11",
@@ -60,12 +75,21 @@
       "text": "Doch sie glauben ihm nicht."
     },
     {
+      "id": "s12b",
+      "text": "Sein Vater sagt nur: Du hast geträumt.",
+      "pause": 0.3
+    },
+    {
       "id": "s13",
       "text": "Am nächsten Morgen in der Schule sieht er die Gestalt wieder."
     },
     {
       "id": "s14",
       "text": "Sie steht direkt hinter seiner besten Freundin Mia."
+    },
+    {
+      "id": "s14b",
+      "text": "Mia lacht und merkt nichts."
     },
     {
       "id": "s15",
@@ -75,6 +99,11 @@
     {
       "id": "s16",
       "text": "Sondern zehn Sekunden."
+    },
+    {
+      "id": "s16b",
+      "text": "Neun. Acht. Sieben.",
+      "pause": 0.4
     },
     {
       "id": "s17",
@@ -87,12 +116,12 @@
     {
       "id": "s19",
       "text": "Und über Lucas Kopf steht plötzlich: Null Sekunden.",
-      "pause": 0.55
+      "pause": 0.4
     },
     {
       "id": "s20",
       "text": "Dann flüstert jemand direkt hinter ihm:",
-      "pause": 0.4
+      "pause": 0.3
     },
     {
       "id": "s21",
@@ -120,7 +149,7 @@
         3
       ],
       "to": [
-        "s8",
+        "s8b",
         "end"
       ]
     },

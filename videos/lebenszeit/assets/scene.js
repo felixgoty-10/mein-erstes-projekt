@@ -81,9 +81,11 @@ export default function direct(W, S, T) {
   const gestalt2 = W.addChar(sc, character(GESTALT), -4.6, 1.2, 0.15);
 
   const only = (...cs) => (lt) => { [lucaHof, lucaS, gestalt2].forEach((c) => (c.root.visible = cs.includes(c))); };
-  const miaPill = (t) => {
+  const miaPill = (t) => { // Countdown synchron zu "Neun. Acht. Sieben.", danach 1 pro Sekunde
     if (t < T.s("s16")) return J(28);
-    const sec = Math.max(0, 10 - Math.floor(t - T.s("s16")));
+    let sec = 10;
+    [0, 1, 2].forEach((i) => { if (t >= T.w("s16b", i, 0)) sec = 9 - i; });
+    if (t >= T.w("s16b", 2, 0)) sec = Math.max(0, 7 - Math.floor(t - T.w("s16b", 2, 0)));
     return [`${sec} Sek.`, "red"];
   };
   const schoolBase = (lt, t, visible) => {
@@ -119,6 +121,16 @@ export default function direct(W, S, T) {
       at: T.s("s4"), set: st,
       cam: [{ pos: [3.6, 6.4, 5.6], look: [3.4, 4.6, -7.4], fov: 40 }, { pos: [3.5, 6.3, 4.4], look: [3.4, 4.7, -7.4], fov: 40 }],
       update(lt) { vater.idle(lt).face("neutral").pill(...J(19)); lucaA.pill(...J(63)); },
+    },
+    { // s4b Niemand weiß, was bei null passiert
+      at: T.s("s4b"), set: st,
+      cam: [{ pos: [0, 5.5, 11], look: [0, 5.2, -7], fov: 46 }, { pos: [0, 11, 20], look: [0, 4, -7], fov: 48 }],
+      update(lt) {
+        lucaA.idle(lt).face("neutral").pill(...J(63));
+        mutter.idle(lt).face("neutral").pill(...J(28));
+        vater.idle(lt).face("neutral").pill(...J(19));
+        passanten.forEach(({ c, x, n }, i) => { c.walk(lt + 3, 0.8).face("neutral").pill(...J(n)); c.root.position.x = x + (i % 2 ? -1 : 1) * (lt + 3) * 1.4; });
+      },
     },
     { // s5 Nachts, 3 Uhr: Luca wacht auf (Karte 3:00 liegt zuerst darüber)
       at: T.s("s5"), set: bd,
@@ -180,6 +192,15 @@ export default function direct(W, S, T) {
         gestaltEcke.pill("0", "red"); gestaltEcke.head.rotation.y = Math.sin(lt * 0.8) * 0.06;
       },
     },
+    { // s10b Sie bewegt sich nicht. Sie starrt ihn nur an.
+      at: T.s("s10b"), set: bd,
+      cam: [{ pos: [-3.0, 5.6, 6.5], look: [-5.6, 4.6, -3.6], fov: 42 }, { pos: [-3.6, 5.4, 3.8], look: [-5.7, 4.9, -3.6], fov: 40 }],
+      update(lt) {
+        lucaTuer.root.visible = true; gestaltEcke.root.visible = false; lucaBett.root.visible = false;
+        lucaTuer.root.rotation.y = 0.5; lucaTuer.face("shock"); // erstarrt, kein idle
+        lucaTuer.lookAt(0.6);
+      },
+    },
     { // s11 Luca rennt zu den Eltern
       at: T.s("s11"), set: pz,
       cam: [{ pos: [-0.5, 6.8, 14], look: [-0.8, 3.4, -2], fov: 48 }, { pos: [0, 6.4, 12], look: [-0.5, 3.4, -2], fov: 48 }],
@@ -198,6 +219,15 @@ export default function direct(W, S, T) {
         sitzt(papaBett); papaBett.face("happy"); papaBett.shrug(1); papaBett.legL.rotation.x = papaBett.legR.rotation.x = -1.57;
       },
     },
+    { // s12b Du hast geträumt.
+      at: T.s("s12b"), set: pz,
+      cam: [{ pos: [1.9, 6.0, 4.5], look: [1.9, 4.6, -4.3], fov: 40 }, { pos: [1.9, 5.9, 3.4], look: [1.9, 4.7, -4.3], fov: 40 }],
+      update(lt) {
+        lucaRennt.root.position.set(-4.2, 0, 0.2); lucaRennt.root.rotation.y = 1.0;
+        sitzt(mamaBett); mamaBett.face("neutral");
+        sitzt(papaBett); papaBett.face("smug"); papaBett.reach("R", 0.5);
+      },
+    },
     { // s13 Am nächsten Morgen in der Schule
       at: T.s("s13"), set: sc,
       cam: [{ pos: [-1, 7.5, 24], look: [0, 4.8, -5], fov: 46 }, { pos: [0, 6.6, 18], look: [0.5, 5, -5], fov: 46 }],
@@ -213,6 +243,11 @@ export default function direct(W, S, T) {
       cam: [{ pos: [2.4, 6.2, 9], look: [2.7, 5.4, -5], fov: 44 }, { pos: [2.5, 6.0, 6.8], look: [2.7, 5.5, -5], fov: 44 }],
       update(lt, u, t) { schoolBase(lt, t, []); },
     },
+    { // s14b Mia lacht und merkt nichts.
+      at: T.s("s14b"), set: sc,
+      cam: [{ pos: [3.0, 6.0, 7.5], look: [3.0, 5.4, -5], fov: 44 }, { pos: [3.2, 6.1, 6.5], look: [3.1, 5.6, -5], fov: 44 }],
+      update(lt, u, t) { schoolBase(lt, t, []); mia.face("laugh"); mia.cheer(lt, false); mia.armL.rotation.z = -0.4; mia.armR.rotation.z = 0.4; },
+    },
     { // s15 Mias Zahl: 28 Jahre …
       at: T.s("s15"), set: sc,
       cam: [{ pos: [2.5, 7.2, 10], look: [2.8, 6.0, -4.5], fov: 40 }, { pos: [2.5, 7.1, 8.8], look: [2.8, 6.1, -4.5], fov: 40 }],
@@ -221,6 +256,11 @@ export default function direct(W, S, T) {
     { // s16 … nur noch 10 Sekunden
       at: T.s("s16"), set: sc,
       cam: [{ pos: [2.5, 7.1, 8.8], look: [2.8, 6.1, -4.5], fov: 40 }, { pos: [2.5, 7.0, 7.6], look: [2.8, 6.2, -4.5], fov: 38 }],
+      update(lt, u, t) { schoolBase(lt, t, []); },
+    },
+    { // s16b Neun. Acht. Sieben.
+      at: T.s("s16b"), set: sc,
+      cam: [{ pos: [2.6, 7.8, 6.2], look: [2.7, 7.4, -4.5], fov: 34 }, { pos: [2.6, 7.8, 5.2], look: [2.7, 7.4, -4.5], fov: 32 }],
       update(lt, u, t) { schoolBase(lt, t, []); },
     },
     { // s17 Luca schreit: Mia!

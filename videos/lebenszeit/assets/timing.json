@@ -1,881 +1,1104 @@
 {
- "duration": 49.073,
+ "duration": 61.293,
  "sentences": [
   {
    "id": "s1",
    "text": "In dieser Stadt steht über jedem Menschen, wie viele Tage er noch zu leben hat.",
    "start": 0.25,
-   "end": 3.996,
+   "end": 3.853,
    "words": [
     {
      "text": "In",
      "start": 0.25,
-     "end": 0.383
+     "end": 0.378
     },
     {
      "text": "dieser",
-     "start": 0.383,
-     "end": 0.648
+     "start": 0.378,
+     "end": 0.633
     },
     {
      "text": "Stadt",
-     "start": 0.648,
-     "end": 0.913
+     "start": 0.633,
+     "end": 0.888
     },
     {
      "text": "steht",
-     "start": 0.913,
-     "end": 1.178
+     "start": 0.888,
+     "end": 1.143
     },
     {
      "text": "über",
-     "start": 1.178,
-     "end": 1.377
+     "start": 1.143,
+     "end": 1.334
     },
     {
      "text": "jedem",
-     "start": 1.377,
-     "end": 1.709
+     "start": 1.334,
+     "end": 1.653
     },
     {
      "text": "Menschen,",
-     "start": 1.709,
-     "end": 2.106
+     "start": 1.653,
+     "end": 2.035
     },
     {
      "text": "wie",
-     "start": 2.272,
-     "end": 2.405
+     "start": 2.195,
+     "end": 2.322
     },
     {
      "text": "viele",
-     "start": 2.405,
-     "end": 2.67
+     "start": 2.322,
+     "end": 2.577
     },
     {
      "text": "Tage",
-     "start": 2.67,
-     "end": 2.935
+     "start": 2.577,
+     "end": 2.832
     },
     {
      "text": "er",
-     "start": 2.935,
-     "end": 3.068
+     "start": 2.832,
+     "end": 2.96
     },
     {
      "text": "noch",
-     "start": 3.068,
-     "end": 3.267
+     "start": 2.96,
+     "end": 3.151
     },
     {
      "text": "zu",
-     "start": 3.267,
-     "end": 3.466
+     "start": 3.151,
+     "end": 3.343
     },
     {
      "text": "leben",
-     "start": 3.466,
-     "end": 3.797
+     "start": 3.343,
+     "end": 3.661
     },
     {
      "text": "hat.",
-     "start": 3.797,
-     "end": 3.996
+     "start": 3.661,
+     "end": 3.853
     }
    ]
   },
   {
    "id": "s2",
    "text": "Luca hat noch dreiundsechzig Jahre.",
-   "start": 4.349,
-   "end": 6.265,
+   "start": 4.205,
+   "end": 6.06,
    "words": [
     {
      "text": "Luca",
-     "start": 4.349,
-     "end": 4.605
+     "start": 4.205,
+     "end": 4.452
     },
     {
      "text": "hat",
-     "start": 4.605,
-     "end": 4.796
+     "start": 4.452,
+     "end": 4.637
     },
     {
      "text": "noch",
-     "start": 4.796,
-     "end": 4.988
+     "start": 4.637,
+     "end": 4.823
     },
     {
      "text": "dreiundsechzig",
-     "start": 4.988,
-     "end": 6.009
+     "start": 4.823,
+     "end": 5.812
     },
     {
      "text": "Jahre.",
-     "start": 6.009,
-     "end": 6.265
+     "start": 5.812,
+     "end": 6.06
     }
    ]
   },
   {
    "id": "s3",
    "text": "Seine Mutter hat achtundzwanzig Jahre.",
-   "start": 6.617,
-   "end": 8.641,
+   "start": 6.411,
+   "end": 8.273,
    "words": [
     {
      "text": "Seine",
-     "start": 6.617,
-     "end": 6.933
+     "start": 6.411,
+     "end": 6.702
     },
     {
      "text": "Mutter",
-     "start": 6.933,
-     "end": 7.186
+     "start": 6.702,
+     "end": 6.935
     },
     {
      "text": "hat",
-     "start": 7.186,
-     "end": 7.376
+     "start": 6.935,
+     "end": 7.109
     },
     {
      "text": "achtundzwanzig",
-     "start": 7.376,
-     "end": 8.388
+     "start": 7.109,
+     "end": 8.041
     },
     {
      "text": "Jahre.",
-     "start": 8.388,
-     "end": 8.641
+     "start": 8.041,
+     "end": 8.273
     }
    ]
   },
   {
    "id": "s4",
    "text": "Sein Vater neunzehn.",
-   "start": 8.873,
-   "end": 9.886,
+   "start": 8.503,
+   "end": 9.554,
    "words": [
     {
      "text": "Sein",
-     "start": 8.873,
-     "end": 9.126
+     "start": 8.503,
+     "end": 8.766
     },
     {
      "text": "Vater",
-     "start": 9.126,
-     "end": 9.379
+     "start": 8.766,
+     "end": 9.029
     },
     {
      "text": "neunzehn.",
-     "start": 9.379,
-     "end": 9.886
+     "start": 9.029,
+     "end": 9.554
+    }
+   ]
+  },
+  {
+   "id": "s4b",
+   "text": "Niemand weiß, was passiert, wenn die Zahl null erreicht.",
+   "start": 9.907,
+   "end": 12.583,
+   "words": [
+    {
+     "text": "Niemand",
+     "start": 9.907,
+     "end": 10.272
+    },
+    {
+     "text": "weiß,",
+     "start": 10.272,
+     "end": 10.515
+    },
+    {
+     "text": "was",
+     "start": 10.667,
+     "end": 10.85
+    },
+    {
+     "text": "passiert,",
+     "start": 10.85,
+     "end": 11.215
+    },
+    {
+     "text": "wenn",
+     "start": 11.367,
+     "end": 11.549
+    },
+    {
+     "text": "die",
+     "start": 11.549,
+     "end": 11.671
+    },
+    {
+     "text": "Zahl",
+     "start": 11.671,
+     "end": 11.914
+    },
+    {
+     "text": "null",
+     "start": 11.914,
+     "end": 12.096
+    },
+    {
+     "text": "erreicht.",
+     "start": 12.096,
+     "end": 12.583
     }
    ]
   },
   {
    "id": "s5",
    "text": "Eines Nachts wacht Luca um drei Uhr auf.",
-   "start": 10.237,
-   "end": 12.56,
+   "start": 12.913,
+   "end": 15.152,
    "words": [
     {
      "text": "Eines",
-     "start": 10.237,
-     "end": 10.638
+     "start": 12.913,
+     "end": 13.299
     },
     {
      "text": "Nachts",
-     "start": 10.638,
-     "end": 11.038
+     "start": 13.299,
+     "end": 13.685
     },
     {
      "text": "wacht",
-     "start": 11.038,
-     "end": 11.359
+     "start": 13.685,
+     "end": 13.994
     },
     {
      "text": "Luca",
-     "start": 11.359,
-     "end": 11.679
+     "start": 13.994,
+     "end": 14.303
     },
     {
      "text": "um",
-     "start": 11.679,
-     "end": 11.839
+     "start": 14.303,
+     "end": 14.457
     },
     {
      "text": "drei",
-     "start": 11.839,
-     "end": 12.159
+     "start": 14.457,
+     "end": 14.766
     },
     {
      "text": "Uhr",
-     "start": 12.159,
-     "end": 12.32
+     "start": 14.766,
+     "end": 14.921
     },
     {
      "text": "auf.",
-     "start": 12.32,
-     "end": 12.56
+     "start": 14.921,
+     "end": 15.152
     }
    ]
   },
   {
    "id": "s6",
    "text": "Jemand klopft leise an seine Tür.",
-   "start": 12.92,
-   "end": 14.552,
+   "start": 15.511,
+   "end": 17.006,
    "words": [
     {
      "text": "Jemand",
-     "start": 12.92,
-     "end": 13.283
+     "start": 15.511,
+     "end": 15.843
     },
     {
      "text": "klopft",
-     "start": 13.283,
-     "end": 13.645
+     "start": 15.843,
+     "end": 16.175
     },
     {
      "text": "leise",
-     "start": 13.645,
-     "end": 13.947
+     "start": 16.175,
+     "end": 16.452
     },
     {
      "text": "an",
-     "start": 13.947,
-     "end": 14.068
+     "start": 16.452,
+     "end": 16.563
     },
     {
      "text": "seine",
-     "start": 14.068,
-     "end": 14.371
+     "start": 16.563,
+     "end": 16.84
     },
     {
      "text": "Tür.",
-     "start": 14.371,
-     "end": 14.552
+     "start": 16.84,
+     "end": 17.006
     }
    ]
   },
   {
    "id": "s7",
    "text": "Er schaut durch das Schlüsselloch.",
-   "start": 14.902,
-   "end": 16.064,
+   "start": 17.353,
+   "end": 18.651,
    "words": [
     {
      "text": "Er",
-     "start": 14.902,
-     "end": 15.008
+     "start": 17.353,
+     "end": 17.471
     },
     {
      "text": "schaut",
-     "start": 15.008,
-     "end": 15.219
+     "start": 17.471,
+     "end": 17.707
     },
     {
      "text": "durch",
-     "start": 15.219,
-     "end": 15.483
+     "start": 17.707,
+     "end": 18.002
     },
     {
      "text": "das",
-     "start": 15.483,
-     "end": 15.641
+     "start": 18.002,
+     "end": 18.179
     },
     {
      "text": "Schlüsselloch.",
-     "start": 15.641,
-     "end": 16.064
+     "start": 18.179,
+     "end": 18.651
     }
    ]
   },
   {
    "id": "s8",
    "text": "Niemand ist da.",
-   "start": 16.41,
-   "end": 17.169,
+   "start": 19.001,
+   "end": 19.798,
    "words": [
     {
      "text": "Niemand",
-     "start": 16.41,
-     "end": 16.824
+     "start": 19.001,
+     "end": 19.435
     },
     {
      "text": "ist",
-     "start": 16.824,
-     "end": 17.031
+     "start": 19.435,
+     "end": 19.653
     },
     {
      "text": "da.",
-     "start": 17.031,
-     "end": 17.169
+     "start": 19.653,
+     "end": 19.798
+    }
+   ]
+  },
+  {
+   "id": "s8b",
+   "text": "Nur Stille.",
+   "start": 20.084,
+   "end": 20.694,
+   "words": [
+    {
+     "text": "Nur",
+     "start": 20.084,
+     "end": 20.313
+    },
+    {
+     "text": "Stille.",
+     "start": 20.313,
+     "end": 20.694
     }
    ]
   },
   {
    "id": "s9",
    "text": "Als er sich umdreht, steht eine schwarze Gestalt in der Ecke.",
-   "start": 17.704,
-   "end": 20.506,
+   "start": 21.133,
+   "end": 23.887,
    "words": [
     {
      "text": "Als",
-     "start": 17.704,
-     "end": 17.881
+     "start": 21.133,
+     "end": 21.306
     },
     {
      "text": "er",
-     "start": 17.881,
-     "end": 17.999
+     "start": 21.306,
+     "end": 21.422
     },
     {
      "text": "sich",
-     "start": 17.999,
-     "end": 18.235
+     "start": 21.422,
+     "end": 21.654
     },
     {
      "text": "umdreht,",
-     "start": 18.235,
-     "end": 18.589
+     "start": 21.654,
+     "end": 22.002
     },
     {
      "text": "steht",
-     "start": 18.736,
-     "end": 18.972
+     "start": 22.147,
+     "end": 22.379
     },
     {
      "text": "eine",
-     "start": 18.972,
-     "end": 19.208
+     "start": 22.379,
+     "end": 22.611
     },
     {
      "text": "schwarze",
-     "start": 19.208,
-     "end": 19.621
+     "start": 22.611,
+     "end": 23.017
     },
     {
      "text": "Gestalt",
-     "start": 19.621,
-     "end": 20.034
+     "start": 23.017,
+     "end": 23.423
     },
     {
      "text": "in",
-     "start": 20.034,
-     "end": 20.152
+     "start": 23.423,
+     "end": 23.539
     },
     {
      "text": "der",
-     "start": 20.152,
-     "end": 20.329
+     "start": 23.539,
+     "end": 23.713
     },
     {
      "text": "Ecke.",
-     "start": 20.329,
-     "end": 20.506
+     "start": 23.713,
+     "end": 23.887
     }
    ]
   },
   {
    "id": "s10",
    "text": "Über ihrem Kopf steht eine Zahl: Null.",
-   "start": 20.855,
-   "end": 22.954,
+   "start": 24.236,
+   "end": 26.362,
    "words": [
     {
      "text": "Über",
-     "start": 20.855,
-     "end": 21.073
+     "start": 24.236,
+     "end": 24.456
     },
     {
      "text": "ihrem",
-     "start": 21.073,
-     "end": 21.362
+     "start": 24.456,
+     "end": 24.75
     },
     {
      "text": "Kopf",
-     "start": 21.362,
-     "end": 21.651
+     "start": 24.75,
+     "end": 25.043
     },
     {
      "text": "steht",
-     "start": 21.651,
-     "end": 21.941
+     "start": 25.043,
+     "end": 25.336
     },
     {
      "text": "eine",
-     "start": 21.941,
-     "end": 22.23
+     "start": 25.336,
+     "end": 25.629
     },
     {
      "text": "Zahl:",
-     "start": 22.23,
-     "end": 22.52
+     "start": 25.629,
+     "end": 25.922
     },
     {
      "text": "Null.",
-     "start": 22.737,
-     "end": 22.954
+     "start": 26.142,
+     "end": 26.362
+    }
+   ]
+  },
+  {
+   "id": "s10b",
+   "text": "Sie bewegt sich nicht. Sie starrt ihn nur an.",
+   "start": 26.699,
+   "end": 28.805,
+   "words": [
+    {
+     "text": "Sie",
+     "start": 26.699,
+     "end": 26.833
+    },
+    {
+     "text": "bewegt",
+     "start": 26.833,
+     "end": 27.234
+    },
+    {
+     "text": "sich",
+     "start": 27.234,
+     "end": 27.501
+    },
+    {
+     "text": "nicht.",
+     "start": 27.501,
+     "end": 27.836
+    },
+    {
+     "text": "Sie",
+     "start": 27.869,
+     "end": 28.003
+    },
+    {
+     "text": "starrt",
+     "start": 28.003,
+     "end": 28.337
+    },
+    {
+     "text": "ihn",
+     "start": 28.337,
+     "end": 28.471
+    },
+    {
+     "text": "nur",
+     "start": 28.471,
+     "end": 28.671
+    },
+    {
+     "text": "an.",
+     "start": 28.671,
+     "end": 28.805
     }
    ]
   },
   {
    "id": "s11",
    "text": "Luca rennt zu seinen Eltern.",
-   "start": 23.44,
-   "end": 24.783,
+   "start": 29.139,
+   "end": 30.543,
    "words": [
     {
      "text": "Luca",
-     "start": 23.44,
-     "end": 23.684
+     "start": 29.139,
+     "end": 29.394
     },
     {
      "text": "rennt",
-     "start": 23.684,
-     "end": 23.928
+     "start": 29.394,
+     "end": 29.649
     },
     {
      "text": "zu",
-     "start": 23.928,
-     "end": 24.112
+     "start": 29.649,
+     "end": 29.841
     },
     {
      "text": "seinen",
-     "start": 24.112,
-     "end": 24.478
+     "start": 29.841,
+     "end": 30.224
     },
     {
      "text": "Eltern.",
-     "start": 24.478,
-     "end": 24.783
+     "start": 30.224,
+     "end": 30.543
     }
    ]
   },
   {
    "id": "s12",
    "text": "Doch sie glauben ihm nicht.",
-   "start": 25.134,
-   "end": 26.167,
+   "start": 30.895,
+   "end": 31.947,
    "words": [
     {
      "text": "Doch",
-     "start": 25.134,
-     "end": 25.297
+     "start": 30.895,
+     "end": 31.061
     },
     {
      "text": "sie",
-     "start": 25.297,
-     "end": 25.406
+     "start": 31.061,
+     "end": 31.172
     },
     {
      "text": "glauben",
-     "start": 25.406,
-     "end": 25.786
+     "start": 31.172,
+     "end": 31.559
     },
     {
      "text": "ihm",
-     "start": 25.786,
-     "end": 25.895
+     "start": 31.559,
+     "end": 31.67
     },
     {
      "text": "nicht.",
-     "start": 25.895,
-     "end": 26.167
+     "start": 31.67,
+     "end": 31.947
+    }
+   ]
+  },
+  {
+   "id": "s12b",
+   "text": "Sein Vater sagt nur: Du hast geträumt.",
+   "start": 32.294,
+   "end": 34.571,
+   "words": [
+    {
+     "text": "Sein",
+     "start": 32.294,
+     "end": 32.579
+    },
+    {
+     "text": "Vater",
+     "start": 32.579,
+     "end": 32.863
+    },
+    {
+     "text": "sagt",
+     "start": 32.863,
+     "end": 33.148
+    },
+    {
+     "text": "nur:",
+     "start": 33.148,
+     "end": 33.362
+    },
+    {
+     "text": "Du",
+     "start": 33.575,
+     "end": 33.717
+    },
+    {
+     "text": "hast",
+     "start": 33.717,
+     "end": 34.002
+    },
+    {
+     "text": "geträumt.",
+     "start": 34.002,
+     "end": 34.571
     }
    ]
   },
   {
    "id": "s13",
    "text": "Am nächsten Morgen in der Schule sieht er die Gestalt wieder.",
-   "start": 26.514,
-   "end": 29.162,
+   "start": 34.907,
+   "end": 37.559,
    "words": [
     {
      "text": "Am",
-     "start": 26.514,
-     "end": 26.637
+     "start": 34.907,
+     "end": 35.03
     },
     {
      "text": "nächsten",
-     "start": 26.637,
-     "end": 27.13
+     "start": 35.03,
+     "end": 35.524
     },
     {
      "text": "Morgen",
-     "start": 27.13,
-     "end": 27.499
+     "start": 35.524,
+     "end": 35.894
     },
     {
      "text": "in",
-     "start": 27.499,
-     "end": 27.622
+     "start": 35.894,
+     "end": 36.017
     },
     {
      "text": "der",
-     "start": 27.622,
-     "end": 27.807
+     "start": 36.017,
+     "end": 36.202
     },
     {
      "text": "Schule",
-     "start": 27.807,
-     "end": 28.053
+     "start": 36.202,
+     "end": 36.449
     },
     {
      "text": "sieht",
-     "start": 28.053,
-     "end": 28.238
+     "start": 36.449,
+     "end": 36.634
     },
     {
      "text": "er",
-     "start": 28.238,
-     "end": 28.361
+     "start": 36.634,
+     "end": 36.757
     },
     {
      "text": "die",
-     "start": 28.361,
-     "end": 28.484
+     "start": 36.757,
+     "end": 36.881
     },
     {
      "text": "Gestalt",
-     "start": 28.484,
-     "end": 28.916
+     "start": 36.881,
+     "end": 37.313
     },
     {
      "text": "wieder.",
-     "start": 28.916,
-     "end": 29.162
+     "start": 37.313,
+     "end": 37.559
     }
    ]
   },
   {
    "id": "s14",
    "text": "Sie steht direkt hinter seiner besten Freundin Mia.",
-   "start": 29.513,
-   "end": 31.797,
+   "start": 37.91,
+   "end": 40.368,
    "words": [
     {
      "text": "Sie",
-     "start": 29.513,
-     "end": 29.63
+     "start": 37.91,
+     "end": 38.036
     },
     {
      "text": "steht",
-     "start": 29.63,
-     "end": 29.864
+     "start": 38.036,
+     "end": 38.288
     },
     {
      "text": "direkt",
-     "start": 29.864,
-     "end": 30.215
+     "start": 38.288,
+     "end": 38.666
     },
     {
      "text": "hinter",
-     "start": 30.215,
-     "end": 30.508
+     "start": 38.666,
+     "end": 38.981
     },
     {
      "text": "seiner",
-     "start": 30.508,
-     "end": 30.801
+     "start": 38.981,
+     "end": 39.297
     },
     {
      "text": "besten",
-     "start": 30.801,
-     "end": 31.152
+     "start": 39.297,
+     "end": 39.675
     },
     {
      "text": "Freundin",
-     "start": 31.152,
-     "end": 31.621
+     "start": 39.675,
+     "end": 40.179
     },
     {
      "text": "Mia.",
-     "start": 31.621,
-     "end": 31.797
+     "start": 40.179,
+     "end": 40.368
+    }
+   ]
+  },
+  {
+   "id": "s14b",
+   "text": "Mia lacht und merkt nichts.",
+   "start": 40.719,
+   "end": 42.147,
+   "words": [
+    {
+     "text": "Mia",
+     "start": 40.719,
+     "end": 40.923
+    },
+    {
+     "text": "lacht",
+     "start": 40.923,
+     "end": 41.195
+    },
+    {
+     "text": "und",
+     "start": 41.195,
+     "end": 41.399
+    },
+    {
+     "text": "merkt",
+     "start": 41.399,
+     "end": 41.739
+    },
+    {
+     "text": "nichts.",
+     "start": 41.739,
+     "end": 42.147
     }
    ]
   },
   {
    "id": "s15",
    "text": "Über Mias Kopf steht nicht mehr achtundzwanzig Jahre.",
-   "start": 32.146,
-   "end": 34.749,
+   "start": 42.501,
+   "end": 45.234,
    "words": [
     {
      "text": "Über",
-     "start": 32.146,
-     "end": 32.328
+     "start": 42.501,
+     "end": 42.692
     },
     {
      "text": "Mias",
-     "start": 32.328,
-     "end": 32.57
+     "start": 42.692,
+     "end": 42.946
     },
     {
      "text": "Kopf",
-     "start": 32.57,
-     "end": 32.812
+     "start": 42.946,
+     "end": 43.2
     },
     {
      "text": "steht",
-     "start": 32.812,
-     "end": 33.054
+     "start": 43.2,
+     "end": 43.454
     },
     {
      "text": "nicht",
-     "start": 33.054,
-     "end": 33.356
+     "start": 43.454,
+     "end": 43.772
     },
     {
      "text": "mehr",
-     "start": 33.356,
-     "end": 33.538
+     "start": 43.772,
+     "end": 43.963
     },
     {
      "text": "achtundzwanzig",
-     "start": 33.538,
-     "end": 34.506
+     "start": 43.963,
+     "end": 44.98
     },
     {
      "text": "Jahre.",
-     "start": 34.506,
-     "end": 34.749
+     "start": 44.98,
+     "end": 45.234
     }
    ]
   },
   {
    "id": "s16",
    "text": "Sondern zehn Sekunden.",
-   "start": 34.979,
-   "end": 36.215,
+   "start": 45.466,
+   "end": 46.693,
    "words": [
     {
      "text": "Sondern",
-     "start": 34.979,
-     "end": 35.391
+     "start": 45.466,
+     "end": 45.875
     },
     {
      "text": "zehn",
-     "start": 35.391,
-     "end": 35.666
+     "start": 45.875,
+     "end": 46.147
     },
     {
      "text": "Sekunden.",
-     "start": 35.666,
-     "end": 36.215
+     "start": 46.147,
+     "end": 46.693
+    }
+   ]
+  },
+  {
+   "id": "s16b",
+   "text": "Neun. Acht. Sieben.",
+   "start": 47.047,
+   "end": 48.603,
+   "words": [
+    {
+     "text": "Neun.",
+     "start": 47.047,
+     "end": 47.525
+    },
+    {
+     "text": "Acht.",
+     "start": 47.585,
+     "end": 47.944
+    },
+    {
+     "text": "Sieben.",
+     "start": 48.004,
+     "end": 48.603
     }
    ]
   },
   {
    "id": "s17",
    "text": "Luca schreit: Mia!",
-   "start": 36.569,
-   "end": 37.751,
+   "start": 49.063,
+   "end": 50.308,
    "words": [
     {
      "text": "Luca",
-     "start": 36.569,
-     "end": 36.884
+     "start": 49.063,
+     "end": 49.395
     },
     {
      "text": "schreit:",
-     "start": 36.884,
-     "end": 37.278
+     "start": 49.395,
+     "end": 49.81
     },
     {
      "text": "Mia!",
-     "start": 37.515,
-     "end": 37.751
+     "start": 50.059,
+     "end": 50.308
     }
    ]
   },
   {
    "id": "s18",
    "text": "Doch die Gestalt dreht sich langsam zu ihm um.",
-   "start": 38.15,
-   "end": 40.29,
+   "start": 50.711,
+   "end": 52.795,
    "words": [
     {
      "text": "Doch",
-     "start": 38.15,
-     "end": 38.344
+     "start": 50.711,
+     "end": 50.9
     },
     {
      "text": "die",
-     "start": 38.344,
-     "end": 38.474
+     "start": 50.9,
+     "end": 51.027
     },
     {
      "text": "Gestalt",
-     "start": 38.474,
-     "end": 38.928
+     "start": 51.027,
+     "end": 51.469
     },
     {
      "text": "dreht",
-     "start": 38.928,
-     "end": 39.187
+     "start": 51.469,
+     "end": 51.721
     },
     {
      "text": "sich",
-     "start": 39.187,
-     "end": 39.447
+     "start": 51.721,
+     "end": 51.974
     },
     {
      "text": "langsam",
-     "start": 39.447,
-     "end": 39.836
+     "start": 51.974,
+     "end": 52.353
     },
     {
      "text": "zu",
-     "start": 39.836,
-     "end": 40.03
+     "start": 52.353,
+     "end": 52.542
     },
     {
      "text": "ihm",
-     "start": 40.03,
-     "end": 40.16
+     "start": 52.542,
+     "end": 52.669
     },
     {
      "text": "um.",
-     "start": 40.16,
-     "end": 40.29
+     "start": 52.669,
+     "end": 52.795
     }
    ]
   },
   {
    "id": "s19",
    "text": "Und über Lucas Kopf steht plötzlich: Null Sekunden.",
-   "start": 40.642,
-   "end": 43.414,
+   "start": 53.147,
+   "end": 55.948,
    "words": [
     {
      "text": "Und",
-     "start": 40.642,
-     "end": 40.84
+     "start": 53.147,
+     "end": 53.347
     },
     {
      "text": "über",
-     "start": 40.84,
-     "end": 41.038
+     "start": 53.347,
+     "end": 53.547
     },
     {
      "text": "Lucas",
-     "start": 41.038,
-     "end": 41.368
+     "start": 53.547,
+     "end": 53.88
     },
     {
      "text": "Kopf",
-     "start": 41.368,
-     "end": 41.632
+     "start": 53.88,
+     "end": 54.147
     },
     {
      "text": "steht",
-     "start": 41.632,
-     "end": 41.896
+     "start": 54.147,
+     "end": 54.414
     },
     {
      "text": "plötzlich:",
-     "start": 41.896,
-     "end": 42.49
+     "start": 54.414,
+     "end": 55.014
     },
     {
      "text": "Null",
-     "start": 42.688,
-     "end": 42.886
+     "start": 55.214,
+     "end": 55.414
     },
     {
      "text": "Sekunden.",
-     "start": 42.886,
-     "end": 43.414
+     "start": 55.414,
+     "end": 55.948
     }
    ]
   },
   {
    "id": "s20",
    "text": "Dann flüstert jemand direkt hinter ihm:",
-   "start": 43.997,
-   "end": 45.548,
+   "start": 56.381,
+   "end": 57.908,
    "words": [
     {
      "text": "Dann",
-     "start": 43.997,
-     "end": 44.158
+     "start": 56.381,
+     "end": 56.539
     },
     {
      "text": "flüstert",
-     "start": 44.158,
-     "end": 44.532
+     "start": 56.539,
+     "end": 56.908
     },
     {
      "text": "jemand",
-     "start": 44.532,
-     "end": 44.853
+     "start": 56.908,
+     "end": 57.224
     },
     {
      "text": "direkt",
-     "start": 44.853,
-     "end": 45.174
+     "start": 57.224,
+     "end": 57.54
     },
     {
      "text": "hinter",
-     "start": 45.174,
-     "end": 45.441
+     "start": 57.54,
+     "end": 57.803
     },
     {
      "text": "ihm:",
-     "start": 45.441,
-     "end": 45.548
+     "start": 57.803,
+     "end": 57.908
     }
    ]
   },
   {
    "id": "s21",
    "text": "Du hättest mich letzte Nacht nicht sehen dürfen.",
-   "start": 46.109,
-   "end": 48.027,
+   "start": 58.366,
+   "end": 60.247,
    "words": [
     {
      "text": "Du",
-     "start": 46.109,
-     "end": 46.213
+     "start": 58.366,
+     "end": 58.468
     },
     {
      "text": "hättest",
-     "start": 46.213,
-     "end": 46.524
+     "start": 58.468,
+     "end": 58.773
     },
     {
      "text": "mich",
-     "start": 46.524,
-     "end": 46.731
+     "start": 58.773,
+     "end": 58.976
     },
     {
      "text": "letzte",
-     "start": 46.731,
-     "end": 47.042
+     "start": 58.976,
+     "end": 59.281
     },
     {
      "text": "Nacht",
-     "start": 47.042,
-     "end": 47.249
+     "start": 59.281,
+     "end": 59.485
     },
     {
      "text": "nicht",
-     "start": 47.249,
-     "end": 47.509
+     "start": 59.485,
+     "end": 59.739
     },
     {
      "text": "sehen",
-     "start": 47.509,
-     "end": 47.716
+     "start": 59.739,
+     "end": 59.942
     },
     {
      "text": "dürfen.",
-     "start": 47.716,
-     "end": 48.027
+     "start": 59.942,
+     "end": 60.247
     }
    ]
   }
