@@ -37,6 +37,45 @@ def write(path, a):
         wf.writeframes((a * 32767).astype(np.int16).tobytes())
 
 
+def horror(dur, rng):
+    """Düster: tiefer Drone, verstimmte Spieluhr in Moll, leiser Herzschlag."""
+    n = int(SR * dur)
+    t = np.arange(n) / SR
+    drone = (np.sin(2 * np.pi * 55 * t) + 0.6 * np.sin(2 * np.pi * 55.7 * t) + 0.3 * np.sin(2 * np.pi * 82.4 * t))
+    drone *= 0.18 * (0.75 + 0.25 * np.sin(2 * np.pi * 0.08 * t))
+    noise = rng.normal(0, 1, n)
+    k = int(0.02 * SR)
+    wind = np.convolve(noise, np.ones(k) / k, mode="same") * 0.25 * (0.6 + 0.4 * np.sin(2 * np.pi * 0.05 * t + 1))
+    mix = drone + wind
+    # Spieluhr: a-Moll, langsam, leicht verstimmt
+    melody = [69, 72, 76, 74, 72, 71, 69, 64, 69, 72, 77, 76, 74, 72, 71, 68]
+    step = 0.62
+    i = 0
+    while i * step < dur:
+        m = melody[i % len(melody)] + 12
+        f = note(m) * (1 + 0.004 * np.sin(i))
+        L = int(SR * 1.6)
+        tt = np.arange(L) / SR
+        bell = (np.sin(2 * np.pi * f * tt) + 0.35 * np.sin(2 * np.pi * f * 2.76 * tt) + 0.15 * np.sin(2 * np.pi * f * 5.4 * tt)) * np.exp(-tt * 3.2) * 0.16
+        i0 = int(i * step * SR)
+        seg = bell[: max(0, min(L, n - i0))]
+        mix[i0: i0 + len(seg)] += seg
+        i += 1
+    # Herzschlag ab der Hälfte, immer schneller
+    tb = dur * 0.55
+    while tb < dur - 0.3:
+        for off, amp in ((0, 0.55), (0.18, 0.4)):
+            L = int(0.16 * SR)
+            tt = np.arange(L) / SR
+            thump = np.sin(2 * np.pi * 48 * tt) * np.exp(-tt * 28) * amp
+            i0 = int((tb + off) * SR)
+            seg = thump[: max(0, min(L, n - i0))]
+            mix[i0: i0 + len(seg)] += seg
+        prog = (tb - dur * 0.55) / (dur * 0.45)
+        tb += 0.95 - 0.45 * prog
+    return mix
+
+
 def main():
     proj = Path(sys.argv[1])
     if len(sys.argv) > 2:
@@ -44,6 +83,17 @@ def main():
     else:
         dur = json.loads((proj / "assets" / "timing.json").read_text())["duration"]
     rng = np.random.default_rng(7)
+    spec = json.loads((proj / "video.json").read_text(encoding="utf-8"))
+    if spec.get("music", {}).get("mood") == "horror":
+        mix = horror(dur, rng)
+        fade = int(SR * 1.0)
+        mix[-fade:] *= np.linspace(1, 0, fade)
+        write(proj / "assets" / "music.wav", mix / np.max(np.abs(mix)) * 0.85)
+        tt = np.arange(int(SR * 0.9)) / SR  # "Hit" für Schockmomente
+        hit = (rng.normal(0, 1, len(tt)) * 0.5 + np.sin(2 * np.pi * 40 * tt)) * np.exp(-tt * 4)
+        write(proj / "assets" / "pop.wav", hit / np.max(np.abs(hit)) * 0.9)
+        print(f"music.wav (horror, {dur:.1f}s) + pop.wav (hit)")
+        return
     beat = 60 / BPM
     total = int(SR * (dur + 1))
     mix = np.zeros(total)

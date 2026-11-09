@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>In dieser Stadt steht über jedem, wie lange er noch lebt</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script type="importmap">
+      { "imports": { "three": "./assets/vendor/three.module.js", "three/addons/": "./assets/vendor/addons/" } }
+    </script>
+    <style>
+      html, body { margin: 0; padding: 0; background: #000; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #8cc8f0; font-family: "Montserrat", sans-serif; }
+      #world { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      /* Ein-Wort-Untertitel: weiß, extra fett, schwarze Kontur, ~65 % Bildhöhe */
+      .cap { position: absolute; left: 0; width: 1080px; top: 1150px; height: 160px; text-align: center; z-index: 50; overflow: visible; }
+      .cap span { display: inline-block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 92px; line-height: 160px;
+        color: #fff; -webkit-text-stroke: 14px #111; paint-order: stroke fill; letter-spacing: -1px;
+        text-shadow: 0 7px 0 rgba(0,0,0,0.35); transform-origin: 50% 60%; }
+      /* Infokarte auf Cremegrund */
+      .card-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: #f3e9dc; z-index: 40; }
+      .card { position: absolute; left: 190px; top: 560px; width: 700px; border-radius: 34px; background: #fff; overflow: hidden;
+        box-shadow: 0 30px 60px rgba(60,40,20,0.25); }
+      .card-head { background: #e23b3b; color: #fff; font-weight: 900; font-size: 64px; text-align: center; padding: 26px 0 22px; letter-spacing: 2px; }
+      .card-val { color: #151515; font-weight: 900; font-size: 210px; text-align: center; line-height: 1; padding: 40px 0 56px; }
+      /* Blick durchs Schlüsselloch: schwarzer Rahmen mit Schlüsselloch-Ausschnitt */
+      .keyhole { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 40; overflow: hidden; }
+      .keyhole-mask { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 900px; }
+      .keyhole-mask svg { display: block; }
+      .flash { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 39; }
+      .flash-fill { position: absolute; inset: 0; mix-blend-mode: normal; }
+      /* Schild oben mit Schlüsselsatz */
+      .sign { position: absolute; left: 0; top: 250px; width: 1080px; height: 160px; text-align: center; z-index: 45; }
+      .sign-box { display: inline-block; background: #fff; color: #111; border: 7px solid #111; border-radius: 30px; padding: 16px 40px;
+        font-weight: 900; font-size: 60px; letter-spacing: 1px; box-shadow: 0 10px 0 rgba(0,0,0,0.25); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="49.07" data-width="1080" data-height="1920">
+      <canvas id="world" class="clip" width="1080" height="1920" data-start="0" data-duration="49.07" data-track-index="1" data-track-kind="graphics"></canvas>
+      <div id="ov0" class="clip card-bg" data-start="10.197" data-duration="1.442" data-track-index="3">
+        <div class="card"><div class="card-head">NACHTS</div><div class="card-val">3:00</div></div>
+      </div>
+      <div id="ov1" class="clip keyhole" data-start="15.443" data-duration="1.726" data-track-index="3"><div class="keyhole-mask"><svg width="1080" height="1920" viewBox="0 0 1080 1920"><defs><mask id="ov1-m"><rect width="1080" height="1920" fill="#fff"/><circle cx="540" cy="820" r="230" fill="#000"/><polygon points="430,930 650,930 760,1420 320,1420" fill="#000"/></mask></defs><rect x="-1000" y="-1000" width="3080" height="3920" fill="#000" mask="url(#ov1-m)"/></svg></div></div>
+      <div id="ov2" class="clip flash" data-start="18.696" data-duration="0.236" data-track-index="3"><div class="flash-fill" style="background:#000000"></div></div>
+      <div id="ov3" class="clip sign" data-start="22.697" data-duration="0.257" data-track-index="4"><div class="sign-box">0</div></div>
+      <div id="ov4" class="clip flash" data-start="34.939" data-duration="0.687" data-track-index="3"><div class="flash-fill" style="background:#c40000"></div></div>
+      <div id="ov5" class="clip flash" data-start="42.648" data-duration="0.766" data-track-index="3"><div class="flash-fill" style="background:#c40000"></div></div>
+      <div id="ov6" class="clip sign" data-start="46.069" data-duration="1.958" data-track-index="4"><div class="sign-box">DU HÄTTEST MICH NICHT SEHEN DÜRFEN.</div></div>
+      <div id="ov7" class="clip flash" data-start="48.027" data-duration="1.043" data-track-index="3"><div class="flash-fill" style="background:#000000"></div></div>
+      <div id="w0" class="clip cap" data-start="0.15" data-duration="0.233" data-track-index="5"><span>In</span></div>
+      <div id="w1" class="clip cap" data-start="0.383" data-duration="0.265" data-track-index="5"><span>dieser</span></div>
+      <div id="w2" class="clip cap" data-start="0.648" data-duration="0.265" data-track-index="5"><span>Stadt</span></div>
+      <div id="w3" class="clip cap" data-start="0.913" data-duration="0.265" data-track-index="5"><span>steht</span></div>
+      <div id="w4" class="clip cap" data-start="1.178" data-duration="0.199" data-track-index="5"><span>über</span></div>
+      <div id="w5" class="clip cap" data-start="1.377" data-duration="0.332" data-track-index="5"><span>jedem</span></div>
+      <div id="w6" class="clip cap" data-start="1.709" data-duration="0.563" data-track-index="5"><span>Menschen</span></div>
+      <div id="w7" class="clip cap" data-start="2.272" data-duration="0.133" data-track-index="5"><span>wie</span></div>
+      <div id="w8" class="clip cap" data-start="2.405" data-duration="0.265" data-track-index="5"><span>viele</span></div>
+      <div id="w9" class="clip cap" data-start="2.67" data-duration="0.265" data-track-index="5"><span>Tage</span></div>
+      <div id="w10" class="clip cap" data-start="2.935" data-duration="0.133" data-track-index="5"><span>er</span></div>
+      <div id="w11" class="clip cap" data-start="3.068" data-duration="0.199" data-track-index="5"><span>noch</span></div>
+      <div id="w12" class="clip cap" data-start="3.267" data-duration="0.199" data-track-index="5"><span>zu</span></div>
+      <div id="w13" class="clip cap" data-start="3.466" data-duration="0.331" data-track-index="5"><span>leben</span></div>
+      <div id="w14" class="clip cap" data-start="3.797" data-duration="0.552" data-track-index="5"><span>hat</span></div>
+      <div id="w15" class="clip cap" data-start="4.349" data-duration="0.256" data-track-index="5"><span>Luca</span></div>
+      <div id="w16" class="clip cap" data-start="4.605" data-duration="0.191" data-track-index="5"><span>hat</span></div>
+      <div id="w17" class="clip cap" data-start="4.796" data-duration="0.192" data-track-index="5"><span>noch</span></div>
+      <div id="w18" class="clip cap" data-start="4.988" data-duration="1.021" data-track-index="5"><span>dreiundsechzig</span></div>
+      <div id="w19" class="clip cap" data-start="6.009" data-duration="0.608" data-track-index="5"><span>Jahre</span></div>
+      <div id="w20" class="clip cap" data-start="6.617" data-duration="0.316" data-track-index="5"><span>Seine</span></div>
+      <div id="w21" class="clip cap" data-start="6.933" data-duration="0.253" data-track-index="5"><span>Mutter</span></div>
+      <div id="w22" class="clip cap" data-start="7.186" data-duration="0.19" data-track-index="5"><span>hat</span></div>
+      <div id="w23" class="clip cap" data-start="7.376" data-duration="1.012" data-track-index="5"><span>achtundzwanzig</span></div>
+      <div id="w24" class="clip cap" data-start="8.388" data-duration="0.485" data-track-index="5"><span>Jahre</span></div>
+      <div id="w25" class="clip cap" data-start="8.873" data-duration="0.253" data-track-index="5"><span>Sein</span></div>
+      <div id="w26" class="clip cap" data-start="9.126" data-duration="0.253" data-track-index="5"><span>Vater</span></div>
+      <div id="w27" class="clip cap" data-start="9.379" data-duration="0.858" data-track-index="5"><span>neunzehn</span></div>
+      <div id="w28" class="clip cap" data-start="10.237" data-duration="0.401" data-track-index="5"><span>Eines</span></div>
+      <div id="w29" class="clip cap" data-start="10.638" data-duration="0.4" data-track-index="5"><span>Nachts</span></div>
+      <div id="w30" class="clip cap" data-start="11.038" data-duration="0.321" data-track-index="5"><span>wacht</span></div>
+      <div id="w31" class="clip cap" data-start="11.359" data-duration="0.32" data-track-index="5"><span>Luca</span></div>
+      <div id="w32" class="clip cap" data-start="11.679" data-duration="0.16" data-track-index="5"><span>um</span></div>
+      <div id="w33" class="clip cap" data-start="11.839" data-duration="0.32" data-track-index="5"><span>drei</span></div>
+      <div id="w34" class="clip cap" data-start="12.159" data-duration="0.161" data-track-index="5"><span>Uhr</span></div>
+      <div id="w35" class="clip cap" data-start="12.32" data-duration="0.6" data-track-index="5"><span>auf</span></div>
+      <div id="w36" class="clip cap" data-start="12.92" data-duration="0.363" data-track-index="5"><span>Jemand</span></div>
+      <div id="w37" class="clip cap" data-start="13.283" data-duration="0.362" data-track-index="5"><span>klopft</span></div>
+      <div id="w38" class="clip cap" data-start="13.645" data-duration="0.302" data-track-index="5"><span>leise</span></div>
+      <div id="w39" class="clip cap" data-start="13.947" data-duration="0.121" data-track-index="5"><span>an</span></div>
+      <div id="w40" class="clip cap" data-start="14.068" data-duration="0.303" data-track-index="5"><span>seine</span></div>
+      <div id="w41" class="clip cap" data-start="14.371" data-duration="0.531" data-track-index="5"><span>Tür</span></div>
+      <div id="w42" class="clip cap" data-start="14.902" data-duration="0.106" data-track-index="5"><span>Er</span></div>
+      <div id="w43" class="clip cap" data-start="15.008" data-duration="0.211" data-track-index="5"><span>schaut</span></div>
+      <div id="w44" class="clip cap" data-start="15.219" data-duration="0.264" data-track-index="5"><span>durch</span></div>
+      <div id="w45" class="clip cap" data-start="15.483" data-duration="0.158" data-track-index="5"><span>das</span></div>
+      <div id="w46" class="clip cap" data-start="15.641" data-duration="0.769" data-track-index="5"><span>Schlüsselloch</span></div>
+      <div id="w47" class="clip cap" data-start="16.41" data-duration="0.414" data-track-index="5"><span>Niemand</span></div>
+      <div id="w48" class="clip cap" data-start="16.824" data-duration="0.207" data-track-index="5"><span>ist</span></div>
+      <div id="w49" class="clip cap" data-start="17.031" data-duration="0.673" data-track-index="5"><span>da</span></div>
+      <div id="w50" class="clip cap" data-start="17.704" data-duration="0.177" data-track-index="5"><span>Als</span></div>
+      <div id="w51" class="clip cap" data-start="17.881" data-duration="0.118" data-track-index="5"><span>er</span></div>
+      <div id="w52" class="clip cap" data-start="17.999" data-duration="0.236" data-track-index="5"><span>sich</span></div>
+      <div id="w53" class="clip cap" data-start="18.235" data-duration="0.501" data-track-index="5"><span>umdreht</span></div>
+      <div id="w54" class="clip cap" data-start="18.736" data-duration="0.236" data-track-index="5"><span>steht</span></div>
+      <div id="w55" class="clip cap" data-start="18.972" data-duration="0.236" data-track-index="5"><span>eine</span></div>
+      <div id="w56" class="clip cap" data-start="19.208" data-duration="0.413" data-track-index="5"><span>schwarze</span></div>
+      <div id="w57" class="clip cap" data-start="19.621" data-duration="0.413" data-track-index="5"><span>Gestalt</span></div>
+      <div id="w58" class="clip cap" data-start="20.034" data-duration="0.118" data-track-index="5"><span>in</span></div>
+      <div id="w59" class="clip cap" data-start="20.152" data-duration="0.177" data-track-index="5"><span>der</span></div>
+      <div id="w60" class="clip cap" data-start="20.329" data-duration="0.526" data-track-index="5"><span>Ecke</span></div>
+      <div id="w61" class="clip cap" data-start="20.855" data-duration="0.218" data-track-index="5"><span>Über</span></div>
+      <div id="w62" class="clip cap" data-start="21.073" data-duration="0.289" data-track-index="5"><span>ihrem</span></div>
+      <div id="w63" class="clip cap" data-start="21.362" data-duration="0.289" data-track-index="5"><span>Kopf</span></div>
+      <div id="w64" class="clip cap" data-start="21.651" data-duration="0.29" data-track-index="5"><span>steht</span></div>
+      <div id="w65" class="clip cap" data-start="21.941" data-duration="0.289" data-track-index="5"><span>eine</span></div>
+      <div id="w66" class="clip cap" data-start="22.23" data-duration="0.507" data-track-index="5"><span>Zahl</span></div>
+      <div id="w67" class="clip cap" data-start="22.737" data-duration="0.703" data-track-index="5"><span>Null</span></div>
+      <div id="w68" class="clip cap" data-start="23.44" data-duration="0.244" data-track-index="5"><span>Luca</span></div>
+      <div id="w69" class="clip cap" data-start="23.684" data-duration="0.244" data-track-index="5"><span>rennt</span></div>
+      <div id="w70" class="clip cap" data-start="23.928" data-duration="0.184" data-track-index="5"><span>zu</span></div>
+      <div id="w71" class="clip cap" data-start="24.112" data-duration="0.366" data-track-index="5"><span>seinen</span></div>
+      <div id="w72" class="clip cap" data-start="24.478" data-duration="0.656" data-track-index="5"><span>Eltern</span></div>
+      <div id="w73" class="clip cap" data-start="25.134" data-duration="0.163" data-track-index="5"><span>Doch</span></div>
+      <div id="w74" class="clip cap" data-start="25.297" data-duration="0.109" data-track-index="5"><span>sie</span></div>
+      <div id="w75" class="clip cap" data-start="25.406" data-duration="0.38" data-track-index="5"><span>glauben</span></div>
+      <div id="w76" class="clip cap" data-start="25.786" data-duration="0.109" data-track-index="5"><span>ihm</span></div>
+      <div id="w77" class="clip cap" data-start="25.895" data-duration="0.619" data-track-index="5"><span>nicht</span></div>
+      <div id="w78" class="clip cap" data-start="26.514" data-duration="0.123" data-track-index="5"><span>Am</span></div>
+      <div id="w79" class="clip cap" data-start="26.637" data-duration="0.493" data-track-index="5"><span>nächsten</span></div>
+      <div id="w80" class="clip cap" data-start="27.13" data-duration="0.369" data-track-index="5"><span>Morgen</span></div>
+      <div id="w81" class="clip cap" data-start="27.499" data-duration="0.123" data-track-index="5"><span>in</span></div>
+      <div id="w82" class="clip cap" data-start="27.622" data-duration="0.185" data-track-index="5"><span>der</span></div>
+      <div id="w83" class="clip cap" data-start="27.807" data-duration="0.246" data-track-index="5"><span>Schule</span></div>
+      <div id="w84" class="clip cap" data-start="28.053" data-duration="0.185" data-track-index="5"><span>sieht</span></div>
+      <div id="w85" class="clip cap" data-start="28.238" data-duration="0.123" data-track-index="5"><span>er</span></div>
+      <div id="w86" class="clip cap" data-start="28.361" data-duration="0.123" data-track-index="5"><span>die</span></div>
+      <div id="w87" class="clip cap" data-start="28.484" data-duration="0.432" data-track-index="5"><span>Gestalt</span></div>
+      <div id="w88" class="clip cap" data-start="28.916" data-duration="0.597" data-track-index="5"><span>wieder</span></div>
+      <div id="w89" class="clip cap" data-start="29.513" data-duration="0.117" data-track-index="5"><span>Sie</span></div>
+      <div id="w90" class="clip cap" data-start="29.63" data-duration="0.234" data-track-index="5"><span>steht</span></div>
+      <div id="w91" class="clip cap" data-start="29.864" data-duration="0.351" data-track-index="5"><span>direkt</span></div>
+      <div id="w92" class="clip cap" data-start="30.215" data-duration="0.293" data-track-index="5"><span>hinter</span></div>
+      <div id="w93" class="clip cap" data-start="30.508" data-duration="0.293" data-track-index="5"><span>seiner</span></div>
+      <div id="w94" class="clip cap" data-start="30.801" data-duration="0.351" data-track-index="5"><span>besten</span></div>
+      <div id="w95" class="clip cap" data-start="31.152" data-duration="0.469" data-track-index="5"><span>Freundin</span></div>
+      <div id="w96" class="clip cap" data-start="31.621" data-duration="0.525" data-track-index="5"><span>Mia</span></div>
+      <div id="w97" class="clip cap" data-start="32.146" data-duration="0.182" data-track-index="5"><span>Über</span></div>
+      <div id="w98" class="clip cap" data-start="32.328" data-duration="0.242" data-track-index="5"><span>Mias</span></div>
+      <div id="w99" class="clip cap" data-start="32.57" data-duration="0.242" data-track-index="5"><span>Kopf</span></div>
+      <div id="w100" class="clip cap" data-start="32.812" data-duration="0.242" data-track-index="5"><span>steht</span></div>
+      <div id="w101" class="clip cap" data-start="33.054" data-duration="0.302" data-track-index="5"><span>nicht</span></div>
+      <div id="w102" class="clip cap" data-start="33.356" data-duration="0.182" data-track-index="5"><span>mehr</span></div>
+      <div id="w103" class="clip cap" data-start="33.538" data-duration="0.968" data-track-index="5"><span>achtundzwanzig</span></div>
+      <div id="w104" class="clip cap" data-start="34.506" data-duration="0.473" data-track-index="5"><span>Jahre</span></div>
+      <div id="w105" class="clip cap" data-start="34.979" data-duration="0.412" data-track-index="5"><span>Sondern</span></div>
+      <div id="w106" class="clip cap" data-start="35.391" data-duration="0.275" data-track-index="5"><span>zehn</span></div>
+      <div id="w107" class="clip cap" data-start="35.666" data-duration="0.903" data-track-index="5"><span>Sekunden</span></div>
+      <div id="w108" class="clip cap" data-start="36.569" data-duration="0.315" data-track-index="5"><span>Luca</span></div>
+      <div id="w109" class="clip cap" data-start="36.884" data-duration="0.631" data-track-index="5"><span>schreit</span></div>
+      <div id="w110" class="clip cap" data-start="37.515" data-duration="0.635" data-track-index="5"><span>Mia</span></div>
+      <div id="w111" class="clip cap" data-start="38.15" data-duration="0.194" data-track-index="5"><span>Doch</span></div>
+      <div id="w112" class="clip cap" data-start="38.344" data-duration="0.13" data-track-index="5"><span>die</span></div>
+      <div id="w113" class="clip cap" data-start="38.474" data-duration="0.454" data-track-index="5"><span>Gestalt</span></div>
+      <div id="w114" class="clip cap" data-start="38.928" data-duration="0.259" data-track-index="5"><span>dreht</span></div>
+      <div id="w115" class="clip cap" data-start="39.187" data-duration="0.26" data-track-index="5"><span>sich</span></div>
+      <div id="w116" class="clip cap" data-start="39.447" data-duration="0.389" data-track-index="5"><span>langsam</span></div>
+      <div id="w117" class="clip cap" data-start="39.836" data-duration="0.194" data-track-index="5"><span>zu</span></div>
+      <div id="w118" class="clip cap" data-start="40.03" data-duration="0.13" data-track-index="5"><span>ihm</span></div>
+      <div id="w119" class="clip cap" data-start="40.16" data-duration="0.482" data-track-index="5"><span>um</span></div>
+      <div id="w120" class="clip cap" data-start="40.642" data-duration="0.198" data-track-index="5"><span>Und</span></div>
+      <div id="w121" class="clip cap" data-start="40.84" data-duration="0.198" data-track-index="5"><span>über</span></div>
+      <div id="w122" class="clip cap" data-start="41.038" data-duration="0.33" data-track-index="5"><span>Lucas</span></div>
+      <div id="w123" class="clip cap" data-start="41.368" data-duration="0.264" data-track-index="5"><span>Kopf</span></div>
+      <div id="w124" class="clip cap" data-start="41.632" data-duration="0.264" data-track-index="5"><span>steht</span></div>
+      <div id="w125" class="clip cap" data-start="41.896" data-duration="0.792" data-track-index="5"><span>plötzlich</span></div>
+      <div id="w126" class="clip cap" data-start="42.688" data-duration="0.198" data-track-index="5"><span>Null</span></div>
+      <div id="w127" class="clip cap" data-start="42.886" data-duration="1.111" data-track-index="5"><span>Sekunden</span></div>
+      <div id="w128" class="clip cap" data-start="43.997" data-duration="0.161" data-track-index="5"><span>Dann</span></div>
+      <div id="w129" class="clip cap" data-start="44.158" data-duration="0.374" data-track-index="5"><span>flüstert</span></div>
+      <div id="w130" class="clip cap" data-start="44.532" data-duration="0.321" data-track-index="5"><span>jemand</span></div>
+      <div id="w131" class="clip cap" data-start="44.853" data-duration="0.321" data-track-index="5"><span>direkt</span></div>
+      <div id="w132" class="clip cap" data-start="45.174" data-duration="0.267" data-track-index="5"><span>hinter</span></div>
+      <div id="w133" class="clip cap" data-start="45.441" data-duration="0.668" data-track-index="5"><span>ihm</span></div>
+      <div id="w134" class="clip cap" data-start="46.109" data-duration="0.104" data-track-index="5"><span>Du</span></div>
+      <div id="w135" class="clip cap" data-start="46.213" data-duration="0.311" data-track-index="5"><span>hättest</span></div>
+      <div id="w136" class="clip cap" data-start="46.524" data-duration="0.207" data-track-index="5"><span>mich</span></div>
+      <div id="w137" class="clip cap" data-start="46.731" data-duration="0.311" data-track-index="5"><span>letzte</span></div>
+      <div id="w138" class="clip cap" data-start="47.042" data-duration="0.207" data-track-index="5"><span>Nacht</span></div>
+      <div id="w139" class="clip cap" data-start="47.249" data-duration="0.26" data-track-index="5"><span>nicht</span></div>
+      <div id="w140" class="clip cap" data-start="47.509" data-duration="0.207" data-track-index="5"><span>sehen</span></div>
+      <div id="w141" class="clip cap" data-start="47.716" data-duration="0.911" data-track-index="5"><span>dürfen</span></div>
+      <audio id="voice" class="clip" src="assets/voice.wav" data-start="0" data-duration="49.07" data-volume="1" data-track-index="7"></audio>
+      <audio id="music" class="clip" src="assets/music.wav" data-start="0" data-duration="49.07" data-volume="0.32" data-fade-out="1" data-track-index="8"></audio>
+      <audio id="sfx0" class="clip" src="assets/pop.wav" data-start="10.197" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+
+      <audio id="sfx3" class="clip" src="assets/pop.wav" data-start="22.697" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+
+      <audio id="sfx6" class="clip" src="assets/pop.wav" data-start="46.069" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+    </div>
+    <script id="timing" type="application/json">{"duration":49.073,"sentences":[{"id":"s1","text":"In dieser Stadt steht über jedem Menschen, wie viele Tage er noch zu leben hat.","start":0.25,"end":3.996,"words":[{"text":"In","start":0.25,"end":0.383},{"text":"dieser","start":0.383,"end":0.648},{"text":"Stadt","start":0.648,"end":0.913},{"text":"steht","start":0.913,"end":1.178},{"text":"über","start":1.178,"end":1.377},{"text":"jedem","start":1.377,"end":1.709},{"text":"Menschen,","start":1.709,"end":2.106},{"text":"wie","start":2.272,"end":2.405},{"text":"viele","start":2.405,"end":2.67},{"text":"Tage","start":2.67,"end":2.935},{"text":"er","start":2.935,"end":3.068},{"text":"noch","start":3.068,"end":3.267},{"text":"zu","start":3.267,"end":3.466},{"text":"leben","start":3.466,"end":3.797},{"text":"hat.","start":3.797,"end":3.996}]},{"id":"s2","text":"Luca hat noch dreiundsechzig Jahre.","start":4.349,"end":6.265,"words":[{"text":"Luca","start":4.349,"end":4.605},{"text":"hat","start":4.605,"end":4.796},{"text":"noch","start":4.796,"end":4.988},{"text":"dreiundsechzig","start":4.988,"end":6.009},{"text":"Jahre.","start":6.009,"end":6.265}]},{"id":"s3","text":"Seine Mutter hat achtundzwanzig Jahre.","start":6.617,"end":8.641,"words":[{"text":"Seine","start":6.617,"end":6.933},{"text":"Mutter","start":6.933,"end":7.186},{"text":"hat","start":7.186,"end":7.376},{"text":"achtundzwanzig","start":7.376,"end":8.388},{"text":"Jahre.","start":8.388,"end":8.641}]},{"id":"s4","text":"Sein Vater neunzehn.","start":8.873,"end":9.886,"words":[{"text":"Sein","start":8.873,"end":9.126},{"text":"Vater","start":9.126,"end":9.379},{"text":"neunzehn.","start":9.379,"end":9.886}]},{"id":"s5","text":"Eines Nachts wacht Luca um drei Uhr auf.","start":10.237,"end":12.56,"words":[{"text":"Eines","start":10.237,"end":10.638},{"text":"Nachts","start":10.638,"end":11.038},{"text":"wacht","start":11.038,"end":11.359},{"text":"Luca","start":11.359,"end":11.679},{"text":"um","start":11.679,"end":11.839},{"text":"drei","start":11.839,"end":12.159},{"text":"Uhr","start":12.159,"end":12.32},{"text":"auf.","start":12.32,"end":12.56}]},{"id":"s6","text":"Jemand klopft leise an seine Tür.","start":12.92,"end":14.552,"words":[{"text":"Jemand","start":12.92,"end":13.283},{"text":"klopft","start":13.283,"end":13.645},{"text":"leise","start":13.645,"end":13.947},{"text":"an","start":13.947,"end":14.068},{"text":"seine","start":14.068,"end":14.371},{"text":"Tür.","start":14.371,"end":14.552}]},{"id":"s7","text":"Er schaut durch das Schlüsselloch.","start":14.902,"end":16.064,"words":[{"text":"Er","start":14.902,"end":15.008},{"text":"schaut","start":15.008,"end":15.219},{"text":"durch","start":15.219,"end":15.483},{"text":"das","start":15.483,"end":15.641},{"text":"Schlüsselloch.","start":15.641,"end":16.064}]},{"id":"s8","text":"Niemand ist da.","start":16.41,"end":17.169,"words":[{"text":"Niemand","start":16.41,"end":16.824},{"text":"ist","start":16.824,"end":17.031},{"text":"da.","start":17.031,"end":17.169}]},{"id":"s9","text":"Als er sich umdreht, steht eine schwarze Gestalt in der Ecke.","start":17.704,"end":20.506,"words":[{"text":"Als","start":17.704,"end":17.881},{"text":"er","start":17.881,"end":17.999},{"text":"sich","start":17.999,"end":18.235},{"text":"umdreht,","start":18.235,"end":18.589},{"text":"steht","start":18.736,"end":18.972},{"text":"eine","start":18.972,"end":19.208},{"text":"schwarze","start":19.208,"end":19.621},{"text":"Gestalt","start":19.621,"end":20.034},{"text":"in","start":20.034,"end":20.152},{"text":"der","start":20.152,"end":20.329},{"text":"Ecke.","start":20.329,"end":20.506}]},{"id":"s10","text":"Über ihrem Kopf steht eine Zahl: Null.","start":20.855,"end":22.954,"words":[{"text":"Über","start":20.855,"end":21.073},{"text":"ihrem","start":21.073,"end":21.362},{"text":"Kopf","start":21.362,"end":21.651},{"text":"steht","start":21.651,"end":21.941},{"text":"eine","start":21.941,"end":22.23},{"text":"Zahl:","start":22.23,"end":22.52},{"text":"Null.","start":22.737,"end":22.954}]},{"id":"s11","text":"Luca rennt zu seinen Eltern.","start":23.44,"end":24.783,"words":[{"text":"Luca","start":23.44,"end":23.684},{"text":"rennt","start":23.684,"end":23.928},{"text":"zu","start":23.928,"end":24.112},{"text":"seinen","start":24.112,"end":24.478},{"text":"Eltern.","start":24.478,"end":24.783}]},{"id":"s12","text":"Doch sie glauben ihm nicht.","start":25.134,"end":26.167,"words":[{"text":"Doch","start":25.134,"end":25.297},{"text":"sie","start":25.297,"end":25.406},{"text":"glauben","start":25.406,"end":25.786},{"text":"ihm","start":25.786,"end":25.895},{"text":"nicht.","start":25.895,"end":26.167}]},{"id":"s13","text":"Am nächsten Morgen in der Schule sieht er die Gestalt wieder.","start":26.514,"end":29.162,"words":[{"text":"Am","start":26.514,"end":26.637},{"text":"nächsten","start":26.637,"end":27.13},{"text":"Morgen","start":27.13,"end":27.499},{"text":"in","start":27.499,"end":27.622},{"text":"der","start":27.622,"end":27.807},{"text":"Schule","start":27.807,"end":28.053},{"text":"sieht","start":28.053,"end":28.238},{"text":"er","start":28.238,"end":28.361},{"text":"die","start":28.361,"end":28.484},{"text":"Gestalt","start":28.484,"end":28.916},{"text":"wieder.","start":28.916,"end":29.162}]},{"id":"s14","text":"Sie steht direkt hinter seiner besten Freundin Mia.","start":29.513,"end":31.797,"words":[{"text":"Sie","start":29.513,"end":29.63},{"text":"steht","start":29.63,"end":29.864},{"text":"direkt","start":29.864,"end":30.215},{"text":"hinter","start":30.215,"end":30.508},{"text":"seiner","start":30.508,"end":30.801},{"text":"besten","start":30.801,"end":31.152},{"text":"Freundin","start":31.152,"end":31.621},{"text":"Mia.","start":31.621,"end":31.797}]},{"id":"s15","text":"Über Mias Kopf steht nicht mehr achtundzwanzig Jahre.","start":32.146,"end":34.749,"words":[{"text":"Über","start":32.146,"end":32.328},{"text":"Mias","start":32.328,"end":32.57},{"text":"Kopf","start":32.57,"end":32.812},{"text":"steht","start":32.812,"end":33.054},{"text":"nicht","start":33.054,"end":33.356},{"text":"mehr","start":33.356,"end":33.538},{"text":"achtundzwanzig","start":33.538,"end":34.506},{"text":"Jahre.","start":34.506,"end":34.749}]},{"id":"s16","text":"Sondern zehn Sekunden.","start":34.979,"end":36.215,"words":[{"text":"Sondern","start":34.979,"end":35.391},{"text":"zehn","start":35.391,"end":35.666},{"text":"Sekunden.","start":35.666,"end":36.215}]},{"id":"s17","text":"Luca schreit: Mia!","start":36.569,"end":37.751,"words":[{"text":"Luca","start":36.569,"end":36.884},{"text":"schreit:","start":36.884,"end":37.278},{"text":"Mia!","start":37.515,"end":37.751}]},{"id":"s18","text":"Doch die Gestalt dreht sich langsam zu ihm um.","start":38.15,"end":40.29,"words":[{"text":"Doch","start":38.15,"end":38.344},{"text":"die","start":38.344,"end":38.474},{"text":"Gestalt","start":38.474,"end":38.928},{"text":"dreht","start":38.928,"end":39.187},{"text":"sich","start":39.187,"end":39.447},{"text":"langsam","start":39.447,"end":39.836},{"text":"zu","start":39.836,"end":40.03},{"text":"ihm","start":40.03,"end":40.16},{"text":"um.","start":40.16,"end":40.29}]},{"id":"s19","text":"Und über Lucas Kopf steht plötzlich: Null Sekunden.","start":40.642,"end":43.414,"words":[{"text":"Und","start":40.642,"end":40.84},{"text":"über","start":40.84,"end":41.038},{"text":"Lucas","start":41.038,"end":41.368},{"text":"Kopf","start":41.368,"end":41.632},{"text":"steht","start":41.632,"end":41.896},{"text":"plötzlich:","start":41.896,"end":42.49},{"text":"Null","start":42.688,"end":42.886},{"text":"Sekunden.","start":42.886,"end":43.414}]},{"id":"s20","text":"Dann flüstert jemand direkt hinter ihm:","start":43.997,"end":45.548,"words":[{"text":"Dann","start":43.997,"end":44.158},{"text":"flüstert","start":44.158,"end":44.532},{"text":"jemand","start":44.532,"end":44.853},{"text":"direkt","start":44.853,"end":45.174},{"text":"hinter","start":45.174,"end":45.441},{"text":"ihm:","start":45.441,"end":45.548}]},{"id":"s21","text":"Du hättest mich letzte Nacht nicht sehen dürfen.","start":46.109,"end":48.027,"words":[{"text":"Du","start":46.109,"end":46.213},{"text":"hättest","start":46.213,"end":46.524},{"text":"mich","start":46.524,"end":46.731},{"text":"letzte","start":46.731,"end":47.042},{"text":"Nacht","start":47.042,"end":47.249},{"text":"nicht","start":47.249,"end":47.509},{"text":"sehen","start":47.509,"end":47.716},{"text":"dürfen.","start":47.716,"end":48.027}]}],"videoDuration":49.07}</script>
+    <script>
+      (function () {
+        var duration = 49.07;
+        var clock = { t: 0 };
+        var host = { clock: clock, render: null };
+        window.__stadt = host;
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["main"] = new Promise(function (resolve) { host.ready = resolve; });
+        var tl = gsap.timeline({ paused: true });
+        tl.to(clock, { t: duration, duration: duration, ease: "none", onUpdate: function () { if (host.render) host.render(clock.t); } }, 0);
+      tl.fromTo("#w0 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.15);
+      tl.fromTo("#w1 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.383);
+      tl.fromTo("#w2 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.648);
+      tl.fromTo("#w3 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.913);
+      tl.fromTo("#w4 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.178);
+      tl.fromTo("#w5 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.377);
+      tl.fromTo("#w6 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.709);
+      tl.fromTo("#w7 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.272);
+      tl.fromTo("#w8 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.405);
+      tl.fromTo("#w9 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.67);
+      tl.fromTo("#w10 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.935);
+      tl.fromTo("#w11 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.068);
+      tl.fromTo("#w12 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.267);
+      tl.fromTo("#w13 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.466);
+      tl.fromTo("#w14 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.797);
+      tl.fromTo("#w15 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.349);
+      tl.fromTo("#w16 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.605);
+      tl.fromTo("#w17 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.796);
+      tl.fromTo("#w18 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.988);
+      tl.fromTo("#w19 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.009);
+      tl.fromTo("#w20 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.617);
+      tl.fromTo("#w21 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.933);
+      tl.fromTo("#w22 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.186);
+      tl.fromTo("#w23 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.376);
+      tl.fromTo("#w24 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.388);
+      tl.fromTo("#w25 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.873);
+      tl.fromTo("#w26 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 9.126);
+      tl.fromTo("#w27 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 9.379);
+      tl.fromTo("#w28 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.237);
+      tl.fromTo("#w29 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.638);
+      tl.fromTo("#w30 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.038);
+      tl.fromTo("#w31 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.359);
+      tl.fromTo("#w32 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.679);
+      tl.fromTo("#w33 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.839);
+      tl.fromTo("#w34 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.159);
+      tl.fromTo("#w35 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.32);
+      tl.fromTo("#w36 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.92);
+      tl.fromTo("#w37 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.283);
+      tl.fromTo("#w38 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.645);
+      tl.fromTo("#w39 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.947);
+      tl.fromTo("#w40 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.068);
+      tl.fromTo("#w41 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.371);
+      tl.fromTo("#w42 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.902);
+      tl.fromTo("#w43 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.008);
+      tl.fromTo("#w44 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.219);
+      tl.fromTo("#w45 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.483);
+      tl.fromTo("#w46 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.641);
+      tl.fromTo("#w47 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.41);
+      tl.fromTo("#w48 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.824);
+      tl.fromTo("#w49 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.031);
+      tl.fromTo("#w50 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.704);
+      tl.fromTo("#w51 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.881);
+      tl.fromTo("#w52 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.999);
+      tl.fromTo("#w53 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.235);
+      tl.fromTo("#w54 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.736);
+      tl.fromTo("#w55 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.972);
+      tl.fromTo("#w56 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.208);
+      tl.fromTo("#w57 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.621);
+      tl.fromTo("#w58 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.034);
+      tl.fromTo("#w59 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.152);
+      tl.fromTo("#w60 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.329);
+      tl.fromTo("#w61 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.855);
+      tl.fromTo("#w62 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.073);
+      tl.fromTo("#w63 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.362);
+      tl.fromTo("#w64 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.651);
+      tl.fromTo("#w65 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.941);
+      tl.fromTo("#w66 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 22.23);
+      tl.fromTo("#w67 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 22.737);
+      tl.fromTo("#w68 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.44);
+      tl.fromTo("#w69 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.684);
+      tl.fromTo("#w70 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.928);
+      tl.fromTo("#w71 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.112);
+      tl.fromTo("#w72 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.478);
+      tl.fromTo("#w73 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.134);
+      tl.fromTo("#w74 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.297);
+      tl.fromTo("#w75 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.406);
+      tl.fromTo("#w76 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.786);
+      tl.fromTo("#w77 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.895);
+      tl.fromTo("#w78 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.514);
+      tl.fromTo("#w79 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.637);
+      tl.fromTo("#w80 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.13);
+      tl.fromTo("#w81 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.499);
+      tl.fromTo("#w82 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.622);
+      tl.fromTo("#w83 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.807);
+      tl.fromTo("#w84 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.053);
+      tl.fromTo("#w85 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.238);
+      tl.fromTo("#w86 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.361);
+      tl.fromTo("#w87 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.484);
+      tl.fromTo("#w88 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.916);
+      tl.fromTo("#w89 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.513);
+      tl.fromTo("#w90 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.63);
+      tl.fromTo("#w91 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.864);
+      tl.fromTo("#w92 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.215);
+      tl.fromTo("#w93 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.508);
+      tl.fromTo("#w94 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.801);
+      tl.fromTo("#w95 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.152);
+      tl.fromTo("#w96 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.621);
+      tl.fromTo("#w97 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.146);
+      tl.fromTo("#w98 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.328);
+      tl.fromTo("#w99 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.57);
+      tl.fromTo("#w100 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.812);
+      tl.fromTo("#w101 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.054);
+      tl.fromTo("#w102 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.356);
+      tl.fromTo("#w103 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.538);
+      tl.fromTo("#w104 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.506);
+      tl.fromTo("#w105 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.979);
+      tl.fromTo("#w106 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.391);
+      tl.fromTo("#w107 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.666);
+      tl.fromTo("#w108 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.569);
+      tl.fromTo("#w109 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.884);
+      tl.fromTo("#w110 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 37.515);
+      tl.fromTo("#w111 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.15);
+      tl.fromTo("#w112 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.344);
+      tl.fromTo("#w113 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.474);
+      tl.fromTo("#w114 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.928);
+      tl.fromTo("#w115 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.187);
+      tl.fromTo("#w116 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.447);
+      tl.fromTo("#w117 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.836);
+      tl.fromTo("#w118 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.03);
+      tl.fromTo("#w119 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.16);
+      tl.fromTo("#w120 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.642);
+      tl.fromTo("#w121 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.84);
+      tl.fromTo("#w122 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.038);
+      tl.fromTo("#w123 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.368);
+      tl.fromTo("#w124 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.632);
+      tl.fromTo("#w125 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.896);
+      tl.fromTo("#w126 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.688);
+      tl.fromTo("#w127 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.886);
+      tl.fromTo("#w128 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.997);
+      tl.fromTo("#w129 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.158);
+      tl.fromTo("#w130 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.532);
+      tl.fromTo("#w131 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.853);
+      tl.fromTo("#w132 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 45.174);
+      tl.fromTo("#w133 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 45.441);
+      tl.fromTo("#w134 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.109);
+      tl.fromTo("#w135 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.213);
+      tl.fromTo("#w136 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.524);
+      tl.fromTo("#w137 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.731);
+      tl.fromTo("#w138 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.042);
+      tl.fromTo("#w139 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.249);
+      tl.fromTo("#w140 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.509);
+      tl.fromTo("#w141 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.716);
+      tl.fromTo("#ov0 .card", { scale: 0.6, rotation: -8, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: 0.28, ease: "back.out(2.2)" }, 10.197);
+      tl.fromTo("#ov1 .keyhole-mask", { scale: 1.6 }, { scale: 1, duration: 0.35, ease: "power2.out" }, 15.443);
+      tl.fromTo("#ov2 .flash-fill", { opacity: 1 }, { opacity: 0, duration: 0.216, ease: "power2.out" }, 18.696);
+      tl.fromTo("#ov3 .sign-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 22.697);
+      tl.to("#ov3 .sign-box", { scale: 0.85, opacity: 0, duration: 0.12, ease: "power2.in" }, 22.824);
+      tl.fromTo("#ov4 .flash-fill", { opacity: 0.55 }, { opacity: 0, duration: 0.667, ease: "power2.out" }, 34.939);
+      tl.fromTo("#ov5 .flash-fill", { opacity: 0.7 }, { opacity: 0, duration: 0.746, ease: "power2.out" }, 42.648);
+      tl.fromTo("#ov6 .sign-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 46.069);
+      tl.to("#ov6 .sign-box", { scale: 0.85, opacity: 0, duration: 0.12, ease: "power2.in" }, 47.897);
+      tl.fromTo("#ov7 .flash-fill", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.in" }, 48.027);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+    <script type="module">
+      import { boot } from "./assets/engine/runner.js";
+      import direct from "./assets/scene.js";
+      const timing = JSON.parse(document.getElementById("timing").textContent);
+      boot({ canvas: document.getElementById("world"), direct, timing });
+    </script>
+  </body>
+</html>

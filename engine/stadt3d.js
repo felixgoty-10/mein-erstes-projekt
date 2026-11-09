@@ -143,6 +143,20 @@ function faceTex(expr) {
         g.stroke();
         g.fillStyle = "rgba(120,190,90,0.35)"; g.beginPath(); g.ellipse(128, 150, 90, 30, 0, 0, Math.PI * 2); g.fill();
         break;
+      case "eyes": { // nur leuchtende Augen (schwarze Gestalt)
+        g.shadowColor = "#ffffff"; g.shadowBlur = 18; g.fillStyle = "#f4f6ff";
+        [L, R].forEach((x) => { g.beginPath(); g.ellipse(x, Y + 6, 15, 8, 0, 0, Math.PI * 2); g.fill(); });
+        g.shadowBlur = 0;
+        break;
+      }
+      case "scream":
+        g.fillStyle = "#fff"; g.strokeStyle = ink; g.lineWidth = 6;
+        [L, R].forEach((x) => { g.beginPath(); g.ellipse(x, Y - 4, 22, 26, 0, 0, Math.PI * 2); g.fill(); g.stroke(); });
+        g.fillStyle = ink; [L, R].forEach((x) => { g.beginPath(); g.arc(x, Y, 7, 0, Math.PI * 2); g.fill(); });
+        brow(L, 58, 0.3); brow(R, 58, -0.3);
+        g.fillStyle = ink; g.beginPath(); g.ellipse(128, 190, 30, 36, 0, 0, Math.PI * 2); g.fill();
+        g.fillStyle = "#e0545a"; g.beginPath(); g.ellipse(128, 208, 18, 12, 0, 0, Math.PI * 2); g.fill();
+        break;
       case "smug":
         g.fillStyle = ink;
         [L, R].forEach((x) => { g.beginPath(); g.ellipse(x, Y + 4, 14, 10, 0, 0, Math.PI * 2); g.fill(); });
@@ -318,6 +332,12 @@ export function character(opts = {}) {
     head.add(box(1.46, 1.8, 0.42, hm, 0, -0.25, -0.52));
     head.add(box(0.3, 1.4, 1.0, hm, -0.7, -0.05, -0.1)); head.add(box(0.3, 1.4, 1.0, hm, 0.7, -0.05, -0.1));
   }
+  if (o.hat === "hood") {
+    const hm2 = mat(o.hoodColor || "#0b0b10");
+    head.add(rbox(1.5, 0.5, 1.5, 0.2, hm2, 0, 0.62, -0.02));
+    head.add(rbox(1.5, 1.4, 0.4, 0.15, hm2, 0, 0.05, -0.62));
+    head.add(rbox(0.22, 1.3, 1.4, 0.1, hm2, -0.72, 0.05, 0)); head.add(rbox(0.22, 1.3, 1.4, 0.1, hm2, 0.72, 0.05, 0));
+  }
   if (o.hat === "chef") {
     head.add(box(1.36, 0.36, 1.32, mat("#ffffff"), 0, 0.78, 0));
     const puff = new THREE.Mesh(new THREE.SphereGeometry(0.82, 16, 12), mat("#ffffff"));
@@ -343,6 +363,10 @@ export function character(opts = {}) {
   }
   if (o.blanket) { /* Decke wird im Set gebaut */ }
 
+  if (o.shadow) { // schwarze Gestalt: alles tiefschwarz, nur die Augen leuchten
+    const dark = new THREE.MeshStandardMaterial({ color: "#07070a", roughness: 1, metalness: 0 });
+    root.traverse((m) => { if (m.isMesh && m !== face) m.material = dark; });
+  }
   root.scale.setScalar(o.scale);
   root.traverse((m) => { if (m.isMesh) m.receiveShadow = true; });
 
@@ -354,7 +378,8 @@ export function character(opts = {}) {
       body.position.set(0, 0, 0); body.rotation.set(0, 0, 0);
       head.rotation.set(0, 0, 0); head.position.y = HEAD_Y;
       [armL, armR, legL, legR].forEach((p) => { p.rotation.set(0, 0, 0); p.visible = true; });
-      this.face("neutral"); this.pill(null);
+      root.visible = true;
+      this.face(o.shadow ? "eyes" : "neutral"); this.pill(null);
       return this;
     },
     at(x, z, rotY = 0) { root.position.set(x, root.position.y, z); root.rotation.y = rotY; return this; },
@@ -500,10 +525,10 @@ export function signMesh(text, w, h, opts = {}) {
   return m;
 }
 
-function windowMesh(w, h, frame = "#fffaf0") {
+function windowMesh(w, h, frame = "#fffaf0", night = false) {
   const g = new THREE.Group();
   g.add(box(w + 0.3, h + 0.3, 0.12, mat(frame), 0, 0, 0, false));
-  g.add(box(w, h, 0.14, mat("#f6e9a8", { emissive: "#6b5a1e", emissiveIntensity: 0.15 }), 0, 0, 0.02, false));
+  g.add(box(w, h, 0.14, night ? mat("#1b2a55", { emissive: "#30508f", emissiveIntensity: 0.6 }) : mat("#f6e9a8", { emissive: "#6b5a1e", emissiveIntensity: 0.15 }), 0, 0, 0.02, false));
   g.add(box(0.12, h, 0.18, mat(frame), 0, 0, 0.03, false));
   return g;
 }
@@ -593,7 +618,7 @@ export function plaza(w = 40, d = 40) {
 }
 
 /** Innenraum: Boden + Rück- und Seitenwand, offen zur Kamera (+z). */
-export function room({ w = 16, d = 12, h = 8, wall = "#efe1c4", floor = "#c98b4f", rug = null, window: win = true } = {}) {
+export function room({ w = 16, d = 12, h = 8, wall = "#efe1c4", floor = "#c98b4f", rug = null, window: win = true, night = false } = {}) {
   const g = new THREE.Group();
   const ft = woodTex(floor); ft.repeat.set(w / 6, d / 6);
   const f = new THREE.Mesh(new THREE.PlaneGeometry(w, d), new THREE.MeshStandardMaterial({ map: ft, roughness: 0.85 }));
@@ -603,7 +628,7 @@ export function room({ w = 16, d = 12, h = 8, wall = "#efe1c4", floor = "#c98b4f
   g.add(box(0.4, h, d, mat(wall), w / 2, h / 2, 0));
   g.add(box(w, 0.4, 0.5, mat("#ffffff"), 0, 0.2, -d / 2 + 0.2));
   if (win) {
-    const wm = windowMesh(3, 2.4, "#ffffff"); wm.position.set(-w * 0.22, h * 0.55, -d / 2 + 0.25); g.add(wm);
+    const wm = windowMesh(3, 2.4, "#ffffff", night); wm.position.set(-w * 0.22, h * 0.55, -d / 2 + 0.25); g.add(wm);
     const pic = box(1.8, 1.4, 0.1, mat("#7fae7a"), w * 0.25, h * 0.6, -d / 2 + 0.25); g.add(pic);
     g.add(box(2.1, 1.7, 0.08, mat("#6b4a2b"), w * 0.25, h * 0.6, -d / 2 + 0.22));
   }
@@ -687,6 +712,38 @@ export function oven() {
   g.add(box(1, 2.5, 1, mat("#8a8a8a"), 1, 5.2, -0.4));
   return g;
 }
+/** Tür mit Rahmen, Klinke und Schlüsselloch. Drehpunkt an der Scharnierseite (links). */
+export function door(color = "#f4f1ea") {
+  const g = new THREE.Group();
+  g.add(box(2.7, 4.6, 0.3, mat("#d9d3c6"), 0, 2.3, -0.05));
+  const leaf = new THREE.Group(); leaf.position.set(-1.1, 0, 0.05);
+  leaf.add(box(2.2, 4.2, 0.18, mat(color), 1.1, 2.1, 0));
+  leaf.add(box(1.6, 1.4, 0.04, mat("#e6e1d6"), 1.1, 3.0, 0.1, false));
+  leaf.add(box(1.6, 1.4, 0.04, mat("#e6e1d6"), 1.1, 1.2, 0.1, false));
+  leaf.add(box(0.34, 0.12, 0.2, mat("#c9a33a", { metalness: 0.6, roughness: 0.35 }), 1.9, 2.1, 0.16));
+  leaf.add(box(0.07, 0.18, 0.03, mat("#111"), 1.92, 1.88, 0.11, false));
+  g.add(leaf); g.userData.leaf = leaf;
+  return g;
+}
+/** Wecker mit leuchtender Uhrzeit. */
+export function alarmClock(text = "3:00") {
+  const g = new THREE.Group();
+  g.add(rbox(1.2, 0.7, 0.5, 0.12, mat("#2a2a30"), 0, 0.35, 0));
+  const tex = canvasTex(256, 128, (c) => {
+    c.fillStyle = "#120707"; c.fillRect(0, 0, 256, 128);
+    c.fillStyle = "#ff3b30"; c.shadowColor = "#ff3b30"; c.shadowBlur = 16;
+    c.font = `900 92px ${FONT}`; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(text, 128, 68);
+  });
+  const face = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 0.5), new THREE.MeshBasicMaterial({ map: tex }));
+  face.position.set(0, 0.36, 0.26); g.add(face);
+  return g;
+}
+export function nightstand() {
+  const g = new THREE.Group();
+  g.add(box(1.8, 1.8, 1.6, mat("#8a5a32"), 0, 0.9, 0));
+  g.add(box(1.5, 0.1, 0.05, mat("#c9a33a"), 0, 1.2, 0.82, false));
+  return g;
+}
 export function briefcase() {
   const g = new THREE.Group();
   g.add(box(1.1, 0.8, 0.3, mat("#5a3a20"), 0, 0, 0));
@@ -733,6 +790,7 @@ export function createWorld(canvas, { width = 1080, height = 1920 } = {}) {
   const fill = new THREE.DirectionalLight("#cfe4ff", 0.45);
   fill.position.set(-30, 20, -10); scene.add(fill);
 
+  const nightBg = new THREE.Color("#0b1020");
   const camera = new THREE.PerspectiveCamera(48, width / height, 0.1, 400);
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), mat(C.grass));
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true;
@@ -742,8 +800,8 @@ export function createWorld(canvas, { width = 1080, height = 1920 } = {}) {
   const world = {
     THREE, scene, camera, renderer, sun, sets,
     /** Ein Set ist eine Gruppe an einer Weltposition; nur das aktive Set ist sichtbar. */
-    set(name, x = 0, z = 0, { interior = false } = {}) {
-      const g = new THREE.Group(); g.position.set(x, 0, z); g.name = name; g.userData.interior = interior;
+    set(name, x = 0, z = 0, { interior = false, night = false } = {}) {
+      const g = new THREE.Group(); g.position.set(x, 0, z); g.name = name; g.userData.interior = interior; g.userData.night = night;
       scene.add(g); sets.push(g); return g;
     },
     add(set, obj, x = 0, y = 0, z = 0, rotY = 0) {
@@ -763,7 +821,19 @@ export function createWorld(canvas, { width = 1080, height = 1920 } = {}) {
       sun.position.set(o.x + 22, 40, o.z + 26);
       sun.target.position.set(o.x, 0, o.z);
       ground.visible = !active.userData.interior;
-      scene.background = active.userData.interior ? new THREE.Color("#efe1c4") : sky;
+      const night = active.userData.night;
+      if (night) { // Mondlicht: kühl, dunkel, aber Figuren bleiben lesbar
+        scene.background = nightBg; scene.fog.color.set("#0c1226"); scene.fog.near = 25; scene.fog.far = 90;
+        hemi.color.set("#5b6fa8"); hemi.groundColor.set("#141826"); hemi.intensity = 0.55;
+        sun.color.set("#a9bfff"); sun.intensity = 1.1; fill.intensity = 0.12;
+        renderer.toneMappingExposure = 1.0;
+      } else {
+        scene.background = active.userData.interior ? new THREE.Color("#efe1c4") : sky;
+        scene.fog.color.set("#cfe8f8"); scene.fog.near = 70; scene.fog.far = 190;
+        hemi.color.set("#dff1ff"); hemi.groundColor.set("#8a9a6a"); hemi.intensity = 1.25;
+        sun.color.set("#fff3df"); sun.intensity = 2.3; fill.intensity = 0.45;
+        renderer.toneMappingExposure = 1.12;
+      }
     },
     render() { renderer.render(scene, camera); },
   };

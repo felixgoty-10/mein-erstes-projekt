@@ -1,0 +1,206 @@
+{
+  "title": "In dieser Stadt steht über jedem, wie lange er noch lebt",
+  "voice": {
+    "length_scale": 1.0
+  },
+  "music": {
+    "mood": "horror",
+    "volume": 0.32
+  },
+  "sentences": [
+    {
+      "id": "s1",
+      "text": "In dieser Stadt steht über jedem Menschen, wie viele Tage er noch zu leben hat."
+    },
+    {
+      "id": "s2",
+      "text": "Luca hat noch dreiundsechzig Jahre."
+    },
+    {
+      "id": "s3",
+      "text": "Seine Mutter hat achtundzwanzig Jahre.",
+      "pause": 0.2
+    },
+    {
+      "id": "s4",
+      "text": "Sein Vater neunzehn."
+    },
+    {
+      "id": "s5",
+      "text": "Eines Nachts wacht Luca um drei Uhr auf."
+    },
+    {
+      "id": "s6",
+      "text": "Jemand klopft leise an seine Tür."
+    },
+    {
+      "id": "s7",
+      "text": "Er schaut durch das Schlüsselloch."
+    },
+    {
+      "id": "s8",
+      "text": "Niemand ist da.",
+      "pause": 0.5
+    },
+    {
+      "id": "s9",
+      "text": "Als er sich umdreht, steht eine schwarze Gestalt in der Ecke."
+    },
+    {
+      "id": "s10",
+      "text": "Über ihrem Kopf steht eine Zahl: Null.",
+      "pause": 0.45
+    },
+    {
+      "id": "s11",
+      "text": "Luca rennt zu seinen Eltern."
+    },
+    {
+      "id": "s12",
+      "text": "Doch sie glauben ihm nicht."
+    },
+    {
+      "id": "s13",
+      "text": "Am nächsten Morgen in der Schule sieht er die Gestalt wieder."
+    },
+    {
+      "id": "s14",
+      "text": "Sie steht direkt hinter seiner besten Freundin Mia."
+    },
+    {
+      "id": "s15",
+      "text": "Über Mias Kopf steht nicht mehr achtundzwanzig Jahre.",
+      "pause": 0.2
+    },
+    {
+      "id": "s16",
+      "text": "Sondern zehn Sekunden."
+    },
+    {
+      "id": "s17",
+      "text": "Luca schreit: Mia!"
+    },
+    {
+      "id": "s18",
+      "text": "Doch die Gestalt dreht sich langsam zu ihm um."
+    },
+    {
+      "id": "s19",
+      "text": "Und über Lucas Kopf steht plötzlich: Null Sekunden.",
+      "pause": 0.55
+    },
+    {
+      "id": "s20",
+      "text": "Dann flüstert jemand direkt hinter ihm:",
+      "pause": 0.4
+    },
+    {
+      "id": "s21",
+      "text": "Du hättest mich letzte Nacht nicht sehen dürfen."
+    }
+  ],
+  "overlays": [
+    {
+      "type": "card",
+      "header": "NACHTS",
+      "value": "3:00",
+      "from": [
+        "s5",
+        0
+      ],
+      "to": [
+        "s5",
+        4
+      ]
+    },
+    {
+      "type": "keyhole",
+      "from": [
+        "s7",
+        3
+      ],
+      "to": [
+        "s8",
+        "end"
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#000000",
+      "opacity": 1,
+      "from": [
+        "s9",
+        4
+      ],
+      "to": [
+        "s9",
+        5
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "0",
+      "from": [
+        "s10",
+        6
+      ],
+      "to": [
+        "s10",
+        "end"
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#c40000",
+      "opacity": 0.55,
+      "from": [
+        "s16",
+        0
+      ],
+      "to": [
+        "s16",
+        2
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#c40000",
+      "opacity": 0.7,
+      "from": [
+        "s19",
+        6
+      ],
+      "to": [
+        "s19",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "DU HÄTTEST MICH NICHT SEHEN DÜRFEN.",
+      "from": [
+        "s21",
+        0
+      ],
+      "to": [
+        "s21",
+        "end"
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#000000",
+      "hold": true,
+      "fade": 0.6,
+      "opacity": 1,
+      "from": [
+        "s21",
+        "end"
+      ],
+      "to": [
+        "END",
+        0
+      ]
+    }
+  ]
+}

@@ -87,6 +87,13 @@ Pause zwischen Gruppen: `"pause": 0.16`.
 `room({wall,floor,rug})`, `sofa(color)`, `bed(color)`, `shelf({stocked})`, `counter()`, `oven()`, `tv()`, `bread()`,
 `trashBag(seed)`, `bin(color)`, `briefcase()`, `broom()`, `signMesh(text,w,h,style)`, `textSprite("Z")`.
 Hilfen: `S.pop(t,t0,d)` (Auftauchen mit Überschwinger), `S.ramp(t,t0,d)`, `S.ease`, `S.lerp`, `S.clamp`.
+Grusel/Nacht: `W.set(name, x, z, { interior: true, night: true })` = Mondlicht; `room({ night: true })`;
+`door()` (Blatt unter `userData.leaf`, z. B. zum Klopfen wackeln), `alarmClock("3:00")`, `nightstand()`;
+schwarze Gestalt: `character({ shadow: true, hat: "hood", scale: 1.2 })` (nur leuchtende Augen);
+Gesichter zusätzlich `scream`, `eyes`. Musik: `"music": { "mood": "horror", "volume": 0.32 }` in `video.json`.
+Overlays zusätzlich: `keyhole` (Blick durchs Schlüsselloch), `flash` (`color`, `opacity`; `hold: true` blendet
+bis zum Ende ein, z. B. Schwarzblende mit `"to": ["END", 0]`). Vorlage: `videos/lebenszeit/`.
+Story vom Nutzer vorgegeben → seine Handlung und sein Ende haben Vorrang vor der Standard-Erzählstruktur.
 Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen können.
 
 ## Bildregeln
