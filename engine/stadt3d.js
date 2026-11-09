@@ -587,7 +587,7 @@ function checkerTex(a = "#d7d7d7", b = "#ececec", n = 8) {
     const s = 256 / n;
     for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) { g.fillStyle = (i + j) % 2 ? a : b; g.fillRect(i * s, j * s, s, s); }
   });
-  t.wrapS = t.wrapT = THREE.RepeatWrapping; t.magFilter = THREE.NearestFilter;
+  t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 8; // weich gefiltert: kein Flimmern bei Kamerafahrten
   return t;
 }
 function woodTex(base = "#c98b4f") {
@@ -604,17 +604,20 @@ function woodTex(base = "#c98b4f") {
 export function street(len = 120) {
   const g = new THREE.Group();
   const road = new THREE.Mesh(new THREE.PlaneGeometry(len, 9), mat(C.road));
-  road.rotation.x = -Math.PI / 2; road.position.set(0, 0.02, 0); road.receiveShadow = true; g.add(road);
-  for (let x = -len / 2; x < len / 2; x += 6) g.add(box(3, 0.02, 0.35, mat(C.line), x, 0.04, 0, false));
+  road.material = new THREE.MeshStandardMaterial({ color: C.road, roughness: 0.78, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+  road.rotation.x = -Math.PI / 2; road.position.set(0, 0.05, 0); road.receiveShadow = true; g.add(road);
+  for (let x = -len / 2; x < len / 2; x += 6) g.add(box(3, 0.04, 0.35, mat(C.line), x, 0.08, 0, false));
   g.add(box(len, 0.35, 4, mat(C.walk), 0, 0.17, 6.5));
   g.add(box(len, 0.35, 4, mat(C.walk), 0, 0.17, -6.5));
   return g;
 }
 export function plaza(w = 40, d = 40) {
   const t = checkerTex(); t.repeat.set(w / 8, d / 8);
-  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), new THREE.MeshStandardMaterial({ map: t, roughness: 0.9 }));
-  m.rotation.x = -Math.PI / 2; m.position.y = 0.03; m.receiveShadow = true;
-  return m;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), new THREE.MeshStandardMaterial({
+    map: t, roughness: 0.9, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }));
+  m.rotation.x = -Math.PI / 2; m.position.y = 0.06; m.receiveShadow = true;
+  const g = new THREE.Group(); g.add(m); // Gruppe, damit W.add die Höhe über dem Rasen nicht überschreibt
+  return g;
 }
 
 /** Innenraum: Boden + Rück- und Seitenwand, offen zur Kamera (+z). */
@@ -791,9 +794,9 @@ export function createWorld(canvas, { width = 1080, height = 1920 } = {}) {
   fill.position.set(-30, 20, -10); scene.add(fill);
 
   const nightBg = new THREE.Color("#0b1020");
-  const camera = new THREE.PerspectiveCamera(48, width / height, 0.1, 400);
+  const camera = new THREE.PerspectiveCamera(48, width / height, 0.3, 400);
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), mat(C.grass));
-  ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true;
+  ground.rotation.x = -Math.PI / 2; ground.position.y = -0.02; ground.receiveShadow = true;
   scene.add(ground);
 
   const sets = [];

@@ -68,7 +68,7 @@ export default function direct(W, S, T) {
 
   // ---------------------------------------------------------- E) Schulhof, Tag
   const sc = W.set("school", 300, 300);
-  W.add(sc, plaza(46, 34), 0, 0, -4);
+  W.add(sc, plaza(30, 8), 0, 0, -11); // gepflasterter Streifen nur vor dem Gebäude, sonst Rasen
   W.add(sc, house({ w: 18, d: 9, h: 10, color: C.brick, flat: true, sign: "SCHULE", windows: [-6, 0, 6], signStyle: { bg: "#f4efe6", fg: "#2a2a2a", border: "#2a2a2a" } }), 0, 0, -19);
   [[-15, -12], [15, -12], [-19, 2], [19, 1]].forEach(([x, z], i) => W.add(sc, tree(1.15, 40 + i), x, 0, z));
   [[-14, 30, -70, 2.6], [14, 34, -80, 3]].forEach(([x, y, z, s], i) => W.add(sc, cloud(s, i + 6), x, y, z));
