@@ -89,5 +89,13 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
 - Kamera nie hinter einer Figur, die die Szene verdeckt. Nahaufnahme: Kopf + Schultern, Pille dann ausblenden.
 - Liegende Figuren: `lieSide()` (Gesicht bleibt lesbar), Kamera von vorne.
 - Eigene Figuren und eigene Welt: keine Marken, keine bekannten Spielfiguren nachbauen.
+- **Standard-Stimme (für jedes Video übernehmen):** junge, helle, energische Erzählstimme, abgestimmt auf die
+  Referenz (Median ≈ 190 Hz, lebendige Betonung, schnelles Tempo). In `video.json`:
+  ```json
+  "voice": { "base": "thorsten", "length_scale": 0.82, "pause": 0.24, "pitch_hz": 182, "pitch_range": 1.4, "formant": 1.07,
+             "eq": "highpass=f=110,equalizer=f=250:t=q:w=1:g=-2,equalizer=f=2800:t=q:w=1.2:g=5,equalizer=f=5500:t=q:w=1:g=3,acompressor=threshold=-20dB:ratio=4:attack=3:release=60" }
+  ```
+  Basis ist Piper "thorsten" (offline), geformt mit dem WORLD-Vocoder (`pitch_hz` Tonhöhe, `pitch_range` Melodie,
+  `formant` Klangfarbe). Keine Stimme einer realen Person 1:1 klonen; nur Charakter/Stil angleichen.
 - Die Stimme ist Piper "thorsten" (offline). Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
   ablegen, Satzzeiten in `assets/timing.json` von Hand eintragen (gleiches Format) und `tts.py` überspringen.

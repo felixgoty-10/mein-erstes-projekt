@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 [ -d node_modules/hyperframes ] || npm install --no-audit --no-fund
-python3 -c "import piper" 2>/dev/null || pip install -q piper-tts numpy
+python3 -c "import piper, pyworld" 2>/dev/null || pip install -q piper-tts numpy pyworld
 mkdir -p .cache/voices
 if [ ! -f .cache/voices/de-thorsten-low.onnx ]; then
   # Stimmenmodell (nur Daten, kein ausführbarer Code) aus dem offiziellen Piper-Release

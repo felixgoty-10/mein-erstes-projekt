@@ -20,11 +20,12 @@ import wave
 from pathlib import Path
 
 import numpy as np
+import pyworld as pw
 from piper import PiperVoice
 from piper.config import SynthesisConfig
 
 ROOT = Path(__file__).resolve().parent.parent
-VOICE = ROOT / ".cache" / "voices" / "de-thorsten-low.onnx"
+VOICES = ROOT / ".cache" / "voices"
 LEAD_IN = 0.25          # Stille vor dem ersten Wort
 DEFAULT_PAUSE = 0.32    # Pause zwischen Sätzen
 TAIL = 0.7              # Stille nach dem letzten Wort
@@ -40,6 +41,31 @@ def trim(a, sr, thr=0.012):
         return a
     pad = int(0.03 * sr)
     return a[max(0, idx[0] - pad): min(len(a), idx[-1] + pad)]
+
+
+def shape_voice(a, sr, pitch_hz=None, pitch_range=1.0, formant=1.0):
+    """Stimmformung mit WORLD: Tonhöhe (Median in Hz), Melodie-Umfang, Formanten.
+    pitch_range > 1 = lebendigere Betonung, formant > 1 = jünger/heller."""
+    if not pitch_hz and pitch_range == 1.0 and formant == 1.0:
+        return a
+    x = a.astype(np.float64)
+    f0, t = pw.harvest(x, sr, f0_floor=60, f0_ceil=500, frame_period=5.0)
+    sp = pw.cheaptrick(x, f0, t, sr)
+    ap = pw.d4c(x, f0, t, sr)
+    v = f0 > 0
+    if v.any():
+        lf = np.log(f0[v])
+        med = np.median(lf)
+        target = np.log(pitch_hz) if pitch_hz else med
+        f0 = f0.copy()
+        f0[v] = np.exp(target + (lf - med) * pitch_range)
+    if formant != 1.0:
+        n = sp.shape[1]
+        src = np.clip(np.arange(n) / formant, 0, n - 1)
+        sp = np.stack([np.interp(src, np.arange(n), row) for row in sp])
+        ap = np.stack([np.interp(src, np.arange(n), row) for row in ap])
+    y = pw.synthesize(f0, sp, ap, sr, frame_period=5.0)
+    return y[: len(a)].astype(np.float32)
 
 
 def word_weights(voice, words):
@@ -58,7 +84,7 @@ def main():
     proj = Path(sys.argv[1]).resolve()
     spec = json.loads((proj / "video.json").read_text(encoding="utf-8"))
     vcfg = spec.get("voice", {})
-    voice = PiperVoice.load(str(VOICE))
+    voice = PiperVoice.load(str(VOICES / f"de-{vcfg.get('base', 'thorsten')}-low.onnx"))
     sr = voice.config.sample_rate
     syn = SynthesisConfig(
         length_scale=vcfg.get("length_scale", 0.9),
@@ -72,6 +98,7 @@ def main():
     for s in spec["sentences"]:
         audio = b"".join(ch.audio_int16_bytes for ch in voice.synthesize(s["text"], syn))
         a = np.frombuffer(audio, dtype=np.int16).astype(np.float32) / 32768.0
+        a = shape_voice(a, sr, vcfg.get("pitch_hz"), vcfg.get("pitch_range", 1.0), vcfg.get("formant", 1.0))
         a = trim(a, sr)
         dur = len(a) / sr
         words = s["text"].split()
@@ -88,7 +115,7 @@ def main():
                     "end": round(cursor + dur, 3), "words": wl})
         pieces.append(a)
         cursor += dur
-        pause = s.get("pause", DEFAULT_PAUSE)
+        pause = s.get("pause", vcfg.get("pause", DEFAULT_PAUSE))
         pieces.append(np.zeros(int(pause * sr), dtype=np.float32))
         cursor += pause
     pieces.append(np.zeros(int(TAIL * sr), dtype=np.float32))
@@ -106,7 +133,7 @@ def main():
     # 44.1 kHz, leichte Präsenz-Anhebung und Kompression für Social-Media-Klang
     subprocess.run([
         "ffmpeg", "-v", "error", "-y", "-i", str(raw),
-        "-af", "highpass=f=80,equalizer=f=3000:t=q:w=1.2:g=3,acompressor=threshold=-18dB:ratio=3:attack=5:release=80,aresample=44100",
+        "-af", vcfg.get("eq", "highpass=f=80,equalizer=f=3000:t=q:w=1.2:g=3,acompressor=threshold=-18dB:ratio=3:attack=5:release=80") + ",aresample=44100",
         str(assets / "voice.wav")], check=True)
     raw.unlink()
     duration = round(len(full) / sr, 3)

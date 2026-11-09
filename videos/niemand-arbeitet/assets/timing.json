@@ -1,551 +1,551 @@
 {
- "duration": 29.215,
+ "duration": 25.644,
  "sentences": [
   {
    "id": "s1",
    "text": "In dieser Stadt geht niemand mehr arbeiten.",
    "start": 0.25,
-   "end": 2.132,
+   "end": 1.954,
    "words": [
     {
      "text": "In",
      "start": 0.25,
-     "end": 0.373
+     "end": 0.362
     },
     {
      "text": "dieser",
-     "start": 0.373,
-     "end": 0.62
+     "start": 0.362,
+     "end": 0.585
     },
     {
      "text": "Stadt",
-     "start": 0.62,
-     "end": 0.867
+     "start": 0.585,
+     "end": 0.809
     },
     {
      "text": "geht",
-     "start": 0.867,
-     "end": 1.052
+     "start": 0.809,
+     "end": 0.976
     },
     {
      "text": "niemand",
-     "start": 1.052,
-     "end": 1.423
+     "start": 0.976,
+     "end": 1.312
     },
     {
      "text": "mehr",
-     "start": 1.423,
-     "end": 1.608
+     "start": 1.312,
+     "end": 1.479
     },
     {
      "text": "arbeiten.",
-     "start": 1.608,
-     "end": 2.101
+     "start": 1.479,
+     "end": 1.926
     }
    ]
   },
   {
    "id": "s2",
    "text": "Tag eins: Alle feiern.",
-   "start": 2.452,
-   "end": 3.983,
+   "start": 2.194,
+   "end": 3.61,
    "words": [
     {
      "text": "Tag",
-     "start": 2.452,
-     "end": 2.701
+     "start": 2.194,
+     "end": 2.424
     },
     {
      "text": "eins:",
-     "start": 2.701,
-     "end": 3.031
+     "start": 2.424,
+     "end": 2.73
     },
     {
      "text": "Alle",
-     "start": 3.28,
-     "end": 3.528
+     "start": 2.959,
+     "end": 3.189
     },
     {
      "text": "feiern.",
-     "start": 3.528,
-     "end": 3.942
+     "start": 3.189,
+     "end": 3.571
     }
    ]
   },
   {
    "id": "s3",
    "text": "Tag drei: Der Bäcker schläft aus.",
-   "start": 4.303,
-   "end": 6.197,
+   "start": 3.85,
+   "end": 5.499,
    "words": [
     {
      "text": "Tag",
-     "start": 4.303,
-     "end": 4.526
+     "start": 3.85,
+     "end": 4.044
     },
     {
      "text": "drei:",
-     "start": 4.526,
-     "end": 4.823
+     "start": 4.044,
+     "end": 4.302
     },
     {
      "text": "Der",
-     "start": 5.046,
-     "end": 5.269
+     "start": 4.496,
+     "end": 4.69
     },
     {
      "text": "Bäcker",
-     "start": 5.269,
-     "end": 5.566
+     "start": 4.69,
+     "end": 4.949
     },
     {
      "text": "schläft",
-     "start": 5.566,
-     "end": 5.937
+     "start": 4.949,
+     "end": 5.272
     },
     {
      "text": "aus.",
-     "start": 5.937,
-     "end": 6.16
+     "start": 5.272,
+     "end": 5.466
     }
    ]
   },
   {
    "id": "s4",
    "text": "Kein Brot.",
-   "start": 6.517,
-   "end": 7.156,
+   "start": 5.739,
+   "end": 6.346,
    "words": [
     {
      "text": "Kein",
-     "start": 6.517,
-     "end": 6.818
+     "start": 5.739,
+     "end": 6.024
     },
     {
      "text": "Brot.",
-     "start": 6.818,
-     "end": 7.118
+     "start": 6.024,
+     "end": 6.31
     }
    ]
   },
   {
    "id": "s5",
    "text": "Tag fünf: Der Müll stapelt sich bis zum Dach.",
-   "start": 7.476,
-   "end": 9.746,
+   "start": 6.586,
+   "end": 8.518,
    "words": [
     {
      "text": "Tag",
-     "start": 7.476,
-     "end": 7.657
+     "start": 6.586,
+     "end": 6.74
     },
     {
      "text": "fünf:",
-     "start": 7.657,
-     "end": 7.899
+     "start": 6.74,
+     "end": 6.946
     },
     {
      "text": "Der",
-     "start": 8.081,
-     "end": 8.263
+     "start": 7.101,
+     "end": 7.255
     },
     {
      "text": "Müll",
-     "start": 8.263,
-     "end": 8.444
+     "start": 7.255,
+     "end": 7.41
     },
     {
      "text": "stapelt",
-     "start": 8.444,
-     "end": 8.868
+     "start": 7.41,
+     "end": 7.771
     },
     {
      "text": "sich",
-     "start": 8.868,
-     "end": 9.11
+     "start": 7.771,
+     "end": 7.977
     },
     {
      "text": "bis",
-     "start": 9.11,
-     "end": 9.292
+     "start": 7.977,
+     "end": 8.131
     },
     {
      "text": "zum",
-     "start": 9.292,
-     "end": 9.534
+     "start": 8.131,
+     "end": 8.337
     },
     {
      "text": "Dach.",
-     "start": 9.534,
-     "end": 9.716
+     "start": 8.337,
+     "end": 8.492
     }
    ]
   },
   {
    "id": "s6",
    "text": "Tag sieben: Der Supermarkt ist leer.",
-   "start": 10.066,
-   "end": 12.113,
+   "start": 8.758,
+   "end": 10.485,
    "words": [
     {
      "text": "Tag",
-     "start": 10.066,
-     "end": 10.274
+     "start": 8.758,
+     "end": 8.933
     },
     {
      "text": "sieben:",
-     "start": 10.274,
-     "end": 10.621
+     "start": 8.933,
+     "end": 9.226
     },
     {
      "text": "Der",
-     "start": 10.829,
-     "end": 11.038
+     "start": 9.402,
+     "end": 9.577
     },
     {
      "text": "Supermarkt",
-     "start": 11.038,
-     "end": 11.662
+     "start": 9.577,
+     "end": 10.104
     },
     {
      "text": "ist",
-     "start": 11.662,
-     "end": 11.87
+     "start": 10.104,
+     "end": 10.28
     },
     {
      "text": "leer.",
-     "start": 11.87,
-     "end": 12.079
+     "start": 10.28,
+     "end": 10.456
     }
    ]
   },
   {
    "id": "s7",
    "text": "Und dann wird Opa krank.",
-   "start": 12.433,
-   "end": 13.667,
+   "start": 10.725,
+   "end": 11.785,
    "words": [
     {
      "text": "Und",
-     "start": 12.433,
-     "end": 12.633
+     "start": 10.725,
+     "end": 10.897
     },
     {
      "text": "dann",
-     "start": 12.633,
-     "end": 12.833
+     "start": 10.897,
+     "end": 11.069
     },
     {
      "text": "wird",
-     "start": 12.833,
-     "end": 13.1
+     "start": 11.069,
+     "end": 11.298
     },
     {
      "text": "Opa",
-     "start": 13.1,
-     "end": 13.3
+     "start": 11.298,
+     "end": 11.47
     },
     {
      "text": "krank.",
-     "start": 13.3,
-     "end": 13.634
+     "start": 11.47,
+     "end": 11.757
     }
    ]
   },
   {
    "id": "s8",
    "text": "Aber der Arzt?",
-   "start": 13.987,
-   "end": 14.841,
+   "start": 12.025,
+   "end": 12.791,
    "words": [
     {
      "text": "Aber",
-     "start": 13.987,
-     "end": 14.2
+     "start": 12.025,
+     "end": 12.217
     },
     {
      "text": "der",
-     "start": 14.2,
-     "end": 14.414
+     "start": 12.217,
+     "end": 12.408
     },
     {
      "text": "Arzt?",
-     "start": 14.414,
-     "end": 14.77
+     "start": 12.408,
+     "end": 12.728
     }
    ]
   },
   {
    "id": "s9",
    "text": "Liegt auf dem Sofa.",
-   "start": 14.941,
-   "end": 15.999,
+   "start": 12.891,
+   "end": 13.859,
    "words": [
     {
      "text": "Liegt",
-     "start": 14.941,
-     "end": 15.233
+     "start": 12.891,
+     "end": 13.158
     },
     {
      "text": "auf",
-     "start": 15.233,
-     "end": 15.452
+     "start": 13.158,
+     "end": 13.359
     },
     {
      "text": "dem",
-     "start": 15.452,
-     "end": 15.671
+     "start": 13.359,
+     "end": 13.559
     },
     {
      "text": "Sofa.",
-     "start": 15.671,
-     "end": 15.963
+     "start": 13.559,
+     "end": 13.826
     }
    ]
   },
   {
    "id": "s10",
    "text": "Da merke ich: Arbeit ist nicht nur Geld.",
-   "start": 16.319,
-   "end": 18.261,
+   "start": 14.099,
+   "end": 15.966,
    "words": [
     {
      "text": "Da",
-     "start": 16.319,
-     "end": 16.432
+     "start": 14.099,
+     "end": 14.207
     },
     {
      "text": "merke",
-     "start": 16.432,
-     "end": 16.713
+     "start": 14.207,
+     "end": 14.478
     },
     {
      "text": "ich:",
-     "start": 16.713,
-     "end": 16.882
+     "start": 14.478,
+     "end": 14.64
     },
     {
      "text": "Arbeit",
-     "start": 17.051,
-     "end": 17.389
+     "start": 14.803,
+     "end": 15.127
     },
     {
      "text": "ist",
-     "start": 17.389,
-     "end": 17.557
+     "start": 15.127,
+     "end": 15.29
     },
     {
      "text": "nicht",
-     "start": 17.557,
-     "end": 17.839
+     "start": 15.29,
+     "end": 15.56
     },
     {
      "text": "nur",
-     "start": 17.839,
-     "end": 18.008
+     "start": 15.56,
+     "end": 15.723
     },
     {
      "text": "Geld.",
-     "start": 18.008,
-     "end": 18.233
+     "start": 15.723,
+     "end": 15.939
     }
    ]
   },
   {
    "id": "s11",
    "text": "Arbeit heißt, wir helfen uns gegenseitig.",
-   "start": 18.581,
-   "end": 20.956,
+   "start": 16.206,
+   "end": 18.267,
    "words": [
     {
      "text": "Arbeit",
-     "start": 18.581,
-     "end": 18.956
+     "start": 16.206,
+     "end": 16.532
     },
     {
      "text": "heißt,",
-     "start": 18.956,
-     "end": 19.268
+     "start": 16.532,
+     "end": 16.803
     },
     {
      "text": "wir",
-     "start": 19.425,
-     "end": 19.612
+     "start": 16.938,
+     "end": 17.101
     },
     {
      "text": "helfen",
-     "start": 19.612,
-     "end": 19.987
+     "start": 17.101,
+     "end": 17.426
     },
     {
      "text": "uns",
-     "start": 19.987,
-     "end": 20.175
+     "start": 17.426,
+     "end": 17.589
     },
     {
      "text": "gegenseitig.",
-     "start": 20.175,
-     "end": 20.925
+     "start": 17.589,
+     "end": 18.24
     }
    ]
   },
   {
    "id": "s12",
    "text": "Also backe ich Brot.",
-   "start": 21.276,
-   "end": 22.23,
+   "start": 18.507,
+   "end": 19.385,
    "words": [
     {
      "text": "Also",
-     "start": 21.276,
-     "end": 21.522
+     "start": 18.507,
+     "end": 18.734
     },
     {
      "text": "backe",
-     "start": 21.522,
-     "end": 21.768
+     "start": 18.734,
+     "end": 18.96
     },
     {
      "text": "ich",
-     "start": 21.768,
-     "end": 21.953
+     "start": 18.96,
+     "end": 19.13
     },
     {
      "text": "Brot.",
-     "start": 21.953,
-     "end": 22.199
+     "start": 19.13,
+     "end": 19.356
     }
    ]
   },
   {
    "id": "s13",
    "text": "Für Opa.",
-   "start": 22.55,
-   "end": 23.311,
+   "start": 19.625,
+   "end": 20.289,
    "words": [
     {
      "text": "Für",
-     "start": 22.55,
-     "end": 22.901
+     "start": 19.625,
+     "end": 19.931
     },
     {
      "text": "Opa.",
-     "start": 22.901,
-     "end": 23.253
+     "start": 19.931,
+     "end": 20.238
     }
    ]
   },
   {
    "id": "s14",
    "text": "Für den Arzt.",
-   "start": 23.391,
-   "end": 24.19,
+   "start": 20.369,
+   "end": 21.08,
    "words": [
     {
      "text": "Für",
-     "start": 23.391,
-     "end": 23.6
+     "start": 20.369,
+     "end": 20.555
     },
     {
      "text": "den",
-     "start": 23.6,
-     "end": 23.808
+     "start": 20.555,
+     "end": 20.74
     },
     {
      "text": "Arzt.",
-     "start": 23.808,
-     "end": 24.156
+     "start": 20.74,
+     "end": 21.049
     }
    ]
   },
   {
    "id": "s15",
    "text": "Am nächsten Morgen ist die ganze Stadt wieder da.",
-   "start": 24.51,
-   "end": 26.674,
+   "start": 21.32,
+   "end": 23.302,
    "words": [
     {
      "text": "Am",
-     "start": 24.51,
-     "end": 24.626
+     "start": 21.32,
+     "end": 21.426
     },
     {
      "text": "nächsten",
-     "start": 24.626,
-     "end": 25.087
+     "start": 21.426,
+     "end": 21.849
     },
     {
      "text": "Morgen",
-     "start": 25.087,
-     "end": 25.433
+     "start": 21.849,
+     "end": 22.166
     },
     {
      "text": "ist",
-     "start": 25.433,
-     "end": 25.606
+     "start": 22.166,
+     "end": 22.324
     },
     {
      "text": "die",
-     "start": 25.606,
-     "end": 25.722
+     "start": 22.324,
+     "end": 22.43
     },
     {
      "text": "ganze",
-     "start": 25.722,
-     "end": 26.068
+     "start": 22.43,
+     "end": 22.747
     },
     {
      "text": "Stadt",
-     "start": 26.068,
-     "end": 26.299
+     "start": 22.747,
+     "end": 22.958
     },
     {
      "text": "wieder",
-     "start": 26.299,
-     "end": 26.529
+     "start": 22.958,
+     "end": 23.17
     },
     {
      "text": "da.",
-     "start": 26.529,
-     "end": 26.645
+     "start": 23.17,
+     "end": 23.275
     }
    ]
   },
   {
    "id": "s16",
    "text": "Nur der Bäcker schläft immer noch.",
-   "start": 26.994,
-   "end": 28.195,
+   "start": 23.542,
+   "end": 24.704,
    "words": [
     {
      "text": "Nur",
-     "start": 26.994,
-     "end": 27.161
+     "start": 23.542,
+     "end": 23.704
     },
     {
      "text": "der",
-     "start": 27.161,
-     "end": 27.329
+     "start": 23.704,
+     "end": 23.866
     },
     {
      "text": "Bäcker",
-     "start": 27.329,
-     "end": 27.552
+     "start": 23.866,
+     "end": 24.083
     },
     {
      "text": "schläft",
-     "start": 27.552,
-     "end": 27.832
+     "start": 24.083,
+     "end": 24.353
     },
     {
      "text": "immer",
-     "start": 27.832,
-     "end": 27.999
+     "start": 24.353,
+     "end": 24.515
     },
     {
      "text": "noch.",
-     "start": 27.999,
-     "end": 28.167
+     "start": 24.515,
+     "end": 24.677
     }
    ]
   }

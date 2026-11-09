@@ -1,29 +1,143 @@
 {
   "title": "Was wäre, wenn niemand mehr arbeiten geht?",
-  "voice": { "length_scale": 1.0 },
+  "voice": {
+    "base": "thorsten",
+    "length_scale": 0.82,
+    "pause": 0.24,
+    "pitch_hz": 182,
+    "pitch_range": 1.4,
+    "formant": 1.07,
+    "eq": "highpass=f=110,equalizer=f=250:t=q:w=1:g=-2,equalizer=f=2800:t=q:w=1.2:g=5,equalizer=f=5500:t=q:w=1:g=3,acompressor=threshold=-20dB:ratio=4:attack=3:release=60"
+  },
   "sentences": [
-    { "id": "s1", "text": "In dieser Stadt geht niemand mehr arbeiten." },
-    { "id": "s2", "text": "Tag eins: Alle feiern." },
-    { "id": "s3", "text": "Tag drei: Der Bäcker schläft aus." },
-    { "id": "s4", "text": "Kein Brot." },
-    { "id": "s5", "text": "Tag fünf: Der Müll stapelt sich bis zum Dach." },
-    { "id": "s6", "text": "Tag sieben: Der Supermarkt ist leer." },
-    { "id": "s7", "text": "Und dann wird Opa krank." },
-    { "id": "s8", "text": "Aber der Arzt?", "pause": 0.1 },
-    { "id": "s9", "text": "Liegt auf dem Sofa." },
-    { "id": "s10", "text": "Da merke ich: Arbeit ist nicht nur Geld." },
-    { "id": "s11", "text": "Arbeit heißt, wir helfen uns gegenseitig." },
-    { "id": "s12", "text": "Also backe ich Brot." },
-    { "id": "s13", "text": "Für Opa.", "pause": 0.08 },
-    { "id": "s14", "text": "Für den Arzt." },
-    { "id": "s15", "text": "Am nächsten Morgen ist die ganze Stadt wieder da." },
-    { "id": "s16", "text": "Nur der Bäcker schläft immer noch." }
+    {
+      "id": "s1",
+      "text": "In dieser Stadt geht niemand mehr arbeiten."
+    },
+    {
+      "id": "s2",
+      "text": "Tag eins: Alle feiern."
+    },
+    {
+      "id": "s3",
+      "text": "Tag drei: Der Bäcker schläft aus."
+    },
+    {
+      "id": "s4",
+      "text": "Kein Brot."
+    },
+    {
+      "id": "s5",
+      "text": "Tag fünf: Der Müll stapelt sich bis zum Dach."
+    },
+    {
+      "id": "s6",
+      "text": "Tag sieben: Der Supermarkt ist leer."
+    },
+    {
+      "id": "s7",
+      "text": "Und dann wird Opa krank."
+    },
+    {
+      "id": "s8",
+      "text": "Aber der Arzt?",
+      "pause": 0.1
+    },
+    {
+      "id": "s9",
+      "text": "Liegt auf dem Sofa."
+    },
+    {
+      "id": "s10",
+      "text": "Da merke ich: Arbeit ist nicht nur Geld."
+    },
+    {
+      "id": "s11",
+      "text": "Arbeit heißt, wir helfen uns gegenseitig."
+    },
+    {
+      "id": "s12",
+      "text": "Also backe ich Brot."
+    },
+    {
+      "id": "s13",
+      "text": "Für Opa.",
+      "pause": 0.08
+    },
+    {
+      "id": "s14",
+      "text": "Für den Arzt."
+    },
+    {
+      "id": "s15",
+      "text": "Am nächsten Morgen ist die ganze Stadt wieder da."
+    },
+    {
+      "id": "s16",
+      "text": "Nur der Bäcker schläft immer noch."
+    }
   ],
   "overlays": [
-    { "type": "card", "header": "OHNE ARBEIT", "value": "TAG 1", "from": ["s2", 0], "to": ["s2", 2] },
-    { "type": "sign", "text": "TAG 3", "from": ["s3", 0], "to": ["s4", "end"] },
-    { "type": "sign", "text": "TAG 5", "from": ["s5", 0], "to": ["s5", "end"] },
-    { "type": "sign", "text": "TAG 7", "from": ["s6", 0], "to": ["s6", "end"] },
-    { "type": "sign", "text": "ARBEIT = WIR HELFEN UNS.", "from": ["s11", 0], "to": ["s11", "end"] }
+    {
+      "type": "card",
+      "header": "OHNE ARBEIT",
+      "value": "TAG 1",
+      "from": [
+        "s2",
+        0
+      ],
+      "to": [
+        "s2",
+        2
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "TAG 3",
+      "from": [
+        "s3",
+        0
+      ],
+      "to": [
+        "s4",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "TAG 5",
+      "from": [
+        "s5",
+        0
+      ],
+      "to": [
+        "s5",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "TAG 7",
+      "from": [
+        "s6",
+        0
+      ],
+      "to": [
+        "s6",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "ARBEIT = WIR HELFEN UNS.",
+      "from": [
+        "s11",
+        0
+      ],
+      "to": [
+        "s11",
+        "end"
+      ]
+    }
   ]
 }
