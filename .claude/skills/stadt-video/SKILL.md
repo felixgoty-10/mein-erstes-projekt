@@ -49,13 +49,19 @@ Kurze Sätze (2–8 Wörter), Präsens, Ich-Perspektive, konkrete Zahlen, keine 
 {
   "title": "…",
   "voice": { "length_scale": 1.0 },
-  "sentences": [ { "id": "s1", "text": "In dieser Stadt …" }, { "id": "s2", "text": "…", "pause": 0.1 } ],
+  "sentences": [ { "id": "s1", "text": "In dieser Stadt …", "end": true }, { "id": "s2", "text": "Kein Brot." }, { "id": "s3", "text": "…", "end": true } ],
   "overlays": [
     { "type": "card", "header": "OHNE ARBEIT", "value": "TAG 1", "from": ["s2", 0], "to": ["s2", 2] },
     { "type": "sign", "text": "TAG 3", "from": ["s3", 0], "to": ["s4", "end"] }
   ]
 }
 ```
+**Fließend sprechen (Pflicht, keine abrupten Stopps):** `"flow": true` in `voice`. Sätze bis einschließlich eines
+Satzes mit `"end": true` werden in **einem Zug** gesprochen (Satzpunkt → Komma, Betonung läuft weiter, kurze
+natürliche Atempausen). `"end": true` an Gedankenenden setzen (ca. alle 1–3 Sätze, immer vor einem Szenen-/Tageswechsel).
+Kurze Nachsätze ("Kein Brot.", "Für Opa.") nie allein lassen, sondern mit dem Satz davor gruppieren.
+Pause zwischen Gruppen: `"pause": 0.16`.
+
 `from`/`to` = `[Satz-ID, Wortindex | "end"]`. **card** = Vollbild-Karte auf Cremegrund (roter Kopf, große Zahl),
 **sign** = weißes Schild oben mit Schlüsselsatz in GROSSBUCHSTABEN. Sparsam einsetzen (3–6 pro Video).
 
@@ -94,7 +100,7 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
   Formanten um `formant_semitones` (etwas kürzerer Stimmtrakt), danach nur die Tonhöhe bis `semitones`
   (Formanten erhalten). Ergebnis ≈ 180 Hz. In `video.json`:
   ```json
-  "voice": { "model": "de_DE-thorsten-high", "length_scale": 0.88, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.24,
+  "voice": { "model": "de_DE-thorsten-high", "flow": true, "length_scale": 0.88, "noise_scale": 0.5, "noise_w_scale": 0.7, "pause": 0.16,
              "semitones": 7, "formant_semitones": 2.5,
              "eq": "highpass=f=120,equalizer=f=250:t=q:w=1:g=-3,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70" }
   ```

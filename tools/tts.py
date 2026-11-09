@@ -33,14 +33,13 @@ STRESS = set("ˈˌː")
 PUNCT_WEIGHT = {",": 2.5, ":": 3.0, "?": 1.0, "!": 1.0, ".": 0.5}
 
 
-def trim(a, sr, thr=0.012):
+def trim(a, sr, thr=0.006):
     """Schneidet Stille am Anfang/Ende ab (mit 30 ms Polster)."""
     env = np.abs(a)
     idx = np.where(env > thr)[0]
     if len(idx) == 0:
         return a
-    pad = int(0.03 * sr)
-    return a[max(0, idx[0] - pad): min(len(a), idx[-1] + pad)]
+    return a[max(0, idx[0] - int(0.03 * sr)): min(len(a), idx[-1] + int(0.09 * sr))]
 
 
 def shape_voice(a, sr, pitch_hz=None, pitch_range=1.0, formant=1.0):
@@ -112,30 +111,53 @@ def main():
         noise_w_scale=vcfg.get("noise_w_scale", 0.8),
     )
 
+    # Sätze zu Sprechgruppen zusammenfassen: innerhalb einer Gruppe wird in einem Zug gesprochen
+    # (Satzpunkt -> Komma, damit die Betonung weiterläuft), Pausen nur zwischen den Gruppen.
+    # "end": true im Satz beendet eine Gruppe. Ohne "flow" bleibt jeder Satz eine eigene Gruppe.
+    flow = vcfg.get("flow", False)
+    groups, cur = [], []
+    for i, s in enumerate(spec["sentences"]):
+        cur.append(s)
+        if not flow or s.get("end") or i == len(spec["sentences"]) - 1:
+            groups.append(cur)
+            cur = []
+
     pieces = [np.zeros(int(LEAD_IN * sr), dtype=np.float32)]
     cursor = LEAD_IN
     out = []
-    for s in spec["sentences"]:
-        audio = b"".join(ch.audio_int16_bytes for ch in voice.synthesize(s["text"], syn))
+    for g in groups:
+        spoken = []
+        for k, s in enumerate(g):
+            t = s.get("say", s["text"]).strip()
+            if k < len(g) - 1 and t.endswith("."):
+                t = t[:-1] + ","
+            spoken.append(t)
+        text = " ".join(spoken)
+        audio = b"".join(ch.audio_int16_bytes for ch in voice.synthesize(text, syn))
         a = np.frombuffer(audio, dtype=np.int16).astype(np.float32) / 32768.0
         a = shape_voice(a, sr, vcfg.get("pitch_hz"), vcfg.get("pitch_range", 1.0), vcfg.get("formant", 1.0))
         a = trim(a, sr)
+        fi, fo = int(0.012 * sr), int(0.06 * sr)  # weiche Ein-/Ausblendung statt hartem Schnitt
+        a[:fi] *= np.linspace(0, 1, fi)
+        a[-fo:] *= np.linspace(1, 0, fo) ** 1.5
         dur = len(a) / sr
-        words = s["text"].split()
-        ws = word_weights(voice, words)
+        words = [(w, s) for s, t in zip(g, spoken) for w in t.split()]
+        ws = word_weights(voice, [w for w, _ in words])
         total = sum(n + p for n, p in ws)
         t = cursor
-        wl = []
-        for w, (n, p) in zip(words, ws):
+        timed = []
+        for (w, s), (n, p) in zip(words, ws):
             speak = dur * n / total
             gap = dur * p / total
-            wl.append({"text": w, "start": round(t, 3), "end": round(t + speak, 3)})
+            timed.append((s["id"], w, t, t + speak))
             t += speak + gap
-        out.append({"id": s["id"], "text": s["text"], "start": round(cursor, 3),
-                    "end": round(cursor + dur, 3), "words": wl})
+        for s in g:
+            wl = [{"text": orig, "start": round(a0, 3), "end": round(a1, 3)}
+                  for (sid, _, a0, a1), orig in zip([x for x in timed if x[0] == s["id"]], s["text"].split())]
+            out.append({"id": s["id"], "text": s["text"], "start": wl[0]["start"], "end": wl[-1]["end"], "words": wl})
         pieces.append(a)
         cursor += dur
-        pause = s.get("pause", vcfg.get("pause", DEFAULT_PAUSE))
+        pause = g[-1].get("pause", vcfg.get("pause", DEFAULT_PAUSE))
         pieces.append(np.zeros(int(pause * sr), dtype=np.float32))
         cursor += pause
     pieces.append(np.zeros(int(TAIL * sr), dtype=np.float32))

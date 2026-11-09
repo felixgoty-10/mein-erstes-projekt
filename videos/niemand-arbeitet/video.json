@@ -5,19 +5,22 @@
     "length_scale": 0.88,
     "noise_scale": 0.5,
     "noise_w_scale": 0.7,
-    "pause": 0.24,
+    "pause": 0.16,
     "semitones": 7,
     "formant_semitones": 2.5,
-    "eq": "highpass=f=120,equalizer=f=250:t=q:w=1:g=-3,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70"
+    "eq": "highpass=f=120,equalizer=f=250:t=q:w=1:g=-3,equalizer=f=3200:t=q:w=1.4:g=4,highshelf=f=7000:g=3,acompressor=threshold=-20dB:ratio=3:attack=4:release=70",
+    "flow": true
   },
   "sentences": [
     {
       "id": "s1",
-      "text": "In dieser Stadt geht niemand mehr arbeiten."
+      "text": "In dieser Stadt geht niemand mehr arbeiten.",
+      "end": true
     },
     {
       "id": "s2",
-      "text": "Tag eins: Alle feiern."
+      "text": "Tag eins: Alle feiern.",
+      "end": true
     },
     {
       "id": "s3",
@@ -25,15 +28,18 @@
     },
     {
       "id": "s4",
-      "text": "Kein Brot."
+      "text": "Kein Brot.",
+      "end": true
     },
     {
       "id": "s5",
-      "text": "Tag fünf: Der Müll stapelt sich bis zum Dach."
+      "text": "Tag fünf: Der Müll stapelt sich bis zum Dach.",
+      "end": true
     },
     {
       "id": "s6",
-      "text": "Tag sieben: Der Supermarkt ist leer."
+      "text": "Tag sieben: Der Supermarkt ist leer.",
+      "end": true
     },
     {
       "id": "s7",
@@ -41,12 +47,12 @@
     },
     {
       "id": "s8",
-      "text": "Aber der Arzt?",
-      "pause": 0.1
+      "text": "Aber der Arzt?"
     },
     {
       "id": "s9",
-      "text": "Liegt auf dem Sofa."
+      "text": "Liegt auf dem Sofa.",
+      "end": true
     },
     {
       "id": "s10",
@@ -54,7 +60,8 @@
     },
     {
       "id": "s11",
-      "text": "Arbeit heißt, wir helfen uns gegenseitig."
+      "text": "Arbeit heißt, wir helfen uns gegenseitig.",
+      "end": true
     },
     {
       "id": "s12",
@@ -62,20 +69,22 @@
     },
     {
       "id": "s13",
-      "text": "Für Opa.",
-      "pause": 0.08
+      "text": "Für Opa."
     },
     {
       "id": "s14",
-      "text": "Für den Arzt."
+      "text": "Für den Arzt.",
+      "end": true
     },
     {
       "id": "s15",
-      "text": "Am nächsten Morgen ist die ganze Stadt wieder da."
+      "text": "Am nächsten Morgen ist die ganze Stadt wieder da.",
+      "end": true
     },
     {
       "id": "s16",
-      "text": "Nur der Bäcker schläft immer noch."
+      "text": "Nur der Bäcker schläft immer noch.",
+      "end": true
     }
   ],
   "overlays": [
