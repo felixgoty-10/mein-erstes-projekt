@@ -222,6 +222,13 @@ function shirtTex(style) {
         g.fillStyle = style.inner || "#f2efe8"; g.fillRect(100, 0, 56, h);
         g.fillStyle = "rgba(0,0,0,0.15)"; g.fillRect(40, 70, 40, 6); g.fillRect(176, 70, 40, 6);
         break;
+      case "paramedic": // Rettungsdienst: rot, gelbe Reflexstreifen
+        fill("#d8342c");
+        g.fillStyle = "#f4d23a"; g.fillRect(0, 150, w, 22); g.fillStyle = "#e9eef2"; g.fillRect(0, 156, w, 10);
+        g.fillStyle = "#f4d23a"; g.fillRect(0, 205, w, 16);
+        g.strokeStyle = "rgba(0,0,0,0.25)"; g.lineWidth = 4; g.beginPath(); g.moveTo(128, 0); g.lineTo(128, h); g.stroke();
+        g.fillStyle = "#ffffff"; g.fillRect(176, 52, 46, 14); g.fillRect(192, 36, 14, 46);
+        break;
       case "hoodie":
         fill(style.color || "#5aa65a");
         g.fillStyle = "rgba(0,0,0,0.12)"; g.fillRect(70, 160, 116, 60);
@@ -830,6 +837,61 @@ export function balloon(color = "#e74c3c") {
   const g = new THREE.Group();
   const b = new THREE.Mesh(new THREE.SphereGeometry(0.75, 16, 12), mat(color, { roughness: 0.35 })); b.scale.y = 1.2; b.position.y = 0;
   g.add(b); g.add(box(0.03, 2.5, 0.03, mat("#ffffff"), 0, -2.1, 0, false));
+  return g;
+}
+/** Blockiges Auto (Front nach +z). opts: {color, ambulance}. userData: {wheels, hazard[], blue[]} */
+export function car({ color = "#2f3f63", ambulance = false } = {}) {
+  const g = new THREE.Group();
+  const L = ambulance ? 7.2 : 6, Wd = 3, body = mat(color);
+  g.add(rbox(Wd, 1.3, L, 0.25, body, 0, 1.25, 0));
+  if (ambulance) {
+    g.add(rbox(Wd, 2.4, 4.4, 0.2, body, 0, 2.8, -1.3));
+    g.add(box(Wd + 0.04, 0.35, 4.4, mat("#d8342c"), 0, 2.4, -1.3, false));
+    g.add(box(Wd + 0.04, 0.12, 7.0, mat("#f4d23a"), 0, 1.55, 0, false));
+    const t = signTex("RETTUNGSDIENST", { bg: "#ffffff", fg: "#d8342c", border: null, w: 512, h: 96 });
+    [-1, 1].forEach((sd) => { const pl = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 0.6), new THREE.MeshBasicMaterial({ map: tex2(t) })); pl.position.set(sd * (Wd / 2 + 0.03), 3.3, -1.3); pl.rotation.y = sd * Math.PI / 2; g.add(pl); });
+  }
+  const cab = rbox(Wd - 0.2, 1.2, 2.6, 0.25, body, 0, 2.45, ambulance ? 2.0 : -0.3);
+  g.add(cab);
+  const glass = mat("#9fc3e6", { roughness: 0.2, metalness: 0.2 });
+  g.add(box(Wd - 0.5, 0.85, 0.08, glass, 0, 2.5, (ambulance ? 2.0 : -0.3) + 1.31, false));
+  [-1, 1].forEach((sd) => g.add(box(0.08, 0.8, 1.9, glass, sd * (Wd / 2 - 0.08), 2.5, ambulance ? 2.0 : -0.3, false)));
+  const wheels = [];
+  [[-1, 1], [1, 1], [-1, -1], [1, -1]].forEach(([sx, sz]) => {
+    const w = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.62, 0.5, 16), mat("#1b1b1f"));
+    w.rotation.z = Math.PI / 2; w.position.set(sx * (Wd / 2), 0.62, sz * (L / 2 - 1.2)); g.add(w); wheels.push(w);
+  });
+  const head = new THREE.MeshStandardMaterial({ color: "#fff6d6", emissive: "#fff2c0", emissiveIntensity: 1.2 });
+  [-0.95, 0.95].forEach((x) => g.add(box(0.6, 0.3, 0.08, head, x, 1.35, L / 2 + 0.01, false)));
+  const hazard = [-1.2, 1.2].map((x) => { const m = new THREE.MeshStandardMaterial({ color: "#ff9a1a", emissive: "#ff7a00", emissiveIntensity: 0 }); g.add(box(0.4, 0.25, 0.08, m, x, 1.35, -L / 2 - 0.01, false)); return m; });
+  const blue = [];
+  if (ambulance) [-0.7, 0.7].forEach((x) => { const m = new THREE.MeshStandardMaterial({ color: "#2a5cff", emissive: "#2a6bff", emissiveIntensity: 0 }); g.add(box(0.6, 0.3, 0.5, m, x, 4.15, -1.0, false)); blue.push(m); });
+  g.userData = { wheels, hazard, blue };
+  return g;
+}
+function tex2(t) { return t; }
+/** Warnblinker / Blaulicht schalten (t in Sekunden). */
+export function carLights(c, t, { hazard = false, blue = false } = {}) {
+  const on = Math.floor(t * 2.2) % 2 === 0;
+  c.userData.hazard.forEach((m) => (m.emissiveIntensity = hazard && on ? 2.5 : 0));
+  c.userData.blue.forEach((m, i) => (m.emissiveIntensity = blue && (Math.floor(t * 6) + i) % 2 === 0 ? 3 : 0.1));
+}
+export function phone() {
+  const g = new THREE.Group();
+  g.add(rbox(0.42, 0.8, 0.1, 0.05, mat("#16161a"), 0, 0, 0));
+  g.add(box(0.34, 0.66, 0.02, mat("#6fa8ff", { emissive: "#3b7bff", emissiveIntensity: 0.6 }), 0, 0, 0.06, false));
+  return g;
+}
+/** Lichterkette zwischen zwei Punkten (Set-Koordinaten). */
+export function stringLights(len = 16, sag = 1.2, n = 14) {
+  const g = new THREE.Group();
+  const cols = ["#ffd56b", "#ff8fb1", "#8fd3ff", "#b6ff8f"];
+  for (let i = 0; i <= n; i++) {
+    const u = i / n, x = -len / 2 + u * len, y = -Math.sin(u * Math.PI) * sag;
+    const b = new THREE.Mesh(new THREE.SphereGeometry(0.16, 8, 6), new THREE.MeshBasicMaterial({ color: cols[i % 4] }));
+    b.position.set(x, y, 0); g.add(b);
+    if (i < n) { const seg = box(len / n, 0.03, 0.03, mat("#333"), x + len / n / 2, (y - Math.sin((u + 1 / n) * Math.PI) * sag) / 2, 0, false); g.add(seg); }
+  }
   return g;
 }
 export function briefcase() {

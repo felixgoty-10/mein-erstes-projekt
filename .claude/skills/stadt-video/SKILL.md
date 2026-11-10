@@ -93,6 +93,11 @@ schwarze Gestalt: `character({ shadow: true, hat: "hood", scale: 1.2 })` (nur le
 Gesichter zusätzlich `scream`, `eyes`. Musik: `"music": { "mood": "horror", "volume": 0.32 }` in `video.json`.
 Overlays zusätzlich: `keyhole` (Blick durchs Schlüsselloch), `flash` (`color`, `opacity`; `hold: true` blendet
 bis zum Ende ein, z. B. Schwarzblende mit `"to": ["END", 0]`). Vorlage: `videos/lebenszeit/`.
+Fahrzeuge: `car({ color, ambulance })` + `carLights(auto, t, { hazard, blue })` (Warnblinker/Blaulicht), `phone()`,
+`stringLights(len)`; Kleidung `shirt: { type: "paramedic" }` (Rettungsdienst). Telefonieren: Arm `rotation.x = -2.5`, `z = 0.55`.
+**Wichtig:** Jede Einstellung setzt Position/Rotation aller Figuren und Objekte, die sie zeigt, selbst neu (z. B. eine
+`basis()`-Funktion am Anfang von `update`). Sonst „erbt“ sie Werte aus einer anderen Einstellung, denn HyperFrames
+rendert Frames nicht zwingend in Reihenfolge.
 Weitere Bauteile: `dog()` + `dogPose(hund, t, walk)` (wedelt/läuft), `ivStand()`, `cake()`, `flower(color)`, `fence(len)`,
 `wateringCan()`, `balloon(color)`; `bench()` (Sitzhöhe ≈ 1.6; sitzende Figur: `.sit()` + `body.position.y = 0.1`).
 Kamera immer innerhalb der Raumwände platzieren (room w=16 → x ±8, d=12 → z ±6; offen nach +z).

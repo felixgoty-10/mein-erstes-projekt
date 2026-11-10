@@ -1,0 +1,936 @@
+{
+ "duration": 51.525,
+ "sentences": [
+  {
+   "id": "s1",
+   "text": "In dieser Stadt steht über jedem Kopf, was er beruflich macht.",
+   "start": 0.25,
+   "end": 3.184,
+   "words": [
+    {
+     "text": "In",
+     "start": 0.25,
+     "end": 0.376
+    },
+    {
+     "text": "dieser",
+     "start": 0.376,
+     "end": 0.629
+    },
+    {
+     "text": "Stadt",
+     "start": 0.629,
+     "end": 0.881
+    },
+    {
+     "text": "steht",
+     "start": 0.881,
+     "end": 1.133
+    },
+    {
+     "text": "über",
+     "start": 1.133,
+     "end": 1.322
+    },
+    {
+     "text": "jedem",
+     "start": 1.322,
+     "end": 1.638
+    },
+    {
+     "text": "Kopf,",
+     "start": 1.638,
+     "end": 1.89
+    },
+    {
+     "text": "was",
+     "start": 2.048,
+     "end": 2.237
+    },
+    {
+     "text": "er",
+     "start": 2.237,
+     "end": 2.363
+    },
+    {
+     "text": "beruflich",
+     "start": 2.363,
+     "end": 2.931
+    },
+    {
+     "text": "macht.",
+     "start": 2.931,
+     "end": 3.184
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "text": "Ich bin der Chef einer großen Firma.",
+   "start": 3.535,
+   "end": 5.101,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 3.535,
+     "end": 3.709
+    },
+    {
+     "text": "bin",
+     "start": 3.709,
+     "end": 3.883
+    },
+    {
+     "text": "der",
+     "start": 3.883,
+     "end": 4.057
+    },
+    {
+     "text": "Chef",
+     "start": 4.057,
+     "end": 4.231
+    },
+    {
+     "text": "einer",
+     "start": 4.231,
+     "end": 4.463
+    },
+    {
+     "text": "großen",
+     "start": 4.463,
+     "end": 4.811
+    },
+    {
+     "text": "Firma.",
+     "start": 4.811,
+     "end": 5.101
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "text": "Auf meiner Party waren nur wichtige Leute.",
+   "start": 5.45,
+   "end": 7.356,
+   "words": [
+    {
+     "text": "Auf",
+     "start": 5.45,
+     "end": 5.623
+    },
+    {
+     "text": "meiner",
+     "start": 5.623,
+     "end": 5.912
+    },
+    {
+     "text": "Party",
+     "start": 5.912,
+     "end": 6.143
+    },
+    {
+     "text": "waren",
+     "start": 6.143,
+     "end": 6.432
+    },
+    {
+     "text": "nur",
+     "start": 6.432,
+     "end": 6.605
+    },
+    {
+     "text": "wichtige",
+     "start": 6.605,
+     "end": 7.067
+    },
+    {
+     "text": "Leute.",
+     "start": 7.067,
+     "end": 7.356
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "text": "Ein Anwalt. Eine Influencerin. Ein Investor.",
+   "start": 7.705,
+   "end": 10.954,
+   "words": [
+    {
+     "text": "Ein",
+     "start": 7.705,
+     "end": 7.968
+    },
+    {
+     "text": "Anwalt.",
+     "start": 7.968,
+     "end": 8.495
+    },
+    {
+     "text": "Eine",
+     "start": 8.539,
+     "end": 8.89
+    },
+    {
+     "text": "Influencerin.",
+     "start": 8.89,
+     "end": 9.944
+    },
+    {
+     "text": "Ein",
+     "start": 9.988,
+     "end": 10.251
+    },
+    {
+     "text": "Investor.",
+     "start": 10.251,
+     "end": 10.954
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "text": "Dann kam ein Rettungssanitäter.",
+   "start": 11.448,
+   "end": 12.898,
+   "words": [
+    {
+     "text": "Dann",
+     "start": 11.448,
+     "end": 11.645
+    },
+    {
+     "text": "kam",
+     "start": 11.645,
+     "end": 11.843
+    },
+    {
+     "text": "ein",
+     "start": 11.843,
+     "end": 12.041
+    },
+    {
+     "text": "Rettungssanitäter.",
+     "start": 12.041,
+     "end": 12.898
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "text": "Er fragte, ob er sich zu uns setzen darf.",
+   "start": 13.251,
+   "end": 15.375,
+   "words": [
+    {
+     "text": "Er",
+     "start": 13.251,
+     "end": 13.374
+    },
+    {
+     "text": "fragte,",
+     "start": 13.374,
+     "end": 13.743
+    },
+    {
+     "text": "ob",
+     "start": 13.897,
+     "end": 14.02
+    },
+    {
+     "text": "er",
+     "start": 14.02,
+     "end": 14.144
+    },
+    {
+     "text": "sich",
+     "start": 14.144,
+     "end": 14.39
+    },
+    {
+     "text": "zu",
+     "start": 14.39,
+     "end": 14.574
+    },
+    {
+     "text": "uns",
+     "start": 14.574,
+     "end": 14.759
+    },
+    {
+     "text": "setzen",
+     "start": 14.759,
+     "end": 15.128
+    },
+    {
+     "text": "darf.",
+     "start": 15.128,
+     "end": 15.375
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "text": "Ich sagte: Nein. Hier sitzen nur wichtige Leute.",
+   "start": 15.725,
+   "end": 18.364,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 15.725,
+     "end": 15.921
+    },
+    {
+     "text": "sagte:",
+     "start": 15.921,
+     "end": 16.247
+    },
+    {
+     "text": "Nein.",
+     "start": 16.442,
+     "end": 16.703
+    },
+    {
+     "text": "Hier",
+     "start": 16.735,
+     "end": 16.931
+    },
+    {
+     "text": "sitzen",
+     "start": 16.931,
+     "end": 17.322
+    },
+    {
+     "text": "nur",
+     "start": 17.322,
+     "end": 17.517
+    },
+    {
+     "text": "wichtige",
+     "start": 17.517,
+     "end": 18.039
+    },
+    {
+     "text": "Leute.",
+     "start": 18.039,
+     "end": 18.364
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "text": "Er ging traurig weg.",
+   "start": 18.847,
+   "end": 19.817,
+   "words": [
+    {
+     "text": "Er",
+     "start": 18.847,
+     "end": 18.968
+    },
+    {
+     "text": "ging",
+     "start": 18.968,
+     "end": 19.15
+    },
+    {
+     "text": "traurig",
+     "start": 19.15,
+     "end": 19.635
+    },
+    {
+     "text": "weg.",
+     "start": 19.635,
+     "end": 19.817
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "text": "Seine Nummer ließ er auf dem Tisch liegen.",
+   "start": 20.167,
+   "end": 21.928,
+   "words": [
+    {
+     "text": "Seine",
+     "start": 20.167,
+     "end": 20.482
+    },
+    {
+     "text": "Nummer",
+     "start": 20.482,
+     "end": 20.733
+    },
+    {
+     "text": "ließ",
+     "start": 20.733,
+     "end": 20.922
+    },
+    {
+     "text": "er",
+     "start": 20.922,
+     "end": 21.048
+    },
+    {
+     "text": "auf",
+     "start": 21.048,
+     "end": 21.236
+    },
+    {
+     "text": "dem",
+     "start": 21.236,
+     "end": 21.425
+    },
+    {
+     "text": "Tisch",
+     "start": 21.425,
+     "end": 21.614
+    },
+    {
+     "text": "liegen.",
+     "start": 21.614,
+     "end": 21.928
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": "Am Abend verabschiedeten sich alle.",
+   "start": 22.409,
+   "end": 24.076,
+   "words": [
+    {
+     "text": "Am",
+     "start": 22.409,
+     "end": 22.538
+    },
+    {
+     "text": "Abend",
+     "start": 22.538,
+     "end": 22.858
+    },
+    {
+     "text": "verabschiedeten",
+     "start": 22.858,
+     "end": 23.627
+    },
+    {
+     "text": "sich",
+     "start": 23.627,
+     "end": 23.884
+    },
+    {
+     "text": "alle.",
+     "start": 23.884,
+     "end": 24.076
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": "Ich fuhr allein nach Hause.",
+   "start": 24.428,
+   "end": 25.587,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 24.428,
+     "end": 24.611
+    },
+    {
+     "text": "fuhr",
+     "start": 24.611,
+     "end": 24.794
+    },
+    {
+     "text": "allein",
+     "start": 24.794,
+     "end": 25.099
+    },
+    {
+     "text": "nach",
+     "start": 25.099,
+     "end": 25.282
+    },
+    {
+     "text": "Hause.",
+     "start": 25.282,
+     "end": 25.587
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": "Dann krachte es.",
+   "start": 25.918,
+   "end": 26.68,
+   "words": [
+    {
+     "text": "Dann",
+     "start": 25.918,
+     "end": 26.125
+    },
+    {
+     "text": "krachte",
+     "start": 26.125,
+     "end": 26.541
+    },
+    {
+     "text": "es.",
+     "start": 26.541,
+     "end": 26.68
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": "Mein Auto lag im Graben. Ich war eingeklemmt.",
+   "start": 27.215,
+   "end": 29.602,
+   "words": [
+    {
+     "text": "Mein",
+     "start": 27.215,
+     "end": 27.484
+    },
+    {
+     "text": "Auto",
+     "start": 27.484,
+     "end": 27.753
+    },
+    {
+     "text": "lag",
+     "start": 27.753,
+     "end": 27.954
+    },
+    {
+     "text": "im",
+     "start": 27.954,
+     "end": 28.089
+    },
+    {
+     "text": "Graben.",
+     "start": 28.089,
+     "end": 28.492
+    },
+    {
+     "text": "Ich",
+     "start": 28.526,
+     "end": 28.728
+    },
+    {
+     "text": "war",
+     "start": 28.728,
+     "end": 28.929
+    },
+    {
+     "text": "eingeklemmt.",
+     "start": 28.929,
+     "end": 29.602
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": "Ich rief den Anwalt an. Er sagte: Zu kalt draußen.",
+   "start": 30.036,
+   "end": 32.813,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 30.036,
+     "end": 30.236
+    },
+    {
+     "text": "rief",
+     "start": 30.236,
+     "end": 30.437
+    },
+    {
+     "text": "den",
+     "start": 30.437,
+     "end": 30.638
+    },
+    {
+     "text": "Anwalt",
+     "start": 30.638,
+     "end": 31.039
+    },
+    {
+     "text": "an.",
+     "start": 31.039,
+     "end": 31.173
+    },
+    {
+     "text": "Er",
+     "start": 31.207,
+     "end": 31.341
+    },
+    {
+     "text": "sagte:",
+     "start": 31.341,
+     "end": 31.675
+    },
+    {
+     "text": "Zu",
+     "start": 31.876,
+     "end": 32.077
+    },
+    {
+     "text": "kalt",
+     "start": 32.077,
+     "end": 32.345
+    },
+    {
+     "text": "draußen.",
+     "start": 32.345,
+     "end": 32.813
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": "Die Influencerin: Ich bin gerade live.",
+   "start": 33.166,
+   "end": 35.24,
+   "words": [
+    {
+     "text": "Die",
+     "start": 33.166,
+     "end": 33.292
+    },
+    {
+     "text": "Influencerin:",
+     "start": 33.292,
+     "end": 34.046
+    },
+    {
+     "text": "Ich",
+     "start": 34.234,
+     "end": 34.423
+    },
+    {
+     "text": "bin",
+     "start": 34.423,
+     "end": 34.611
+    },
+    {
+     "text": "gerade",
+     "start": 34.611,
+     "end": 34.988
+    },
+    {
+     "text": "live.",
+     "start": 34.988,
+     "end": 35.24
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": "Der Investor: Lohnt sich nicht.",
+   "start": 35.591,
+   "end": 37.272,
+   "words": [
+    {
+     "text": "Der",
+     "start": 35.591,
+     "end": 35.778
+    },
+    {
+     "text": "Investor:",
+     "start": 35.778,
+     "end": 36.276
+    },
+    {
+     "text": "Lohnt",
+     "start": 36.462,
+     "end": 36.711
+    },
+    {
+     "text": "sich",
+     "start": 36.711,
+     "end": 36.96
+    },
+    {
+     "text": "nicht.",
+     "start": 36.96,
+     "end": 37.272
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": "Ich hatte nur noch eine Nummer.",
+   "start": 37.753,
+   "end": 38.853,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 37.753,
+     "end": 37.91
+    },
+    {
+     "text": "hatte",
+     "start": 37.91,
+     "end": 38.119
+    },
+    {
+     "text": "nur",
+     "start": 38.119,
+     "end": 38.277
+    },
+    {
+     "text": "noch",
+     "start": 38.277,
+     "end": 38.434
+    },
+    {
+     "text": "eine",
+     "start": 38.434,
+     "end": 38.643
+    },
+    {
+     "text": "Nummer.",
+     "start": 38.643,
+     "end": 38.853
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": "Die vom Rettungssanitäter.",
+   "start": 39.179,
+   "end": 40.418,
+   "words": [
+    {
+     "text": "Die",
+     "start": 39.179,
+     "end": 39.317
+    },
+    {
+     "text": "vom",
+     "start": 39.317,
+     "end": 39.523
+    },
+    {
+     "text": "Rettungssanitäter.",
+     "start": 39.523,
+     "end": 40.418
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": "Fünf Minuten später war er da.",
+   "start": 40.902,
+   "end": 42.401,
+   "words": [
+    {
+     "text": "Fünf",
+     "start": 40.902,
+     "end": 41.163
+    },
+    {
+     "text": "Minuten",
+     "start": 41.163,
+     "end": 41.619
+    },
+    {
+     "text": "später",
+     "start": 41.619,
+     "end": 41.945
+    },
+    {
+     "text": "war",
+     "start": 41.945,
+     "end": 42.14
+    },
+    {
+     "text": "er",
+     "start": 42.14,
+     "end": 42.27
+    },
+    {
+     "text": "da.",
+     "start": 42.27,
+     "end": 42.401
+    }
+   ]
+  },
+  {
+   "id": "s20",
+   "text": "Er zog mich aus dem Auto und blieb die ganze Nacht bei mir.",
+   "start": 42.753,
+   "end": 45.608,
+   "words": [
+    {
+     "text": "Er",
+     "start": 42.753,
+     "end": 42.88
+    },
+    {
+     "text": "zog",
+     "start": 42.88,
+     "end": 43.134
+    },
+    {
+     "text": "mich",
+     "start": 43.134,
+     "end": 43.388
+    },
+    {
+     "text": "aus",
+     "start": 43.388,
+     "end": 43.578
+    },
+    {
+     "text": "dem",
+     "start": 43.578,
+     "end": 43.768
+    },
+    {
+     "text": "Auto",
+     "start": 43.768,
+     "end": 44.022
+    },
+    {
+     "text": "und",
+     "start": 44.022,
+     "end": 44.212
+    },
+    {
+     "text": "blieb",
+     "start": 44.212,
+     "end": 44.466
+    },
+    {
+     "text": "die",
+     "start": 44.466,
+     "end": 44.593
+    },
+    {
+     "text": "ganze",
+     "start": 44.593,
+     "end": 44.973
+    },
+    {
+     "text": "Nacht",
+     "start": 44.973,
+     "end": 45.227
+    },
+    {
+     "text": "bei",
+     "start": 45.227,
+     "end": 45.417
+    },
+    {
+     "text": "mir.",
+     "start": 45.417,
+     "end": 45.608
+    }
+   ]
+  },
+  {
+   "id": "s21",
+   "text": "Heute sitzt er auf jeder Party neben mir.",
+   "start": 46.089,
+   "end": 47.981,
+   "words": [
+    {
+     "text": "Heute",
+     "start": 46.089,
+     "end": 46.394
+    },
+    {
+     "text": "sitzt",
+     "start": 46.394,
+     "end": 46.699
+    },
+    {
+     "text": "er",
+     "start": 46.699,
+     "end": 46.821
+    },
+    {
+     "text": "auf",
+     "start": 46.821,
+     "end": 47.004
+    },
+    {
+     "text": "jeder",
+     "start": 47.004,
+     "end": 47.249
+    },
+    {
+     "text": "Party",
+     "start": 47.249,
+     "end": 47.493
+    },
+    {
+     "text": "neben",
+     "start": 47.493,
+     "end": 47.798
+    },
+    {
+     "text": "mir.",
+     "start": 47.798,
+     "end": 47.981
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "text": "Und über seinem Kopf steht für mich etwas anderes.",
+   "start": 48.331,
+   "end": 50.478,
+   "words": [
+    {
+     "text": "Und",
+     "start": 48.331,
+     "end": 48.496
+    },
+    {
+     "text": "über",
+     "start": 48.496,
+     "end": 48.661
+    },
+    {
+     "text": "seinem",
+     "start": 48.661,
+     "end": 48.992
+    },
+    {
+     "text": "Kopf",
+     "start": 48.992,
+     "end": 49.212
+    },
+    {
+     "text": "steht",
+     "start": 49.212,
+     "end": 49.432
+    },
+    {
+     "text": "für",
+     "start": 49.432,
+     "end": 49.597
+    },
+    {
+     "text": "mich",
+     "start": 49.597,
+     "end": 49.817
+    },
+    {
+     "text": "etwas",
+     "start": 49.817,
+     "end": 50.093
+    },
+    {
+     "text": "anderes.",
+     "start": 50.093,
+     "end": 50.478
+    }
+   ]
+  }
+ ]
+}

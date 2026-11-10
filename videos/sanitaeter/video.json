@@ -1,0 +1,36 @@
+{
+  "title": "In dieser Stadt steht über jedem Kopf sein Beruf",
+  "voice": { "length_scale": 1.0 },
+  "music": { "volume": 0.2 },
+  "sentences": [
+    { "id": "s1", "text": "In dieser Stadt steht über jedem Kopf, was er beruflich macht." },
+    { "id": "s2", "text": "Ich bin der Chef einer großen Firma." },
+    { "id": "s3", "text": "Auf meiner Party waren nur wichtige Leute." },
+    { "id": "s4", "text": "Ein Anwalt. Eine Influencerin. Ein Investor.", "pause": 0.45 },
+    { "id": "s5", "text": "Dann kam ein Rettungssanitäter." },
+    { "id": "s6", "text": "Er fragte, ob er sich zu uns setzen darf." },
+    { "id": "s7", "text": "Ich sagte: Nein. Hier sitzen nur wichtige Leute.", "pause": 0.45 },
+    { "id": "s8", "text": "Er ging traurig weg." },
+    { "id": "s9", "text": "Seine Nummer ließ er auf dem Tisch liegen.", "pause": 0.45 },
+    { "id": "s10", "text": "Am Abend verabschiedeten sich alle." },
+    { "id": "s11", "text": "Ich fuhr allein nach Hause.", "pause": 0.3 },
+    { "id": "s12", "text": "Dann krachte es.", "pause": 0.5 },
+    { "id": "s13", "text": "Mein Auto lag im Graben. Ich war eingeklemmt.", "pause": 0.4 },
+    { "id": "s14", "text": "Ich rief den Anwalt an. Er sagte: Zu kalt draußen." },
+    { "id": "s15", "text": "Die Influencerin: Ich bin gerade live." },
+    { "id": "s16", "text": "Der Investor: Lohnt sich nicht.", "pause": 0.45 },
+    { "id": "s17", "text": "Ich hatte nur noch eine Nummer.", "pause": 0.3 },
+    { "id": "s18", "text": "Die vom Rettungssanitäter.", "pause": 0.45 },
+    { "id": "s19", "text": "Fünf Minuten später war er da." },
+    { "id": "s20", "text": "Er zog mich aus dem Auto und blieb die ganze Nacht bei mir.", "pause": 0.45 },
+    { "id": "s21", "text": "Heute sitzt er auf jeder Party neben mir." },
+    { "id": "s22", "text": "Und über seinem Kopf steht für mich etwas anderes." }
+  ],
+  "overlays": [
+    { "type": "card", "header": "HEIMWEG", "value": "23:47", "from": ["s11", 0], "to": ["s11", "end"] },
+    { "type": "flash", "color": "#ffffff", "opacity": 0.9, "from": ["s12", 2], "to": ["s12", "end"] },
+    { "type": "sign", "text": "„ZU KALT DRAUSSEN.“", "from": ["s14", 6], "to": ["s14", "end"] },
+    { "type": "sign", "text": "„ICH BIN GERADE LIVE.“", "from": ["s15", 2], "to": ["s15", "end"] },
+    { "type": "sign", "text": "„LOHNT SICH NICHT.“", "from": ["s16", 2], "to": ["s16", "end"] }
+  ]
+}
