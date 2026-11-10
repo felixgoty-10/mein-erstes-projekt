@@ -36,7 +36,7 @@ export default function direct(W, S, T) {
   }
   const pt = W.set("party", 0, 0);
   const tischA = terrasse(pt, false);
-  const karte = signMesh("SANI · RUF MICH AN!", 1.6, 0.6, { bg: "#ffffff", fg: "#d8342c", border: "#d8342c" });
+  const karte = signMesh("0138913 Max", 1.6, 0.6, { bg: "#ffffff", fg: "#d8342c", border: "#d8342c" });
   karte.rotation.x = -Math.PI / 2; W.add(pt, karte, 1.6, 2.22, -4.1);
   karte.rotation.x = -Math.PI / 2;
   const chefA = W.addChar(pt, character(CHEF), -1.4, -2.0, 0.1);
