@@ -755,6 +755,83 @@ export function bench(color = "#a8683a") {
   [-2.2, 2.2].forEach((x) => { g.add(box(0.22, 1.5, 1.2, mat("#3a3a40"), x, 0.75, 0)); g.add(box(0.22, 1.2, 0.2, mat("#3a3a40"), x, 2.2, -0.62)); });
   return g;
 }
+/** Blockiger Hund. userData: legs[4], tail, head – im Drehbuch animieren (dogWalk). Schaut nach +z. */
+export function dog(color = "#c98b4f", spot = "#7a4e2d") {
+  const g = new THREE.Group();
+  const m = mat(color), d = mat(spot);
+  g.add(rbox(1.2, 1.0, 2.2, 0.15, m, 0, 1.25, 0));
+  const head = new THREE.Group(); head.position.set(0, 1.9, 1.15);
+  head.add(rbox(1.0, 0.9, 0.95, 0.15, m, 0, 0, 0));
+  head.add(rbox(0.6, 0.45, 0.5, 0.1, mat("#e8c79a"), 0, -0.18, 0.55));
+  head.add(box(0.22, 0.16, 0.12, mat("#1b1b1f"), 0, -0.02, 0.82, false));
+  [-0.27, 0.27].forEach((x) => head.add(box(0.14, 0.18, 0.05, mat("#1b1b1f"), x, 0.16, 0.48, false)));
+  [-0.5, 0.5].forEach((x) => { const e = box(0.26, 0.6, 0.4, d, x, 0.25, -0.1); e.rotation.z = x > 0 ? -0.25 : 0.25; head.add(e); });
+  g.add(head);
+  const legs = [[-0.38, 0.75], [0.38, 0.75], [-0.38, -0.75], [0.38, -0.75]].map(([x, z]) => {
+    const p = new THREE.Group(); p.position.set(x, 0.85, z);
+    p.add(box(0.34, 0.85, 0.34, m, 0, -0.42, 0)); g.add(p); return p;
+  });
+  const tail = new THREE.Group(); tail.position.set(0, 1.6, -1.1);
+  const tm = box(0.18, 0.18, 0.8, d, 0, 0.25, -0.3); tm.rotation.x = 0.7; tail.add(tm); g.add(tail);
+  g.add(box(1.24, 0.2, 0.3, mat("#d23b3b"), 0, 1.7, 0.95, false)); // Halsband
+  g.userData = { legs, tail, head };
+  return g;
+}
+/** Hund animieren: walk 0..1 (Laufen), Schwanz wedelt immer. */
+export function dogPose(dg, t, walk = 0) {
+  const { legs, tail, head } = dg.userData;
+  const s = Math.sin(t * 11);
+  legs.forEach((l, i) => (l.rotation.x = walk * 0.6 * s * (i === 0 || i === 3 ? 1 : -1)));
+  tail.rotation.y = Math.sin(t * 16) * 0.6;
+  head.rotation.x = Math.sin(t * 3) * 0.08;
+}
+export function ivStand() {
+  const g = new THREE.Group();
+  g.add(box(0.9, 0.08, 0.9, mat("#8a8f98"), 0, 0.05, 0));
+  g.add(new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 5.2, 8), mat("#b9bec7", { metalness: 0.5, roughness: 0.3 })));
+  g.children[1].position.y = 2.6;
+  g.add(box(0.9, 0.06, 0.06, mat("#b9bec7"), 0, 5.1, 0));
+  g.add(rbox(0.55, 0.8, 0.22, 0.08, mat("#dff1ff", { transparent: true, opacity: 0.85 }), 0.3, 4.6, 0));
+  return g;
+}
+export function cake() {
+  const g = new THREE.Group();
+  const layer = (r, h, y, c) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 24), mat(c)); m.position.y = y; m.castShadow = true; g.add(m); };
+  layer(1.3, 0.7, 0.35, "#f3d7a6"); layer(1.32, 0.12, 0.74, "#ffffff"); layer(0.95, 0.6, 1.1, "#f2a7c3"); layer(0.97, 0.1, 1.44, "#ffffff");
+  for (let i = 0; i < 5; i++) {
+    const a = (i / 5) * Math.PI * 2;
+    const c = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.45, 6), mat(["#e74c3c", "#3498db", "#f1c40f"][i % 3]));
+    c.position.set(Math.cos(a) * 0.55, 1.7, Math.sin(a) * 0.55); g.add(c);
+    const f = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 6), new THREE.MeshBasicMaterial({ color: "#ffb02e" }));
+    f.position.set(Math.cos(a) * 0.55, 1.98, Math.sin(a) * 0.55); g.add(f);
+  }
+  return g;
+}
+export function flower(color = "#e74c3c") {
+  const g = new THREE.Group();
+  g.add(box(0.08, 0.9, 0.08, mat("#3f8f3a"), 0, 0.45, 0, false));
+  const h = new THREE.Mesh(new THREE.SphereGeometry(0.22, 10, 8), mat(color)); h.position.y = 0.95; g.add(h);
+  const c = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 6), mat("#f6d33c")); c.position.set(0, 0.97, 0.15); g.add(c);
+  return g;
+}
+export function fence(len = 20) {
+  const g = new THREE.Group();
+  for (let x = -len / 2; x <= len / 2; x += 1.2) g.add(box(0.3, 1.8, 0.2, mat("#f4f1ea"), x, 0.9, 0));
+  g.add(box(len + 0.4, 0.2, 0.15, mat("#f4f1ea"), 0, 1.3, 0.08)); g.add(box(len + 0.4, 0.2, 0.15, mat("#f4f1ea"), 0, 0.6, 0.08));
+  return g;
+}
+export function wateringCan() {
+  const g = new THREE.Group();
+  g.add(rbox(0.8, 0.7, 0.5, 0.1, mat("#2e9e4f"), 0, 0, 0));
+  const sp = box(0.12, 0.12, 0.8, mat("#2e9e4f"), 0, 0.15, 0.5); sp.rotation.x = -0.6; g.add(sp);
+  return g;
+}
+export function balloon(color = "#e74c3c") {
+  const g = new THREE.Group();
+  const b = new THREE.Mesh(new THREE.SphereGeometry(0.75, 16, 12), mat(color, { roughness: 0.35 })); b.scale.y = 1.2; b.position.y = 0;
+  g.add(b); g.add(box(0.03, 2.5, 0.03, mat("#ffffff"), 0, -2.1, 0, false));
+  return g;
+}
 export function briefcase() {
   const g = new THREE.Group();
   g.add(box(1.1, 0.8, 0.3, mat("#5a3a20"), 0, 0, 0));
