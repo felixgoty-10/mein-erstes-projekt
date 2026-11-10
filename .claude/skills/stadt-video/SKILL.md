@@ -109,11 +109,8 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
 - Eigene Figuren und eigene Welt: keine Marken, keine bekannten Spielfiguren nachbauen.
 - **Standard-Stimme (vom Nutzer festgelegt, nicht ändern):** die Stimme aus dem ersten Clip: Piper "thorsten"
   (offline, `.cache/voices/de-thorsten-low.onnx`), ohne Tonhöhen-/Formant-Bearbeitung, jeder Satz einzeln. In `video.json`:
-  `"voice": { "length_scale": 0.82, "noise_scale": 0.8, "noise_w_scale": 1.1, "pause": 0.2 }` – sonst nichts
-  (kein `model`, `semitones`, `flow`, `pitch_hz`). Das ist dieselbe Stimme, aber mit der **Sprechweise des
-  Referenzvideos** (vom Nutzer gewünscht): zügig (~6 Silben/s), kurze Pausen (~0,2 s), lebendige Betonung.
-  Explizite Satz-`pause`-Werte höchstens 0,3 s. Pointen und Zahlen-Ausrufe mit "!" schreiben
-  ("Hundert Punkte!", "Aber das war mir egal!"), damit sie betont gesprochen werden.
+  `"voice": { "length_scale": 1.0 }` – sonst nichts (kein `model`, `semitones`, `flow`, `pitch_hz`, keine
+  geänderten noise-Werte). Eine schnellere Sprechweise nach Referenzvideo wurde ausprobiert und vom Nutzer verworfen.
   Andere Stimmen (hell, Kind, Teenager, fließend) wurden ausprobiert und vom Nutzer verworfen; nur auf ausdrücklichen
   Wunsch nutzen. Die Optionen dafür sind in `tools/tts.py` dokumentiert.
 - Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
