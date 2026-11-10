@@ -1,37 +1,178 @@
 {
   "title": "In dieser Stadt bezahlt man mit Punkten für gute Taten",
-  "voice": { "length_scale": 1.0 },
-  "music": { "volume": 0.22 },
+  "voice": {
+    "length_scale": 0.82,
+    "noise_scale": 0.8,
+    "noise_w_scale": 1.1,
+    "pause": 0.2
+  },
+  "music": {
+    "volume": 0.22
+  },
   "sentences": [
-    { "id": "s1", "text": "In dieser Stadt bekommt man für jede gute Tat Punkte." },
-    { "id": "s2", "text": "Und im Supermarkt bezahlt man nur mit Punkten." },
-    { "id": "s3", "text": "Wer nett ist, ist reich." },
-    { "id": "s4", "text": "Wer gemein ist, bekommt nicht mal ein Brötchen.", "pause": 0.45 },
-    { "id": "s5", "text": "Meine Mutter liegt im Krankenhaus." },
-    { "id": "s6", "text": "Die Behandlung kostet fünfhundert Punkte." },
-    { "id": "s7", "text": "Mein Vater und ich können sie nicht bezahlen." },
-    { "id": "s8", "text": "Ich hatte nur hundert.", "pause": 0.2 },
-    { "id": "s8b", "text": "Mir fehlten vierhundert Punkte.", "pause": 0.45 },
-    { "id": "s9", "text": "Montag habe ich meiner Oma geholfen, den Fernseher anzuschließen." },
-    { "id": "s10", "text": "Hundert Punkte.", "pause": 0.4 },
-    { "id": "s11", "text": "Dienstag bin ich mit dem Hund von meinen Nachbarn spazieren gegangen." },
-    { "id": "s12", "text": "Hundert Punkte.", "pause": 0.4 },
-    { "id": "s13", "text": "Mittwoch habe ich meinem Vater den ganzen Tag bei der Gartenarbeit geholfen." },
-    { "id": "s14", "text": "Zweihundert Punkte!", "pause": 0.4 },
-    { "id": "s15", "text": "Jetzt habe ich genug Punkte für Mamas Behandlung." },
-    { "id": "s16", "text": "Ich ging sofort zum Krankenhaus und habe bezahlt." },
-    { "id": "s17", "text": "Danach hatte ich null Punkte.", "pause": 0.2 },
-    { "id": "s18", "text": "Aber das war mir egal.", "pause": 0.45 },
-    { "id": "s19", "text": "Nach zwei Wochen kam Mama endlich aus dem Krankenhaus." },
-    { "id": "s20", "text": "Und wir feierten eine riesige Party.", "pause": 0.3 },
-    { "id": "s21", "text": "Mama gab mir das erste Stück Kuchen." },
-    { "id": "s22", "text": "Plus zehn Punkte." }
+    {
+      "id": "s1",
+      "text": "In dieser Stadt bekommt man für jede gute Tat Punkte."
+    },
+    {
+      "id": "s2",
+      "text": "Und im Supermarkt bezahlt man nur mit Punkten."
+    },
+    {
+      "id": "s3",
+      "text": "Wer nett ist, ist reich!"
+    },
+    {
+      "id": "s4",
+      "text": "Wer gemein ist, bekommt nicht mal ein Brötchen.",
+      "pause": 0.29
+    },
+    {
+      "id": "s5",
+      "text": "Meine Mutter liegt im Krankenhaus."
+    },
+    {
+      "id": "s6",
+      "text": "Die Behandlung kostet fünfhundert Punkte."
+    },
+    {
+      "id": "s7",
+      "text": "Mein Vater und ich können sie nicht bezahlen."
+    },
+    {
+      "id": "s8",
+      "text": "Ich hatte nur hundert.",
+      "pause": 0.13
+    },
+    {
+      "id": "s8b",
+      "text": "Mir fehlten vierhundert Punkte.",
+      "pause": 0.29
+    },
+    {
+      "id": "s9",
+      "text": "Montag habe ich meiner Oma geholfen, den Fernseher anzuschließen."
+    },
+    {
+      "id": "s10",
+      "text": "Hundert Punkte!",
+      "pause": 0.26
+    },
+    {
+      "id": "s11",
+      "text": "Dienstag bin ich mit dem Hund von meinen Nachbarn spazieren gegangen."
+    },
+    {
+      "id": "s12",
+      "text": "Hundert Punkte!",
+      "pause": 0.26
+    },
+    {
+      "id": "s13",
+      "text": "Mittwoch habe ich meinem Vater den ganzen Tag bei der Gartenarbeit geholfen."
+    },
+    {
+      "id": "s14",
+      "text": "Zweihundert Punkte!",
+      "pause": 0.26
+    },
+    {
+      "id": "s15",
+      "text": "Jetzt habe ich genug Punkte für Mamas Behandlung."
+    },
+    {
+      "id": "s16",
+      "text": "Ich ging sofort zum Krankenhaus und habe bezahlt."
+    },
+    {
+      "id": "s17",
+      "text": "Danach hatte ich null Punkte.",
+      "pause": 0.13
+    },
+    {
+      "id": "s18",
+      "text": "Aber das war mir egal!",
+      "pause": 0.29
+    },
+    {
+      "id": "s19",
+      "text": "Nach zwei Wochen kam Mama endlich aus dem Krankenhaus."
+    },
+    {
+      "id": "s20",
+      "text": "Und wir feierten eine riesige Party!",
+      "pause": 0.2
+    },
+    {
+      "id": "s21",
+      "text": "Mama gab mir das erste Stück Kuchen."
+    },
+    {
+      "id": "s22",
+      "text": "Plus zehn Punkte!"
+    }
   ],
   "overlays": [
-    { "type": "card", "header": "BEHANDLUNG", "value": "500 P", "from": ["s6", 0], "to": ["s6", "end"] },
-    { "type": "sign", "text": "MONTAG", "from": ["s9", 0], "to": ["s10", "end"] },
-    { "type": "sign", "text": "DIENSTAG", "from": ["s11", 0], "to": ["s12", "end"] },
-    { "type": "sign", "text": "MITTWOCH", "from": ["s13", 0], "to": ["s14", "end"] },
-    { "type": "sign", "text": "2 WOCHEN SPÄTER", "from": ["s19", 0], "to": ["s19", "end"] }
+    {
+      "type": "card",
+      "header": "BEHANDLUNG",
+      "value": "500 P",
+      "from": [
+        "s6",
+        0
+      ],
+      "to": [
+        "s6",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "MONTAG",
+      "from": [
+        "s9",
+        0
+      ],
+      "to": [
+        "s10",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "DIENSTAG",
+      "from": [
+        "s11",
+        0
+      ],
+      "to": [
+        "s12",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "MITTWOCH",
+      "from": [
+        "s13",
+        0
+      ],
+      "to": [
+        "s14",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "2 WOCHEN SPÄTER",
+      "from": [
+        "s19",
+        0
+      ],
+      "to": [
+        "s19",
+        "end"
+      ]
+    }
   ]
 }
