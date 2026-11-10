@@ -112,12 +112,18 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
 - Kamera nie hinter einer Figur, die die Szene verdeckt. Nahaufnahme: Kopf + Schultern, Pille dann ausblenden.
 - Liegende Figuren: `lieSide()` (Gesicht bleibt lesbar), Kamera von vorne.
 - Eigene Figuren und eigene Welt: keine Marken, keine bekannten Spielfiguren nachbauen.
-- **Standard-Stimme (vom Nutzer festgelegt, nicht ändern):** die Stimme aus dem ersten Clip: Piper "thorsten"
-  (offline, `.cache/voices/de-thorsten-low.onnx`), ohne Tonhöhen-/Formant-Bearbeitung, jeder Satz einzeln. In `video.json`:
-  `"voice": { "length_scale": 1.0 }` – sonst nichts (kein `model`, `semitones`, `flow`, `pitch_hz`, keine
-  geänderten noise-Werte). Eine schnellere Sprechweise nach Referenzvideo wurde ausprobiert und vom Nutzer verworfen.
-  Andere Stimmen (hell, Kind, Teenager, fließend) wurden ausprobiert und vom Nutzer verworfen; nur auf ausdrücklichen
-  Wunsch nutzen. Die Optionen dafür sind in `tools/tts.py` dokumentiert.
+- **Fester Synchronsprecher (vom Nutzer festgelegt): ElevenLabs „Mark – Casual, Relaxed and Light“, Modell eleven_v4.**
+  Ablauf für jedes neue Video:
+  1. Skript in `video.json` schreiben und dem Nutzer den **Sprechtext untereinander** schicken – jeder Satz in einer
+     Zeile, betonte Wörter in GROSSBUCHSTABEN, darunter `→ Ton/Betonung` (keine Tabelle).
+  2. Bis die Aufnahme kommt: Vorschau mit der Piper-Stimme (`tools/tts.py`, `"voice": { "length_scale": 1.0 }`) bauen.
+  3. Der Nutzer erzeugt die Aufnahme bei ElevenLabs mit Mark und schickt die MP3 → `tools/align.py` (siehe unten),
+     Ergebnis als `renders/<slug>-elevenlabs.mp4` rendern und schicken.
+  Direkter API-Weg (nur wenn der Nutzer einen ElevenLabs-Schlüssel hinterlegt und api.elevenlabs.io in der Umgebung
+  erlaubt): `python3 tools/tts_elevenlabs.py videos/<slug>` mit `"voice": { "provider": "elevenlabs", "voice_name": "Mark",
+  "model_id": "eleven_v4" }` – erzeugt voice.wav + exakte Wort-Timings. Eine eigene Umgebung dafür hat der Nutzer
+  einmal abgelehnt: nicht erneut vorschlagen, nur wenn er selbst danach fragt.
+  Andere Stimmen (hell, Kind, Teenager, schneller) wurden verworfen. Keine Stimme einer realen Person klonen.
 - **Eigene Sprachaufnahme vom Nutzer (z. B. ElevenLabs):** statt `tts.py`
   `python3 tools/align.py videos/<slug> <aufnahme.mp3>` → normalisiert die Aufnahme zu `assets/voice.wav`, ordnet die
   Sätze aus `video.json` den Sprechpausen zu und erzeugt `assets/timing.json`. Ausgabe prüfen (Satzzeiten plausibel?).
