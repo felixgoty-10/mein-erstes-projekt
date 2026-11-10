@@ -113,5 +113,9 @@ Neue Bauteile gehören in `engine/stadt3d.js`, damit alle Videos sie nutzen kön
   geänderten noise-Werte). Eine schnellere Sprechweise nach Referenzvideo wurde ausprobiert und vom Nutzer verworfen.
   Andere Stimmen (hell, Kind, Teenager, fließend) wurden ausprobiert und vom Nutzer verworfen; nur auf ausdrücklichen
   Wunsch nutzen. Die Optionen dafür sind in `tools/tts.py` dokumentiert.
-- Wenn der Nutzer eine eigene Sprachaufnahme liefert: als `assets/voice.wav`
-  ablegen, Satzzeiten in `assets/timing.json` von Hand eintragen (gleiches Format) und `tts.py` überspringen.
+- **Eigene Sprachaufnahme vom Nutzer (z. B. ElevenLabs):** statt `tts.py`
+  `python3 tools/align.py videos/<slug> <aufnahme.mp3>` → normalisiert die Aufnahme zu `assets/voice.wav`, ordnet die
+  Sätze aus `video.json` den Sprechpausen zu und erzeugt `assets/timing.json`. Ausgabe prüfen (Satzzeiten plausibel?).
+  Enthält die Aufnahme zusätzliche Sprache, die nicht im Skript steht, vorher abschneiden (`ffmpeg -t …`) und den
+  Nutzer fragen. Danach 1 s Stille anhängen (`apad=pad_dur=1.0`, `duration` in timing.json +1), `music.py`, `build.mjs`.
+  Original in `assets/recordings/` ablegen.
