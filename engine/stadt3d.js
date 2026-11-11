@@ -157,6 +157,12 @@ function faceTex(expr) {
         g.fillStyle = ink; g.beginPath(); g.ellipse(128, 190, 30, 36, 0, 0, Math.PI * 2); g.fill();
         g.fillStyle = "#e0545a"; g.beginPath(); g.ellipse(128, 208, 18, 12, 0, 0, Math.PI * 2); g.fill();
         break;
+      case "joy": // Freudentränen
+        closed(L, Y, 20, true); closed(R, Y, 20, true);
+        g.fillStyle = ink; g.beginPath(); g.moveTo(92, 160); g.quadraticCurveTo(128, 214, 164, 160); g.closePath(); g.fill();
+        g.fillStyle = "#6fc3ff";
+        [L - 4, R + 4].forEach((x) => { g.beginPath(); g.moveTo(x, Y + 14); g.quadraticCurveTo(x - 12, Y + 40, x, Y + 46); g.quadraticCurveTo(x + 12, Y + 40, x, Y + 14); g.fill(); });
+        break;
       case "smug":
         g.fillStyle = ink;
         [L, R].forEach((x) => { g.beginPath(); g.ellipse(x, Y + 4, 14, 10, 0, 0, Math.PI * 2); g.fill(); });

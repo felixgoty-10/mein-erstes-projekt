@@ -1,0 +1,971 @@
+{
+ "duration": 58.237,
+ "sentences": [
+  {
+   "id": "s1",
+   "text": "In dieser Stadt steht über jedem Kopf, wie viele Menschen heute an ihn gedacht haben.",
+   "start": 0.25,
+   "end": 4.307,
+   "words": [
+    {
+     "text": "In",
+     "start": 0.25,
+     "end": 0.384
+    },
+    {
+     "text": "dieser",
+     "start": 0.384,
+     "end": 0.652
+    },
+    {
+     "text": "Stadt",
+     "start": 0.652,
+     "end": 0.921
+    },
+    {
+     "text": "steht",
+     "start": 0.921,
+     "end": 1.189
+    },
+    {
+     "text": "über",
+     "start": 1.189,
+     "end": 1.39
+    },
+    {
+     "text": "jedem",
+     "start": 1.39,
+     "end": 1.725
+    },
+    {
+     "text": "Kopf,",
+     "start": 1.725,
+     "end": 1.993
+    },
+    {
+     "text": "wie",
+     "start": 2.161,
+     "end": 2.295
+    },
+    {
+     "text": "viele",
+     "start": 2.295,
+     "end": 2.563
+    },
+    {
+     "text": "Menschen",
+     "start": 2.563,
+     "end": 2.966
+    },
+    {
+     "text": "heute",
+     "start": 2.966,
+     "end": 3.301
+    },
+    {
+     "text": "an",
+     "start": 3.301,
+     "end": 3.435
+    },
+    {
+     "text": "ihn",
+     "start": 3.435,
+     "end": 3.569
+    },
+    {
+     "text": "gedacht",
+     "start": 3.569,
+     "end": 3.972
+    },
+    {
+     "text": "haben.",
+     "start": 3.972,
+     "end": 4.307
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "text": "Bei mir steht meistens eine Drei. Mama, Papa und Oma.",
+   "start": 4.66,
+   "end": 8.21,
+   "words": [
+    {
+     "text": "Bei",
+     "start": 4.66,
+     "end": 4.908
+    },
+    {
+     "text": "mir",
+     "start": 4.908,
+     "end": 5.156
+    },
+    {
+     "text": "steht",
+     "start": 5.156,
+     "end": 5.486
+    },
+    {
+     "text": "meistens",
+     "start": 5.486,
+     "end": 6.146
+    },
+    {
+     "text": "eine",
+     "start": 6.146,
+     "end": 6.476
+    },
+    {
+     "text": "Drei.",
+     "start": 6.476,
+     "end": 6.806
+    },
+    {
+     "text": "Mama,",
+     "start": 6.848,
+     "end": 7.178
+    },
+    {
+     "text": "Papa",
+     "start": 7.384,
+     "end": 7.714
+    },
+    {
+     "text": "und",
+     "start": 7.714,
+     "end": 7.962
+    },
+    {
+     "text": "Oma.",
+     "start": 7.962,
+     "end": 8.21
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "text": "Mein Nachbar, Herr Brandt, hat seit Jahren eine Null.",
+   "start": 8.571,
+   "end": 11.366,
+   "words": [
+    {
+     "text": "Mein",
+     "start": 8.571,
+     "end": 8.837
+    },
+    {
+     "text": "Nachbar,",
+     "start": 8.837,
+     "end": 9.236
+    },
+    {
+     "text": "Herr",
+     "start": 9.403,
+     "end": 9.603
+    },
+    {
+     "text": "Brandt,",
+     "start": 9.603,
+     "end": 9.935
+    },
+    {
+     "text": "hat",
+     "start": 10.102,
+     "end": 10.301
+    },
+    {
+     "text": "seit",
+     "start": 10.301,
+     "end": 10.567
+    },
+    {
+     "text": "Jahren",
+     "start": 10.567,
+     "end": 10.9
+    },
+    {
+     "text": "eine",
+     "start": 10.9,
+     "end": 11.166
+    },
+    {
+     "text": "Null.",
+     "start": 11.166,
+     "end": 11.366
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "text": "Er wohnt ganz allein. Niemand besucht ihn.",
+   "start": 11.719,
+   "end": 14.028,
+   "words": [
+    {
+     "text": "Er",
+     "start": 11.719,
+     "end": 11.871
+    },
+    {
+     "text": "wohnt",
+     "start": 11.871,
+     "end": 12.174
+    },
+    {
+     "text": "ganz",
+     "start": 12.174,
+     "end": 12.552
+    },
+    {
+     "text": "allein.",
+     "start": 12.552,
+     "end": 12.931
+    },
+    {
+     "text": "Niemand",
+     "start": 12.968,
+     "end": 13.423
+    },
+    {
+     "text": "besucht",
+     "start": 13.423,
+     "end": 13.877
+    },
+    {
+     "text": "ihn.",
+     "start": 13.877,
+     "end": 14.028
+    }
+   ]
+  },
+  {
+   "id": "s4b",
+   "text": "Nicht mal an seinem Geburtstag.",
+   "start": 14.386,
+   "end": 15.759,
+   "words": [
+    {
+     "text": "Nicht",
+     "start": 14.386,
+     "end": 14.65
+    },
+    {
+     "text": "mal",
+     "start": 14.65,
+     "end": 14.808
+    },
+    {
+     "text": "an",
+     "start": 14.808,
+     "end": 14.914
+    },
+    {
+     "text": "seinem",
+     "start": 14.914,
+     "end": 15.231
+    },
+    {
+     "text": "Geburtstag.",
+     "start": 15.231,
+     "end": 15.759
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "text": "Am Montag habe ich ihm einen Kuchen gebracht.",
+   "start": 16.235,
+   "end": 18.168,
+   "words": [
+    {
+     "text": "Am",
+     "start": 16.235,
+     "end": 16.349
+    },
+    {
+     "text": "Montag",
+     "start": 16.349,
+     "end": 16.69
+    },
+    {
+     "text": "habe",
+     "start": 16.69,
+     "end": 16.917
+    },
+    {
+     "text": "ich",
+     "start": 16.917,
+     "end": 17.088
+    },
+    {
+     "text": "ihm",
+     "start": 17.088,
+     "end": 17.201
+    },
+    {
+     "text": "einen",
+     "start": 17.201,
+     "end": 17.486
+    },
+    {
+     "text": "Kuchen",
+     "start": 17.486,
+     "end": 17.77
+    },
+    {
+     "text": "gebracht.",
+     "start": 17.77,
+     "end": 18.168
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "text": "Seine Null wurde zu einer Eins.",
+   "start": 18.516,
+   "end": 19.924,
+   "words": [
+    {
+     "text": "Seine",
+     "start": 18.516,
+     "end": 18.809
+    },
+    {
+     "text": "Null",
+     "start": 18.809,
+     "end": 18.985
+    },
+    {
+     "text": "wurde",
+     "start": 18.985,
+     "end": 19.279
+    },
+    {
+     "text": "zu",
+     "start": 19.279,
+     "end": 19.455
+    },
+    {
+     "text": "einer",
+     "start": 19.455,
+     "end": 19.69
+    },
+    {
+     "text": "Eins.",
+     "start": 19.69,
+     "end": 19.924
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "text": "Und er hat gelächelt. Zum ersten Mal.",
+   "start": 20.274,
+   "end": 22.058,
+   "words": [
+    {
+     "text": "Und",
+     "start": 20.274,
+     "end": 20.449
+    },
+    {
+     "text": "er",
+     "start": 20.449,
+     "end": 20.566
+    },
+    {
+     "text": "hat",
+     "start": 20.566,
+     "end": 20.741
+    },
+    {
+     "text": "gelächelt.",
+     "start": 20.741,
+     "end": 21.268
+    },
+    {
+     "text": "Zum",
+     "start": 21.297,
+     "end": 21.531
+    },
+    {
+     "text": "ersten",
+     "start": 21.531,
+     "end": 21.882
+    },
+    {
+     "text": "Mal.",
+     "start": 21.882,
+     "end": 22.058
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "text": "Am Dienstag bin ich mit seinem Hund spazieren gegangen.",
+   "start": 22.537,
+   "end": 25.068,
+   "words": [
+    {
+     "text": "Am",
+     "start": 22.537,
+     "end": 22.652
+    },
+    {
+     "text": "Dienstag",
+     "start": 22.652,
+     "end": 23.055
+    },
+    {
+     "text": "bin",
+     "start": 23.055,
+     "end": 23.227
+    },
+    {
+     "text": "ich",
+     "start": 23.227,
+     "end": 23.4
+    },
+    {
+     "text": "mit",
+     "start": 23.4,
+     "end": 23.572
+    },
+    {
+     "text": "seinem",
+     "start": 23.572,
+     "end": 23.918
+    },
+    {
+     "text": "Hund",
+     "start": 23.918,
+     "end": 24.148
+    },
+    {
+     "text": "spazieren",
+     "start": 24.148,
+     "end": 24.666
+    },
+    {
+     "text": "gegangen.",
+     "start": 24.666,
+     "end": 25.068
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "text": "Am Mittwoch habe ich meiner Klasse von ihm erzählt.",
+   "start": 25.417,
+   "end": 27.605,
+   "words": [
+    {
+     "text": "Am",
+     "start": 25.417,
+     "end": 25.535
+    },
+    {
+     "text": "Mittwoch",
+     "start": 25.535,
+     "end": 25.89
+    },
+    {
+     "text": "habe",
+     "start": 25.89,
+     "end": 26.127
+    },
+    {
+     "text": "ich",
+     "start": 26.127,
+     "end": 26.304
+    },
+    {
+     "text": "meiner",
+     "start": 26.304,
+     "end": 26.6
+    },
+    {
+     "text": "Klasse",
+     "start": 26.6,
+     "end": 26.895
+    },
+    {
+     "text": "von",
+     "start": 26.895,
+     "end": 27.073
+    },
+    {
+     "text": "ihm",
+     "start": 27.073,
+     "end": 27.191
+    },
+    {
+     "text": "erzählt.",
+     "start": 27.191,
+     "end": 27.605
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": "Am Donnerstag haben wir ihm alle einen Brief geschrieben.",
+   "start": 27.954,
+   "end": 30.558,
+   "words": [
+    {
+     "text": "Am",
+     "start": 27.954,
+     "end": 28.084
+    },
+    {
+     "text": "Donnerstag",
+     "start": 28.084,
+     "end": 28.605
+    },
+    {
+     "text": "haben",
+     "start": 28.605,
+     "end": 28.931
+    },
+    {
+     "text": "wir",
+     "start": 28.931,
+     "end": 29.126
+    },
+    {
+     "text": "ihm",
+     "start": 29.126,
+     "end": 29.256
+    },
+    {
+     "text": "alle",
+     "start": 29.256,
+     "end": 29.451
+    },
+    {
+     "text": "einen",
+     "start": 29.451,
+     "end": 29.777
+    },
+    {
+     "text": "Brief",
+     "start": 29.777,
+     "end": 30.037
+    },
+    {
+     "text": "geschrieben.",
+     "start": 30.037,
+     "end": 30.558
+    }
+   ]
+  },
+  {
+   "id": "s10b",
+   "text": "Dreißig Briefe in einem Briefkasten.",
+   "start": 30.91,
+   "end": 32.894,
+   "words": [
+    {
+     "text": "Dreißig",
+     "start": 30.91,
+     "end": 31.44
+    },
+    {
+     "text": "Briefe",
+     "start": 31.44,
+     "end": 31.77
+    },
+    {
+     "text": "in",
+     "start": 31.77,
+     "end": 31.902
+    },
+    {
+     "text": "einem",
+     "start": 31.902,
+     "end": 32.233
+    },
+    {
+     "text": "Briefkasten.",
+     "start": 32.233,
+     "end": 32.894
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": "Am Freitag stand über seinem Kopf eine Achtundzwanzig.",
+   "start": 33.248,
+   "end": 35.973,
+   "words": [
+    {
+     "text": "Am",
+     "start": 33.248,
+     "end": 33.364
+    },
+    {
+     "text": "Freitag",
+     "start": 33.364,
+     "end": 33.769
+    },
+    {
+     "text": "stand",
+     "start": 33.769,
+     "end": 34.059
+    },
+    {
+     "text": "über",
+     "start": 34.059,
+     "end": 34.233
+    },
+    {
+     "text": "seinem",
+     "start": 34.233,
+     "end": 34.581
+    },
+    {
+     "text": "Kopf",
+     "start": 34.581,
+     "end": 34.813
+    },
+    {
+     "text": "eine",
+     "start": 34.813,
+     "end": 35.045
+    },
+    {
+     "text": "Achtundzwanzig.",
+     "start": 35.045,
+     "end": 35.973
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": "Und am Samstag hatte er Geburtstag. Er wurde achtzig.",
+   "start": 36.452,
+   "end": 38.996,
+   "words": [
+    {
+     "text": "Und",
+     "start": 36.452,
+     "end": 36.631
+    },
+    {
+     "text": "am",
+     "start": 36.631,
+     "end": 36.751
+    },
+    {
+     "text": "Samstag",
+     "start": 36.751,
+     "end": 37.17
+    },
+    {
+     "text": "hatte",
+     "start": 37.17,
+     "end": 37.409
+    },
+    {
+     "text": "er",
+     "start": 37.409,
+     "end": 37.529
+    },
+    {
+     "text": "Geburtstag.",
+     "start": 37.529,
+     "end": 38.128
+    },
+    {
+     "text": "Er",
+     "start": 38.158,
+     "end": 38.277
+    },
+    {
+     "text": "wurde",
+     "start": 38.277,
+     "end": 38.577
+    },
+    {
+     "text": "achtzig.",
+     "start": 38.577,
+     "end": 38.996
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": "Die ganze Straße kam mit Kuchen und Luftballons.",
+   "start": 39.346,
+   "end": 42.227,
+   "words": [
+    {
+     "text": "Die",
+     "start": 39.346,
+     "end": 39.497
+    },
+    {
+     "text": "ganze",
+     "start": 39.497,
+     "end": 39.952
+    },
+    {
+     "text": "Straße",
+     "start": 39.952,
+     "end": 40.407
+    },
+    {
+     "text": "kam",
+     "start": 40.407,
+     "end": 40.635
+    },
+    {
+     "text": "mit",
+     "start": 40.635,
+     "end": 40.862
+    },
+    {
+     "text": "Kuchen",
+     "start": 40.862,
+     "end": 41.241
+    },
+    {
+     "text": "und",
+     "start": 41.241,
+     "end": 41.469
+    },
+    {
+     "text": "Luftballons.",
+     "start": 41.469,
+     "end": 42.227
+    }
+   ]
+  },
+  {
+   "id": "s13b",
+   "text": "Sogar der Bürgermeister.",
+   "start": 42.585,
+   "end": 43.629,
+   "words": [
+    {
+     "text": "Sogar",
+     "start": 42.585,
+     "end": 42.86
+    },
+    {
+     "text": "der",
+     "start": 42.86,
+     "end": 43.025
+    },
+    {
+     "text": "Bürgermeister.",
+     "start": 43.025,
+     "end": 43.629
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": "Seine Zahl wurde immer größer.",
+   "start": 43.977,
+   "end": 45.463,
+   "words": [
+    {
+     "text": "Seine",
+     "start": 43.977,
+     "end": 44.315
+    },
+    {
+     "text": "Zahl",
+     "start": 44.315,
+     "end": 44.585
+    },
+    {
+     "text": "wurde",
+     "start": 44.585,
+     "end": 44.922
+    },
+    {
+     "text": "immer",
+     "start": 44.922,
+     "end": 45.125
+    },
+    {
+     "text": "größer.",
+     "start": 45.125,
+     "end": 45.463
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": "Fünfzig. Hundert. Zweihundert!",
+   "start": 45.817,
+   "end": 48.099,
+   "words": [
+    {
+     "text": "Fünfzig.",
+     "start": 45.817,
+     "end": 46.577
+    },
+    {
+     "text": "Hundert.",
+     "start": 46.62,
+     "end": 47.127
+    },
+    {
+     "text": "Zweihundert!",
+     "start": 47.169,
+     "end": 48.099
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": "Herr Brandt hat geweint. Aber diesmal vor Freude.",
+   "start": 48.583,
+   "end": 50.952,
+   "words": [
+    {
+     "text": "Herr",
+     "start": 48.583,
+     "end": 48.778
+    },
+    {
+     "text": "Brandt",
+     "start": 48.778,
+     "end": 49.103
+    },
+    {
+     "text": "hat",
+     "start": 49.103,
+     "end": 49.297
+    },
+    {
+     "text": "geweint.",
+     "start": 49.297,
+     "end": 49.752
+    },
+    {
+     "text": "Aber",
+     "start": 49.784,
+     "end": 49.979
+    },
+    {
+     "text": "diesmal",
+     "start": 49.979,
+     "end": 50.368
+    },
+    {
+     "text": "vor",
+     "start": 50.368,
+     "end": 50.563
+    },
+    {
+     "text": "Freude.",
+     "start": 50.563,
+     "end": 50.952
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": "Und meine Zahl?",
+   "start": 51.485,
+   "end": 52.29,
+   "words": [
+    {
+     "text": "Und",
+     "start": 51.485,
+     "end": 51.686
+    },
+    {
+     "text": "meine",
+     "start": 51.686,
+     "end": 52.022
+    },
+    {
+     "text": "Zahl?",
+     "start": 52.022,
+     "end": 52.29
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": "Seit Samstag steht da eine Vier.",
+   "start": 52.707,
+   "end": 54.395,
+   "words": [
+    {
+     "text": "Seit",
+     "start": 52.707,
+     "end": 52.989
+    },
+    {
+     "text": "Samstag",
+     "start": 52.989,
+     "end": 53.481
+    },
+    {
+     "text": "steht",
+     "start": 53.481,
+     "end": 53.762
+    },
+    {
+     "text": "da",
+     "start": 53.762,
+     "end": 53.903
+    },
+    {
+     "text": "eine",
+     "start": 53.903,
+     "end": 54.184
+    },
+    {
+     "text": "Vier.",
+     "start": 54.184,
+     "end": 54.395
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": "Mama, Papa, Oma. Und Herr Brandt.",
+   "start": 54.75,
+   "end": 57.173,
+   "words": [
+    {
+     "text": "Mama,",
+     "start": 54.75,
+     "end": 55.102
+    },
+    {
+     "text": "Papa,",
+     "start": 55.323,
+     "end": 55.675
+    },
+    {
+     "text": "Oma.",
+     "start": 55.896,
+     "end": 56.16
+    },
+    {
+     "text": "Und",
+     "start": 56.204,
+     "end": 56.468
+    },
+    {
+     "text": "Herr",
+     "start": 56.468,
+     "end": 56.733
+    },
+    {
+     "text": "Brandt.",
+     "start": 56.733,
+     "end": 57.173
+    }
+   ]
+  }
+ ]
+}

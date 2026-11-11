@@ -1,0 +1,180 @@
+{
+  "title": "In dieser Stadt steht über jedem, wie viele heute an ihn gedacht haben",
+  "voice": {
+    "length_scale": 1.0
+  },
+  "music": {
+    "volume": 0.2
+  },
+  "sentences": [
+    {
+      "id": "s1",
+      "text": "In dieser Stadt steht über jedem Kopf, wie viele Menschen heute an ihn gedacht haben."
+    },
+    {
+      "id": "s2",
+      "text": "Bei mir steht meistens eine Drei. Mama, Papa und Oma."
+    },
+    {
+      "id": "s3",
+      "text": "Mein Nachbar, Herr Brandt, hat seit Jahren eine Null."
+    },
+    {
+      "id": "s4",
+      "text": "Er wohnt ganz allein. Niemand besucht ihn."
+    },
+    {
+      "id": "s4b",
+      "text": "Nicht mal an seinem Geburtstag.",
+      "pause": 0.45
+    },
+    {
+      "id": "s5",
+      "text": "Am Montag habe ich ihm einen Kuchen gebracht."
+    },
+    {
+      "id": "s6",
+      "text": "Seine Null wurde zu einer Eins."
+    },
+    {
+      "id": "s7",
+      "text": "Und er hat gelächelt. Zum ersten Mal.",
+      "pause": 0.45
+    },
+    {
+      "id": "s8",
+      "text": "Am Dienstag bin ich mit seinem Hund spazieren gegangen."
+    },
+    {
+      "id": "s9",
+      "text": "Am Mittwoch habe ich meiner Klasse von ihm erzählt."
+    },
+    {
+      "id": "s10",
+      "text": "Am Donnerstag haben wir ihm alle einen Brief geschrieben."
+    },
+    {
+      "id": "s10b",
+      "text": "Dreißig Briefe in einem Briefkasten."
+    },
+    {
+      "id": "s11",
+      "text": "Am Freitag stand über seinem Kopf eine Achtundzwanzig.",
+      "pause": 0.45
+    },
+    {
+      "id": "s12",
+      "text": "Und am Samstag hatte er Geburtstag. Er wurde achtzig."
+    },
+    {
+      "id": "s13",
+      "text": "Die ganze Straße kam mit Kuchen und Luftballons."
+    },
+    {
+      "id": "s13b",
+      "text": "Sogar der Bürgermeister."
+    },
+    {
+      "id": "s14",
+      "text": "Seine Zahl wurde immer größer."
+    },
+    {
+      "id": "s15",
+      "text": "Fünfzig. Hundert. Zweihundert!",
+      "pause": 0.4
+    },
+    {
+      "id": "s16",
+      "text": "Herr Brandt hat geweint. Aber diesmal vor Freude.",
+      "pause": 0.5
+    },
+    {
+      "id": "s17",
+      "text": "Und meine Zahl?",
+      "pause": 0.35
+    },
+    {
+      "id": "s18",
+      "text": "Seit Samstag steht da eine Vier."
+    },
+    {
+      "id": "s19",
+      "text": "Mama, Papa, Oma. Und Herr Brandt."
+    }
+  ],
+  "overlays": [
+    {
+      "type": "sign",
+      "text": "MONTAG",
+      "from": [
+        "s5",
+        0
+      ],
+      "to": [
+        "s7",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "DIENSTAG",
+      "from": [
+        "s8",
+        0
+      ],
+      "to": [
+        "s8",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "MITTWOCH",
+      "from": [
+        "s9",
+        0
+      ],
+      "to": [
+        "s9",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "DONNERSTAG",
+      "from": [
+        "s10",
+        0
+      ],
+      "to": [
+        "s10",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "FREITAG",
+      "from": [
+        "s11",
+        0
+      ],
+      "to": [
+        "s11",
+        "end"
+      ]
+    },
+    {
+      "type": "card",
+      "header": "SAMSTAG",
+      "value": "80",
+      "from": [
+        "s12",
+        0
+      ],
+      "to": [
+        "s12",
+        4
+      ]
+    }
+  ]
+}
