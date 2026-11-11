@@ -98,6 +98,12 @@ Fahrzeuge: `car({ color, ambulance })` + `carLights(auto, t, { hazard, blue })` 
 **Wichtig:** Jede Einstellung setzt Position/Rotation aller Figuren und Objekte, die sie zeigt, selbst neu (z. B. eine
 `basis()`-Funktion am Anfang von `update`). Sonst „erbt“ sie Werte aus einer anderen Einstellung, denn HyperFrames
 rendert Frames nicht zwingend in Reihenfolge.
+Winter/Natur: `pine(s, snow)`, `snowGround()`, `snowfall()` + `snowfallAt(pts, t, wind, speed)` (Schneefall, reine
+Funktion der Zeit), `stream()` (Bach mit Trittsteinen), `fallenLog()`, `frozenFall()`, `streetLamp(intensity)`,
+`schoolBus()`, `busStop()`, `cafeteriaTable()`; Mütze `hat: "beanie"`; Musik `"mood": "sad"` (ruhige Moll-Arpeggien).
+Ernste Themen (z. B. Rassismus): respektvoll, keine Zahlen-Pillen, die Menschen bewerten; Hautfarbe über `skin`.
+**Kamera-Faustregel Hochkant (fov 40):** eine Figur Kopf+Schultern ≈ 9–10 Abstand, eine Figur ganz ≈ 13,
+zwei Figuren nebeneinander ≈ 17, Gruppe ≈ 20–26.
 Weitere Bauteile: `dog()` + `dogPose(hund, t, walk)` (wedelt/läuft), `ivStand()`, `cake()`, `flower(color)`, `fence(len)`,
 `wateringCan()`, `balloon(color)`; `bench()` (Sitzhöhe ≈ 1.6; sitzende Figur: `.sit()` + `body.position.y = 0.1`).
 Kamera immer innerhalb der Raumwände platzieren (room w=16 → x ±8, d=12 → z ±6; offen nach +z).

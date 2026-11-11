@@ -1,0 +1,1926 @@
+{
+ "duration": 102.868,
+ "sentences": [
+  {
+   "id": "s1",
+   "text": "In dieser Stadt hasst mich jeder wegen meiner Hautfarbe.",
+   "start": 0.25,
+   "end": 2.791,
+   "words": [
+    {
+     "text": "In",
+     "start": 0.25,
+     "end": 0.374
+    },
+    {
+     "text": "dieser",
+     "start": 0.374,
+     "end": 0.622
+    },
+    {
+     "text": "Stadt",
+     "start": 0.622,
+     "end": 0.87
+    },
+    {
+     "text": "hasst",
+     "start": 0.87,
+     "end": 1.118
+    },
+    {
+     "text": "mich",
+     "start": 1.118,
+     "end": 1.366
+    },
+    {
+     "text": "jeder",
+     "start": 1.366,
+     "end": 1.614
+    },
+    {
+     "text": "wegen",
+     "start": 1.614,
+     "end": 1.924
+    },
+    {
+     "text": "meiner",
+     "start": 1.924,
+     "end": 2.233
+    },
+    {
+     "text": "Hautfarbe.",
+     "start": 2.233,
+     "end": 2.791
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "text": "Wir sind die einzige schwarze Familie in Point Hollow.",
+   "start": 3.142,
+   "end": 5.737,
+   "words": [
+    {
+     "text": "Wir",
+     "start": 3.142,
+     "end": 3.319
+    },
+    {
+     "text": "sind",
+     "start": 3.319,
+     "end": 3.555
+    },
+    {
+     "text": "die",
+     "start": 3.555,
+     "end": 3.673
+    },
+    {
+     "text": "einzige",
+     "start": 3.673,
+     "end": 4.145
+    },
+    {
+     "text": "schwarze",
+     "start": 4.145,
+     "end": 4.557
+    },
+    {
+     "text": "Familie",
+     "start": 4.557,
+     "end": 5.029
+    },
+    {
+     "text": "in",
+     "start": 5.029,
+     "end": 5.147
+    },
+    {
+     "text": "Point",
+     "start": 5.147,
+     "end": 5.442
+    },
+    {
+     "text": "Hollow.",
+     "start": 5.442,
+     "end": 5.737
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "text": "Bevor wir hierher gezogen sind, hatte hier noch nie jemand so jemanden wie mich gesehen.",
+   "start": 6.086,
+   "end": 9.817,
+   "words": [
+    {
+     "text": "Bevor",
+     "start": 6.086,
+     "end": 6.363
+    },
+    {
+     "text": "wir",
+     "start": 6.363,
+     "end": 6.528
+    },
+    {
+     "text": "hierher",
+     "start": 6.528,
+     "end": 6.805
+    },
+    {
+     "text": "gezogen",
+     "start": 6.805,
+     "end": 7.247
+    },
+    {
+     "text": "sind,",
+     "start": 7.247,
+     "end": 7.468
+    },
+    {
+     "text": "hatte",
+     "start": 7.606,
+     "end": 7.827
+    },
+    {
+     "text": "hier",
+     "start": 7.827,
+     "end": 7.993
+    },
+    {
+     "text": "noch",
+     "start": 7.993,
+     "end": 8.159
+    },
+    {
+     "text": "nie",
+     "start": 8.159,
+     "end": 8.27
+    },
+    {
+     "text": "jemand",
+     "start": 8.27,
+     "end": 8.601
+    },
+    {
+     "text": "so",
+     "start": 8.601,
+     "end": 8.712
+    },
+    {
+     "text": "jemanden",
+     "start": 8.712,
+     "end": 9.154
+    },
+    {
+     "text": "wie",
+     "start": 9.154,
+     "end": 9.265
+    },
+    {
+     "text": "mich",
+     "start": 9.265,
+     "end": 9.486
+    },
+    {
+     "text": "gesehen.",
+     "start": 9.486,
+     "end": 9.817
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "text": "Meine Oma sagt: Die Menschen haben Angst vor dem, was sie noch nie gesehen haben.",
+   "start": 10.165,
+   "end": 14.223,
+   "words": [
+    {
+     "text": "Meine",
+     "start": 10.165,
+     "end": 10.495
+    },
+    {
+     "text": "Oma",
+     "start": 10.495,
+     "end": 10.693
+    },
+    {
+     "text": "sagt:",
+     "start": 10.693,
+     "end": 10.957
+    },
+    {
+     "text": "Die",
+     "start": 11.155,
+     "end": 11.287
+    },
+    {
+     "text": "Menschen",
+     "start": 11.287,
+     "end": 11.683
+    },
+    {
+     "text": "haben",
+     "start": 11.683,
+     "end": 12.013
+    },
+    {
+     "text": "Angst",
+     "start": 12.013,
+     "end": 12.277
+    },
+    {
+     "text": "vor",
+     "start": 12.277,
+     "end": 12.475
+    },
+    {
+     "text": "dem,",
+     "start": 12.475,
+     "end": 12.673
+    },
+    {
+     "text": "was",
+     "start": 12.837,
+     "end": 13.035
+    },
+    {
+     "text": "sie",
+     "start": 13.035,
+     "end": 13.167
+    },
+    {
+     "text": "noch",
+     "start": 13.167,
+     "end": 13.365
+    },
+    {
+     "text": "nie",
+     "start": 13.365,
+     "end": 13.497
+    },
+    {
+     "text": "gesehen",
+     "start": 13.497,
+     "end": 13.893
+    },
+    {
+     "text": "haben.",
+     "start": 13.893,
+     "end": 14.223
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "text": "Wenn ich mich in der Schule zum Essen an einen Tisch gesetzt habe, sind alle weggegangen.",
+   "start": 14.706,
+   "end": 18.504,
+   "words": [
+    {
+     "text": "Wenn",
+     "start": 14.706,
+     "end": 14.877
+    },
+    {
+     "text": "ich",
+     "start": 14.877,
+     "end": 15.049
+    },
+    {
+     "text": "mich",
+     "start": 15.049,
+     "end": 15.277
+    },
+    {
+     "text": "in",
+     "start": 15.277,
+     "end": 15.391
+    },
+    {
+     "text": "der",
+     "start": 15.391,
+     "end": 15.563
+    },
+    {
+     "text": "Schule",
+     "start": 15.563,
+     "end": 15.791
+    },
+    {
+     "text": "zum",
+     "start": 15.791,
+     "end": 16.02
+    },
+    {
+     "text": "Essen",
+     "start": 16.02,
+     "end": 16.248
+    },
+    {
+     "text": "an",
+     "start": 16.248,
+     "end": 16.362
+    },
+    {
+     "text": "einen",
+     "start": 16.362,
+     "end": 16.648
+    },
+    {
+     "text": "Tisch",
+     "start": 16.648,
+     "end": 16.819
+    },
+    {
+     "text": "gesetzt",
+     "start": 16.819,
+     "end": 17.219
+    },
+    {
+     "text": "habe,",
+     "start": 17.219,
+     "end": 17.447
+    },
+    {
+     "text": "sind",
+     "start": 17.59,
+     "end": 17.818
+    },
+    {
+     "text": "alle",
+     "start": 17.818,
+     "end": 17.99
+    },
+    {
+     "text": "weggegangen.",
+     "start": 17.99,
+     "end": 18.504
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "text": "In Sport wollte mich niemand wählen.",
+   "start": 18.852,
+   "end": 20.295,
+   "words": [
+    {
+     "text": "In",
+     "start": 18.852,
+     "end": 18.959
+    },
+    {
+     "text": "Sport",
+     "start": 18.959,
+     "end": 19.226
+    },
+    {
+     "text": "wollte",
+     "start": 19.226,
+     "end": 19.494
+    },
+    {
+     "text": "mich",
+     "start": 19.494,
+     "end": 19.707
+    },
+    {
+     "text": "niemand",
+     "start": 19.707,
+     "end": 20.028
+    },
+    {
+     "text": "wählen.",
+     "start": 20.028,
+     "end": 20.295
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "text": "Jeden Morgen ist der Schulbus extra an meiner Haltestelle vorbeigefahren.",
+   "start": 20.642,
+   "end": 24.095,
+   "words": [
+    {
+     "text": "Jeden",
+     "start": 20.642,
+     "end": 20.935
+    },
+    {
+     "text": "Morgen",
+     "start": 20.935,
+     "end": 21.286
+    },
+    {
+     "text": "ist",
+     "start": 21.286,
+     "end": 21.461
+    },
+    {
+     "text": "der",
+     "start": 21.461,
+     "end": 21.637
+    },
+    {
+     "text": "Schulbus",
+     "start": 21.637,
+     "end": 21.988
+    },
+    {
+     "text": "extra",
+     "start": 21.988,
+     "end": 22.339
+    },
+    {
+     "text": "an",
+     "start": 22.339,
+     "end": 22.456
+    },
+    {
+     "text": "meiner",
+     "start": 22.456,
+     "end": 22.749
+    },
+    {
+     "text": "Haltestelle",
+     "start": 22.749,
+     "end": 23.334
+    },
+    {
+     "text": "vorbeigefahren.",
+     "start": 23.334,
+     "end": 24.095
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "text": "Also bin ich jeden Tag gelaufen.",
+   "start": 24.444,
+   "end": 25.857,
+   "words": [
+    {
+     "text": "Also",
+     "start": 24.444,
+     "end": 24.662
+    },
+    {
+     "text": "bin",
+     "start": 24.662,
+     "end": 24.825
+    },
+    {
+     "text": "ich",
+     "start": 24.825,
+     "end": 24.988
+    },
+    {
+     "text": "jeden",
+     "start": 24.988,
+     "end": 25.259
+    },
+    {
+     "text": "Tag",
+     "start": 25.259,
+     "end": 25.423
+    },
+    {
+     "text": "gelaufen.",
+     "start": 25.423,
+     "end": 25.857
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "text": "Durch den Wald.",
+   "start": 26.185,
+   "end": 26.915,
+   "words": [
+    {
+     "text": "Durch",
+     "start": 26.185,
+     "end": 26.489
+    },
+    {
+     "text": "den",
+     "start": 26.489,
+     "end": 26.671
+    },
+    {
+     "text": "Wald.",
+     "start": 26.671,
+     "end": 26.915
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": "Über den umgefallenen Baum.",
+   "start": 27.145,
+   "end": 28.427,
+   "words": [
+    {
+     "text": "Über",
+     "start": 27.145,
+     "end": 27.328
+    },
+    {
+     "text": "den",
+     "start": 27.328,
+     "end": 27.512
+    },
+    {
+     "text": "umgefallenen",
+     "start": 27.512,
+     "end": 28.183
+    },
+    {
+     "text": "Baum.",
+     "start": 28.183,
+     "end": 28.427
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": "Über die Steine im Bach.",
+   "start": 28.658,
+   "end": 29.736,
+   "words": [
+    {
+     "text": "Über",
+     "start": 28.658,
+     "end": 28.86
+    },
+    {
+     "text": "die",
+     "start": 28.86,
+     "end": 28.995
+    },
+    {
+     "text": "Steine",
+     "start": 28.995,
+     "end": 29.399
+    },
+    {
+     "text": "im",
+     "start": 29.399,
+     "end": 29.534
+    },
+    {
+     "text": "Bach.",
+     "start": 29.534,
+     "end": 29.736
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": "Im Winter wird es hier schnell dunkel.",
+   "start": 30.22,
+   "end": 31.964,
+   "words": [
+    {
+     "text": "Im",
+     "start": 30.22,
+     "end": 30.354
+    },
+    {
+     "text": "Winter",
+     "start": 30.354,
+     "end": 30.689
+    },
+    {
+     "text": "wird",
+     "start": 30.689,
+     "end": 30.958
+    },
+    {
+     "text": "es",
+     "start": 30.958,
+     "end": 31.092
+    },
+    {
+     "text": "hier",
+     "start": 31.092,
+     "end": 31.293
+    },
+    {
+     "text": "schnell",
+     "start": 31.293,
+     "end": 31.561
+    },
+    {
+     "text": "dunkel.",
+     "start": 31.561,
+     "end": 31.964
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": "Also musste ich oft im Dunkeln nach Hause laufen.",
+   "start": 32.318,
+   "end": 34.694,
+   "words": [
+    {
+     "text": "Also",
+     "start": 32.318,
+     "end": 32.568
+    },
+    {
+     "text": "musste",
+     "start": 32.568,
+     "end": 32.88
+    },
+    {
+     "text": "ich",
+     "start": 32.88,
+     "end": 33.068
+    },
+    {
+     "text": "oft",
+     "start": 33.068,
+     "end": 33.255
+    },
+    {
+     "text": "im",
+     "start": 33.255,
+     "end": 33.381
+    },
+    {
+     "text": "Dunkeln",
+     "start": 33.381,
+     "end": 33.818
+    },
+    {
+     "text": "nach",
+     "start": 33.818,
+     "end": 34.006
+    },
+    {
+     "text": "Hause",
+     "start": 34.006,
+     "end": 34.318
+    },
+    {
+     "text": "laufen.",
+     "start": 34.318,
+     "end": 34.694
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": "Ich kann den Weg mit geschlossenen Augen gehen.",
+   "start": 35.045,
+   "end": 37.029,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 35.045,
+     "end": 35.22
+    },
+    {
+     "text": "kann",
+     "start": 35.22,
+     "end": 35.395
+    },
+    {
+     "text": "den",
+     "start": 35.395,
+     "end": 35.57
+    },
+    {
+     "text": "Weg",
+     "start": 35.57,
+     "end": 35.745
+    },
+    {
+     "text": "mit",
+     "start": 35.745,
+     "end": 35.92
+    },
+    {
+     "text": "geschlossenen",
+     "start": 35.92,
+     "end": 36.504
+    },
+    {
+     "text": "Augen",
+     "start": 36.504,
+     "end": 36.796
+    },
+    {
+     "text": "gehen.",
+     "start": 36.796,
+     "end": 37.029
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": "Mein Vater sagt: Eines Tages werden sie merken, wer du wirklich bist.",
+   "start": 37.509,
+   "end": 40.972,
+   "words": [
+    {
+     "text": "Mein",
+     "start": 37.509,
+     "end": 37.745
+    },
+    {
+     "text": "Vater",
+     "start": 37.745,
+     "end": 37.982
+    },
+    {
+     "text": "sagt:",
+     "start": 37.982,
+     "end": 38.219
+    },
+    {
+     "text": "Eines",
+     "start": 38.397,
+     "end": 38.693
+    },
+    {
+     "text": "Tages",
+     "start": 38.693,
+     "end": 38.989
+    },
+    {
+     "text": "werden",
+     "start": 38.989,
+     "end": 39.344
+    },
+    {
+     "text": "sie",
+     "start": 39.344,
+     "end": 39.462
+    },
+    {
+     "text": "merken,",
+     "start": 39.462,
+     "end": 39.818
+    },
+    {
+     "text": "wer",
+     "start": 39.966,
+     "end": 40.143
+    },
+    {
+     "text": "du",
+     "start": 40.143,
+     "end": 40.262
+    },
+    {
+     "text": "wirklich",
+     "start": 40.262,
+     "end": 40.735
+    },
+    {
+     "text": "bist.",
+     "start": 40.735,
+     "end": 40.972
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": "Im Dezember ging meine Klasse in den Wald, zum eingefrorenen Wasserfall.",
+   "start": 41.502,
+   "end": 45.276,
+   "words": [
+    {
+     "text": "Im",
+     "start": 41.502,
+     "end": 41.631
+    },
+    {
+     "text": "Dezember",
+     "start": 41.631,
+     "end": 42.147
+    },
+    {
+     "text": "ging",
+     "start": 42.147,
+     "end": 42.341
+    },
+    {
+     "text": "meine",
+     "start": 42.341,
+     "end": 42.663
+    },
+    {
+     "text": "Klasse",
+     "start": 42.663,
+     "end": 42.986
+    },
+    {
+     "text": "in",
+     "start": 42.986,
+     "end": 43.115
+    },
+    {
+     "text": "den",
+     "start": 43.115,
+     "end": 43.308
+    },
+    {
+     "text": "Wald,",
+     "start": 43.308,
+     "end": 43.566
+    },
+    {
+     "text": "zum",
+     "start": 43.728,
+     "end": 43.986
+    },
+    {
+     "text": "eingefrorenen",
+     "start": 43.986,
+     "end": 44.825
+    },
+    {
+     "text": "Wasserfall.",
+     "start": 44.825,
+     "end": 45.276
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": "Auf dem Rückweg fing es an zu schneien.",
+   "start": 45.628,
+   "end": 47.362,
+   "words": [
+    {
+     "text": "Auf",
+     "start": 45.628,
+     "end": 45.814
+    },
+    {
+     "text": "dem",
+     "start": 45.814,
+     "end": 46.0
+    },
+    {
+     "text": "Rückweg",
+     "start": 46.0,
+     "end": 46.371
+    },
+    {
+     "text": "fing",
+     "start": 46.371,
+     "end": 46.557
+    },
+    {
+     "text": "es",
+     "start": 46.557,
+     "end": 46.681
+    },
+    {
+     "text": "an",
+     "start": 46.681,
+     "end": 46.805
+    },
+    {
+     "text": "zu",
+     "start": 46.805,
+     "end": 46.991
+    },
+    {
+     "text": "schneien.",
+     "start": 46.991,
+     "end": 47.362
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": "Dann wurde es so heftig, dass der Weg verschwand.",
+   "start": 47.713,
+   "end": 49.845,
+   "words": [
+    {
+     "text": "Dann",
+     "start": 47.713,
+     "end": 47.879
+    },
+    {
+     "text": "wurde",
+     "start": 47.879,
+     "end": 48.156
+    },
+    {
+     "text": "es",
+     "start": 48.156,
+     "end": 48.267
+    },
+    {
+     "text": "so",
+     "start": 48.267,
+     "end": 48.378
+    },
+    {
+     "text": "heftig,",
+     "start": 48.378,
+     "end": 48.765
+    },
+    {
+     "text": "dass",
+     "start": 48.904,
+     "end": 49.07
+    },
+    {
+     "text": "der",
+     "start": 49.07,
+     "end": 49.236
+    },
+    {
+     "text": "Weg",
+     "start": 49.236,
+     "end": 49.402
+    },
+    {
+     "text": "verschwand.",
+     "start": 49.402,
+     "end": 49.845
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": "Die Sonne ging unter.",
+   "start": 50.193,
+   "end": 51.074,
+   "words": [
+    {
+     "text": "Die",
+     "start": 50.193,
+     "end": 50.328
+    },
+    {
+     "text": "Sonne",
+     "start": 50.328,
+     "end": 50.6
+    },
+    {
+     "text": "ging",
+     "start": 50.6,
+     "end": 50.803
+    },
+    {
+     "text": "unter.",
+     "start": 50.803,
+     "end": 51.074
+    }
+   ]
+  },
+  {
+   "id": "s20",
+   "text": "Alle Handys waren leer. Auch das von unserem Lehrer.",
+   "start": 51.428,
+   "end": 53.955,
+   "words": [
+    {
+     "text": "Alle",
+     "start": 51.428,
+     "end": 51.631
+    },
+    {
+     "text": "Handys",
+     "start": 51.631,
+     "end": 52.035
+    },
+    {
+     "text": "waren",
+     "start": 52.035,
+     "end": 52.372
+    },
+    {
+     "text": "leer.",
+     "start": 52.372,
+     "end": 52.574
+    },
+    {
+     "text": "Auch",
+     "start": 52.608,
+     "end": 52.81
+    },
+    {
+     "text": "das",
+     "start": 52.81,
+     "end": 53.012
+    },
+    {
+     "text": "von",
+     "start": 53.012,
+     "end": 53.214
+    },
+    {
+     "text": "unserem",
+     "start": 53.214,
+     "end": 53.686
+    },
+    {
+     "text": "Lehrer.",
+     "start": 53.686,
+     "end": 53.955
+    }
+   ]
+  },
+  {
+   "id": "s21",
+   "text": "Es wurde so dunkel, dass wir unsere eigenen Hände nicht mehr sahen.",
+   "start": 54.309,
+   "end": 57.362,
+   "words": [
+    {
+     "text": "Es",
+     "start": 54.309,
+     "end": 54.425
+    },
+    {
+     "text": "wurde",
+     "start": 54.425,
+     "end": 54.716
+    },
+    {
+     "text": "so",
+     "start": 54.716,
+     "end": 54.832
+    },
+    {
+     "text": "dunkel,",
+     "start": 54.832,
+     "end": 55.181
+    },
+    {
+     "text": "dass",
+     "start": 55.327,
+     "end": 55.501
+    },
+    {
+     "text": "wir",
+     "start": 55.501,
+     "end": 55.676
+    },
+    {
+     "text": "unsere",
+     "start": 55.676,
+     "end": 55.966
+    },
+    {
+     "text": "eigenen",
+     "start": 55.966,
+     "end": 56.374
+    },
+    {
+     "text": "Hände",
+     "start": 56.374,
+     "end": 56.664
+    },
+    {
+     "text": "nicht",
+     "start": 56.664,
+     "end": 56.955
+    },
+    {
+     "text": "mehr",
+     "start": 56.955,
+     "end": 57.13
+    },
+    {
+     "text": "sahen.",
+     "start": 57.13,
+     "end": 57.362
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "text": "Kinder fingen an zu weinen. Der Wind wurde stärker.",
+   "start": 57.711,
+   "end": 60.086,
+   "words": [
+    {
+     "text": "Kinder",
+     "start": 57.711,
+     "end": 58.012
+    },
+    {
+     "text": "fingen",
+     "start": 58.012,
+     "end": 58.313
+    },
+    {
+     "text": "an",
+     "start": 58.313,
+     "end": 58.433
+    },
+    {
+     "text": "zu",
+     "start": 58.433,
+     "end": 58.613
+    },
+    {
+     "text": "weinen.",
+     "start": 58.613,
+     "end": 58.974
+    },
+    {
+     "text": "Der",
+     "start": 59.004,
+     "end": 59.184
+    },
+    {
+     "text": "Wind",
+     "start": 59.184,
+     "end": 59.425
+    },
+    {
+     "text": "wurde",
+     "start": 59.425,
+     "end": 59.726
+    },
+    {
+     "text": "stärker.",
+     "start": 59.726,
+     "end": 60.086
+    }
+   ]
+  },
+  {
+   "id": "s23",
+   "text": "Dann sagte ich: Ich kenne den Weg.",
+   "start": 60.616,
+   "end": 62.277,
+   "words": [
+    {
+     "text": "Dann",
+     "start": 60.616,
+     "end": 60.801
+    },
+    {
+     "text": "sagte",
+     "start": 60.801,
+     "end": 61.108
+    },
+    {
+     "text": "ich:",
+     "start": 61.108,
+     "end": 61.293
+    },
+    {
+     "text": "Ich",
+     "start": 61.477,
+     "end": 61.662
+    },
+    {
+     "text": "kenne",
+     "start": 61.662,
+     "end": 61.908
+    },
+    {
+     "text": "den",
+     "start": 61.908,
+     "end": 62.092
+    },
+    {
+     "text": "Weg.",
+     "start": 62.092,
+     "end": 62.277
+    }
+   ]
+  },
+  {
+   "id": "s24",
+   "text": "Wir folgen ihm nicht, sagte Luis.",
+   "start": 62.707,
+   "end": 64.503,
+   "words": [
+    {
+     "text": "Wir",
+     "start": 62.707,
+     "end": 62.903
+    },
+    {
+     "text": "folgen",
+     "start": 62.903,
+     "end": 63.295
+    },
+    {
+     "text": "ihm",
+     "start": 63.295,
+     "end": 63.426
+    },
+    {
+     "text": "nicht,",
+     "start": 63.426,
+     "end": 63.752
+    },
+    {
+     "text": "sagte",
+     "start": 63.916,
+     "end": 64.242
+    },
+    {
+     "text": "Luis.",
+     "start": 64.242,
+     "end": 64.503
+    }
+   ]
+  },
+  {
+   "id": "s25",
+   "text": "Luis hatte noch nie ein nettes Wort zu mir gesagt.",
+   "start": 64.856,
+   "end": 67.091,
+   "words": [
+    {
+     "text": "Luis",
+     "start": 64.856,
+     "end": 65.098
+    },
+    {
+     "text": "hatte",
+     "start": 65.098,
+     "end": 65.339
+    },
+    {
+     "text": "noch",
+     "start": 65.339,
+     "end": 65.52
+    },
+    {
+     "text": "nie",
+     "start": 65.52,
+     "end": 65.641
+    },
+    {
+     "text": "ein",
+     "start": 65.641,
+     "end": 65.822
+    },
+    {
+     "text": "nettes",
+     "start": 65.822,
+     "end": 66.124
+    },
+    {
+     "text": "Wort",
+     "start": 66.124,
+     "end": 66.366
+    },
+    {
+     "text": "zu",
+     "start": 66.366,
+     "end": 66.547
+    },
+    {
+     "text": "mir",
+     "start": 66.547,
+     "end": 66.728
+    },
+    {
+     "text": "gesagt.",
+     "start": 66.728,
+     "end": 67.091
+    }
+   ]
+  },
+  {
+   "id": "s26",
+   "text": "Aber niemand sonst wusste, wo wir waren.",
+   "start": 67.441,
+   "end": 69.509,
+   "words": [
+    {
+     "text": "Aber",
+     "start": 67.441,
+     "end": 67.638
+    },
+    {
+     "text": "niemand",
+     "start": 67.638,
+     "end": 68.032
+    },
+    {
+     "text": "sonst",
+     "start": 68.032,
+     "end": 68.36
+    },
+    {
+     "text": "wusste,",
+     "start": 68.36,
+     "end": 68.689
+    },
+    {
+     "text": "wo",
+     "start": 68.853,
+     "end": 68.984
+    },
+    {
+     "text": "wir",
+     "start": 68.984,
+     "end": 69.181
+    },
+    {
+     "text": "waren.",
+     "start": 69.181,
+     "end": 69.509
+    }
+   ]
+  },
+  {
+   "id": "s27",
+   "text": "Im Dunkeln konnte keiner sehen, wer ich war. Nur meine Stimme hören.",
+   "start": 69.942,
+   "end": 73.241,
+   "words": [
+    {
+     "text": "Im",
+     "start": 69.942,
+     "end": 70.067
+    },
+    {
+     "text": "Dunkeln",
+     "start": 70.067,
+     "end": 70.502
+    },
+    {
+     "text": "konnte",
+     "start": 70.502,
+     "end": 70.814
+    },
+    {
+     "text": "keiner",
+     "start": 70.814,
+     "end": 71.125
+    },
+    {
+     "text": "sehen,",
+     "start": 71.125,
+     "end": 71.374
+    },
+    {
+     "text": "wer",
+     "start": 71.529,
+     "end": 71.716
+    },
+    {
+     "text": "ich",
+     "start": 71.716,
+     "end": 71.903
+    },
+    {
+     "text": "war.",
+     "start": 71.903,
+     "end": 72.089
+    },
+    {
+     "text": "Nur",
+     "start": 72.121,
+     "end": 72.307
+    },
+    {
+     "text": "meine",
+     "start": 72.307,
+     "end": 72.618
+    },
+    {
+     "text": "Stimme",
+     "start": 72.618,
+     "end": 72.93
+    },
+    {
+     "text": "hören.",
+     "start": 72.93,
+     "end": 73.241
+    }
+   ]
+  },
+  {
+   "id": "s28",
+   "text": "Alle Hände halten und mir folgen!",
+   "start": 73.672,
+   "end": 75.374,
+   "words": [
+    {
+     "text": "Alle",
+     "start": 73.672,
+     "end": 73.868
+    },
+    {
+     "text": "Hände",
+     "start": 73.868,
+     "end": 74.196
+    },
+    {
+     "text": "halten",
+     "start": 74.196,
+     "end": 74.589
+    },
+    {
+     "text": "und",
+     "start": 74.589,
+     "end": 74.785
+    },
+    {
+     "text": "mir",
+     "start": 74.785,
+     "end": 74.981
+    },
+    {
+     "text": "folgen!",
+     "start": 74.981,
+     "end": 75.374
+    }
+   ]
+  },
+  {
+   "id": "s29",
+   "text": "Und das taten sie.",
+   "start": 75.74,
+   "end": 76.572,
+   "words": [
+    {
+     "text": "Und",
+     "start": 75.74,
+     "end": 75.932
+    },
+    {
+     "text": "das",
+     "start": 75.932,
+     "end": 76.124
+    },
+    {
+     "text": "taten",
+     "start": 76.124,
+     "end": 76.444
+    },
+    {
+     "text": "sie.",
+     "start": 76.444,
+     "end": 76.572
+    }
+   ]
+  },
+  {
+   "id": "s30",
+   "text": "Ich sagte laut, was kommt. Der umgefallene Baum. Die Steine im Bach.",
+   "start": 77.054,
+   "end": 81.081,
+   "words": [
+    {
+     "text": "Ich",
+     "start": 77.054,
+     "end": 77.285
+    },
+    {
+     "text": "sagte",
+     "start": 77.285,
+     "end": 77.668
+    },
+    {
+     "text": "laut,",
+     "start": 77.668,
+     "end": 77.975
+    },
+    {
+     "text": "was",
+     "start": 78.166,
+     "end": 78.396
+    },
+    {
+     "text": "kommt.",
+     "start": 78.396,
+     "end": 78.703
+    },
+    {
+     "text": "Der",
+     "start": 78.742,
+     "end": 78.972
+    },
+    {
+     "text": "umgefallene",
+     "start": 78.972,
+     "end": 79.739
+    },
+    {
+     "text": "Baum.",
+     "start": 79.739,
+     "end": 80.045
+    },
+    {
+     "text": "Die",
+     "start": 80.084,
+     "end": 80.237
+    },
+    {
+     "text": "Steine",
+     "start": 80.237,
+     "end": 80.697
+    },
+    {
+     "text": "im",
+     "start": 80.697,
+     "end": 80.85
+    },
+    {
+     "text": "Bach.",
+     "start": 80.85,
+     "end": 81.081
+    }
+   ]
+  },
+  {
+   "id": "s31",
+   "text": "Ein Junge rutschte aus. Aber die ganze Reihe zog ihn wieder hoch.",
+   "start": 81.439,
+   "end": 84.471,
+   "words": [
+    {
+     "text": "Ein",
+     "start": 81.439,
+     "end": 81.643
+    },
+    {
+     "text": "Junge",
+     "start": 81.643,
+     "end": 81.916
+    },
+    {
+     "text": "rutschte",
+     "start": 81.916,
+     "end": 82.325
+    },
+    {
+     "text": "aus.",
+     "start": 82.325,
+     "end": 82.529
+    },
+    {
+     "text": "Aber",
+     "start": 82.563,
+     "end": 82.768
+    },
+    {
+     "text": "die",
+     "start": 82.768,
+     "end": 82.904
+    },
+    {
+     "text": "ganze",
+     "start": 82.904,
+     "end": 83.313
+    },
+    {
+     "text": "Reihe",
+     "start": 83.313,
+     "end": 83.585
+    },
+    {
+     "text": "zog",
+     "start": 83.585,
+     "end": 83.858
+    },
+    {
+     "text": "ihn",
+     "start": 83.858,
+     "end": 83.994
+    },
+    {
+     "text": "wieder",
+     "start": 83.994,
+     "end": 84.267
+    },
+    {
+     "text": "hoch.",
+     "start": 84.267,
+     "end": 84.471
+    }
+   ]
+  },
+  {
+   "id": "s32",
+   "text": "Hinter mir zwanzig Kinder und ein Lehrer. Und niemand ließ los.",
+   "start": 84.825,
+   "end": 88.403,
+   "words": [
+    {
+     "text": "Hinter",
+     "start": 84.825,
+     "end": 85.194
+    },
+    {
+     "text": "mir",
+     "start": 85.194,
+     "end": 85.415
+    },
+    {
+     "text": "zwanzig",
+     "start": 85.415,
+     "end": 86.153
+    },
+    {
+     "text": "Kinder",
+     "start": 86.153,
+     "end": 86.522
+    },
+    {
+     "text": "und",
+     "start": 86.522,
+     "end": 86.743
+    },
+    {
+     "text": "ein",
+     "start": 86.743,
+     "end": 86.964
+    },
+    {
+     "text": "Lehrer.",
+     "start": 86.964,
+     "end": 87.26
+    },
+    {
+     "text": "Und",
+     "start": 87.296,
+     "end": 87.518
+    },
+    {
+     "text": "niemand",
+     "start": 87.518,
+     "end": 87.96
+    },
+    {
+     "text": "ließ",
+     "start": 87.96,
+     "end": 88.182
+    },
+    {
+     "text": "los.",
+     "start": 88.182,
+     "end": 88.403
+    }
+   ]
+  },
+  {
+   "id": "s33",
+   "text": "Nach einer Stunde sahen wir die Lichter der Stadt.",
+   "start": 88.94,
+   "end": 90.841,
+   "words": [
+    {
+     "text": "Nach",
+     "start": 88.94,
+     "end": 89.103
+    },
+    {
+     "text": "einer",
+     "start": 89.103,
+     "end": 89.32
+    },
+    {
+     "text": "Stunde",
+     "start": 89.32,
+     "end": 89.646
+    },
+    {
+     "text": "sahen",
+     "start": 89.646,
+     "end": 89.863
+    },
+    {
+     "text": "wir",
+     "start": 89.863,
+     "end": 90.026
+    },
+    {
+     "text": "die",
+     "start": 90.026,
+     "end": 90.135
+    },
+    {
+     "text": "Lichter",
+     "start": 90.135,
+     "end": 90.46
+    },
+    {
+     "text": "der",
+     "start": 90.46,
+     "end": 90.623
+    },
+    {
+     "text": "Stadt.",
+     "start": 90.623,
+     "end": 90.841
+    }
+   ]
+  },
+  {
+   "id": "s34",
+   "text": "Unter der ersten Laterne konnten alle wieder sehen.",
+   "start": 91.188,
+   "end": 93.61,
+   "words": [
+    {
+     "text": "Unter",
+     "start": 91.188,
+     "end": 91.457
+    },
+    {
+     "text": "der",
+     "start": 91.457,
+     "end": 91.659
+    },
+    {
+     "text": "ersten",
+     "start": 91.659,
+     "end": 92.062
+    },
+    {
+     "text": "Laterne",
+     "start": 92.062,
+     "end": 92.466
+    },
+    {
+     "text": "konnten",
+     "start": 92.466,
+     "end": 92.87
+    },
+    {
+     "text": "alle",
+     "start": 92.87,
+     "end": 93.072
+    },
+    {
+     "text": "wieder",
+     "start": 93.072,
+     "end": 93.341
+    },
+    {
+     "text": "sehen.",
+     "start": 93.341,
+     "end": 93.61
+    }
+   ]
+  },
+  {
+   "id": "s35",
+   "text": "Jeder schaute, wessen Hand er hielt.",
+   "start": 94.044,
+   "end": 95.805,
+   "words": [
+    {
+     "text": "Jeder",
+     "start": 94.044,
+     "end": 94.31
+    },
+    {
+     "text": "schaute,",
+     "start": 94.31,
+     "end": 94.642
+    },
+    {
+     "text": "wessen",
+     "start": 94.808,
+     "end": 95.14
+    },
+    {
+     "text": "Hand",
+     "start": 95.14,
+     "end": 95.406
+    },
+    {
+     "text": "er",
+     "start": 95.406,
+     "end": 95.539
+    },
+    {
+     "text": "hielt.",
+     "start": 95.539,
+     "end": 95.805
+    }
+   ]
+  },
+  {
+   "id": "s36",
+   "text": "Luis war direkt hinter mir. Seine Hand war in meiner.",
+   "start": 96.238,
+   "end": 98.859,
+   "words": [
+    {
+     "text": "Luis",
+     "start": 96.238,
+     "end": 96.497
+    },
+    {
+     "text": "war",
+     "start": 96.497,
+     "end": 96.691
+    },
+    {
+     "text": "direkt",
+     "start": 96.691,
+     "end": 97.08
+    },
+    {
+     "text": "hinter",
+     "start": 97.08,
+     "end": 97.403
+    },
+    {
+     "text": "mir.",
+     "start": 97.403,
+     "end": 97.597
+    },
+    {
+     "text": "Seine",
+     "start": 97.63,
+     "end": 97.953
+    },
+    {
+     "text": "Hand",
+     "start": 97.953,
+     "end": 98.212
+    },
+    {
+     "text": "war",
+     "start": 98.212,
+     "end": 98.406
+    },
+    {
+     "text": "in",
+     "start": 98.406,
+     "end": 98.535
+    },
+    {
+     "text": "meiner.",
+     "start": 98.535,
+     "end": 98.859
+    }
+   ]
+  },
+  {
+   "id": "s37",
+   "text": "Er schaute auf unsere Hände. Und drückte sie fester.",
+   "start": 99.341,
+   "end": 101.814,
+   "words": [
+    {
+     "text": "Er",
+     "start": 99.341,
+     "end": 99.477
+    },
+    {
+     "text": "schaute",
+     "start": 99.477,
+     "end": 99.816
+    },
+    {
+     "text": "auf",
+     "start": 99.816,
+     "end": 100.019
+    },
+    {
+     "text": "unsere",
+     "start": 100.019,
+     "end": 100.358
+    },
+    {
+     "text": "Hände.",
+     "start": 100.358,
+     "end": 100.696
+    },
+    {
+     "text": "Und",
+     "start": 100.73,
+     "end": 100.933
+    },
+    {
+     "text": "drückte",
+     "start": 100.933,
+     "end": 101.34
+    },
+    {
+     "text": "sie",
+     "start": 101.34,
+     "end": 101.475
+    },
+    {
+     "text": "fester.",
+     "start": 101.475,
+     "end": 101.814
+    }
+   ]
+  }
+ ]
+}

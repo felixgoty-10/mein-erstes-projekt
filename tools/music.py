@@ -84,6 +84,30 @@ def main():
         dur = json.loads((proj / "assets" / "timing.json").read_text())["duration"]
     rng = np.random.default_rng(7)
     spec = json.loads((proj / "video.json").read_text(encoding="utf-8"))
+    if spec.get("music", {}).get("mood") == "sad":
+        # ruhige Moll-Arpeggien (Am – F – C – G), langsam, weich
+        bpm = 66; beat = 60 / bpm; total = int(SR * (dur + 2)); mix = np.zeros(total)
+        chords = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]
+        pat = [0, 1, 2, 1, 2, 1]
+        t = 0.0; bar = 0; cache = {}
+        while t < dur + 1:
+            ch = chords[bar % 4]
+            for k, idx in enumerate(pat):
+                m = ch[idx] + 12
+                if m not in cache:
+                    cache[m] = pluck(note(m), beat * 3, rng, decay=0.998) * 0.3
+                s_ = cache[m]; i0 = int((t + k * beat * 4 / len(pat)) * SR)
+                seg = s_[: max(0, min(len(s_), total - i0))]; mix[i0: i0 + len(seg)] += seg
+            bm = ch[0] - 12; tt = np.arange(int(SR * beat * 4)) / SR
+            pad = (np.sin(2 * np.pi * note(bm) * tt) + 0.5 * np.sin(2 * np.pi * note(bm + 7) * tt)) * np.minimum(1, tt * 2) * np.exp(-tt * 0.5) * 0.12
+            i0 = int(t * SR); seg = pad[: max(0, min(len(pad), total - i0))]; mix[i0: i0 + len(seg)] += seg
+            t += 4 * beat; bar += 1
+        mix = mix[: int(SR * dur)]; fade = int(SR * 2.0); mix[-fade:] *= np.linspace(1, 0, fade)
+        write(proj / "assets" / "music.wav", mix / np.max(np.abs(mix)) * 0.8)
+        tt = np.arange(int(SR * 0.18)) / SR
+        write(proj / "assets" / "pop.wav", np.sin(2 * np.pi * np.cumsum(380 + 600 * np.exp(-tt * 30)) / SR) * np.exp(-tt * 22) * 0.5)
+        print(f"music.wav (sad, {dur:.1f}s) + pop.wav")
+        return
     if spec.get("music", {}).get("mood") == "horror":
         mix = horror(dur, rng)
         fade = int(SR * 1.0)

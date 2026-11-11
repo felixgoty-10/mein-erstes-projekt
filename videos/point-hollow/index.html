@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>In dieser Stadt hasst mich jeder wegen meiner Hautfarbe</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script type="importmap">
+      { "imports": { "three": "./assets/vendor/three.module.js", "three/addons/": "./assets/vendor/addons/" } }
+    </script>
+    <style>
+      html, body { margin: 0; padding: 0; background: #000; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #8cc8f0; font-family: "Montserrat", sans-serif; }
+      #world { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      /* Ein-Wort-Untertitel: weiß, extra fett, schwarze Kontur, ~65 % Bildhöhe */
+      .cap { position: absolute; left: 0; width: 1080px; top: 1150px; height: 160px; text-align: center; z-index: 50; overflow: visible; }
+      .cap span { display: inline-block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 92px; line-height: 160px;
+        color: #fff; -webkit-text-stroke: 14px #111; paint-order: stroke fill; letter-spacing: -1px;
+        text-shadow: 0 7px 0 rgba(0,0,0,0.35); transform-origin: 50% 60%; }
+      /* Infokarte auf Cremegrund */
+      .card-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: #f3e9dc; z-index: 40; }
+      .card { position: absolute; left: 190px; top: 560px; width: 700px; border-radius: 34px; background: #fff; overflow: hidden;
+        box-shadow: 0 30px 60px rgba(60,40,20,0.25); }
+      .card-head { background: #e23b3b; color: #fff; font-weight: 900; font-size: 64px; text-align: center; padding: 26px 0 22px; letter-spacing: 2px; }
+      .card-val { color: #151515; font-weight: 900; font-size: 210px; text-align: center; line-height: 1; padding: 40px 0 56px; }
+      /* Blick durchs Schlüsselloch: schwarzer Rahmen mit Schlüsselloch-Ausschnitt */
+      .keyhole { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 40; overflow: hidden; }
+      .keyhole-mask { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 900px; }
+      .keyhole-mask svg { display: block; }
+      .flash { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 39; }
+      .flash-fill { position: absolute; inset: 0; mix-blend-mode: normal; }
+      /* Schild oben mit Schlüsselsatz */
+      .sign { position: absolute; left: 0; top: 250px; width: 1080px; height: 160px; text-align: center; z-index: 45; }
+      .sign-box { display: inline-block; background: #fff; color: #111; border: 7px solid #111; border-radius: 30px; padding: 16px 40px;
+        font-weight: 900; font-size: 60px; letter-spacing: 1px; box-shadow: 0 10px 0 rgba(0,0,0,0.25); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="102.87" data-width="1080" data-height="1920">
+      <canvas id="world" class="clip" width="1080" height="1920" data-start="0" data-duration="102.87" data-track-index="1" data-track-kind="graphics"></canvas>
+      <div id="ov0" class="clip sign" data-start="3.102" data-duration="2.635" data-track-index="4"><div class="sign-box">POINT HOLLOW</div></div>
+      <div id="ov1" class="clip card-bg" data-start="41.462" data-duration="0.839" data-track-index="3">
+        <div class="card"><div class="card-head">DEZEMBER</div><div class="card-val">−12 °C</div></div>
+      </div>
+      <div id="ov2" class="clip flash" data-start="54.269" data-duration="34.134" data-track-index="3"><div class="flash-fill" style="background:#000000"></div></div>
+      <div id="ov3" class="clip sign" data-start="61.437" data-duration="0.84" data-track-index="4"><div class="sign-box">„ICH KENNE DEN WEG.“</div></div>
+      <div id="ov4" class="clip sign" data-start="73.632" data-duration="1.742" data-track-index="4"><div class="sign-box">„ALLE HÄNDE HALTEN!“</div></div>
+      <div id="ov5" class="clip flash" data-start="101.814" data-duration="1.056" data-track-index="3"><div class="flash-fill" style="background:#000000"></div></div>
+      <div id="w0" class="clip cap" data-start="0.15" data-duration="0.224" data-track-index="5"><span>In</span></div>
+      <div id="w1" class="clip cap" data-start="0.374" data-duration="0.248" data-track-index="5"><span>dieser</span></div>
+      <div id="w2" class="clip cap" data-start="0.622" data-duration="0.248" data-track-index="5"><span>Stadt</span></div>
+      <div id="w3" class="clip cap" data-start="0.87" data-duration="0.248" data-track-index="5"><span>hasst</span></div>
+      <div id="w4" class="clip cap" data-start="1.118" data-duration="0.248" data-track-index="5"><span>mich</span></div>
+      <div id="w5" class="clip cap" data-start="1.366" data-duration="0.248" data-track-index="5"><span>jeder</span></div>
+      <div id="w6" class="clip cap" data-start="1.614" data-duration="0.31" data-track-index="5"><span>wegen</span></div>
+      <div id="w7" class="clip cap" data-start="1.924" data-duration="0.309" data-track-index="5"><span>meiner</span></div>
+      <div id="w8" class="clip cap" data-start="2.233" data-duration="0.909" data-track-index="5"><span>Hautfarbe</span></div>
+      <div id="w9" class="clip cap" data-start="3.142" data-duration="0.177" data-track-index="5"><span>Wir</span></div>
+      <div id="w10" class="clip cap" data-start="3.319" data-duration="0.236" data-track-index="5"><span>sind</span></div>
+      <div id="w11" class="clip cap" data-start="3.555" data-duration="0.118" data-track-index="5"><span>die</span></div>
+      <div id="w12" class="clip cap" data-start="3.673" data-duration="0.472" data-track-index="5"><span>einzige</span></div>
+      <div id="w13" class="clip cap" data-start="4.145" data-duration="0.412" data-track-index="5"><span>schwarze</span></div>
+      <div id="w14" class="clip cap" data-start="4.557" data-duration="0.472" data-track-index="5"><span>Familie</span></div>
+      <div id="w15" class="clip cap" data-start="5.029" data-duration="0.118" data-track-index="5"><span>in</span></div>
+      <div id="w16" class="clip cap" data-start="5.147" data-duration="0.295" data-track-index="5"><span>Point</span></div>
+      <div id="w17" class="clip cap" data-start="5.442" data-duration="0.644" data-track-index="5"><span>Hollow</span></div>
+      <div id="w18" class="clip cap" data-start="6.086" data-duration="0.277" data-track-index="5"><span>Bevor</span></div>
+      <div id="w19" class="clip cap" data-start="6.363" data-duration="0.165" data-track-index="5"><span>wir</span></div>
+      <div id="w20" class="clip cap" data-start="6.528" data-duration="0.277" data-track-index="5"><span>hierher</span></div>
+      <div id="w21" class="clip cap" data-start="6.805" data-duration="0.442" data-track-index="5"><span>gezogen</span></div>
+      <div id="w22" class="clip cap" data-start="7.247" data-duration="0.359" data-track-index="5"><span>sind</span></div>
+      <div id="w23" class="clip cap" data-start="7.606" data-duration="0.221" data-track-index="5"><span>hatte</span></div>
+      <div id="w24" class="clip cap" data-start="7.827" data-duration="0.166" data-track-index="5"><span>hier</span></div>
+      <div id="w25" class="clip cap" data-start="7.993" data-duration="0.166" data-track-index="5"><span>noch</span></div>
+      <div id="w26" class="clip cap" data-start="8.159" data-duration="0.111" data-track-index="5"><span>nie</span></div>
+      <div id="w27" class="clip cap" data-start="8.27" data-duration="0.331" data-track-index="5"><span>jemand</span></div>
+      <div id="w28" class="clip cap" data-start="8.601" data-duration="0.111" data-track-index="5"><span>so</span></div>
+      <div id="w29" class="clip cap" data-start="8.712" data-duration="0.442" data-track-index="5"><span>jemanden</span></div>
+      <div id="w30" class="clip cap" data-start="9.154" data-duration="0.111" data-track-index="5"><span>wie</span></div>
+      <div id="w31" class="clip cap" data-start="9.265" data-duration="0.221" data-track-index="5"><span>mich</span></div>
+      <div id="w32" class="clip cap" data-start="9.486" data-duration="0.679" data-track-index="5"><span>gesehen</span></div>
+      <div id="w33" class="clip cap" data-start="10.165" data-duration="0.33" data-track-index="5"><span>Meine</span></div>
+      <div id="w34" class="clip cap" data-start="10.495" data-duration="0.198" data-track-index="5"><span>Oma</span></div>
+      <div id="w35" class="clip cap" data-start="10.693" data-duration="0.462" data-track-index="5"><span>sagt</span></div>
+      <div id="w36" class="clip cap" data-start="11.155" data-duration="0.132" data-track-index="5"><span>Die</span></div>
+      <div id="w37" class="clip cap" data-start="11.287" data-duration="0.396" data-track-index="5"><span>Menschen</span></div>
+      <div id="w38" class="clip cap" data-start="11.683" data-duration="0.33" data-track-index="5"><span>haben</span></div>
+      <div id="w39" class="clip cap" data-start="12.013" data-duration="0.264" data-track-index="5"><span>Angst</span></div>
+      <div id="w40" class="clip cap" data-start="12.277" data-duration="0.198" data-track-index="5"><span>vor</span></div>
+      <div id="w41" class="clip cap" data-start="12.475" data-duration="0.362" data-track-index="5"><span>dem</span></div>
+      <div id="w42" class="clip cap" data-start="12.837" data-duration="0.198" data-track-index="5"><span>was</span></div>
+      <div id="w43" class="clip cap" data-start="13.035" data-duration="0.132" data-track-index="5"><span>sie</span></div>
+      <div id="w44" class="clip cap" data-start="13.167" data-duration="0.198" data-track-index="5"><span>noch</span></div>
+      <div id="w45" class="clip cap" data-start="13.365" data-duration="0.132" data-track-index="5"><span>nie</span></div>
+      <div id="w46" class="clip cap" data-start="13.497" data-duration="0.396" data-track-index="5"><span>gesehen</span></div>
+      <div id="w47" class="clip cap" data-start="13.893" data-duration="0.813" data-track-index="5"><span>haben</span></div>
+      <div id="w48" class="clip cap" data-start="14.706" data-duration="0.171" data-track-index="5"><span>Wenn</span></div>
+      <div id="w49" class="clip cap" data-start="14.877" data-duration="0.172" data-track-index="5"><span>ich</span></div>
+      <div id="w50" class="clip cap" data-start="15.049" data-duration="0.228" data-track-index="5"><span>mich</span></div>
+      <div id="w51" class="clip cap" data-start="15.277" data-duration="0.114" data-track-index="5"><span>in</span></div>
+      <div id="w52" class="clip cap" data-start="15.391" data-duration="0.172" data-track-index="5"><span>der</span></div>
+      <div id="w53" class="clip cap" data-start="15.563" data-duration="0.228" data-track-index="5"><span>Schule</span></div>
+      <div id="w54" class="clip cap" data-start="15.791" data-duration="0.229" data-track-index="5"><span>zum</span></div>
+      <div id="w55" class="clip cap" data-start="16.02" data-duration="0.228" data-track-index="5"><span>Essen</span></div>
+      <div id="w56" class="clip cap" data-start="16.248" data-duration="0.114" data-track-index="5"><span>an</span></div>
+      <div id="w57" class="clip cap" data-start="16.362" data-duration="0.286" data-track-index="5"><span>einen</span></div>
+      <div id="w58" class="clip cap" data-start="16.648" data-duration="0.171" data-track-index="5"><span>Tisch</span></div>
+      <div id="w59" class="clip cap" data-start="16.819" data-duration="0.4" data-track-index="5"><span>gesetzt</span></div>
+      <div id="w60" class="clip cap" data-start="17.219" data-duration="0.371" data-track-index="5"><span>habe</span></div>
+      <div id="w61" class="clip cap" data-start="17.59" data-duration="0.228" data-track-index="5"><span>sind</span></div>
+      <div id="w62" class="clip cap" data-start="17.818" data-duration="0.172" data-track-index="5"><span>alle</span></div>
+      <div id="w63" class="clip cap" data-start="17.99" data-duration="0.862" data-track-index="5"><span>weggegangen</span></div>
+      <div id="w64" class="clip cap" data-start="18.852" data-duration="0.107" data-track-index="5"><span>In</span></div>
+      <div id="w65" class="clip cap" data-start="18.959" data-duration="0.267" data-track-index="5"><span>Sport</span></div>
+      <div id="w66" class="clip cap" data-start="19.226" data-duration="0.268" data-track-index="5"><span>wollte</span></div>
+      <div id="w67" class="clip cap" data-start="19.494" data-duration="0.213" data-track-index="5"><span>mich</span></div>
+      <div id="w68" class="clip cap" data-start="19.707" data-duration="0.321" data-track-index="5"><span>niemand</span></div>
+      <div id="w69" class="clip cap" data-start="20.028" data-duration="0.614" data-track-index="5"><span>wählen</span></div>
+      <div id="w70" class="clip cap" data-start="20.642" data-duration="0.293" data-track-index="5"><span>Jeden</span></div>
+      <div id="w71" class="clip cap" data-start="20.935" data-duration="0.351" data-track-index="5"><span>Morgen</span></div>
+      <div id="w72" class="clip cap" data-start="21.286" data-duration="0.175" data-track-index="5"><span>ist</span></div>
+      <div id="w73" class="clip cap" data-start="21.461" data-duration="0.176" data-track-index="5"><span>der</span></div>
+      <div id="w74" class="clip cap" data-start="21.637" data-duration="0.351" data-track-index="5"><span>Schulbus</span></div>
+      <div id="w75" class="clip cap" data-start="21.988" data-duration="0.351" data-track-index="5"><span>extra</span></div>
+      <div id="w76" class="clip cap" data-start="22.339" data-duration="0.117" data-track-index="5"><span>an</span></div>
+      <div id="w77" class="clip cap" data-start="22.456" data-duration="0.293" data-track-index="5"><span>meiner</span></div>
+      <div id="w78" class="clip cap" data-start="22.749" data-duration="0.585" data-track-index="5"><span>Haltestelle</span></div>
+      <div id="w79" class="clip cap" data-start="23.334" data-duration="1.11" data-track-index="5"><span>vorbeigefahren</span></div>
+      <div id="w80" class="clip cap" data-start="24.444" data-duration="0.218" data-track-index="5"><span>Also</span></div>
+      <div id="w81" class="clip cap" data-start="24.662" data-duration="0.163" data-track-index="5"><span>bin</span></div>
+      <div id="w82" class="clip cap" data-start="24.825" data-duration="0.163" data-track-index="5"><span>ich</span></div>
+      <div id="w83" class="clip cap" data-start="24.988" data-duration="0.271" data-track-index="5"><span>jeden</span></div>
+      <div id="w84" class="clip cap" data-start="25.259" data-duration="0.164" data-track-index="5"><span>Tag</span></div>
+      <div id="w85" class="clip cap" data-start="25.423" data-duration="0.762" data-track-index="5"><span>gelaufen</span></div>
+      <div id="w86" class="clip cap" data-start="26.185" data-duration="0.304" data-track-index="5"><span>Durch</span></div>
+      <div id="w87" class="clip cap" data-start="26.489" data-duration="0.182" data-track-index="5"><span>den</span></div>
+      <div id="w88" class="clip cap" data-start="26.671" data-duration="0.474" data-track-index="5"><span>Wald</span></div>
+      <div id="w89" class="clip cap" data-start="27.145" data-duration="0.183" data-track-index="5"><span>Über</span></div>
+      <div id="w90" class="clip cap" data-start="27.328" data-duration="0.184" data-track-index="5"><span>den</span></div>
+      <div id="w91" class="clip cap" data-start="27.512" data-duration="0.671" data-track-index="5"><span>umgefallenen</span></div>
+      <div id="w92" class="clip cap" data-start="28.183" data-duration="0.475" data-track-index="5"><span>Baum</span></div>
+      <div id="w93" class="clip cap" data-start="28.658" data-duration="0.202" data-track-index="5"><span>Über</span></div>
+      <div id="w94" class="clip cap" data-start="28.86" data-duration="0.135" data-track-index="5"><span>die</span></div>
+      <div id="w95" class="clip cap" data-start="28.995" data-duration="0.404" data-track-index="5"><span>Steine</span></div>
+      <div id="w96" class="clip cap" data-start="29.399" data-duration="0.135" data-track-index="5"><span>im</span></div>
+      <div id="w97" class="clip cap" data-start="29.534" data-duration="0.686" data-track-index="5"><span>Bach</span></div>
+      <div id="w98" class="clip cap" data-start="30.22" data-duration="0.134" data-track-index="5"><span>Im</span></div>
+      <div id="w99" class="clip cap" data-start="30.354" data-duration="0.335" data-track-index="5"><span>Winter</span></div>
+      <div id="w100" class="clip cap" data-start="30.689" data-duration="0.269" data-track-index="5"><span>wird</span></div>
+      <div id="w101" class="clip cap" data-start="30.958" data-duration="0.134" data-track-index="5"><span>es</span></div>
+      <div id="w102" class="clip cap" data-start="31.092" data-duration="0.201" data-track-index="5"><span>hier</span></div>
+      <div id="w103" class="clip cap" data-start="31.293" data-duration="0.268" data-track-index="5"><span>schnell</span></div>
+      <div id="w104" class="clip cap" data-start="31.561" data-duration="0.757" data-track-index="5"><span>dunkel</span></div>
+      <div id="w105" class="clip cap" data-start="32.318" data-duration="0.25" data-track-index="5"><span>Also</span></div>
+      <div id="w106" class="clip cap" data-start="32.568" data-duration="0.312" data-track-index="5"><span>musste</span></div>
+      <div id="w107" class="clip cap" data-start="32.88" data-duration="0.188" data-track-index="5"><span>ich</span></div>
+      <div id="w108" class="clip cap" data-start="33.068" data-duration="0.187" data-track-index="5"><span>oft</span></div>
+      <div id="w109" class="clip cap" data-start="33.255" data-duration="0.126" data-track-index="5"><span>im</span></div>
+      <div id="w110" class="clip cap" data-start="33.381" data-duration="0.437" data-track-index="5"><span>Dunkeln</span></div>
+      <div id="w111" class="clip cap" data-start="33.818" data-duration="0.188" data-track-index="5"><span>nach</span></div>
+      <div id="w112" class="clip cap" data-start="34.006" data-duration="0.312" data-track-index="5"><span>Hause</span></div>
+      <div id="w113" class="clip cap" data-start="34.318" data-duration="0.727" data-track-index="5"><span>laufen</span></div>
+      <div id="w114" class="clip cap" data-start="35.045" data-duration="0.175" data-track-index="5"><span>Ich</span></div>
+      <div id="w115" class="clip cap" data-start="35.22" data-duration="0.175" data-track-index="5"><span>kann</span></div>
+      <div id="w116" class="clip cap" data-start="35.395" data-duration="0.175" data-track-index="5"><span>den</span></div>
+      <div id="w117" class="clip cap" data-start="35.57" data-duration="0.175" data-track-index="5"><span>Weg</span></div>
+      <div id="w118" class="clip cap" data-start="35.745" data-duration="0.175" data-track-index="5"><span>mit</span></div>
+      <div id="w119" class="clip cap" data-start="35.92" data-duration="0.584" data-track-index="5"><span>geschlossenen</span></div>
+      <div id="w120" class="clip cap" data-start="36.504" data-duration="0.292" data-track-index="5"><span>Augen</span></div>
+      <div id="w121" class="clip cap" data-start="36.796" data-duration="0.713" data-track-index="5"><span>gehen</span></div>
+      <div id="w122" class="clip cap" data-start="37.509" data-duration="0.236" data-track-index="5"><span>Mein</span></div>
+      <div id="w123" class="clip cap" data-start="37.745" data-duration="0.237" data-track-index="5"><span>Vater</span></div>
+      <div id="w124" class="clip cap" data-start="37.982" data-duration="0.415" data-track-index="5"><span>sagt</span></div>
+      <div id="w125" class="clip cap" data-start="38.397" data-duration="0.296" data-track-index="5"><span>Eines</span></div>
+      <div id="w126" class="clip cap" data-start="38.693" data-duration="0.296" data-track-index="5"><span>Tages</span></div>
+      <div id="w127" class="clip cap" data-start="38.989" data-duration="0.355" data-track-index="5"><span>werden</span></div>
+      <div id="w128" class="clip cap" data-start="39.344" data-duration="0.118" data-track-index="5"><span>sie</span></div>
+      <div id="w129" class="clip cap" data-start="39.462" data-duration="0.504" data-track-index="5"><span>merken</span></div>
+      <div id="w130" class="clip cap" data-start="39.966" data-duration="0.177" data-track-index="5"><span>wer</span></div>
+      <div id="w131" class="clip cap" data-start="40.143" data-duration="0.119" data-track-index="5"><span>du</span></div>
+      <div id="w132" class="clip cap" data-start="40.262" data-duration="0.473" data-track-index="5"><span>wirklich</span></div>
+      <div id="w133" class="clip cap" data-start="40.735" data-duration="0.767" data-track-index="5"><span>bist</span></div>
+      <div id="w134" class="clip cap" data-start="41.502" data-duration="0.129" data-track-index="5"><span>Im</span></div>
+      <div id="w135" class="clip cap" data-start="41.631" data-duration="0.516" data-track-index="5"><span>Dezember</span></div>
+      <div id="w136" class="clip cap" data-start="42.147" data-duration="0.194" data-track-index="5"><span>ging</span></div>
+      <div id="w137" class="clip cap" data-start="42.341" data-duration="0.322" data-track-index="5"><span>meine</span></div>
+      <div id="w138" class="clip cap" data-start="42.663" data-duration="0.323" data-track-index="5"><span>Klasse</span></div>
+      <div id="w139" class="clip cap" data-start="42.986" data-duration="0.129" data-track-index="5"><span>in</span></div>
+      <div id="w140" class="clip cap" data-start="43.115" data-duration="0.193" data-track-index="5"><span>den</span></div>
+      <div id="w141" class="clip cap" data-start="43.308" data-duration="0.42" data-track-index="5"><span>Wald</span></div>
+      <div id="w142" class="clip cap" data-start="43.728" data-duration="0.258" data-track-index="5"><span>zum</span></div>
+      <div id="w143" class="clip cap" data-start="43.986" data-duration="0.839" data-track-index="5"><span>eingefrorenen</span></div>
+      <div id="w144" class="clip cap" data-start="44.825" data-duration="0.803" data-track-index="5"><span>Wasserfall</span></div>
+      <div id="w145" class="clip cap" data-start="45.628" data-duration="0.186" data-track-index="5"><span>Auf</span></div>
+      <div id="w146" class="clip cap" data-start="45.814" data-duration="0.186" data-track-index="5"><span>dem</span></div>
+      <div id="w147" class="clip cap" data-start="46" data-duration="0.371" data-track-index="5"><span>Rückweg</span></div>
+      <div id="w148" class="clip cap" data-start="46.371" data-duration="0.186" data-track-index="5"><span>fing</span></div>
+      <div id="w149" class="clip cap" data-start="46.557" data-duration="0.124" data-track-index="5"><span>es</span></div>
+      <div id="w150" class="clip cap" data-start="46.681" data-duration="0.124" data-track-index="5"><span>an</span></div>
+      <div id="w151" class="clip cap" data-start="46.805" data-duration="0.186" data-track-index="5"><span>zu</span></div>
+      <div id="w152" class="clip cap" data-start="46.991" data-duration="0.722" data-track-index="5"><span>schneien</span></div>
+      <div id="w153" class="clip cap" data-start="47.713" data-duration="0.166" data-track-index="5"><span>Dann</span></div>
+      <div id="w154" class="clip cap" data-start="47.879" data-duration="0.277" data-track-index="5"><span>wurde</span></div>
+      <div id="w155" class="clip cap" data-start="48.156" data-duration="0.111" data-track-index="5"><span>es</span></div>
+      <div id="w156" class="clip cap" data-start="48.267" data-duration="0.111" data-track-index="5"><span>so</span></div>
+      <div id="w157" class="clip cap" data-start="48.378" data-duration="0.526" data-track-index="5"><span>heftig</span></div>
+      <div id="w158" class="clip cap" data-start="48.904" data-duration="0.166" data-track-index="5"><span>dass</span></div>
+      <div id="w159" class="clip cap" data-start="49.07" data-duration="0.166" data-track-index="5"><span>der</span></div>
+      <div id="w160" class="clip cap" data-start="49.236" data-duration="0.166" data-track-index="5"><span>Weg</span></div>
+      <div id="w161" class="clip cap" data-start="49.402" data-duration="0.791" data-track-index="5"><span>verschwand</span></div>
+      <div id="w162" class="clip cap" data-start="50.193" data-duration="0.135" data-track-index="5"><span>Die</span></div>
+      <div id="w163" class="clip cap" data-start="50.328" data-duration="0.272" data-track-index="5"><span>Sonne</span></div>
+      <div id="w164" class="clip cap" data-start="50.6" data-duration="0.203" data-track-index="5"><span>ging</span></div>
+      <div id="w165" class="clip cap" data-start="50.803" data-duration="0.625" data-track-index="5"><span>unter</span></div>
+      <div id="w166" class="clip cap" data-start="51.428" data-duration="0.203" data-track-index="5"><span>Alle</span></div>
+      <div id="w167" class="clip cap" data-start="51.631" data-duration="0.404" data-track-index="5"><span>Handys</span></div>
+      <div id="w168" class="clip cap" data-start="52.035" data-duration="0.337" data-track-index="5"><span>waren</span></div>
+      <div id="w169" class="clip cap" data-start="52.372" data-duration="0.236" data-track-index="5"><span>leer</span></div>
+      <div id="w170" class="clip cap" data-start="52.608" data-duration="0.202" data-track-index="5"><span>Auch</span></div>
+      <div id="w171" class="clip cap" data-start="52.81" data-duration="0.202" data-track-index="5"><span>das</span></div>
+      <div id="w172" class="clip cap" data-start="53.012" data-duration="0.202" data-track-index="5"><span>von</span></div>
+      <div id="w173" class="clip cap" data-start="53.214" data-duration="0.472" data-track-index="5"><span>unserem</span></div>
+      <div id="w174" class="clip cap" data-start="53.686" data-duration="0.623" data-track-index="5"><span>Lehrer</span></div>
+      <div id="w175" class="clip cap" data-start="54.309" data-duration="0.116" data-track-index="5"><span>Es</span></div>
+      <div id="w176" class="clip cap" data-start="54.425" data-duration="0.291" data-track-index="5"><span>wurde</span></div>
+      <div id="w177" class="clip cap" data-start="54.716" data-duration="0.116" data-track-index="5"><span>so</span></div>
+      <div id="w178" class="clip cap" data-start="54.832" data-duration="0.495" data-track-index="5"><span>dunkel</span></div>
+      <div id="w179" class="clip cap" data-start="55.327" data-duration="0.174" data-track-index="5"><span>dass</span></div>
+      <div id="w180" class="clip cap" data-start="55.501" data-duration="0.175" data-track-index="5"><span>wir</span></div>
+      <div id="w181" class="clip cap" data-start="55.676" data-duration="0.29" data-track-index="5"><span>unsere</span></div>
+      <div id="w182" class="clip cap" data-start="55.966" data-duration="0.408" data-track-index="5"><span>eigenen</span></div>
+      <div id="w183" class="clip cap" data-start="56.374" data-duration="0.29" data-track-index="5"><span>Hände</span></div>
+      <div id="w184" class="clip cap" data-start="56.664" data-duration="0.291" data-track-index="5"><span>nicht</span></div>
+      <div id="w185" class="clip cap" data-start="56.955" data-duration="0.175" data-track-index="5"><span>mehr</span></div>
+      <div id="w186" class="clip cap" data-start="57.13" data-duration="0.581" data-track-index="5"><span>sahen</span></div>
+      <div id="w187" class="clip cap" data-start="57.711" data-duration="0.301" data-track-index="5"><span>Kinder</span></div>
+      <div id="w188" class="clip cap" data-start="58.012" data-duration="0.301" data-track-index="5"><span>fingen</span></div>
+      <div id="w189" class="clip cap" data-start="58.313" data-duration="0.12" data-track-index="5"><span>an</span></div>
+      <div id="w190" class="clip cap" data-start="58.433" data-duration="0.18" data-track-index="5"><span>zu</span></div>
+      <div id="w191" class="clip cap" data-start="58.613" data-duration="0.391" data-track-index="5"><span>weinen</span></div>
+      <div id="w192" class="clip cap" data-start="59.004" data-duration="0.18" data-track-index="5"><span>Der</span></div>
+      <div id="w193" class="clip cap" data-start="59.184" data-duration="0.241" data-track-index="5"><span>Wind</span></div>
+      <div id="w194" class="clip cap" data-start="59.425" data-duration="0.301" data-track-index="5"><span>wurde</span></div>
+      <div id="w195" class="clip cap" data-start="59.726" data-duration="0.89" data-track-index="5"><span>stärker</span></div>
+      <div id="w196" class="clip cap" data-start="60.616" data-duration="0.185" data-track-index="5"><span>Dann</span></div>
+      <div id="w197" class="clip cap" data-start="60.801" data-duration="0.307" data-track-index="5"><span>sagte</span></div>
+      <div id="w198" class="clip cap" data-start="61.108" data-duration="0.369" data-track-index="5"><span>ich</span></div>
+      <div id="w199" class="clip cap" data-start="61.477" data-duration="0.185" data-track-index="5"><span>Ich</span></div>
+      <div id="w200" class="clip cap" data-start="61.662" data-duration="0.246" data-track-index="5"><span>kenne</span></div>
+      <div id="w201" class="clip cap" data-start="61.908" data-duration="0.184" data-track-index="5"><span>den</span></div>
+      <div id="w202" class="clip cap" data-start="62.092" data-duration="0.615" data-track-index="5"><span>Weg</span></div>
+      <div id="w203" class="clip cap" data-start="62.707" data-duration="0.196" data-track-index="5"><span>Wir</span></div>
+      <div id="w204" class="clip cap" data-start="62.903" data-duration="0.392" data-track-index="5"><span>folgen</span></div>
+      <div id="w205" class="clip cap" data-start="63.295" data-duration="0.131" data-track-index="5"><span>ihm</span></div>
+      <div id="w206" class="clip cap" data-start="63.426" data-duration="0.49" data-track-index="5"><span>nicht</span></div>
+      <div id="w207" class="clip cap" data-start="63.916" data-duration="0.326" data-track-index="5"><span>sagte</span></div>
+      <div id="w208" class="clip cap" data-start="64.242" data-duration="0.614" data-track-index="5"><span>Luis</span></div>
+      <div id="w209" class="clip cap" data-start="64.856" data-duration="0.242" data-track-index="5"><span>Luis</span></div>
+      <div id="w210" class="clip cap" data-start="65.098" data-duration="0.241" data-track-index="5"><span>hatte</span></div>
+      <div id="w211" class="clip cap" data-start="65.339" data-duration="0.181" data-track-index="5"><span>noch</span></div>
+      <div id="w212" class="clip cap" data-start="65.52" data-duration="0.121" data-track-index="5"><span>nie</span></div>
+      <div id="w213" class="clip cap" data-start="65.641" data-duration="0.181" data-track-index="5"><span>ein</span></div>
+      <div id="w214" class="clip cap" data-start="65.822" data-duration="0.302" data-track-index="5"><span>nettes</span></div>
+      <div id="w215" class="clip cap" data-start="66.124" data-duration="0.242" data-track-index="5"><span>Wort</span></div>
+      <div id="w216" class="clip cap" data-start="66.366" data-duration="0.181" data-track-index="5"><span>zu</span></div>
+      <div id="w217" class="clip cap" data-start="66.547" data-duration="0.181" data-track-index="5"><span>mir</span></div>
+      <div id="w218" class="clip cap" data-start="66.728" data-duration="0.713" data-track-index="5"><span>gesagt</span></div>
+      <div id="w219" class="clip cap" data-start="67.441" data-duration="0.197" data-track-index="5"><span>Aber</span></div>
+      <div id="w220" class="clip cap" data-start="67.638" data-duration="0.394" data-track-index="5"><span>niemand</span></div>
+      <div id="w221" class="clip cap" data-start="68.032" data-duration="0.328" data-track-index="5"><span>sonst</span></div>
+      <div id="w222" class="clip cap" data-start="68.36" data-duration="0.493" data-track-index="5"><span>wusste</span></div>
+      <div id="w223" class="clip cap" data-start="68.853" data-duration="0.131" data-track-index="5"><span>wo</span></div>
+      <div id="w224" class="clip cap" data-start="68.984" data-duration="0.197" data-track-index="5"><span>wir</span></div>
+      <div id="w225" class="clip cap" data-start="69.181" data-duration="0.761" data-track-index="5"><span>waren</span></div>
+      <div id="w226" class="clip cap" data-start="69.942" data-duration="0.125" data-track-index="5"><span>Im</span></div>
+      <div id="w227" class="clip cap" data-start="70.067" data-duration="0.435" data-track-index="5"><span>Dunkeln</span></div>
+      <div id="w228" class="clip cap" data-start="70.502" data-duration="0.312" data-track-index="5"><span>konnte</span></div>
+      <div id="w229" class="clip cap" data-start="70.814" data-duration="0.311" data-track-index="5"><span>keiner</span></div>
+      <div id="w230" class="clip cap" data-start="71.125" data-duration="0.404" data-track-index="5"><span>sehen</span></div>
+      <div id="w231" class="clip cap" data-start="71.529" data-duration="0.187" data-track-index="5"><span>wer</span></div>
+      <div id="w232" class="clip cap" data-start="71.716" data-duration="0.187" data-track-index="5"><span>ich</span></div>
+      <div id="w233" class="clip cap" data-start="71.903" data-duration="0.218" data-track-index="5"><span>war</span></div>
+      <div id="w234" class="clip cap" data-start="72.121" data-duration="0.186" data-track-index="5"><span>Nur</span></div>
+      <div id="w235" class="clip cap" data-start="72.307" data-duration="0.311" data-track-index="5"><span>meine</span></div>
+      <div id="w236" class="clip cap" data-start="72.618" data-duration="0.312" data-track-index="5"><span>Stimme</span></div>
+      <div id="w237" class="clip cap" data-start="72.93" data-duration="0.742" data-track-index="5"><span>hören</span></div>
+      <div id="w238" class="clip cap" data-start="73.672" data-duration="0.196" data-track-index="5"><span>Alle</span></div>
+      <div id="w239" class="clip cap" data-start="73.868" data-duration="0.328" data-track-index="5"><span>Hände</span></div>
+      <div id="w240" class="clip cap" data-start="74.196" data-duration="0.393" data-track-index="5"><span>halten</span></div>
+      <div id="w241" class="clip cap" data-start="74.589" data-duration="0.196" data-track-index="5"><span>und</span></div>
+      <div id="w242" class="clip cap" data-start="74.785" data-duration="0.196" data-track-index="5"><span>mir</span></div>
+      <div id="w243" class="clip cap" data-start="74.981" data-duration="0.759" data-track-index="5"><span>folgen</span></div>
+      <div id="w244" class="clip cap" data-start="75.74" data-duration="0.192" data-track-index="5"><span>Und</span></div>
+      <div id="w245" class="clip cap" data-start="75.932" data-duration="0.192" data-track-index="5"><span>das</span></div>
+      <div id="w246" class="clip cap" data-start="76.124" data-duration="0.32" data-track-index="5"><span>taten</span></div>
+      <div id="w247" class="clip cap" data-start="76.444" data-duration="0.61" data-track-index="5"><span>sie</span></div>
+      <div id="w248" class="clip cap" data-start="77.054" data-duration="0.231" data-track-index="5"><span>Ich</span></div>
+      <div id="w249" class="clip cap" data-start="77.285" data-duration="0.383" data-track-index="5"><span>sagte</span></div>
+      <div id="w250" class="clip cap" data-start="77.668" data-duration="0.498" data-track-index="5"><span>laut</span></div>
+      <div id="w251" class="clip cap" data-start="78.166" data-duration="0.23" data-track-index="5"><span>was</span></div>
+      <div id="w252" class="clip cap" data-start="78.396" data-duration="0.346" data-track-index="5"><span>kommt</span></div>
+      <div id="w253" class="clip cap" data-start="78.742" data-duration="0.23" data-track-index="5"><span>Der</span></div>
+      <div id="w254" class="clip cap" data-start="78.972" data-duration="0.767" data-track-index="5"><span>umgefallene</span></div>
+      <div id="w255" class="clip cap" data-start="79.739" data-duration="0.345" data-track-index="5"><span>Baum</span></div>
+      <div id="w256" class="clip cap" data-start="80.084" data-duration="0.153" data-track-index="5"><span>Die</span></div>
+      <div id="w257" class="clip cap" data-start="80.237" data-duration="0.46" data-track-index="5"><span>Steine</span></div>
+      <div id="w258" class="clip cap" data-start="80.697" data-duration="0.153" data-track-index="5"><span>im</span></div>
+      <div id="w259" class="clip cap" data-start="80.85" data-duration="0.589" data-track-index="5"><span>Bach</span></div>
+      <div id="w260" class="clip cap" data-start="81.439" data-duration="0.204" data-track-index="5"><span>Ein</span></div>
+      <div id="w261" class="clip cap" data-start="81.643" data-duration="0.273" data-track-index="5"><span>Junge</span></div>
+      <div id="w262" class="clip cap" data-start="81.916" data-duration="0.409" data-track-index="5"><span>rutschte</span></div>
+      <div id="w263" class="clip cap" data-start="82.325" data-duration="0.238" data-track-index="5"><span>aus</span></div>
+      <div id="w264" class="clip cap" data-start="82.563" data-duration="0.205" data-track-index="5"><span>Aber</span></div>
+      <div id="w265" class="clip cap" data-start="82.768" data-duration="0.136" data-track-index="5"><span>die</span></div>
+      <div id="w266" class="clip cap" data-start="82.904" data-duration="0.409" data-track-index="5"><span>ganze</span></div>
+      <div id="w267" class="clip cap" data-start="83.313" data-duration="0.272" data-track-index="5"><span>Reihe</span></div>
+      <div id="w268" class="clip cap" data-start="83.585" data-duration="0.273" data-track-index="5"><span>zog</span></div>
+      <div id="w269" class="clip cap" data-start="83.858" data-duration="0.136" data-track-index="5"><span>ihn</span></div>
+      <div id="w270" class="clip cap" data-start="83.994" data-duration="0.273" data-track-index="5"><span>wieder</span></div>
+      <div id="w271" class="clip cap" data-start="84.267" data-duration="0.558" data-track-index="5"><span>hoch</span></div>
+      <div id="w272" class="clip cap" data-start="84.825" data-duration="0.369" data-track-index="5"><span>Hinter</span></div>
+      <div id="w273" class="clip cap" data-start="85.194" data-duration="0.221" data-track-index="5"><span>mir</span></div>
+      <div id="w274" class="clip cap" data-start="85.415" data-duration="0.738" data-track-index="5"><span>zwanzig</span></div>
+      <div id="w275" class="clip cap" data-start="86.153" data-duration="0.369" data-track-index="5"><span>Kinder</span></div>
+      <div id="w276" class="clip cap" data-start="86.522" data-duration="0.221" data-track-index="5"><span>und</span></div>
+      <div id="w277" class="clip cap" data-start="86.743" data-duration="0.221" data-track-index="5"><span>ein</span></div>
+      <div id="w278" class="clip cap" data-start="86.964" data-duration="0.332" data-track-index="5"><span>Lehrer</span></div>
+      <div id="w279" class="clip cap" data-start="87.296" data-duration="0.222" data-track-index="5"><span>Und</span></div>
+      <div id="w280" class="clip cap" data-start="87.518" data-duration="0.442" data-track-index="5"><span>niemand</span></div>
+      <div id="w281" class="clip cap" data-start="87.96" data-duration="0.222" data-track-index="5"><span>ließ</span></div>
+      <div id="w282" class="clip cap" data-start="88.182" data-duration="0.758" data-track-index="5"><span>los</span></div>
+      <div id="w283" class="clip cap" data-start="88.94" data-duration="0.163" data-track-index="5"><span>Nach</span></div>
+      <div id="w284" class="clip cap" data-start="89.103" data-duration="0.217" data-track-index="5"><span>einer</span></div>
+      <div id="w285" class="clip cap" data-start="89.32" data-duration="0.326" data-track-index="5"><span>Stunde</span></div>
+      <div id="w286" class="clip cap" data-start="89.646" data-duration="0.217" data-track-index="5"><span>sahen</span></div>
+      <div id="w287" class="clip cap" data-start="89.863" data-duration="0.163" data-track-index="5"><span>wir</span></div>
+      <div id="w288" class="clip cap" data-start="90.026" data-duration="0.109" data-track-index="5"><span>die</span></div>
+      <div id="w289" class="clip cap" data-start="90.135" data-duration="0.325" data-track-index="5"><span>Lichter</span></div>
+      <div id="w290" class="clip cap" data-start="90.46" data-duration="0.163" data-track-index="5"><span>der</span></div>
+      <div id="w291" class="clip cap" data-start="90.623" data-duration="0.565" data-track-index="5"><span>Stadt</span></div>
+      <div id="w292" class="clip cap" data-start="91.188" data-duration="0.269" data-track-index="5"><span>Unter</span></div>
+      <div id="w293" class="clip cap" data-start="91.457" data-duration="0.202" data-track-index="5"><span>der</span></div>
+      <div id="w294" class="clip cap" data-start="91.659" data-duration="0.403" data-track-index="5"><span>ersten</span></div>
+      <div id="w295" class="clip cap" data-start="92.062" data-duration="0.404" data-track-index="5"><span>Laterne</span></div>
+      <div id="w296" class="clip cap" data-start="92.466" data-duration="0.404" data-track-index="5"><span>konnten</span></div>
+      <div id="w297" class="clip cap" data-start="92.87" data-duration="0.202" data-track-index="5"><span>alle</span></div>
+      <div id="w298" class="clip cap" data-start="93.072" data-duration="0.269" data-track-index="5"><span>wieder</span></div>
+      <div id="w299" class="clip cap" data-start="93.341" data-duration="0.703" data-track-index="5"><span>sehen</span></div>
+      <div id="w300" class="clip cap" data-start="94.044" data-duration="0.266" data-track-index="5"><span>Jeder</span></div>
+      <div id="w301" class="clip cap" data-start="94.31" data-duration="0.498" data-track-index="5"><span>schaute</span></div>
+      <div id="w302" class="clip cap" data-start="94.808" data-duration="0.332" data-track-index="5"><span>wessen</span></div>
+      <div id="w303" class="clip cap" data-start="95.14" data-duration="0.266" data-track-index="5"><span>Hand</span></div>
+      <div id="w304" class="clip cap" data-start="95.406" data-duration="0.133" data-track-index="5"><span>er</span></div>
+      <div id="w305" class="clip cap" data-start="95.539" data-duration="0.699" data-track-index="5"><span>hielt</span></div>
+      <div id="w306" class="clip cap" data-start="96.238" data-duration="0.259" data-track-index="5"><span>Luis</span></div>
+      <div id="w307" class="clip cap" data-start="96.497" data-duration="0.194" data-track-index="5"><span>war</span></div>
+      <div id="w308" class="clip cap" data-start="96.691" data-duration="0.389" data-track-index="5"><span>direkt</span></div>
+      <div id="w309" class="clip cap" data-start="97.08" data-duration="0.323" data-track-index="5"><span>hinter</span></div>
+      <div id="w310" class="clip cap" data-start="97.403" data-duration="0.227" data-track-index="5"><span>mir</span></div>
+      <div id="w311" class="clip cap" data-start="97.63" data-duration="0.323" data-track-index="5"><span>Seine</span></div>
+      <div id="w312" class="clip cap" data-start="97.953" data-duration="0.259" data-track-index="5"><span>Hand</span></div>
+      <div id="w313" class="clip cap" data-start="98.212" data-duration="0.194" data-track-index="5"><span>war</span></div>
+      <div id="w314" class="clip cap" data-start="98.406" data-duration="0.129" data-track-index="5"><span>in</span></div>
+      <div id="w315" class="clip cap" data-start="98.535" data-duration="0.806" data-track-index="5"><span>meiner</span></div>
+      <div id="w316" class="clip cap" data-start="99.341" data-duration="0.136" data-track-index="5"><span>Er</span></div>
+      <div id="w317" class="clip cap" data-start="99.477" data-duration="0.339" data-track-index="5"><span>schaute</span></div>
+      <div id="w318" class="clip cap" data-start="99.816" data-duration="0.203" data-track-index="5"><span>auf</span></div>
+      <div id="w319" class="clip cap" data-start="100.019" data-duration="0.339" data-track-index="5"><span>unsere</span></div>
+      <div id="w320" class="clip cap" data-start="100.358" data-duration="0.372" data-track-index="5"><span>Hände</span></div>
+      <div id="w321" class="clip cap" data-start="100.73" data-duration="0.203" data-track-index="5"><span>Und</span></div>
+      <div id="w322" class="clip cap" data-start="100.933" data-duration="0.407" data-track-index="5"><span>drückte</span></div>
+      <div id="w323" class="clip cap" data-start="101.34" data-duration="0.135" data-track-index="5"><span>sie</span></div>
+      <div id="w324" class="clip cap" data-start="101.475" data-duration="0.939" data-track-index="5"><span>fester</span></div>
+      <audio id="voice" class="clip" src="assets/voice.wav" data-start="0" data-duration="102.87" data-volume="1" data-track-index="7"></audio>
+      <audio id="music" class="clip" src="assets/music.wav" data-start="0" data-duration="102.87" data-volume="0.24" data-fade-out="1" data-track-index="8"></audio>
+      <audio id="sfx0" class="clip" src="assets/pop.wav" data-start="3.102" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+      <audio id="sfx1" class="clip" src="assets/pop.wav" data-start="41.462" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+      <audio id="sfx3" class="clip" src="assets/pop.wav" data-start="61.437" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+      <audio id="sfx4" class="clip" src="assets/pop.wav" data-start="73.632" data-duration="0.4" data-volume="0.55" data-track-index="9"></audio>
+
+    </div>
+    <script id="timing" type="application/json">{"duration":102.868,"sentences":[{"id":"s1","text":"In dieser Stadt hasst mich jeder wegen meiner Hautfarbe.","start":0.25,"end":2.791,"words":[{"text":"In","start":0.25,"end":0.374},{"text":"dieser","start":0.374,"end":0.622},{"text":"Stadt","start":0.622,"end":0.87},{"text":"hasst","start":0.87,"end":1.118},{"text":"mich","start":1.118,"end":1.366},{"text":"jeder","start":1.366,"end":1.614},{"text":"wegen","start":1.614,"end":1.924},{"text":"meiner","start":1.924,"end":2.233},{"text":"Hautfarbe.","start":2.233,"end":2.791}]},{"id":"s2","text":"Wir sind die einzige schwarze Familie in Point Hollow.","start":3.142,"end":5.737,"words":[{"text":"Wir","start":3.142,"end":3.319},{"text":"sind","start":3.319,"end":3.555},{"text":"die","start":3.555,"end":3.673},{"text":"einzige","start":3.673,"end":4.145},{"text":"schwarze","start":4.145,"end":4.557},{"text":"Familie","start":4.557,"end":5.029},{"text":"in","start":5.029,"end":5.147},{"text":"Point","start":5.147,"end":5.442},{"text":"Hollow.","start":5.442,"end":5.737}]},{"id":"s3","text":"Bevor wir hierher gezogen sind, hatte hier noch nie jemand so jemanden wie mich gesehen.","start":6.086,"end":9.817,"words":[{"text":"Bevor","start":6.086,"end":6.363},{"text":"wir","start":6.363,"end":6.528},{"text":"hierher","start":6.528,"end":6.805},{"text":"gezogen","start":6.805,"end":7.247},{"text":"sind,","start":7.247,"end":7.468},{"text":"hatte","start":7.606,"end":7.827},{"text":"hier","start":7.827,"end":7.993},{"text":"noch","start":7.993,"end":8.159},{"text":"nie","start":8.159,"end":8.27},{"text":"jemand","start":8.27,"end":8.601},{"text":"so","start":8.601,"end":8.712},{"text":"jemanden","start":8.712,"end":9.154},{"text":"wie","start":9.154,"end":9.265},{"text":"mich","start":9.265,"end":9.486},{"text":"gesehen.","start":9.486,"end":9.817}]},{"id":"s4","text":"Meine Oma sagt: Die Menschen haben Angst vor dem, was sie noch nie gesehen haben.","start":10.165,"end":14.223,"words":[{"text":"Meine","start":10.165,"end":10.495},{"text":"Oma","start":10.495,"end":10.693},{"text":"sagt:","start":10.693,"end":10.957},{"text":"Die","start":11.155,"end":11.287},{"text":"Menschen","start":11.287,"end":11.683},{"text":"haben","start":11.683,"end":12.013},{"text":"Angst","start":12.013,"end":12.277},{"text":"vor","start":12.277,"end":12.475},{"text":"dem,","start":12.475,"end":12.673},{"text":"was","start":12.837,"end":13.035},{"text":"sie","start":13.035,"end":13.167},{"text":"noch","start":13.167,"end":13.365},{"text":"nie","start":13.365,"end":13.497},{"text":"gesehen","start":13.497,"end":13.893},{"text":"haben.","start":13.893,"end":14.223}]},{"id":"s5","text":"Wenn ich mich in der Schule zum Essen an einen Tisch gesetzt habe, sind alle weggegangen.","start":14.706,"end":18.504,"words":[{"text":"Wenn","start":14.706,"end":14.877},{"text":"ich","start":14.877,"end":15.049},{"text":"mich","start":15.049,"end":15.277},{"text":"in","start":15.277,"end":15.391},{"text":"der","start":15.391,"end":15.563},{"text":"Schule","start":15.563,"end":15.791},{"text":"zum","start":15.791,"end":16.02},{"text":"Essen","start":16.02,"end":16.248},{"text":"an","start":16.248,"end":16.362},{"text":"einen","start":16.362,"end":16.648},{"text":"Tisch","start":16.648,"end":16.819},{"text":"gesetzt","start":16.819,"end":17.219},{"text":"habe,","start":17.219,"end":17.447},{"text":"sind","start":17.59,"end":17.818},{"text":"alle","start":17.818,"end":17.99},{"text":"weggegangen.","start":17.99,"end":18.504}]},{"id":"s6","text":"In Sport wollte mich niemand wählen.","start":18.852,"end":20.295,"words":[{"text":"In","start":18.852,"end":18.959},{"text":"Sport","start":18.959,"end":19.226},{"text":"wollte","start":19.226,"end":19.494},{"text":"mich","start":19.494,"end":19.707},{"text":"niemand","start":19.707,"end":20.028},{"text":"wählen.","start":20.028,"end":20.295}]},{"id":"s7","text":"Jeden Morgen ist der Schulbus extra an meiner Haltestelle vorbeigefahren.","start":20.642,"end":24.095,"words":[{"text":"Jeden","start":20.642,"end":20.935},{"text":"Morgen","start":20.935,"end":21.286},{"text":"ist","start":21.286,"end":21.461},{"text":"der","start":21.461,"end":21.637},{"text":"Schulbus","start":21.637,"end":21.988},{"text":"extra","start":21.988,"end":22.339},{"text":"an","start":22.339,"end":22.456},{"text":"meiner","start":22.456,"end":22.749},{"text":"Haltestelle","start":22.749,"end":23.334},{"text":"vorbeigefahren.","start":23.334,"end":24.095}]},{"id":"s8","text":"Also bin ich jeden Tag gelaufen.","start":24.444,"end":25.857,"words":[{"text":"Also","start":24.444,"end":24.662},{"text":"bin","start":24.662,"end":24.825},{"text":"ich","start":24.825,"end":24.988},{"text":"jeden","start":24.988,"end":25.259},{"text":"Tag","start":25.259,"end":25.423},{"text":"gelaufen.","start":25.423,"end":25.857}]},{"id":"s9","text":"Durch den Wald.","start":26.185,"end":26.915,"words":[{"text":"Durch","start":26.185,"end":26.489},{"text":"den","start":26.489,"end":26.671},{"text":"Wald.","start":26.671,"end":26.915}]},{"id":"s10","text":"Über den umgefallenen Baum.","start":27.145,"end":28.427,"words":[{"text":"Über","start":27.145,"end":27.328},{"text":"den","start":27.328,"end":27.512},{"text":"umgefallenen","start":27.512,"end":28.183},{"text":"Baum.","start":28.183,"end":28.427}]},{"id":"s11","text":"Über die Steine im Bach.","start":28.658,"end":29.736,"words":[{"text":"Über","start":28.658,"end":28.86},{"text":"die","start":28.86,"end":28.995},{"text":"Steine","start":28.995,"end":29.399},{"text":"im","start":29.399,"end":29.534},{"text":"Bach.","start":29.534,"end":29.736}]},{"id":"s12","text":"Im Winter wird es hier schnell dunkel.","start":30.22,"end":31.964,"words":[{"text":"Im","start":30.22,"end":30.354},{"text":"Winter","start":30.354,"end":30.689},{"text":"wird","start":30.689,"end":30.958},{"text":"es","start":30.958,"end":31.092},{"text":"hier","start":31.092,"end":31.293},{"text":"schnell","start":31.293,"end":31.561},{"text":"dunkel.","start":31.561,"end":31.964}]},{"id":"s13","text":"Also musste ich oft im Dunkeln nach Hause laufen.","start":32.318,"end":34.694,"words":[{"text":"Also","start":32.318,"end":32.568},{"text":"musste","start":32.568,"end":32.88},{"text":"ich","start":32.88,"end":33.068},{"text":"oft","start":33.068,"end":33.255},{"text":"im","start":33.255,"end":33.381},{"text":"Dunkeln","start":33.381,"end":33.818},{"text":"nach","start":33.818,"end":34.006},{"text":"Hause","start":34.006,"end":34.318},{"text":"laufen.","start":34.318,"end":34.694}]},{"id":"s14","text":"Ich kann den Weg mit geschlossenen Augen gehen.","start":35.045,"end":37.029,"words":[{"text":"Ich","start":35.045,"end":35.22},{"text":"kann","start":35.22,"end":35.395},{"text":"den","start":35.395,"end":35.57},{"text":"Weg","start":35.57,"end":35.745},{"text":"mit","start":35.745,"end":35.92},{"text":"geschlossenen","start":35.92,"end":36.504},{"text":"Augen","start":36.504,"end":36.796},{"text":"gehen.","start":36.796,"end":37.029}]},{"id":"s15","text":"Mein Vater sagt: Eines Tages werden sie merken, wer du wirklich bist.","start":37.509,"end":40.972,"words":[{"text":"Mein","start":37.509,"end":37.745},{"text":"Vater","start":37.745,"end":37.982},{"text":"sagt:","start":37.982,"end":38.219},{"text":"Eines","start":38.397,"end":38.693},{"text":"Tages","start":38.693,"end":38.989},{"text":"werden","start":38.989,"end":39.344},{"text":"sie","start":39.344,"end":39.462},{"text":"merken,","start":39.462,"end":39.818},{"text":"wer","start":39.966,"end":40.143},{"text":"du","start":40.143,"end":40.262},{"text":"wirklich","start":40.262,"end":40.735},{"text":"bist.","start":40.735,"end":40.972}]},{"id":"s16","text":"Im Dezember ging meine Klasse in den Wald, zum eingefrorenen Wasserfall.","start":41.502,"end":45.276,"words":[{"text":"Im","start":41.502,"end":41.631},{"text":"Dezember","start":41.631,"end":42.147},{"text":"ging","start":42.147,"end":42.341},{"text":"meine","start":42.341,"end":42.663},{"text":"Klasse","start":42.663,"end":42.986},{"text":"in","start":42.986,"end":43.115},{"text":"den","start":43.115,"end":43.308},{"text":"Wald,","start":43.308,"end":43.566},{"text":"zum","start":43.728,"end":43.986},{"text":"eingefrorenen","start":43.986,"end":44.825},{"text":"Wasserfall.","start":44.825,"end":45.276}]},{"id":"s17","text":"Auf dem Rückweg fing es an zu schneien.","start":45.628,"end":47.362,"words":[{"text":"Auf","start":45.628,"end":45.814},{"text":"dem","start":45.814,"end":46},{"text":"Rückweg","start":46,"end":46.371},{"text":"fing","start":46.371,"end":46.557},{"text":"es","start":46.557,"end":46.681},{"text":"an","start":46.681,"end":46.805},{"text":"zu","start":46.805,"end":46.991},{"text":"schneien.","start":46.991,"end":47.362}]},{"id":"s18","text":"Dann wurde es so heftig, dass der Weg verschwand.","start":47.713,"end":49.845,"words":[{"text":"Dann","start":47.713,"end":47.879},{"text":"wurde","start":47.879,"end":48.156},{"text":"es","start":48.156,"end":48.267},{"text":"so","start":48.267,"end":48.378},{"text":"heftig,","start":48.378,"end":48.765},{"text":"dass","start":48.904,"end":49.07},{"text":"der","start":49.07,"end":49.236},{"text":"Weg","start":49.236,"end":49.402},{"text":"verschwand.","start":49.402,"end":49.845}]},{"id":"s19","text":"Die Sonne ging unter.","start":50.193,"end":51.074,"words":[{"text":"Die","start":50.193,"end":50.328},{"text":"Sonne","start":50.328,"end":50.6},{"text":"ging","start":50.6,"end":50.803},{"text":"unter.","start":50.803,"end":51.074}]},{"id":"s20","text":"Alle Handys waren leer. Auch das von unserem Lehrer.","start":51.428,"end":53.955,"words":[{"text":"Alle","start":51.428,"end":51.631},{"text":"Handys","start":51.631,"end":52.035},{"text":"waren","start":52.035,"end":52.372},{"text":"leer.","start":52.372,"end":52.574},{"text":"Auch","start":52.608,"end":52.81},{"text":"das","start":52.81,"end":53.012},{"text":"von","start":53.012,"end":53.214},{"text":"unserem","start":53.214,"end":53.686},{"text":"Lehrer.","start":53.686,"end":53.955}]},{"id":"s21","text":"Es wurde so dunkel, dass wir unsere eigenen Hände nicht mehr sahen.","start":54.309,"end":57.362,"words":[{"text":"Es","start":54.309,"end":54.425},{"text":"wurde","start":54.425,"end":54.716},{"text":"so","start":54.716,"end":54.832},{"text":"dunkel,","start":54.832,"end":55.181},{"text":"dass","start":55.327,"end":55.501},{"text":"wir","start":55.501,"end":55.676},{"text":"unsere","start":55.676,"end":55.966},{"text":"eigenen","start":55.966,"end":56.374},{"text":"Hände","start":56.374,"end":56.664},{"text":"nicht","start":56.664,"end":56.955},{"text":"mehr","start":56.955,"end":57.13},{"text":"sahen.","start":57.13,"end":57.362}]},{"id":"s22","text":"Kinder fingen an zu weinen. Der Wind wurde stärker.","start":57.711,"end":60.086,"words":[{"text":"Kinder","start":57.711,"end":58.012},{"text":"fingen","start":58.012,"end":58.313},{"text":"an","start":58.313,"end":58.433},{"text":"zu","start":58.433,"end":58.613},{"text":"weinen.","start":58.613,"end":58.974},{"text":"Der","start":59.004,"end":59.184},{"text":"Wind","start":59.184,"end":59.425},{"text":"wurde","start":59.425,"end":59.726},{"text":"stärker.","start":59.726,"end":60.086}]},{"id":"s23","text":"Dann sagte ich: Ich kenne den Weg.","start":60.616,"end":62.277,"words":[{"text":"Dann","start":60.616,"end":60.801},{"text":"sagte","start":60.801,"end":61.108},{"text":"ich:","start":61.108,"end":61.293},{"text":"Ich","start":61.477,"end":61.662},{"text":"kenne","start":61.662,"end":61.908},{"text":"den","start":61.908,"end":62.092},{"text":"Weg.","start":62.092,"end":62.277}]},{"id":"s24","text":"Wir folgen ihm nicht, sagte Luis.","start":62.707,"end":64.503,"words":[{"text":"Wir","start":62.707,"end":62.903},{"text":"folgen","start":62.903,"end":63.295},{"text":"ihm","start":63.295,"end":63.426},{"text":"nicht,","start":63.426,"end":63.752},{"text":"sagte","start":63.916,"end":64.242},{"text":"Luis.","start":64.242,"end":64.503}]},{"id":"s25","text":"Luis hatte noch nie ein nettes Wort zu mir gesagt.","start":64.856,"end":67.091,"words":[{"text":"Luis","start":64.856,"end":65.098},{"text":"hatte","start":65.098,"end":65.339},{"text":"noch","start":65.339,"end":65.52},{"text":"nie","start":65.52,"end":65.641},{"text":"ein","start":65.641,"end":65.822},{"text":"nettes","start":65.822,"end":66.124},{"text":"Wort","start":66.124,"end":66.366},{"text":"zu","start":66.366,"end":66.547},{"text":"mir","start":66.547,"end":66.728},{"text":"gesagt.","start":66.728,"end":67.091}]},{"id":"s26","text":"Aber niemand sonst wusste, wo wir waren.","start":67.441,"end":69.509,"words":[{"text":"Aber","start":67.441,"end":67.638},{"text":"niemand","start":67.638,"end":68.032},{"text":"sonst","start":68.032,"end":68.36},{"text":"wusste,","start":68.36,"end":68.689},{"text":"wo","start":68.853,"end":68.984},{"text":"wir","start":68.984,"end":69.181},{"text":"waren.","start":69.181,"end":69.509}]},{"id":"s27","text":"Im Dunkeln konnte keiner sehen, wer ich war. Nur meine Stimme hören.","start":69.942,"end":73.241,"words":[{"text":"Im","start":69.942,"end":70.067},{"text":"Dunkeln","start":70.067,"end":70.502},{"text":"konnte","start":70.502,"end":70.814},{"text":"keiner","start":70.814,"end":71.125},{"text":"sehen,","start":71.125,"end":71.374},{"text":"wer","start":71.529,"end":71.716},{"text":"ich","start":71.716,"end":71.903},{"text":"war.","start":71.903,"end":72.089},{"text":"Nur","start":72.121,"end":72.307},{"text":"meine","start":72.307,"end":72.618},{"text":"Stimme","start":72.618,"end":72.93},{"text":"hören.","start":72.93,"end":73.241}]},{"id":"s28","text":"Alle Hände halten und mir folgen!","start":73.672,"end":75.374,"words":[{"text":"Alle","start":73.672,"end":73.868},{"text":"Hände","start":73.868,"end":74.196},{"text":"halten","start":74.196,"end":74.589},{"text":"und","start":74.589,"end":74.785},{"text":"mir","start":74.785,"end":74.981},{"text":"folgen!","start":74.981,"end":75.374}]},{"id":"s29","text":"Und das taten sie.","start":75.74,"end":76.572,"words":[{"text":"Und","start":75.74,"end":75.932},{"text":"das","start":75.932,"end":76.124},{"text":"taten","start":76.124,"end":76.444},{"text":"sie.","start":76.444,"end":76.572}]},{"id":"s30","text":"Ich sagte laut, was kommt. Der umgefallene Baum. Die Steine im Bach.","start":77.054,"end":81.081,"words":[{"text":"Ich","start":77.054,"end":77.285},{"text":"sagte","start":77.285,"end":77.668},{"text":"laut,","start":77.668,"end":77.975},{"text":"was","start":78.166,"end":78.396},{"text":"kommt.","start":78.396,"end":78.703},{"text":"Der","start":78.742,"end":78.972},{"text":"umgefallene","start":78.972,"end":79.739},{"text":"Baum.","start":79.739,"end":80.045},{"text":"Die","start":80.084,"end":80.237},{"text":"Steine","start":80.237,"end":80.697},{"text":"im","start":80.697,"end":80.85},{"text":"Bach.","start":80.85,"end":81.081}]},{"id":"s31","text":"Ein Junge rutschte aus. Aber die ganze Reihe zog ihn wieder hoch.","start":81.439,"end":84.471,"words":[{"text":"Ein","start":81.439,"end":81.643},{"text":"Junge","start":81.643,"end":81.916},{"text":"rutschte","start":81.916,"end":82.325},{"text":"aus.","start":82.325,"end":82.529},{"text":"Aber","start":82.563,"end":82.768},{"text":"die","start":82.768,"end":82.904},{"text":"ganze","start":82.904,"end":83.313},{"text":"Reihe","start":83.313,"end":83.585},{"text":"zog","start":83.585,"end":83.858},{"text":"ihn","start":83.858,"end":83.994},{"text":"wieder","start":83.994,"end":84.267},{"text":"hoch.","start":84.267,"end":84.471}]},{"id":"s32","text":"Hinter mir zwanzig Kinder und ein Lehrer. Und niemand ließ los.","start":84.825,"end":88.403,"words":[{"text":"Hinter","start":84.825,"end":85.194},{"text":"mir","start":85.194,"end":85.415},{"text":"zwanzig","start":85.415,"end":86.153},{"text":"Kinder","start":86.153,"end":86.522},{"text":"und","start":86.522,"end":86.743},{"text":"ein","start":86.743,"end":86.964},{"text":"Lehrer.","start":86.964,"end":87.26},{"text":"Und","start":87.296,"end":87.518},{"text":"niemand","start":87.518,"end":87.96},{"text":"ließ","start":87.96,"end":88.182},{"text":"los.","start":88.182,"end":88.403}]},{"id":"s33","text":"Nach einer Stunde sahen wir die Lichter der Stadt.","start":88.94,"end":90.841,"words":[{"text":"Nach","start":88.94,"end":89.103},{"text":"einer","start":89.103,"end":89.32},{"text":"Stunde","start":89.32,"end":89.646},{"text":"sahen","start":89.646,"end":89.863},{"text":"wir","start":89.863,"end":90.026},{"text":"die","start":90.026,"end":90.135},{"text":"Lichter","start":90.135,"end":90.46},{"text":"der","start":90.46,"end":90.623},{"text":"Stadt.","start":90.623,"end":90.841}]},{"id":"s34","text":"Unter der ersten Laterne konnten alle wieder sehen.","start":91.188,"end":93.61,"words":[{"text":"Unter","start":91.188,"end":91.457},{"text":"der","start":91.457,"end":91.659},{"text":"ersten","start":91.659,"end":92.062},{"text":"Laterne","start":92.062,"end":92.466},{"text":"konnten","start":92.466,"end":92.87},{"text":"alle","start":92.87,"end":93.072},{"text":"wieder","start":93.072,"end":93.341},{"text":"sehen.","start":93.341,"end":93.61}]},{"id":"s35","text":"Jeder schaute, wessen Hand er hielt.","start":94.044,"end":95.805,"words":[{"text":"Jeder","start":94.044,"end":94.31},{"text":"schaute,","start":94.31,"end":94.642},{"text":"wessen","start":94.808,"end":95.14},{"text":"Hand","start":95.14,"end":95.406},{"text":"er","start":95.406,"end":95.539},{"text":"hielt.","start":95.539,"end":95.805}]},{"id":"s36","text":"Luis war direkt hinter mir. Seine Hand war in meiner.","start":96.238,"end":98.859,"words":[{"text":"Luis","start":96.238,"end":96.497},{"text":"war","start":96.497,"end":96.691},{"text":"direkt","start":96.691,"end":97.08},{"text":"hinter","start":97.08,"end":97.403},{"text":"mir.","start":97.403,"end":97.597},{"text":"Seine","start":97.63,"end":97.953},{"text":"Hand","start":97.953,"end":98.212},{"text":"war","start":98.212,"end":98.406},{"text":"in","start":98.406,"end":98.535},{"text":"meiner.","start":98.535,"end":98.859}]},{"id":"s37","text":"Er schaute auf unsere Hände. Und drückte sie fester.","start":99.341,"end":101.814,"words":[{"text":"Er","start":99.341,"end":99.477},{"text":"schaute","start":99.477,"end":99.816},{"text":"auf","start":99.816,"end":100.019},{"text":"unsere","start":100.019,"end":100.358},{"text":"Hände.","start":100.358,"end":100.696},{"text":"Und","start":100.73,"end":100.933},{"text":"drückte","start":100.933,"end":101.34},{"text":"sie","start":101.34,"end":101.475},{"text":"fester.","start":101.475,"end":101.814}]}],"videoDuration":102.87}</script>
+    <script>
+      (function () {
+        var duration = 102.87;
+        var clock = { t: 0 };
+        var host = { clock: clock, render: null };
+        window.__stadt = host;
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["main"] = new Promise(function (resolve) { host.ready = resolve; });
+        var tl = gsap.timeline({ paused: true });
+        tl.to(clock, { t: duration, duration: duration, ease: "none", onUpdate: function () { if (host.render) host.render(clock.t); } }, 0);
+      tl.fromTo("#w0 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.15);
+      tl.fromTo("#w1 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.374);
+      tl.fromTo("#w2 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.622);
+      tl.fromTo("#w3 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 0.87);
+      tl.fromTo("#w4 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.118);
+      tl.fromTo("#w5 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.366);
+      tl.fromTo("#w6 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.614);
+      tl.fromTo("#w7 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 1.924);
+      tl.fromTo("#w8 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 2.233);
+      tl.fromTo("#w9 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.142);
+      tl.fromTo("#w10 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.319);
+      tl.fromTo("#w11 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.555);
+      tl.fromTo("#w12 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 3.673);
+      tl.fromTo("#w13 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.145);
+      tl.fromTo("#w14 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 4.557);
+      tl.fromTo("#w15 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 5.029);
+      tl.fromTo("#w16 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 5.147);
+      tl.fromTo("#w17 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 5.442);
+      tl.fromTo("#w18 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.086);
+      tl.fromTo("#w19 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.363);
+      tl.fromTo("#w20 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.528);
+      tl.fromTo("#w21 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 6.805);
+      tl.fromTo("#w22 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.247);
+      tl.fromTo("#w23 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.606);
+      tl.fromTo("#w24 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.827);
+      tl.fromTo("#w25 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 7.993);
+      tl.fromTo("#w26 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.159);
+      tl.fromTo("#w27 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.27);
+      tl.fromTo("#w28 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.601);
+      tl.fromTo("#w29 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 8.712);
+      tl.fromTo("#w30 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 9.154);
+      tl.fromTo("#w31 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 9.265);
+      tl.fromTo("#w32 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 9.486);
+      tl.fromTo("#w33 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.165);
+      tl.fromTo("#w34 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.495);
+      tl.fromTo("#w35 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 10.693);
+      tl.fromTo("#w36 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.155);
+      tl.fromTo("#w37 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.287);
+      tl.fromTo("#w38 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 11.683);
+      tl.fromTo("#w39 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.013);
+      tl.fromTo("#w40 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.277);
+      tl.fromTo("#w41 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.475);
+      tl.fromTo("#w42 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 12.837);
+      tl.fromTo("#w43 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.035);
+      tl.fromTo("#w44 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.167);
+      tl.fromTo("#w45 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.365);
+      tl.fromTo("#w46 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.497);
+      tl.fromTo("#w47 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 13.893);
+      tl.fromTo("#w48 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.706);
+      tl.fromTo("#w49 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 14.877);
+      tl.fromTo("#w50 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.049);
+      tl.fromTo("#w51 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.277);
+      tl.fromTo("#w52 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.391);
+      tl.fromTo("#w53 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.563);
+      tl.fromTo("#w54 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 15.791);
+      tl.fromTo("#w55 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.02);
+      tl.fromTo("#w56 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.248);
+      tl.fromTo("#w57 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.362);
+      tl.fromTo("#w58 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.648);
+      tl.fromTo("#w59 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 16.819);
+      tl.fromTo("#w60 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.219);
+      tl.fromTo("#w61 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.59);
+      tl.fromTo("#w62 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.818);
+      tl.fromTo("#w63 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 17.99);
+      tl.fromTo("#w64 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.852);
+      tl.fromTo("#w65 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 18.959);
+      tl.fromTo("#w66 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.226);
+      tl.fromTo("#w67 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.494);
+      tl.fromTo("#w68 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 19.707);
+      tl.fromTo("#w69 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.028);
+      tl.fromTo("#w70 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.642);
+      tl.fromTo("#w71 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 20.935);
+      tl.fromTo("#w72 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.286);
+      tl.fromTo("#w73 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.461);
+      tl.fromTo("#w74 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.637);
+      tl.fromTo("#w75 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 21.988);
+      tl.fromTo("#w76 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 22.339);
+      tl.fromTo("#w77 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 22.456);
+      tl.fromTo("#w78 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 22.749);
+      tl.fromTo("#w79 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 23.334);
+      tl.fromTo("#w80 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.444);
+      tl.fromTo("#w81 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.662);
+      tl.fromTo("#w82 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.825);
+      tl.fromTo("#w83 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 24.988);
+      tl.fromTo("#w84 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.259);
+      tl.fromTo("#w85 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 25.423);
+      tl.fromTo("#w86 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.185);
+      tl.fromTo("#w87 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.489);
+      tl.fromTo("#w88 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 26.671);
+      tl.fromTo("#w89 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.145);
+      tl.fromTo("#w90 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.328);
+      tl.fromTo("#w91 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 27.512);
+      tl.fromTo("#w92 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.183);
+      tl.fromTo("#w93 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.658);
+      tl.fromTo("#w94 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.86);
+      tl.fromTo("#w95 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 28.995);
+      tl.fromTo("#w96 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.399);
+      tl.fromTo("#w97 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 29.534);
+      tl.fromTo("#w98 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.22);
+      tl.fromTo("#w99 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.354);
+      tl.fromTo("#w100 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.689);
+      tl.fromTo("#w101 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 30.958);
+      tl.fromTo("#w102 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.092);
+      tl.fromTo("#w103 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.293);
+      tl.fromTo("#w104 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 31.561);
+      tl.fromTo("#w105 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.318);
+      tl.fromTo("#w106 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.568);
+      tl.fromTo("#w107 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 32.88);
+      tl.fromTo("#w108 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.068);
+      tl.fromTo("#w109 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.255);
+      tl.fromTo("#w110 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.381);
+      tl.fromTo("#w111 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 33.818);
+      tl.fromTo("#w112 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.006);
+      tl.fromTo("#w113 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 34.318);
+      tl.fromTo("#w114 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.045);
+      tl.fromTo("#w115 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.22);
+      tl.fromTo("#w116 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.395);
+      tl.fromTo("#w117 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.57);
+      tl.fromTo("#w118 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.745);
+      tl.fromTo("#w119 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 35.92);
+      tl.fromTo("#w120 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.504);
+      tl.fromTo("#w121 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 36.796);
+      tl.fromTo("#w122 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 37.509);
+      tl.fromTo("#w123 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 37.745);
+      tl.fromTo("#w124 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 37.982);
+      tl.fromTo("#w125 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.397);
+      tl.fromTo("#w126 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.693);
+      tl.fromTo("#w127 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 38.989);
+      tl.fromTo("#w128 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.344);
+      tl.fromTo("#w129 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.462);
+      tl.fromTo("#w130 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 39.966);
+      tl.fromTo("#w131 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.143);
+      tl.fromTo("#w132 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.262);
+      tl.fromTo("#w133 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 40.735);
+      tl.fromTo("#w134 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.502);
+      tl.fromTo("#w135 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 41.631);
+      tl.fromTo("#w136 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.147);
+      tl.fromTo("#w137 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.341);
+      tl.fromTo("#w138 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.663);
+      tl.fromTo("#w139 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 42.986);
+      tl.fromTo("#w140 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.115);
+      tl.fromTo("#w141 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.308);
+      tl.fromTo("#w142 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.728);
+      tl.fromTo("#w143 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 43.986);
+      tl.fromTo("#w144 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 44.825);
+      tl.fromTo("#w145 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 45.628);
+      tl.fromTo("#w146 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 45.814);
+      tl.fromTo("#w147 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46);
+      tl.fromTo("#w148 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.371);
+      tl.fromTo("#w149 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.557);
+      tl.fromTo("#w150 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.681);
+      tl.fromTo("#w151 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.805);
+      tl.fromTo("#w152 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 46.991);
+      tl.fromTo("#w153 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.713);
+      tl.fromTo("#w154 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 47.879);
+      tl.fromTo("#w155 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.156);
+      tl.fromTo("#w156 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.267);
+      tl.fromTo("#w157 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.378);
+      tl.fromTo("#w158 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 48.904);
+      tl.fromTo("#w159 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.07);
+      tl.fromTo("#w160 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.236);
+      tl.fromTo("#w161 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 49.402);
+      tl.fromTo("#w162 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 50.193);
+      tl.fromTo("#w163 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 50.328);
+      tl.fromTo("#w164 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 50.6);
+      tl.fromTo("#w165 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 50.803);
+      tl.fromTo("#w166 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 51.428);
+      tl.fromTo("#w167 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 51.631);
+      tl.fromTo("#w168 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 52.035);
+      tl.fromTo("#w169 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 52.372);
+      tl.fromTo("#w170 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 52.608);
+      tl.fromTo("#w171 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 52.81);
+      tl.fromTo("#w172 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 53.012);
+      tl.fromTo("#w173 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 53.214);
+      tl.fromTo("#w174 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 53.686);
+      tl.fromTo("#w175 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 54.309);
+      tl.fromTo("#w176 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 54.425);
+      tl.fromTo("#w177 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 54.716);
+      tl.fromTo("#w178 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 54.832);
+      tl.fromTo("#w179 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.327);
+      tl.fromTo("#w180 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.501);
+      tl.fromTo("#w181 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.676);
+      tl.fromTo("#w182 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 55.966);
+      tl.fromTo("#w183 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 56.374);
+      tl.fromTo("#w184 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 56.664);
+      tl.fromTo("#w185 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 56.955);
+      tl.fromTo("#w186 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 57.13);
+      tl.fromTo("#w187 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 57.711);
+      tl.fromTo("#w188 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 58.012);
+      tl.fromTo("#w189 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 58.313);
+      tl.fromTo("#w190 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 58.433);
+      tl.fromTo("#w191 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 58.613);
+      tl.fromTo("#w192 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 59.004);
+      tl.fromTo("#w193 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 59.184);
+      tl.fromTo("#w194 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 59.425);
+      tl.fromTo("#w195 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 59.726);
+      tl.fromTo("#w196 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 60.616);
+      tl.fromTo("#w197 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 60.801);
+      tl.fromTo("#w198 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 61.108);
+      tl.fromTo("#w199 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 61.477);
+      tl.fromTo("#w200 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 61.662);
+      tl.fromTo("#w201 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 61.908);
+      tl.fromTo("#w202 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 62.092);
+      tl.fromTo("#w203 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 62.707);
+      tl.fromTo("#w204 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 62.903);
+      tl.fromTo("#w205 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 63.295);
+      tl.fromTo("#w206 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 63.426);
+      tl.fromTo("#w207 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 63.916);
+      tl.fromTo("#w208 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 64.242);
+      tl.fromTo("#w209 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 64.856);
+      tl.fromTo("#w210 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 65.098);
+      tl.fromTo("#w211 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 65.339);
+      tl.fromTo("#w212 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 65.52);
+      tl.fromTo("#w213 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 65.641);
+      tl.fromTo("#w214 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 65.822);
+      tl.fromTo("#w215 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 66.124);
+      tl.fromTo("#w216 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 66.366);
+      tl.fromTo("#w217 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 66.547);
+      tl.fromTo("#w218 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 66.728);
+      tl.fromTo("#w219 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 67.441);
+      tl.fromTo("#w220 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 67.638);
+      tl.fromTo("#w221 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 68.032);
+      tl.fromTo("#w222 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 68.36);
+      tl.fromTo("#w223 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 68.853);
+      tl.fromTo("#w224 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 68.984);
+      tl.fromTo("#w225 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 69.181);
+      tl.fromTo("#w226 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 69.942);
+      tl.fromTo("#w227 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 70.067);
+      tl.fromTo("#w228 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 70.502);
+      tl.fromTo("#w229 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 70.814);
+      tl.fromTo("#w230 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 71.125);
+      tl.fromTo("#w231 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 71.529);
+      tl.fromTo("#w232 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 71.716);
+      tl.fromTo("#w233 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 71.903);
+      tl.fromTo("#w234 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 72.121);
+      tl.fromTo("#w235 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 72.307);
+      tl.fromTo("#w236 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 72.618);
+      tl.fromTo("#w237 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 72.93);
+      tl.fromTo("#w238 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 73.672);
+      tl.fromTo("#w239 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 73.868);
+      tl.fromTo("#w240 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 74.196);
+      tl.fromTo("#w241 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 74.589);
+      tl.fromTo("#w242 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 74.785);
+      tl.fromTo("#w243 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 74.981);
+      tl.fromTo("#w244 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 75.74);
+      tl.fromTo("#w245 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 75.932);
+      tl.fromTo("#w246 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 76.124);
+      tl.fromTo("#w247 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 76.444);
+      tl.fromTo("#w248 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 77.054);
+      tl.fromTo("#w249 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 77.285);
+      tl.fromTo("#w250 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 77.668);
+      tl.fromTo("#w251 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 78.166);
+      tl.fromTo("#w252 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 78.396);
+      tl.fromTo("#w253 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 78.742);
+      tl.fromTo("#w254 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 78.972);
+      tl.fromTo("#w255 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 79.739);
+      tl.fromTo("#w256 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 80.084);
+      tl.fromTo("#w257 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 80.237);
+      tl.fromTo("#w258 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 80.697);
+      tl.fromTo("#w259 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 80.85);
+      tl.fromTo("#w260 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 81.439);
+      tl.fromTo("#w261 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 81.643);
+      tl.fromTo("#w262 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 81.916);
+      tl.fromTo("#w263 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 82.325);
+      tl.fromTo("#w264 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 82.563);
+      tl.fromTo("#w265 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 82.768);
+      tl.fromTo("#w266 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 82.904);
+      tl.fromTo("#w267 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 83.313);
+      tl.fromTo("#w268 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 83.585);
+      tl.fromTo("#w269 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 83.858);
+      tl.fromTo("#w270 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 83.994);
+      tl.fromTo("#w271 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 84.267);
+      tl.fromTo("#w272 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 84.825);
+      tl.fromTo("#w273 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 85.194);
+      tl.fromTo("#w274 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 85.415);
+      tl.fromTo("#w275 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 86.153);
+      tl.fromTo("#w276 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 86.522);
+      tl.fromTo("#w277 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 86.743);
+      tl.fromTo("#w278 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 86.964);
+      tl.fromTo("#w279 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 87.296);
+      tl.fromTo("#w280 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 87.518);
+      tl.fromTo("#w281 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 87.96);
+      tl.fromTo("#w282 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 88.182);
+      tl.fromTo("#w283 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 88.94);
+      tl.fromTo("#w284 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 89.103);
+      tl.fromTo("#w285 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 89.32);
+      tl.fromTo("#w286 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 89.646);
+      tl.fromTo("#w287 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 89.863);
+      tl.fromTo("#w288 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 90.026);
+      tl.fromTo("#w289 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 90.135);
+      tl.fromTo("#w290 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 90.46);
+      tl.fromTo("#w291 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 90.623);
+      tl.fromTo("#w292 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 91.188);
+      tl.fromTo("#w293 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 91.457);
+      tl.fromTo("#w294 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 91.659);
+      tl.fromTo("#w295 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 92.062);
+      tl.fromTo("#w296 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 92.466);
+      tl.fromTo("#w297 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 92.87);
+      tl.fromTo("#w298 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 93.072);
+      tl.fromTo("#w299 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 93.341);
+      tl.fromTo("#w300 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 94.044);
+      tl.fromTo("#w301 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 94.31);
+      tl.fromTo("#w302 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 94.808);
+      tl.fromTo("#w303 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 95.14);
+      tl.fromTo("#w304 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 95.406);
+      tl.fromTo("#w305 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 95.539);
+      tl.fromTo("#w306 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 96.238);
+      tl.fromTo("#w307 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 96.497);
+      tl.fromTo("#w308 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 96.691);
+      tl.fromTo("#w309 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 97.08);
+      tl.fromTo("#w310 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 97.403);
+      tl.fromTo("#w311 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 97.63);
+      tl.fromTo("#w312 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 97.953);
+      tl.fromTo("#w313 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 98.212);
+      tl.fromTo("#w314 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 98.406);
+      tl.fromTo("#w315 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 98.535);
+      tl.fromTo("#w316 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 99.341);
+      tl.fromTo("#w317 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 99.477);
+      tl.fromTo("#w318 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 99.816);
+      tl.fromTo("#w319 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 100.019);
+      tl.fromTo("#w320 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 100.358);
+      tl.fromTo("#w321 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 100.73);
+      tl.fromTo("#w322 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 100.933);
+      tl.fromTo("#w323 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 101.34);
+      tl.fromTo("#w324 span", { scale: 0.72 }, { scale: 1, duration: 0.14, ease: "back.out(3)" }, 101.475);
+      tl.fromTo("#ov0 .sign-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 3.102);
+      tl.to("#ov0 .sign-box", { scale: 0.85, opacity: 0, duration: 0.12, ease: "power2.in" }, 5.607);
+      tl.fromTo("#ov1 .card", { scale: 0.6, rotation: -8, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: 0.28, ease: "back.out(2.2)" }, 41.462);
+      tl.fromTo("#ov2 .flash-fill", { opacity: 0 }, { opacity: 0.4, duration: 0.8, ease: "power1.in" }, 54.269);
+      tl.fromTo("#ov3 .sign-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 61.437);
+      tl.to("#ov3 .sign-box", { scale: 0.85, opacity: 0, duration: 0.12, ease: "power2.in" }, 62.147);
+      tl.fromTo("#ov4 .sign-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 73.632);
+      tl.to("#ov4 .sign-box", { scale: 0.85, opacity: 0, duration: 0.12, ease: "power2.in" }, 75.244);
+      tl.fromTo("#ov5 .flash-fill", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.in" }, 101.814);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+    <script type="module">
+      import { boot } from "./assets/engine/runner.js";
+      import direct from "./assets/scene.js";
+      const timing = JSON.parse(document.getElementById("timing").textContent);
+      boot({ canvas: document.getElementById("world"), direct, timing });
+    </script>
+  </body>
+</html>

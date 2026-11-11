@@ -1,0 +1,258 @@
+{
+  "title": "In dieser Stadt hasst mich jeder wegen meiner Hautfarbe",
+  "voice": {
+    "length_scale": 1.0
+  },
+  "music": {
+    "mood": "sad",
+    "volume": 0.24
+  },
+  "sentences": [
+    {
+      "id": "s1",
+      "text": "In dieser Stadt hasst mich jeder wegen meiner Hautfarbe."
+    },
+    {
+      "id": "s2",
+      "text": "Wir sind die einzige schwarze Familie in Point Hollow."
+    },
+    {
+      "id": "s3",
+      "text": "Bevor wir hierher gezogen sind, hatte hier noch nie jemand so jemanden wie mich gesehen."
+    },
+    {
+      "id": "s4",
+      "text": "Meine Oma sagt: Die Menschen haben Angst vor dem, was sie noch nie gesehen haben.",
+      "pause": 0.45
+    },
+    {
+      "id": "s5",
+      "text": "Wenn ich mich in der Schule zum Essen an einen Tisch gesetzt habe, sind alle weggegangen."
+    },
+    {
+      "id": "s6",
+      "text": "In Sport wollte mich niemand wählen."
+    },
+    {
+      "id": "s7",
+      "text": "Jeden Morgen ist der Schulbus extra an meiner Haltestelle vorbeigefahren."
+    },
+    {
+      "id": "s8",
+      "text": "Also bin ich jeden Tag gelaufen.",
+      "pause": 0.3
+    },
+    {
+      "id": "s9",
+      "text": "Durch den Wald.",
+      "pause": 0.2
+    },
+    {
+      "id": "s10",
+      "text": "Über den umgefallenen Baum.",
+      "pause": 0.2
+    },
+    {
+      "id": "s11",
+      "text": "Über die Steine im Bach.",
+      "pause": 0.45
+    },
+    {
+      "id": "s12",
+      "text": "Im Winter wird es hier schnell dunkel."
+    },
+    {
+      "id": "s13",
+      "text": "Also musste ich oft im Dunkeln nach Hause laufen."
+    },
+    {
+      "id": "s14",
+      "text": "Ich kann den Weg mit geschlossenen Augen gehen.",
+      "pause": 0.45
+    },
+    {
+      "id": "s15",
+      "text": "Mein Vater sagt: Eines Tages werden sie merken, wer du wirklich bist.",
+      "pause": 0.5
+    },
+    {
+      "id": "s16",
+      "text": "Im Dezember ging meine Klasse in den Wald, zum eingefrorenen Wasserfall."
+    },
+    {
+      "id": "s17",
+      "text": "Auf dem Rückweg fing es an zu schneien."
+    },
+    {
+      "id": "s18",
+      "text": "Dann wurde es so heftig, dass der Weg verschwand."
+    },
+    {
+      "id": "s19",
+      "text": "Die Sonne ging unter."
+    },
+    {
+      "id": "s20",
+      "text": "Alle Handys waren leer. Auch das von unserem Lehrer."
+    },
+    {
+      "id": "s21",
+      "text": "Es wurde so dunkel, dass wir unsere eigenen Hände nicht mehr sahen."
+    },
+    {
+      "id": "s22",
+      "text": "Kinder fingen an zu weinen. Der Wind wurde stärker.",
+      "pause": 0.5
+    },
+    {
+      "id": "s23",
+      "text": "Dann sagte ich: Ich kenne den Weg.",
+      "pause": 0.4
+    },
+    {
+      "id": "s24",
+      "text": "Wir folgen ihm nicht, sagte Luis."
+    },
+    {
+      "id": "s25",
+      "text": "Luis hatte noch nie ein nettes Wort zu mir gesagt."
+    },
+    {
+      "id": "s26",
+      "text": "Aber niemand sonst wusste, wo wir waren.",
+      "pause": 0.4
+    },
+    {
+      "id": "s27",
+      "text": "Im Dunkeln konnte keiner sehen, wer ich war. Nur meine Stimme hören.",
+      "pause": 0.4
+    },
+    {
+      "id": "s28",
+      "text": "Alle Hände halten und mir folgen!",
+      "pause": 0.3
+    },
+    {
+      "id": "s29",
+      "text": "Und das taten sie.",
+      "pause": 0.45
+    },
+    {
+      "id": "s30",
+      "text": "Ich sagte laut, was kommt. Der umgefallene Baum. Die Steine im Bach."
+    },
+    {
+      "id": "s31",
+      "text": "Ein Junge rutschte aus. Aber die ganze Reihe zog ihn wieder hoch."
+    },
+    {
+      "id": "s32",
+      "text": "Hinter mir zwanzig Kinder und ein Lehrer. Und niemand ließ los.",
+      "pause": 0.5
+    },
+    {
+      "id": "s33",
+      "text": "Nach einer Stunde sahen wir die Lichter der Stadt."
+    },
+    {
+      "id": "s34",
+      "text": "Unter der ersten Laterne konnten alle wieder sehen.",
+      "pause": 0.4
+    },
+    {
+      "id": "s35",
+      "text": "Jeder schaute, wessen Hand er hielt.",
+      "pause": 0.4
+    },
+    {
+      "id": "s36",
+      "text": "Luis war direkt hinter mir. Seine Hand war in meiner.",
+      "pause": 0.45
+    },
+    {
+      "id": "s37",
+      "text": "Er schaute auf unsere Hände. Und drückte sie fester."
+    }
+  ],
+  "overlays": [
+    {
+      "type": "sign",
+      "text": "POINT HOLLOW",
+      "from": [
+        "s2",
+        0
+      ],
+      "to": [
+        "s2",
+        "end"
+      ]
+    },
+    {
+      "type": "card",
+      "header": "DEZEMBER",
+      "value": "−12 °C",
+      "from": [
+        "s16",
+        0
+      ],
+      "to": [
+        "s16",
+        3
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#000000",
+      "hold": true,
+      "fade": 0.8,
+      "opacity": 0.4,
+      "from": [
+        "s21",
+        0
+      ],
+      "to": [
+        "s32",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "„ICH KENNE DEN WEG.“",
+      "from": [
+        "s23",
+        3
+      ],
+      "to": [
+        "s23",
+        "end"
+      ]
+    },
+    {
+      "type": "sign",
+      "text": "„ALLE HÄNDE HALTEN!“",
+      "from": [
+        "s28",
+        0
+      ],
+      "to": [
+        "s28",
+        "end"
+      ]
+    },
+    {
+      "type": "flash",
+      "color": "#000000",
+      "hold": true,
+      "fade": 0.8,
+      "opacity": 1,
+      "from": [
+        "s37",
+        "end"
+      ],
+      "to": [
+        "END",
+        0
+      ]
+    }
+  ]
+}

@@ -345,6 +345,13 @@ export function character(opts = {}) {
     head.add(rbox(1.5, 1.4, 0.4, 0.15, hm2, 0, 0.05, -0.62));
     head.add(rbox(0.22, 1.3, 1.4, 0.1, hm2, -0.72, 0.05, 0)); head.add(rbox(0.22, 1.3, 1.4, 0.1, hm2, 0.72, 0.05, 0));
   }
+  if (o.hat === "beanie") {
+    const bm = mat(o.hatColor || "#c0392b");
+    const cap = new THREE.Mesh(new THREE.SphereGeometry(0.78, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2), bm);
+    cap.scale.set(1.0, 0.75, 0.98); cap.position.y = 0.5; head.add(cap);
+    head.add(box(1.46, 0.28, 1.4, mat(o.hatColor2 || "#f4f1ea"), 0, 0.52, 0));
+    const pom = new THREE.Mesh(new THREE.SphereGeometry(0.2, 10, 8), mat(o.hatColor2 || "#f4f1ea")); pom.position.y = 1.12; head.add(pom);
+  }
   if (o.hat === "chef") {
     head.add(box(1.36, 0.36, 1.32, mat("#ffffff"), 0, 0.78, 0));
     const puff = new THREE.Mesh(new THREE.SphereGeometry(0.82, 16, 12), mat("#ffffff"));
@@ -892,6 +899,106 @@ export function stringLights(len = 16, sag = 1.2, n = 14) {
     b.position.set(x, y, 0); g.add(b);
     if (i < n) { const seg = box(len / n, 0.03, 0.03, mat("#333"), x + len / n / 2, (y - Math.sin((u + 1 / n) * Math.PI) * sag) / 2, 0, false); g.add(seg); }
   }
+  return g;
+}
+/** Tanne, optional verschneit. */
+export function pine(s = 1, snow = false, seed = 1) {
+  const g = new THREE.Group();
+  g.add(box(0.5 * s, 1.6 * s, 0.5 * s, mat("#5a3a22"), 0, 0.8 * s, 0));
+  const r = rng(seed);
+  [[2.2, 2.4, 1.6], [1.75, 2.1, 3.0], [1.25, 1.8, 4.3]].forEach(([rad, h, y]) => {
+    const c = new THREE.Mesh(new THREE.ConeGeometry(rad * s * (0.9 + r() * 0.2), h * s, 8), mat("#2f6b3a", { flatShading: true }));
+    c.position.y = y * s; c.castShadow = true; g.add(c);
+    if (snow) { const w = new THREE.Mesh(new THREE.ConeGeometry(rad * s * 0.62, h * s * 0.42, 8), mat("#f4f7fb", { flatShading: true })); w.position.y = y * s + h * s * 0.3; g.add(w); }
+  });
+  return g;
+}
+/** Schneeboden (liegt über dem Rasen). */
+export function snowGround(w = 120, d = 120) {
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), new THREE.MeshStandardMaterial({ color: "#eef3f8", roughness: 0.95, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+  m.rotation.x = -Math.PI / 2; m.position.y = 0.04; m.receiveShadow = true;
+  const g = new THREE.Group(); g.add(m); return g;
+}
+/** Fallender Schnee als Partikel – reine Funktion der Zeit: snowfallAt(obj, t, wind). */
+export function snowfall(n = 1500, w = 40, h = 22, d = 30, seed = 5) {
+  const r = rng(seed);
+  const base = new Float32Array(n * 3), pos = new Float32Array(n * 3), spd = new Float32Array(n);
+  for (let i = 0; i < n; i++) { base[i * 3] = (r() - 0.5) * w; base[i * 3 + 1] = r() * h; base[i * 3 + 2] = (r() - 0.5) * d; spd[i] = 1.2 + r() * 1.6; }
+  const geo = new THREE.BufferGeometry(); geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  const dot = canvasTex(64, 64, (g) => { const gr = g.createRadialGradient(32, 32, 0, 32, 32, 30); gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(0.5, "rgba(255,255,255,0.8)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); });
+  const pts = new THREE.Points(geo, new THREE.PointsMaterial({ color: "#ffffff", map: dot, size: 0.11, transparent: true, opacity: 0.95, depthWrite: false, alphaTest: 0.02 }));
+  pts.userData = { base, spd, n, w, h };
+  return pts;
+}
+export function snowfallAt(pts, t, wind = 0, speed = 1) {
+  const { base, spd, n, w, h } = pts.userData; const p = pts.geometry.attributes.position.array;
+  for (let i = 0; i < n; i++) {
+    const fall = (base[i * 3 + 1] - t * spd[i] * speed) % h;
+    p[i * 3 + 1] = fall < 0 ? fall + h : fall;
+    let x = base[i * 3] + t * wind * (0.6 + spd[i] * 0.3) + Math.sin(t * 1.3 + i) * 0.3;
+    x = ((x + w / 2) % w + w) % w - w / 2; p[i * 3] = x; p[i * 3 + 2] = base[i * 3 + 2];
+  }
+  pts.geometry.attributes.position.needsUpdate = true;
+}
+export function schoolBus() {
+  const g = new THREE.Group();
+  const y = mat("#f2b632");
+  g.add(rbox(3.2, 3.2, 11, 0.3, y, 0, 2.1, 0));
+  g.add(box(3.24, 0.25, 11.02, mat("#1d1d22"), 0, 1.3, 0, false));
+  for (let i = 0; i < 6; i++) [-1, 1].forEach((sd) => g.add(box(0.06, 1.0, 1.2, mat("#9fc3e6", { roughness: 0.2 }), sd * 1.62, 2.8, -4 + i * 1.5, false)));
+  g.add(box(2.6, 1.0, 0.06, mat("#9fc3e6"), 0, 2.8, 5.51, false));
+  const t = signTex("SCHULBUS", { bg: "#f2b632", fg: "#1d1d22", border: null, w: 512, h: 96 });
+  const busSign = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 0.45), new THREE.MeshBasicMaterial({ map: t })); busSign.position.set(0, 3.55, 5.52); g.add(busSign);
+  [[-1, 3.6], [1, 3.6], [-1, -3.6], [1, -3.6]].forEach(([sx, sz]) => { const w = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.7, 0.5, 16), mat("#1b1b1f")); w.rotation.z = Math.PI / 2; w.position.set(sx * 1.6, 0.7, sz); g.add(w); });
+  return g;
+}
+export function busStop() {
+  const g = new THREE.Group();
+  g.add(box(0.15, 3.6, 0.15, mat("#8a8f98"), 0, 1.8, 0));
+  const s = signMesh("H", 0.9, 0.9, { bg: "#f6d33c", fg: "#2e7d32", border: "#2e7d32" }); s.position.set(0, 3.7, 0.05); g.add(s);
+  return g;
+}
+/** Bach (entlang x) mit Trittsteinen. */
+export function stream(len = 30) {
+  const g = new THREE.Group();
+  const w = new THREE.Mesh(new THREE.PlaneGeometry(len, 3.4), new THREE.MeshStandardMaterial({ color: "#5b9bd5", roughness: 0.25, metalness: 0.1, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }));
+  w.rotation.x = -Math.PI / 2; w.position.y = 0.06; g.add(w);
+  [-1.1, 0, 1.1].forEach((z, i) => { const st = new THREE.Mesh(new THREE.SphereGeometry(0.55, 10, 8), mat("#8a8f98", { flatShading: true })); st.scale.y = 0.45; st.position.set((i - 1) * 0.4, 0.18, z); st.castShadow = true; g.add(st); });
+  return g;
+}
+export function fallenLog() {
+  const g = new THREE.Group();
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.6, 7, 12), mat("#6b4a2b"));
+  m.rotation.z = Math.PI / 2; m.position.y = 0.55; m.castShadow = true; g.add(m);
+  [-3.5, 3.5].forEach((x) => { const e = new THREE.Mesh(new THREE.CircleGeometry(0.55, 12), mat("#c9a06a")); e.position.set(x, 0.55, 0); e.rotation.y = x > 0 ? Math.PI / 2 : -Math.PI / 2; g.add(e); });
+  return g;
+}
+/** Gefrorener Wasserfall an einer Felswand. */
+export function frozenFall() {
+  const g = new THREE.Group();
+  const rock = mat("#6e7480", { flatShading: true });
+  [[-5, 5, 8], [0, 7, 10], [5, 5.5, 8]].forEach(([x, h, w]) => g.add(box(w, h * 2, 3, rock, x, h, -1.5)));
+  const ice = mat("#cfe9ff", { roughness: 0.15, metalness: 0.1, emissive: "#9fd3ff", emissiveIntensity: 0.15 });
+  const r = rng(12);
+  for (let i = 0; i < 14; i++) { const len = 4 + r() * 8; const c = new THREE.Mesh(new THREE.ConeGeometry(0.35 + r() * 0.3, len, 6), ice); c.rotation.x = Math.PI; c.position.set(-2.2 + i * 0.32, 13 - len / 2, 0.2); g.add(c); }
+  g.add(box(5.5, 0.6, 3.5, ice, 0, 0.3, 1.2));
+  return g;
+}
+/** Straßenlaterne mit warmem Licht (userData.light). */
+export function streetLamp(intensity = 40) {
+  const g = new THREE.Group();
+  g.add(box(0.25, 7, 0.25, mat("#2a2a30"), 0, 3.5, 0));
+  g.add(box(1.6, 0.2, 0.25, mat("#2a2a30"), 0.7, 7, 0));
+  g.add(box(0.8, 0.4, 0.6, new THREE.MeshStandardMaterial({ color: "#fff1c9", emissive: "#ffd27a", emissiveIntensity: 2 }), 1.4, 6.75, 0, false));
+  const l = new THREE.PointLight("#ffcf7a", intensity, 20, 1.3); l.position.set(1.4, 6.3, 0); g.add(l);
+  g.userData.light = l;
+  return g;
+}
+export function cafeteriaTable() {
+  const g = new THREE.Group();
+  g.add(box(7, 0.25, 2.4, mat("#d9d3c6"), 0, 2.2, 0));
+  [-3, 3].forEach((x) => g.add(box(0.3, 2.2, 1.8, mat("#8a8f98"), x, 1.1, 0)));
+  [-1.9, 1.9].forEach((z) => g.add(box(7, 0.2, 0.8, mat("#8a8f98"), 0, 1.4, z)));
   return g;
 }
 export function briefcase() {
