@@ -1,14 +1,7 @@
 {
   "title": "In dieser Stadt steht über jedem, wie viele heute an ihn gedacht haben",
   "voice": {
-    "model": "de_DE-thorsten-high",
-    "length_scale": 1.05,
-    "noise_scale": 0.5,
-    "noise_w_scale": 0.7,
-    "pause": 0.3,
-    "semitones": 6.5,
-    "formant_semitones": 2.5,
-    "eq": "highpass=f=110,equalizer=f=250:t=q:w=1:g=-2,equalizer=f=3200:t=q:w=1.4:g=3,highshelf=f=7000:g=2,acompressor=threshold=-20dB:ratio=3:attack=4:release=70"
+    "length_scale": 1.0
   },
   "music": {
     "volume": 0.2
